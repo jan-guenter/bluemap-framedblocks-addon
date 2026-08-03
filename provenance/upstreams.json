@@ -1,0 +1,217 @@
+{
+  "schema_version": 2,
+  "project_license": "LGPL-3.0-only",
+  "source_use_lane": "adapted-source",
+  "baseline": {
+    "pack": "All the Mons 1.1.1",
+    "pack_commit": "94a224acf6eace3edf7ea64e6033b458f5bda288",
+    "minecraft": "1.21.1",
+    "neoforge": "21.1.234",
+    "java": 21
+  },
+  "minecraft_resource_evidence": {
+    "artifact": {
+      "file_name": "minecraft-client-1.21.1.jar",
+      "size": 26836906,
+      "sha256": "499f6897d1837516680f3114072d8106e11c9adcd933fe5cf051b551089b0c99",
+      "origin": "Exact client-resource JAR downloaded by BlueMap 5.22 for the isolated Minecraft 1.21.1 full-pack lab",
+      "bundled": false
+    },
+    "resources": {
+      "assets/minecraft/blockstates/stone.json": "34476f2bb98e7abec029c07c3cbfd8ba3a0141c0df3f02ff255018dbec625bbc",
+      "assets/minecraft/models/block/stone.json": "c0734082e7f1e2f44809737b2fbe1136fc7304bde7232e45fbe921884a4a327e",
+      "assets/minecraft/models/block/stone_mirrored.json": "f6127c3048b1812b664209825271553c71c2b2dae9d6a19933702b6fdbe34370"
+    },
+    "observed_default_variant_count": 4,
+    "use": "Exact-resource validation of the bounded uniform-weighted full-cube material lane; no Minecraft asset is bundled or redistributed.",
+    "limitation": "The four stone alternatives prove one material but have distinct mirrored/rotated UV orientation. FramedBlocks' random client cache choice is not persisted in Anvil, so the adapter normalizes UV orientation and does not claim pixel-identical randomized texture orientation."
+  },
+  "framedblocks": {
+    "repository": "https://github.com/XFactHD/FramedBlocks",
+    "evidence_tier": "T4_SOURCE_CORRELATED",
+    "version": "10.6.1",
+    "distribution": {
+      "modrinth_version_id": "FBXGqSP5",
+      "curseforge_project_id": 441647,
+      "curseforge_file_id": 8349218,
+      "published_at": "2026-06-30T23:50:48.160901Z"
+    },
+    "runtime_artifact": {
+      "file_name": "FramedBlocks-10.6.1.jar",
+      "size": 4306703,
+      "class_file_major": 65,
+      "sha1": "3007be0007d09c0225ca33b647461f342eac0503",
+      "sha256": "3337f29e1fa3331e8740eef9c20b0750d81fd86d1057fb81012a5c4792aa3369",
+      "sha512": "051d07cb372bfafd746ff658ef2ad3485606328e445099c17b499b14df6844a0c75e8c6decaff1267934fbd6dfaa0eb1938906b0dbeaa20500c1789b4175e3b6",
+      "bundled": false
+    },
+    "source": {
+      "commit": "99522893fce0c9cd543194be1e8cefd488e0eec8",
+      "tree": "f99458e96e82e4804fa3148ae9df7654ed9b76cc",
+      "parent": "3b3e744599c4d39476f50d49ba136074997f190a",
+      "committed_at": "2026-06-30T23:46:43Z",
+      "generated_archive_size": 944228,
+      "generated_archive_sha256": "205f95ce0463d201fa78c7decf4481702c96903a22340fa4fdfc73059ac41634",
+      "generated_archive_origin": "GitHub-generated archive for the exact commit; not a published source JAR and not redistributed",
+      "acquired_at": "2026-08-02",
+      "license": "LGPL-3.0-only",
+      "correlation": "Release-correlated commit four minutes before publication; runtime/source blockstate resources and audited registries match; reproducible build not demonstrated."
+    },
+    "source_blobs": {
+      "src/main/java/xfacthd/framedblocks/common/FBContent.java": "edc1e09afaaa9603bad3b28225d4ac9737be9142",
+      "src/main/java/xfacthd/framedblocks/common/data/BlockType.java": "c1c6187c6f676db3c3ca48c75884380591426111",
+      "src/main/java/xfacthd/framedblocks/api/block/blockentity/FramedBlockEntity.java": "094647d866fd18f861a1d8afa9de6d32f5f3ecec",
+      "src/main/java/xfacthd/framedblocks/api/block/blockentity/IFramedDoubleBlockEntity.java": "5453638050a127ce8703d4542a234af0431cc284",
+      "src/main/java/xfacthd/framedblocks/common/blockentity/doubled/FramedDoubleBlockEntity.java": "27ecb9216f23ecd9e7165f6c2e17710e928798e2",
+      "src/main/java/xfacthd/framedblocks/api/camo/CamoContainerHelper.java": "4098578b1d0ff5266ae637d1f34536757715045c",
+      "src/main/java/xfacthd/framedblocks/api/camo/block/SimpleBlockCamoContainerFactory.java": "5d421fb0e316345ff8288461a9d4a26e3408a482",
+      "src/main/java/xfacthd/framedblocks/common/data/camo/fluid/FluidCamoContainerFactory.java": "b204f3ba3dc52cc996fa8ddf145a4769b254c106",
+      "LICENSE": "8805d0dfad7f51c4173ed3e3ec28a1ec9707f063"
+    }
+  },
+  "bluemap": {
+    "repository": "https://github.com/BlueMap-Minecraft/BlueMap",
+    "backport_repository": "https://github.com/jan-guenter/BlueMap",
+    "upstream_version": "5.22",
+    "upstream_commit": "fe5115d5548a30d34175b8e0449aaca280af199f",
+    "backport_version": "5.22-agent.backport-5.22-mc1.21.1-1",
+    "backport_commit": "fe79cf5b9f4d8ca28f4e41c2aeb9ef792e336a8d",
+    "api_commit": "285c9a60eff3ac2b0cab308ce1058d1565be0971",
+    "license": "MIT",
+    "bundled": false,
+    "source_blobs": {
+      "common/src/main/java/de/bluecolored/bluemap/common/addons/AddonLoader.java": "538b66f064f4d25c1b03655144afcae5b0b5c3e8",
+      "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/BlockRenderer.java": "787b1b9d2f8f597f789aa92bb7bfe77e9ecf2b95",
+      "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/BlockRendererType.java": "134e2b8fd834bd8ab0aa5e8f33ab6c1a86315c7d",
+      "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/ResourceModelRenderer.java": "d997f8926a71c0f689839a4d883c1f8a913df926",
+      "core/src/main/java/de/bluecolored/bluemap/core/resources/pack/resourcepack/ResourcePack.java": "ed6923e373301744f12866ecd998e14a65893e65",
+      "core/src/main/java/de/bluecolored/bluemap/core/resources/pack/resourcepack/ResourcePackExtension.java": "299528bce583f8a15e403ed08ac02e2fd5d707d9",
+      "core/src/main/java/de/bluecolored/bluemap/core/util/Registry.java": "a8807ae482749c54635f34a79abb38283a240257",
+      "core/src/main/java/de/bluecolored/bluemap/core/world/mca/MCAUtil.java": "b27c679573a377b32637558cdd635c20560ebbd6",
+      "core/src/main/java/de/bluecolored/bluemap/core/world/mca/blockentity/BlockEntityType.java": "161bd03def799acaba4ca3315ccb91adbe9fade3",
+      "core/src/main/java/de/bluecolored/bluemap/core/world/mca/data/BlockEntityTypeResolver.java": "2dd4786fa853c915cab765f390e5920edd3e033b"
+    }
+  },
+  "derived_outputs": [
+    {
+      "local": "src/main/resources/bluemap-framedblocks/profiles/10.6.1/blockstate-ids.txt",
+      "derivation": "Lexicographically sorted IDs from exact runtime assets/framedblocks/blockstates/*.json, UTF-8 with one LF per row.",
+      "count": 236,
+      "sha256": "e4aed367abf2f037d92496e5028fc9493ae7fb48c5e8dd6ffb85eeddb13330c9",
+      "raw_resource_manifest_sha256": "4712e9775a6d9fc0544f369b44f724f4a8377d6ecf8f23c5e2b30d313ec44f84"
+    },
+    {
+      "local": "src/main/resources/bluemap-framedblocks/profiles/10.6.1/block-entity-ids.txt",
+      "derivation": "Registration order independently matched between exact FBContent bytecode and the correlated FBContent/BlockType source.",
+      "count": 51,
+      "sha256": "faef8938e780a6997f59978221ff6fcb52de1e08d01d5d0a4b1c493eb4b0455b"
+    },
+    {
+      "local": "src/main/resources/bluemap-framedblocks/profiles/10.6.1/geometry-templates.json.gz",
+      "license": "LGPL-3.0-only",
+      "derivation": "Deterministic schema-v3 production projection produced by the explicit Gradle projectGeometryProfile task from the private exact-client schema-v2 physical capture. Raw-state, template, and alias identities are preserved; geometry is emptied for every template owned by the closed 28-ID block-level fallback set.",
+      "private_source_evidence": {
+        "tracked": false,
+        "bundled": false,
+        "schema_version": 2,
+        "independent_capture_count": 2,
+        "byte_identical": true,
+        "gzip_size_bytes": 1300572,
+        "gzip_sha256": "390e7edb3e4c0bd6dbaefa90bebfee2918306cae876900d90d94fa2cbecd8234",
+        "uncompressed_size_bytes": 59147042,
+        "uncompressed_sha256": "f261fb5a6c6189ebb5795facb2dc4cd579724a45422b29aba9ef4898f40509a7",
+        "template_count": 5382,
+        "quad_count": 62746
+      },
+      "production_projection": {
+        "schema_version": 3,
+        "gzip_size_bytes": 1256231,
+        "gzip_sha256": "d5a91b78090116b9223f1e96d6903cfd6261d7076b8cbe8d67d469ea2de44253",
+        "uncompressed_size_bytes": 56464720,
+        "uncompressed_sha256": "e16b72167389c92b558dcb5a13d2cbae4e56a59da3f7cdb689c81637798cd001",
+        "independent_projection_count": 2,
+        "byte_identical": true,
+        "template_count": 5382,
+        "quad_count": 58708,
+        "emptied_template_count": 524,
+        "removed_quad_count": 4038,
+        "excluded_block_id_count": 28,
+        "excluded_block_ids_lf_sha256": "f0be4b79e8ee82686414b5745634d9096d272fc16730ef06bb1de7a15de62529",
+        "fixed_sprite_count": 18,
+        "fixed_sprite_namespaces": [
+          "framedblocks",
+          "minecraft"
+        ],
+        "preserved_identity": [
+          "raw-states",
+          "templates",
+          "aliases"
+        ]
+      },
+      "bundled_content_boundary": "Derived neutral geometry, canonical state/template/alias identity, and sprite identifiers only. No third-party binary, code, texture, model file, source archive, or JAR is bundled.",
+      "runtime_resource_stack_attestation": false,
+      "runtime_resource_stack_limitation": "The recorded client fingerprint is validated as capture metadata, but BlueMap's actual live resource stack is not cryptographically inventoried or compared with it."
+    }
+  ],
+  "local_adaptations": [
+    {
+      "local": "src/main/java/io/github/janguenter/bluemap/framedblocks/adapter/bluemap522/FramedBlockEntityData.java",
+      "upstream_files": [
+        "src/main/java/xfacthd/framedblocks/api/block/blockentity/FramedBlockEntity.java",
+        "src/main/java/xfacthd/framedblocks/api/block/blockentity/IFramedDoubleBlockEntity.java",
+        "src/main/java/xfacthd/framedblocks/common/blockentity/doubled/FramedDoubleBlockEntity.java"
+      ],
+      "modification": "Reduced persisted-data DTO retaining only render-relevant named fields; no upstream class is bundled.",
+      "modified_on": "2026-08-02",
+      "spdx": "LGPL-3.0-only"
+    },
+    {
+      "local": "src/main/java/io/github/janguenter/bluemap/framedblocks/profile/framedblocks10_6/FramedCamoDecoder.java",
+      "upstream_files": [
+        "src/main/java/xfacthd/framedblocks/common/FBContent.java",
+        "src/main/java/xfacthd/framedblocks/api/camo/CamoContainerHelper.java",
+        "src/main/java/xfacthd/framedblocks/api/camo/block/SimpleBlockCamoContainerFactory.java",
+        "src/main/java/xfacthd/framedblocks/common/data/camo/fluid/FluidCamoContainerFactory.java"
+      ],
+      "modification": "Bounded independent decoder for the named persisted block-camouflage schema; other factory types fail closed.",
+      "modified_on": "2026-08-02",
+      "spdx": "LGPL-3.0-only"
+    },
+    {
+      "local": "src/main/java/io/github/janguenter/bluemap/framedblocks/adapter/bluemap522",
+      "upstream_files": [
+        "common/src/main/java/de/bluecolored/bluemap/common/addons/AddonLoader.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/BlockRenderer.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/BlockRendererType.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/ResourceModelRenderer.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/resources/pack/resourcepack/ResourcePack.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/resources/pack/resourcepack/ResourcePackExtension.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/util/Registry.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/world/mca/MCAUtil.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/world/mca/blockentity/BlockEntityType.java",
+        "core/src/main/java/de/bluecolored/bluemap/core/world/mca/data/BlockEntityTypeResolver.java"
+      ],
+      "modification": "Independent internal-ABI adapter using audited interfaces, including bounded strict and uniform-weighted opaque full-cube material proofs plus stable bounded fallback reasons. Weighted alternatives are normalized only when every face proves the same material; non-persisted random UV orientation is explicitly outside pixel-identical coverage. No BlueMap or Minecraft source, binary, texture, or model is bundled.",
+      "modified_on": "2026-08-03",
+      "spdx": "LGPL-3.0-only; upstream interfaces MIT"
+    }
+  ],
+  "non_bundled_dependencies": [
+    {
+      "name": "BlueNBT",
+      "version": "3.5.1",
+      "sha256": "32276b3401ac3450c52b7bb341128aef758712a91226c2eb6327abfa3e7c2605",
+      "license": "MIT"
+    },
+    {
+      "name": "JetBrains Java Annotations",
+      "version": "23.0.0",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "JUnit Jupiter",
+      "version": "5.11.4",
+      "license": "EPL-2.0"
+    }
+  ]
+}

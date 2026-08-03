@@ -1,0 +1,169 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  packages: write
+  attestations: write
+  id-token: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Check out tagged source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Verify release identity
+        run: |
+          version="$(sed -n 's/^addon_version=//p' gradle.properties)"
+          test -n "${version}"
+          if [[ "${version}" == *-SNAPSHOT ]]; then
+            echo "Release versions must not end in -SNAPSHOT" >&2
+            exit 1
+          fi
+          test "${GITHUB_REF_NAME}" = "v${version}"
+          git fetch --no-tags origin main:refs/remotes/origin/main
+          git merge-base --is-ancestor "${GITHUB_SHA}" refs/remotes/origin/main
+          echo "VERSION=${version}" >> "${GITHUB_ENV}"
+
+      - name: Check out exact BlueMap backport
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: jan-guenter/BlueMap
+          ref: fe79cf5b9f4d8ca28f4e41c2aeb9ef792e336a8d
+          path: .ci/bluemap
+          submodules: recursive
+          persist-credentials: false
+
+      - name: Set up Java 21
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@9c971963bec38e04b3d30dcc455b5382be2fdbfb # v6.3.0
+        with:
+          cache-provider: basic
+          validate-wrappers: true
+
+      - name: Verify generated gallery
+        run: |
+          python3 gallery/generate.py --check
+          python3 -m json.tool provenance/upstreams.json >/dev/null
+          cd gallery
+          sha256sum --check SHA256SUMS
+
+      - name: Acquire exact FramedBlocks test input
+        run: |
+          mkdir -p "${RUNNER_TEMP}/framedblocks"
+          curl --fail --location --retry 3 --retry-all-errors \
+            --output "${RUNNER_TEMP}/framedblocks/FramedBlocks-10.6.1.jar" \
+            "https://cdn.modrinth.com/data/wbgfS34j/versions/FBXGqSP5/FramedBlocks-10.6.1.jar"
+
+      - name: Build, test, and verify reproducibility
+        run: |
+          gradle_args=(
+            --no-daemon
+            -PbluemapSourcePath=.ci/bluemap
+            -PframedblocksJar="${RUNNER_TEMP}/framedblocks/FramedBlocks-10.6.1.jar"
+            -PreleaseTag="${GITHUB_REF_NAME}"
+          )
+          tasks=(
+            clean
+            check
+            build
+            generatePomFileForAddonPublication
+            generateMetadataFileForAddonPublication
+            geometryProjectionClasses
+            verifyPublicationPom
+            verifyPinnedArtifact
+            verifyReleaseMetadata
+          )
+          ./gradlew "${gradle_args[@]}" "${tasks[@]}"
+          cp "build/libs/bluemap-framedblocks-addon-${VERSION}.jar" \
+            "${RUNNER_TEMP}/first-build.jar"
+          cp "build/libs/bluemap-framedblocks-addon-${VERSION}-sources.jar" \
+            "${RUNNER_TEMP}/first-build-sources.jar"
+          cp build/publications/addon/pom-default.xml \
+            "${RUNNER_TEMP}/first-build.pom"
+          cp build/publications/addon/module.json \
+            "${RUNNER_TEMP}/first-build.module.json"
+          ./gradlew "${gradle_args[@]}" "${tasks[@]}"
+          cmp "${RUNNER_TEMP}/first-build.jar" \
+            "build/libs/bluemap-framedblocks-addon-${VERSION}.jar"
+          cmp "${RUNNER_TEMP}/first-build-sources.jar" \
+            "build/libs/bluemap-framedblocks-addon-${VERSION}-sources.jar"
+          cmp "${RUNNER_TEMP}/first-build.pom" \
+            build/publications/addon/pom-default.xml
+          cmp "${RUNNER_TEMP}/first-build.module.json" \
+            build/publications/addon/module.json
+          test -s build/publications/addon/pom-default.xml
+          test -s build/publications/addon/module.json
+          unzip -p "build/libs/bluemap-framedblocks-addon-${VERSION}.jar" \
+            META-INF/bluemap-framedblocks/upstreams.json | \
+            cmp - provenance/upstreams.json
+
+      - name: Prepare release bundle
+        run: |
+          mkdir release
+          cp "build/libs/bluemap-framedblocks-addon-${VERSION}.jar" release/
+          cp "build/libs/bluemap-framedblocks-addon-${VERSION}-sources.jar" release/
+          cp build/publications/addon/pom-default.xml \
+            "release/bluemap-framedblocks-addon-${VERSION}.pom"
+          cd release
+          sha256sum -- ./* > SHA256SUMS
+
+      - name: Create draft GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notes="Experimental exact-version release for FramedBlocks 10.6.1 and the Java 21 Minecraft 1.21.1 BlueMap 5.22 backport. It is not a general FramedBlocks compatibility claim or a production recommendation."
+          gh release create "${GITHUB_REF_NAME}" release/* \
+            --draft \
+            --generate-notes \
+            --notes "${notes}" \
+            --title "BlueMap FramedBlocks Add-on ${VERSION}" \
+            --verify-tag
+
+      - name: Attest release JARs
+        uses: actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
+        with:
+          subject-path: release/*.jar
+
+      - name: Publish Maven package
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          ./gradlew --no-daemon \
+            -PbluemapSourcePath=.ci/bluemap \
+            publishAddonPublicationToGitHubPackagesRepository
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [[ "${VERSION}" == *-* ]]; then
+            gh release edit "${GITHUB_REF_NAME}" --draft=false --prerelease
+          else
+            gh release edit "${GITHUB_REF_NAME}" --draft=false --latest
+          fi

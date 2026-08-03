@@ -1,0 +1,682 @@
+{
+  "camo_contract": {
+    "framedblocks_disk_codec_type": "framedblocks:block",
+    "non_opaque_fallback": "minecraft:glass",
+    "supported_primary": "minecraft:stone",
+    "supported_secondary": "minecraft:gold_block"
+  },
+  "cases": [
+    {
+      "anchor": {
+        "x": 198,
+        "y": 100,
+        "z": 240
+      },
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+      "block_id": "framedblocks:framed_cube",
+      "block_state": "framedblocks:framed_cube[alt=false,glowing=false,propagates_skylight=false,reinforced=false,solid=true,solid_bg=false]",
+      "case_id": "fb1061-rp-01",
+      "category": "proven_static_single",
+      "companion_blocks": [],
+      "expected_path": "addon_geometry",
+      "expected_reason": "state-only-baked-model",
+      "index": 1,
+      "primary_camo": "minecraft:stone",
+      "routing_stage": "addon_renderer_geometry",
+      "secondary_camo": null,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 198,
+            "y": 99,
+            "z": 240
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 202,
+        "y": 100,
+        "z": 240
+      },
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},camo_two:{type:\"framedblocks:block\",state:{Name:\"minecraft:gold_block\"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+      "block_id": "framedblocks:framed_double_slab",
+      "block_state": "framedblocks:framed_double_slab[glowing=false,propagates_skylight=false,solid=true]",
+      "case_id": "fb1061-rp-02",
+      "category": "proven_static_double",
+      "companion_blocks": [],
+      "expected_path": "addon_geometry",
+      "expected_reason": "state-only-baked-model",
+      "index": 2,
+      "primary_camo": "minecraft:stone",
+      "routing_stage": "addon_renderer_geometry",
+      "secondary_camo": "minecraft:gold_block",
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 202,
+            "y": 99,
+            "z": 240
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 206,
+        "y": 100,
+        "z": 240
+      },
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+      "block_id": "framedblocks:framed_slope",
+      "block_state": "framedblocks:framed_slope[facing=east,glowing=false,propagates_skylight=false,solid=true,type=bottom,waterlogged=false,yslope=false]",
+      "case_id": "fb1061-rp-03",
+      "category": "proven_static_oriented",
+      "companion_blocks": [],
+      "expected_path": "addon_geometry",
+      "expected_reason": "state-only-baked-model",
+      "index": 3,
+      "primary_camo": "minecraft:stone",
+      "routing_stage": "addon_renderer_geometry",
+      "secondary_camo": null,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 206,
+            "y": 99,
+            "z": 240
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 210,
+        "y": 100,
+        "z": 240
+      },
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},camo_two:{type:\"framedblocks:block\",state:{Name:\"minecraft:gold_block\"}},first_height:5,glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+      "block_id": "framedblocks:framed_adj_double_slab",
+      "block_state": "framedblocks:framed_adj_double_slab[glowing=false,propagates_skylight=false,solid=true]",
+      "case_id": "fb1061-rp-04",
+      "category": "fallback_adjustable",
+      "companion_blocks": [],
+      "expected_path": "stock_fallback",
+      "expected_reason": "adjustable-model-data-required",
+      "index": 4,
+      "primary_camo": "minecraft:stone",
+      "routing_stage": "resource_extension_unrouted",
+      "secondary_camo": "minecraft:gold_block",
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 210,
+            "y": 99,
+            "z": 240
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 214,
+        "y": 100,
+        "z": 240
+      },
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},offsets:270600,glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+      "block_id": "framedblocks:framed_collapsible_block",
+      "block_state": "framedblocks:framed_collapsible_block[face=up,glowing=false,propagates_skylight=false,rot_split_line=false,waterlogged=false]",
+      "case_id": "fb1061-rp-05",
+      "category": "fallback_collapsible",
+      "companion_blocks": [],
+      "expected_path": "stock_fallback",
+      "expected_reason": "collapsible-model-data-required",
+      "index": 5,
+      "primary_camo": "minecraft:stone",
+      "routing_stage": "resource_extension_unrouted",
+      "secondary_camo": null,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 240
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 218,
+        "y": 100,
+        "z": 240
+      },
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},flower:\"minecraft:dandelion\",glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+      "block_id": "framedblocks:framed_flower_pot",
+      "block_state": "framedblocks:framed_flower_pot[glowing=false,hanging=false,propagates_skylight=false]",
+      "case_id": "fb1061-rp-06",
+      "category": "fallback_flower",
+      "companion_blocks": [],
+      "expected_path": "stock_fallback",
+      "expected_reason": "flower-model-data-required",
+      "index": 6,
+      "primary_camo": "minecraft:stone",
+      "routing_stage": "resource_extension_unrouted",
+      "secondary_camo": null,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 218,
+            "y": 99,
+            "z": 240
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 198,
+        "y": 100,
+        "z": 244
+      },
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+      "block_id": "framedblocks:framed_one_way_window",
+      "block_state": "framedblocks:framed_one_way_window[face=east,glowing=false,propagates_skylight=false]",
+      "case_id": "fb1061-rp-07",
+      "category": "fallback_one_way",
+      "companion_blocks": [],
+      "expected_path": "stock_fallback",
+      "expected_reason": "one-way-window-model-data-required",
+      "index": 7,
+      "primary_camo": "minecraft:stone",
+      "routing_stage": "resource_extension_unrouted",
+      "secondary_camo": null,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 198,
+            "y": 99,
+            "z": 244
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 202,
+        "y": 100,
+        "z": 244
+      },
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+      "block_id": "framedblocks:framed_sign",
+      "block_state": "framedblocks:framed_sign[glowing=false,propagates_skylight=false,rotation=0,waterlogged=false]",
+      "case_id": "fb1061-rp-08",
+      "category": "fallback_block_entity_renderer",
+      "companion_blocks": [],
+      "expected_path": "stock_fallback",
+      "expected_reason": "block-entity-renderer-required",
+      "index": 8,
+      "primary_camo": "minecraft:stone",
+      "routing_stage": "resource_extension_unrouted",
+      "secondary_camo": null,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 202,
+            "y": 99,
+            "z": 244
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 206,
+        "y": 100,
+        "z": 244
+      },
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+      "block_id": "framedblocks:framed_bouncy_cube",
+      "block_state": "framedblocks:framed_bouncy_cube[glowing=false,propagates_skylight=false,solid=true]",
+      "case_id": "fb1061-rp-09",
+      "category": "fallback_special_camo_overlay",
+      "companion_blocks": [],
+      "expected_path": "stock_fallback",
+      "expected_reason": "camo-overlay-model-data-required",
+      "index": 9,
+      "primary_camo": "minecraft:stone",
+      "routing_stage": "resource_extension_unrouted",
+      "secondary_camo": null,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 206,
+            "y": 99,
+            "z": 244
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 210,
+        "y": 100,
+        "z": 244
+      },
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+      "block_id": "framedblocks:framed_slab",
+      "block_state": "framedblocks:framed_slab[glowing=false,propagates_skylight=false,solid=true,top=false,waterlogged=true]",
+      "case_id": "fb1061-rp-10",
+      "category": "fallback_waterlogged",
+      "companion_blocks": [],
+      "expected_path": "stock_fallback",
+      "expected_reason": "waterlogged-fluid-rendering-required",
+      "index": 10,
+      "primary_camo": "minecraft:stone",
+      "routing_stage": "addon_renderer_runtime_fallback",
+      "secondary_camo": null,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 210,
+            "y": 99,
+            "z": 244
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 214,
+        "y": 100,
+        "z": 244
+      },
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+      "block_id": "framedblocks:framed_cube",
+      "block_state": "framedblocks:framed_cube[alt=false,glowing=false,propagates_skylight=false,reinforced=false,solid=true,solid_bg=false]",
+      "case_id": "fb1061-rp-11",
+      "category": "fallback_adjacent_framed_neighbor",
+      "companion_blocks": [
+        {
+          "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+          "block_state": "framedblocks:framed_cube[alt=false,glowing=false,propagates_skylight=false,reinforced=false,solid=true,solid_bg=false]",
+          "kind": "east_framed_neighbor",
+          "position": {
+            "x": 215,
+            "y": 100,
+            "z": 244
+          },
+          "supports": [
+            {
+              "block_id": "minecraft:stone",
+              "kind": "base",
+              "position": {
+                "x": 215,
+                "y": 99,
+                "z": 244
+              }
+            }
+          ]
+        }
+      ],
+      "expected_path": "stock_fallback",
+      "expected_reason": "neighbor-hidden-face-model-data-required",
+      "index": 11,
+      "primary_camo": "minecraft:stone",
+      "routing_stage": "addon_renderer_runtime_fallback",
+      "secondary_camo": null,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 244
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 218,
+        "y": 100,
+        "z": 244
+      },
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:glass\"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+      "block_id": "framedblocks:framed_cube",
+      "block_state": "framedblocks:framed_cube[alt=false,glowing=false,propagates_skylight=false,reinforced=false,solid=false,solid_bg=false]",
+      "case_id": "fb1061-rp-12",
+      "category": "fallback_non_opaque_camo",
+      "companion_blocks": [],
+      "expected_path": "stock_fallback",
+      "expected_reason": "primary-camo-material-unresolved",
+      "index": 12,
+      "primary_camo": "minecraft:glass",
+      "routing_stage": "addon_renderer_runtime_fallback",
+      "secondary_camo": null,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 218,
+            "y": 99,
+            "z": 244
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 198,
+        "y": 100,
+        "z": 248
+      },
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},glowing:1b,intangible:0b,reinforced:0b,updated:3b}",
+      "block_id": "framedblocks:framed_slab",
+      "block_state": "framedblocks:framed_slab[glowing=true,propagates_skylight=false,solid=true,top=false,waterlogged=false]",
+      "case_id": "fb1061-rp-13",
+      "category": "fallback_glowing",
+      "companion_blocks": [],
+      "expected_path": "stock_fallback",
+      "expected_reason": "dynamic-light-camo-required",
+      "index": 13,
+      "primary_camo": "minecraft:stone",
+      "routing_stage": "addon_renderer_runtime_fallback",
+      "secondary_camo": null,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 198,
+            "y": 99,
+            "z": 248
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 202,
+        "y": 100,
+        "z": 248
+      },
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:glass\"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+      "block_id": "framedblocks:framed_slab",
+      "block_state": "framedblocks:framed_slab[glowing=false,propagates_skylight=true,solid=false,top=false,waterlogged=false]",
+      "case_id": "fb1061-rp-14",
+      "category": "fallback_propagates_skylight",
+      "companion_blocks": [],
+      "expected_path": "stock_fallback",
+      "expected_reason": "dynamic-skylight-camo-required",
+      "index": 14,
+      "primary_camo": "minecraft:glass",
+      "routing_stage": "addon_renderer_runtime_fallback",
+      "secondary_camo": null,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 202,
+            "y": 99,
+            "z": 248
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 206,
+        "y": 100,
+        "z": 248
+      },
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},glowing:0b,intangible:0b,reinforced:1b,updated:3b}",
+      "block_id": "framedblocks:framed_cube",
+      "block_state": "framedblocks:framed_cube[alt=false,glowing=false,propagates_skylight=false,reinforced=false,solid=true,solid_bg=false]",
+      "case_id": "fb1061-rp-15",
+      "category": "fallback_reinforced",
+      "companion_blocks": [],
+      "expected_path": "stock_fallback",
+      "expected_reason": "reinforcement-model-data-required",
+      "index": 15,
+      "primary_camo": "minecraft:stone",
+      "routing_stage": "addon_renderer_runtime_fallback",
+      "secondary_camo": null,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 206,
+            "y": 99,
+            "z": 248
+          }
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "addon_geometry_cases": 3,
+    "addon_renderer_runtime_fallback_cases": 6,
+    "observation_deck_blocks": 224,
+    "observation_decks": 2,
+    "renderer_anchor_blocks": 16,
+    "renderer_path_cases": 15,
+    "resource_extension_unrouted_cases": 6,
+    "stock_fallback_cases": 12,
+    "unbuilt_camo_corruption_cases": 2
+  },
+  "functions": {
+    "observation_decks": {
+      "build": "framedblocks_gallery:build_observation_decks",
+      "clear": "framedblocks_gallery:clear_observation_decks",
+      "verify": "framedblocks_gallery:verify_observation_decks"
+    },
+    "observation_poses": {
+      "east": "framedblocks_gallery:pose_east",
+      "south": "framedblocks_gallery:pose_south"
+    },
+    "renderer_paths": {
+      "build": "framedblocks_gallery:build_renderer_paths",
+      "clear": "framedblocks_gallery:clear_renderer_paths",
+      "verify": "framedblocks_gallery:verify_renderer_paths"
+    }
+  },
+  "layout": {
+    "configured_map_mask_xz": {
+      "max": 320,
+      "min": 192
+    },
+    "dimension": "minecraft:overworld",
+    "exact_m0_fixture_aabb": {
+      "max": {
+        "x": 258,
+        "y": 101,
+        "z": 256
+      },
+      "min": {
+        "x": 256,
+        "y": 99,
+        "z": 256
+      }
+    },
+    "protected_m0_corridor_aabb": {
+      "max": {
+        "x": 261,
+        "y": 319,
+        "z": 320
+      },
+      "min": {
+        "x": 252,
+        "y": -64,
+        "z": 192
+      }
+    },
+    "renderer_matrix_anchor_aabb": {
+      "max": {
+        "x": 218,
+        "y": 100,
+        "z": 248
+      },
+      "min": {
+        "x": 198,
+        "y": 100,
+        "z": 240
+      }
+    },
+    "renderer_matrix_clear_aabb": {
+      "max": {
+        "x": 220,
+        "y": 102,
+        "z": 250
+      },
+      "min": {
+        "x": 196,
+        "y": 98,
+        "z": 238
+      }
+    },
+    "renderer_matrix_columns": 6,
+    "renderer_matrix_rows": 3,
+    "renderer_matrix_spacing_blocks": 4,
+    "roster_clear_aabb": {
+      "max": {
+        "x": 248,
+        "y": 102,
+        "z": 233
+      },
+      "min": {
+        "x": 195,
+        "y": 98,
+        "z": 195
+      }
+    }
+  },
+  "observation_decks": [
+    {
+      "clear_aabb": {
+        "max": {
+          "x": 228,
+          "y": 110,
+          "z": 257
+        },
+        "min": {
+          "x": 214,
+          "y": 106,
+          "z": 251
+        }
+      },
+      "deck_id": "south",
+      "expected_block_count": 97,
+      "floor_aabb": {
+        "max": {
+          "x": 227,
+          "y": 107,
+          "z": 256
+        },
+        "min": {
+          "x": 215,
+          "y": 107,
+          "z": 252
+        }
+      },
+      "pose": {
+        "pitch": 14.0,
+        "pose_id": "gallery_overview_south",
+        "position": {
+          "x": 221.5,
+          "y": 108.0,
+          "z": 254.5
+        },
+        "yaw": 180.0
+      },
+      "pose_function": "framedblocks_gallery:pose_south"
+    },
+    {
+      "clear_aabb": {
+        "max": {
+          "x": 273,
+          "y": 110,
+          "z": 221
+        },
+        "min": {
+          "x": 265,
+          "y": 106,
+          "z": 207
+        }
+      },
+      "deck_id": "east",
+      "expected_block_count": 127,
+      "floor_aabb": {
+        "max": {
+          "x": 272,
+          "y": 107,
+          "z": 220
+        },
+        "min": {
+          "x": 266,
+          "y": 107,
+          "z": 208
+        }
+      },
+      "pose": {
+        "pitch": 14.0,
+        "pose_id": "gallery_overview_east",
+        "position": {
+          "x": 269.5,
+          "y": 108.0,
+          "z": 214.5
+        },
+        "yaw": 90.0
+      },
+      "pose_function": "framedblocks_gallery:pose_east"
+    }
+  ],
+  "schema_version": 1,
+  "source": {
+    "framedblocks_source_commit": "99522893fce0c9cd543194be1e8cefd488e0eec8",
+    "matrix_policy": "Exact add-on support status/family/reason plus exact 10.6.1 block-state and block-entity fields",
+    "tracked_blockstate_manifest_sha256": "e4aed367abf2f037d92496e5028fc9493ae7fb48c5e8dd6ffb85eeddb13330c9"
+  },
+  "target": {
+    "framedblocks": "10.6.1",
+    "minecraft": "1.21.1",
+    "pack_format": 48
+  },
+  "unbuilt_cases": [
+    {
+      "category": "fallback_missing_camo",
+      "reason": "FramedBlocks normalizes an absent disk camo to its empty container and writes a canonical camo value on save.",
+      "status": "not_safely_persistable_by_datapack"
+    },
+    {
+      "category": "fallback_malformed_camo",
+      "reason": "FramedBlocks decodes, validates, logs, and normalizes malformed disk camouflage during block-entity load; raw chunk editing is out of scope.",
+      "status": "not_safely_persistable_by_datapack"
+    }
+  ]
+}

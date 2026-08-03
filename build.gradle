@@ -1,0 +1,507 @@
+// SPDX-License-Identifier: LGPL-3.0-only
+
+plugins {
+    id 'java-library'
+    id 'checkstyle'
+    id 'maven-publish'
+}
+
+group = addon_group
+version = addon_version
+
+base {
+    archivesName = artifact_id
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+    withSourcesJar()
+}
+
+sourceSets {
+    geometryProjection {
+        java.srcDirs = ['src/geometryProjection/java']
+        resources.srcDirs = []
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += output + compileClasspath
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url = uri('https://repo.bluecolored.de/releases')
+        content { includeGroupByRegex('de\\.bluecolored.*') }
+    }
+}
+
+dependencies {
+    compileOnly "de.bluecolored:bluemap-core:${bluemap_version}"
+    compileOnly 'org.jetbrains:annotations:23.0.0'
+
+    testImplementation "de.bluecolored:bluemap-core:${bluemap_version}"
+    testImplementation 'org.jetbrains:annotations:23.0.0'
+    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    geometryProjectionImplementation sourceSets.main.output
+    geometryProjectionImplementation "de.bluecolored:bluemap-core:${bluemap_version}"
+    geometryProjectionImplementation 'com.google.code.gson:gson:2.8.9'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 21
+    options.compilerArgs.addAll(['-Xlint:all', '-Werror'])
+}
+
+tasks.withType(AbstractArchiveTask).configureEach {
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
+
+tasks.named('test', Test).configure {
+    useJUnitPlatform()
+}
+
+def rawGeometryExport = providers.gradleProperty('rawGeometryExport')
+def projectedGeometryOutput = providers.gradleProperty('projectedGeometryOutput')
+        .map { file(it) }
+        .orElse(providers.provider {
+            file('src/main/resources/bluemap-framedblocks/profiles/10.6.1/' +
+                    'geometry-templates.json.gz')
+        })
+
+tasks.register('projectGeometryProfile', JavaExec) {
+    group = 'build setup'
+    description = 'Projects the exact private schema-v2 client capture into schema v3.'
+    dependsOn tasks.named('geometryProjectionClasses')
+    classpath = sourceSets.geometryProjection.runtimeClasspath
+    mainClass =
+            'io.github.janguenter.bluemap.framedblocks.profile.framedblocks10_6.' +
+                    'GeometryProfileProjector'
+    outputs.file(projectedGeometryOutput)
+    outputs.upToDateWhen { false }
+
+    doFirst {
+        if (!rawGeometryExport.isPresent()) {
+            throw new GradleException(
+                    'Set -PrawGeometryExport=<path-to-exact-schema-v2-client-export.gz>'
+            )
+        }
+        args = [
+                file(rawGeometryExport.get()).absolutePath,
+                projectedGeometryOutput.get().absolutePath
+        ]
+    }
+}
+
+checkstyle {
+    toolVersion = '10.18.2'
+    configFile = file('config/checkstyle/checkstyle.xml')
+}
+
+tasks.withType(Checkstyle).configureEach {
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}
+
+def expectedBlueMapCommit = 'fe79cf5b9f4d8ca28f4e41c2aeb9ef792e336a8d'
+def expectedBlueMapApiCommit = '285c9a60eff3ac2b0cab308ce1058d1565be0971'
+def expectedGeometryGzipBytes = 1256231L
+def expectedGeometryGzipSha256 =
+        'd5a91b78090116b9223f1e96d6903cfd6261d7076b8cbe8d67d469ea2de44253'
+def expectedGeometryJsonBytes = 56464720L
+def expectedGeometryJsonSha256 =
+        'e16b72167389c92b558dcb5a13d2cbae4e56a59da3f7cdb689c81637798cd001'
+def blueMapSourceDir = providers.gradleProperty('bluemapSourcePath')
+        .map { file(it) }
+        .orElse(file('../bluemap-backport'))
+
+tasks.register('verifyBlueMapSource') {
+    inputs.dir(blueMapSourceDir)
+
+    doLast {
+        def resolveHead = { File repository ->
+            providers.exec {
+                commandLine 'git', '-C', repository.absolutePath, 'rev-parse', 'HEAD'
+            }.standardOutput.asText.get().trim()
+        }
+        def blueMapHead = resolveHead(blueMapSourceDir.get())
+        if (blueMapHead != expectedBlueMapCommit) {
+            throw new GradleException(
+                    "BlueMap source is ${blueMapHead}; expected ${expectedBlueMapCommit}"
+            )
+        }
+
+        def apiHead = resolveHead(new File(blueMapSourceDir.get(), 'api'))
+        if (apiHead != expectedBlueMapApiCommit) {
+            throw new GradleException(
+                    "BlueMapAPI source is ${apiHead}; expected ${expectedBlueMapApiCommit}"
+            )
+        }
+    }
+}
+
+tasks.named('compileJava').configure {
+    dependsOn tasks.named('verifyBlueMapSource')
+}
+
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes(
+                'Automatic-Module-Name':
+                        'io.github.janguenter.bluemap.framedblocks',
+                'Implementation-Title': addon_name,
+                'Implementation-Version': project.version.toString()
+        )
+    }
+
+    from('LICENSE') {
+        into 'META-INF'
+        rename { 'LICENSE-bluemap-framedblocks-addon' }
+    }
+    from('NOTICE.md') {
+        into 'META-INF'
+        rename { 'NOTICE-bluemap-framedblocks-addon.md' }
+    }
+    from('THIRD_PARTY.md') {
+        into 'META-INF'
+        rename { 'THIRD_PARTY-bluemap-framedblocks-addon.md' }
+    }
+    from('provenance/upstreams.json') {
+        into 'META-INF/bluemap-framedblocks'
+    }
+    from('LICENSES') {
+        into 'META-INF/LICENSES'
+    }
+}
+
+tasks.named('sourcesJar', Jar).configure {
+    from(sourceSets.geometryProjection.allSource)
+
+    from('LICENSE') {
+        into 'META-INF'
+        rename { 'LICENSE-bluemap-framedblocks-addon' }
+    }
+    from('LICENSES') {
+        into 'META-INF/LICENSES'
+    }
+    from('NOTICE.md') {
+        into 'META-INF'
+        rename { 'NOTICE-bluemap-framedblocks-addon.md' }
+    }
+    from('THIRD_PARTY.md') {
+        into 'META-INF'
+        rename { 'THIRD_PARTY-bluemap-framedblocks-addon.md' }
+    }
+    from('provenance/upstreams.json') {
+        into 'META-INF/bluemap-framedblocks'
+    }
+}
+
+def productionJar = tasks.named('jar', Jar).flatMap { it.archiveFile }
+
+tasks.register('verifyProductionJar') {
+    dependsOn tasks.named('jar')
+    inputs.file(productionJar)
+
+    doLast {
+        def jarFile = inputs.files.singleFile
+        def zipFile = new java.util.zip.ZipFile(jarFile)
+        try {
+            def entries = zipFile.entries()
+                    .findAll { !it.directory }
+                    .collect { it.name }
+
+            def readJson = { String entryName ->
+                def content = zipFile.getInputStream(zipFile.getEntry(entryName)).withCloseable {
+                    it.getText('UTF-8')
+                }
+                new groovy.json.JsonSlurper().parseText(content)
+            }
+
+            def requiredEntries = [
+                    'bluemap.addon.json',
+                    'assets/bluemap_framedblocks/blockstates/framed_shape.json',
+                    'bluemap-framedblocks/profiles/10.6.1/block-entity-ids.txt',
+                    'bluemap-framedblocks/profiles/10.6.1/blockstate-ids.txt',
+                    'bluemap-framedblocks/profiles/10.6.1/geometry-templates.json.gz',
+                    'META-INF/LICENSE-bluemap-framedblocks-addon',
+                    'META-INF/LICENSES/GPL-3.0-only.txt',
+                    'META-INF/LICENSES/LGPL-3.0-only.txt',
+                    'META-INF/NOTICE-bluemap-framedblocks-addon.md',
+                    'META-INF/THIRD_PARTY-bluemap-framedblocks-addon.md',
+                    'META-INF/bluemap-framedblocks/upstreams.json'
+            ]
+            def missing = requiredEntries.findAll { !entries.contains(it) }
+            if (!missing.isEmpty()) {
+                throw new GradleException("Production JAR is missing required entries: ${missing}")
+            }
+
+            def manifest = new java.util.jar.Manifest(
+                    zipFile.getInputStream(zipFile.getEntry('META-INF/MANIFEST.MF'))
+            )
+            def manifestAttributes = manifest.mainAttributes
+            if (manifestAttributes.getValue('Automatic-Module-Name') !=
+                    'io.github.janguenter.bluemap.framedblocks' ||
+                    manifestAttributes.getValue('Implementation-Title') != addon_name ||
+                    manifestAttributes.getValue('Implementation-Version') !=
+                            project.version.toString()) {
+                throw new GradleException('Production JAR manifest identity mismatch')
+            }
+
+            def sha256 = { byte[] bytes ->
+                java.util.HexFormat.of().formatHex(
+                        java.security.MessageDigest.getInstance('SHA-256').digest(bytes)
+                )
+            }
+            def geometryEntry = zipFile.getEntry(
+                    'bluemap-framedblocks/profiles/10.6.1/geometry-templates.json.gz'
+            )
+            byte[] geometryGzip = zipFile.getInputStream(geometryEntry).withCloseable {
+                it.readAllBytes()
+            }
+            if (geometryGzip.length != expectedGeometryGzipBytes ||
+                    sha256(geometryGzip) != expectedGeometryGzipSha256) {
+                throw new GradleException('Projected geometry gzip payload pin mismatch')
+            }
+            byte[] geometryJson = new java.util.zip.GZIPInputStream(
+                    new java.io.ByteArrayInputStream(geometryGzip)
+            ).withCloseable { it.readAllBytes() }
+            if (geometryJson.length != expectedGeometryJsonBytes ||
+                    sha256(geometryJson) != expectedGeometryJsonSha256) {
+                throw new GradleException('Projected geometry JSON payload pin mismatch')
+            }
+
+            def addonInfo = readJson('bluemap.addon.json')
+            if (addonInfo.id != addon_id ||
+                    addonInfo.entrypoint !=
+                            'io.github.janguenter.bluemap.framedblocks.BlueMapFramedBlocksAddon' ||
+                    addonInfo.dependencies != [] || addonInfo['soft-dependencies'] != []) {
+                throw new GradleException('bluemap.addon.json does not match the add-on contract')
+            }
+
+            def syntheticBlockstate = readJson(
+                    'assets/bluemap_framedblocks/blockstates/framed_shape.json'
+            )
+            def syntheticVariant = syntheticBlockstate.variants?.get('')
+            if (syntheticVariant?.renderer != 'bluemap_framedblocks:framed_shape' ||
+                    syntheticVariant?.model != 'bluemap:block/missing') {
+                throw new GradleException('Synthetic exact-profile blockstate contract mismatch')
+            }
+
+            def forbidden = entries.findAll {
+                it.endsWith('.jar') ||
+                        it == 'META-INF/neoforge.mods.toml' ||
+                        it == 'fabric.mod.json' ||
+                        it.endsWith('.mixins.json') ||
+                        it.startsWith('de/bluecolored/') ||
+                        it.startsWith('xfacthd/') ||
+                        it.startsWith('net/minecraft/') ||
+                        it.startsWith('net/neoforged/')
+            }
+            if (!forbidden.isEmpty()) {
+                throw new GradleException("Production JAR contains forbidden entries: ${forbidden}")
+            }
+
+            def unexpected = entries.findAll {
+                !(it == 'META-INF/MANIFEST.MF') &&
+                        !(it in requiredEntries) &&
+                        !(it.startsWith('io/github/janguenter/bluemap/framedblocks/') &&
+                                it.endsWith('.class'))
+            }
+            if (!unexpected.isEmpty()) {
+                throw new GradleException("Production JAR contains unexpected entries: ${unexpected}")
+            }
+
+            def projectClasses = entries.findAll {
+                it.startsWith('io/github/janguenter/bluemap/framedblocks/') &&
+                        it.endsWith('.class')
+            }
+            if (projectClasses.isEmpty()) {
+                throw new GradleException('Production JAR contains no project classes')
+            }
+
+            projectClasses.each { className ->
+                def classEntry = zipFile.getEntry(className)
+                def header = zipFile.getInputStream(classEntry).withCloseable {
+                    it.readNBytes(8)
+                }
+                if (header.length != 8) {
+                    throw new GradleException("Truncated class file in production JAR: ${className}")
+                }
+                def majorVersion = (Byte.toUnsignedInt(header[6]) << 8) |
+                        Byte.toUnsignedInt(header[7])
+                if (majorVersion != 65) {
+                    throw new GradleException(
+                            "${className} has class-file major ${majorVersion}; expected 65"
+                    )
+                }
+            }
+        } finally {
+            zipFile.close()
+        }
+    }
+}
+
+tasks.register('verifyPinnedArtifact', Exec) {
+    def pinnedJar = providers.gradleProperty('framedblocksJar')
+    doFirst {
+        if (!pinnedJar.isPresent()) {
+            throw new GradleException(
+                    'Set -PframedblocksJar=<path-to-FramedBlocks-10.6.1.jar>'
+            )
+        }
+    }
+    commandLine 'python3', 'tools/verify_pinned_artifact.py',
+            '--jar', pinnedJar.getOrElse('missing')
+}
+
+def releaseTag = providers.gradleProperty('releaseTag')
+
+tasks.register('verifyReleaseMetadata') {
+    inputs.file('CHANGELOG.md')
+    inputs.property('releaseTag', releaseTag.orElse(''))
+
+    doLast {
+        def releaseVersion = project.version.toString()
+        def semverPattern = ~/(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?/
+        if (!(releaseVersion ==~ semverPattern)) {
+            throw new GradleException(
+                    "Release version ${releaseVersion} is not a supported SemVer version"
+            )
+        }
+        if (releaseVersion.endsWith('-SNAPSHOT')) {
+            throw new GradleException('A GitHub release cannot use a SNAPSHOT version')
+        }
+        if (!releaseTag.isPresent()) {
+            throw new GradleException('Set -PreleaseTag=<tag> for release validation')
+        }
+        if (releaseTag.get() != "v${releaseVersion}") {
+            throw new GradleException(
+                    "Release tag ${releaseTag.get()} does not match v${releaseVersion}"
+            )
+        }
+        def changelogPattern = java.util.regex.Pattern.compile(
+                '(?m)^## \\[' + java.util.regex.Pattern.quote(releaseVersion) +
+                        '\\] - \\d{4}-\\d{2}-\\d{2}$'
+        )
+        if (!changelogPattern.matcher(
+                file('CHANGELOG.md').getText('UTF-8')
+        ).find()) {
+            throw new GradleException(
+                    "CHANGELOG.md has no dated release heading for ${releaseVersion}"
+            )
+        }
+    }
+}
+
+tasks.named('check').configure {
+    dependsOn tasks.named('verifyProductionJar')
+}
+
+def generatedPom = layout.buildDirectory.file(
+        'publications/addon/pom-default.xml'
+)
+
+tasks.register('verifyPublicationPom') {
+    dependsOn tasks.named('generatePomFileForAddonPublication')
+    inputs.file(generatedPom)
+
+    doLast {
+        def pom = new groovy.xml.XmlSlurper(false, false)
+                .parse(generatedPom.get().asFile)
+        if (pom.groupId.text() != addon_group ||
+                pom.artifactId.text() != artifact_id ||
+                pom.version.text() != project.version.toString()) {
+            throw new GradleException('Publication POM coordinates mismatch')
+        }
+        if (pom.name.text() != addon_name ||
+                pom.description.text() !=
+                        'BlueMap 5.22 renderer add-on for FramedBlocks 10.6.1' ||
+                pom.url.text() !=
+                        'https://github.com/jan-guenter/bluemap-framedblocks-addon' ||
+                pom.licenses.license.name.text() !=
+                        'GNU Lesser General Public License v3.0 only' ||
+                pom.licenses.license.url.text() !=
+                        'https://spdx.org/licenses/LGPL-3.0-only.html') {
+            throw new GradleException('Publication POM project/license metadata mismatch')
+        }
+        if (pom.scm.url.text() !=
+                        'https://github.com/jan-guenter/bluemap-framedblocks-addon' ||
+                pom.scm.connection.text() !=
+                        'scm:git:https://github.com/jan-guenter/bluemap-framedblocks-addon.git' ||
+                pom.scm.developerConnection.text() !=
+                        'scm:git:ssh://git@github.com/jan-guenter/bluemap-framedblocks-addon.git' ||
+                pom.scm.tag.text() != "v${project.version}") {
+            throw new GradleException('Publication POM SCM metadata mismatch')
+        }
+        if (pom.developers.developer.id.text() != 'jan-guenter' ||
+                pom.developers.developer.name.text() != 'Jan Guenter' ||
+                pom.developers.developer.url.text() !=
+                        'https://github.com/jan-guenter') {
+            throw new GradleException('Publication POM developer metadata mismatch')
+        }
+        if (pom.dependencies.dependency.size() != 0) {
+            throw new GradleException('Publication POM must not expose runtime dependencies')
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = 'GitHubPackages'
+            url = uri(
+                    'https://maven.pkg.github.com/' +
+                            'jan-guenter/bluemap-framedblocks-addon'
+            )
+            credentials {
+                username = providers.gradleProperty('gpr.user')
+                        .orElse(providers.environmentVariable('GITHUB_ACTOR'))
+                        .getOrElse('')
+                password = providers.gradleProperty('gpr.key')
+                        .orElse(providers.environmentVariable('GITHUB_TOKEN'))
+                        .getOrElse('')
+            }
+        }
+    }
+
+    publications {
+        addon(MavenPublication) {
+            from components.java
+            artifactId = artifact_id
+
+            pom {
+                name = addon_name
+                description = 'BlueMap 5.22 renderer add-on for FramedBlocks 10.6.1'
+                url = 'https://github.com/jan-guenter/bluemap-framedblocks-addon'
+                licenses {
+                    license {
+                        name = 'GNU Lesser General Public License v3.0 only'
+                        url = 'https://spdx.org/licenses/LGPL-3.0-only.html'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'jan-guenter'
+                        name = 'Jan Guenter'
+                        url = 'https://github.com/jan-guenter'
+                    }
+                }
+                scm {
+                    connection =
+                            'scm:git:https://github.com/jan-guenter/bluemap-framedblocks-addon.git'
+                    developerConnection =
+                            'scm:git:ssh://git@github.com/jan-guenter/bluemap-framedblocks-addon.git'
+                    url = 'https://github.com/jan-guenter/bluemap-framedblocks-addon'
+                    tag = "v${project.version}"
+                }
+            }
+        }
+    }
+}

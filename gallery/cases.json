@@ -1,0 +1,6521 @@
+{
+  "camo_contract": {
+    "framedblocks_disk_codec_type": "framedblocks:block",
+    "primary": "minecraft:stone",
+    "secondary_for_generic_double_only": "minecraft:gold_block"
+  },
+  "cases": [
+    {
+      "anchor": {
+        "x": 196,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_activator_rail_slope",
+      "block_state": "framedblocks:framed_activator_rail_slope[solid=true]",
+      "case_id": "fb1061-001",
+      "companion_blocks": [],
+      "index": 1,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 196,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 199,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_adj_double_copycat_panel",
+      "block_state": "framedblocks:framed_adj_double_copycat_panel[solid=true]",
+      "case_id": "fb1061-002",
+      "companion_blocks": [],
+      "index": 2,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 199,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 202,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_adj_double_copycat_slab",
+      "block_state": "framedblocks:framed_adj_double_copycat_slab[solid=true]",
+      "case_id": "fb1061-003",
+      "companion_blocks": [],
+      "index": 3,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 202,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 205,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_adj_double_panel",
+      "block_state": "framedblocks:framed_adj_double_panel[solid=true]",
+      "case_id": "fb1061-004",
+      "companion_blocks": [],
+      "index": 4,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 205,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 208,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_adj_double_slab",
+      "block_state": "framedblocks:framed_adj_double_slab[solid=true]",
+      "case_id": "fb1061-005",
+      "companion_blocks": [],
+      "index": 5,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 208,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 211,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_bars",
+      "block_state": "framedblocks:framed_bars",
+      "case_id": "fb1061-006",
+      "companion_blocks": [],
+      "index": 6,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 211,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 214,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_bookshelf",
+      "block_state": "framedblocks:framed_bookshelf[solid=true]",
+      "case_id": "fb1061-007",
+      "companion_blocks": [],
+      "index": 7,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 217,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_bouncy_cube",
+      "block_state": "framedblocks:framed_bouncy_cube[solid=true]",
+      "case_id": "fb1061-008",
+      "companion_blocks": [],
+      "index": 8,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 217,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 220,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_button",
+      "block_state": "framedblocks:framed_button[face=floor,facing=south,powered=false]",
+      "case_id": "fb1061-009",
+      "companion_blocks": [],
+      "index": 9,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 220,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 223,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_centered_panel",
+      "block_state": "framedblocks:framed_centered_panel[solid=true]",
+      "case_id": "fb1061-010",
+      "companion_blocks": [],
+      "index": 10,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 226,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_centered_slab",
+      "block_state": "framedblocks:framed_centered_slab[solid=true]",
+      "case_id": "fb1061-011",
+      "companion_blocks": [],
+      "index": 11,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 226,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 229,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_chain",
+      "block_state": "framedblocks:framed_chain",
+      "case_id": "fb1061-012",
+      "companion_blocks": [],
+      "index": 12,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 229,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 232,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_checkered_cube",
+      "block_state": "framedblocks:framed_checkered_cube[solid=true]",
+      "case_id": "fb1061-013",
+      "companion_blocks": [],
+      "index": 13,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 232,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 235,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_checkered_cube_segment",
+      "block_state": "framedblocks:framed_checkered_cube_segment",
+      "case_id": "fb1061-014",
+      "companion_blocks": [],
+      "index": 14,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 235,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 238,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_checkered_panel",
+      "block_state": "framedblocks:framed_checkered_panel[solid=true]",
+      "case_id": "fb1061-015",
+      "companion_blocks": [],
+      "index": 15,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 238,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 241,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_checkered_panel_segment",
+      "block_state": "framedblocks:framed_checkered_panel_segment",
+      "case_id": "fb1061-016",
+      "companion_blocks": [],
+      "index": 16,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 241,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 244,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_checkered_slab",
+      "block_state": "framedblocks:framed_checkered_slab[solid=true]",
+      "case_id": "fb1061-017",
+      "companion_blocks": [],
+      "index": 17,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 244,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 247,
+        "y": 100,
+        "z": 196
+      },
+      "block_id": "framedblocks:framed_checkered_slab_segment",
+      "block_state": "framedblocks:framed_checkered_slab_segment",
+      "case_id": "fb1061-018",
+      "companion_blocks": [],
+      "index": 18,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 247,
+            "y": 99,
+            "z": 196
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 196,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_chest",
+      "block_state": "framedblocks:framed_chest",
+      "case_id": "fb1061-019",
+      "companion_blocks": [],
+      "index": 19,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 196,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 199,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_chiseled_bookshelf",
+      "block_state": "framedblocks:framed_chiseled_bookshelf[solid=true]",
+      "case_id": "fb1061-020",
+      "companion_blocks": [],
+      "index": 20,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 199,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 202,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_collapsible_block",
+      "block_state": "framedblocks:framed_collapsible_block",
+      "case_id": "fb1061-021",
+      "companion_blocks": [],
+      "index": 21,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 202,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 205,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_collapsible_copycat_block",
+      "block_state": "framedblocks:framed_collapsible_copycat_block",
+      "case_id": "fb1061-022",
+      "companion_blocks": [],
+      "index": 22,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 205,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 208,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_compound_slope_panel",
+      "block_state": "framedblocks:framed_compound_slope_panel[solid=true]",
+      "case_id": "fb1061-023",
+      "companion_blocks": [],
+      "index": 23,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 208,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 211,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_compound_slope_slab",
+      "block_state": "framedblocks:framed_compound_slope_slab[solid=true]",
+      "case_id": "fb1061-024",
+      "companion_blocks": [],
+      "index": 24,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 211,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 214,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_corner_pillar",
+      "block_state": "framedblocks:framed_corner_pillar",
+      "case_id": "fb1061-025",
+      "companion_blocks": [],
+      "index": 25,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 217,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_corner_slope",
+      "block_state": "framedblocks:framed_corner_slope[solid=true]",
+      "case_id": "fb1061-026",
+      "companion_blocks": [],
+      "index": 26,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 217,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 220,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_corner_slope_edge",
+      "block_state": "framedblocks:framed_corner_slope_edge",
+      "case_id": "fb1061-027",
+      "companion_blocks": [],
+      "index": 27,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 220,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 223,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_corner_strip",
+      "block_state": "framedblocks:framed_corner_strip",
+      "case_id": "fb1061-028",
+      "companion_blocks": [],
+      "index": 28,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 226,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_corner_tube",
+      "block_state": "framedblocks:framed_corner_tube[solid=true]",
+      "case_id": "fb1061-029",
+      "companion_blocks": [],
+      "index": 29,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 226,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 229,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_cube",
+      "block_state": "framedblocks:framed_cube[solid=true]",
+      "case_id": "fb1061-030",
+      "companion_blocks": [],
+      "index": 30,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 229,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 232,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_detector_rail_slope",
+      "block_state": "framedblocks:framed_detector_rail_slope[solid=true]",
+      "case_id": "fb1061-031",
+      "companion_blocks": [],
+      "index": 31,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 232,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 235,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_divided_panel_horizontal",
+      "block_state": "framedblocks:framed_divided_panel_horizontal[solid=true]",
+      "case_id": "fb1061-032",
+      "companion_blocks": [],
+      "index": 32,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 235,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 238,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_divided_panel_vertical",
+      "block_state": "framedblocks:framed_divided_panel_vertical[solid=true]",
+      "case_id": "fb1061-033",
+      "companion_blocks": [],
+      "index": 33,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 238,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 241,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_divided_slab",
+      "block_state": "framedblocks:framed_divided_slab[solid=true]",
+      "case_id": "fb1061-034",
+      "companion_blocks": [],
+      "index": 34,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 241,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 244,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_divided_slope",
+      "block_state": "framedblocks:framed_divided_slope[solid=true]",
+      "case_id": "fb1061-035",
+      "companion_blocks": [],
+      "index": 35,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 244,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 247,
+        "y": 100,
+        "z": 199
+      },
+      "block_id": "framedblocks:framed_divided_stairs",
+      "block_state": "framedblocks:framed_divided_stairs[solid=true]",
+      "case_id": "fb1061-036",
+      "companion_blocks": [],
+      "index": 36,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 247,
+            "y": 99,
+            "z": 199
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 196,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_door",
+      "block_state": "framedblocks:framed_door[facing=south,half=lower,hinge=left,open=false,powered=false,solid=true]",
+      "case_id": "fb1061-037",
+      "companion_blocks": [
+        {
+          "block_state": "framedblocks:framed_door[facing=south,half=upper,hinge=left,open=false,powered=false,solid=true]",
+          "kind": "upper_half",
+          "position": {
+            "x": 196,
+            "y": 101,
+            "z": 202
+          },
+          "primary_camo": "minecraft:stone"
+        }
+      ],
+      "index": 37,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 196,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 199,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_double_corner",
+      "block_state": "framedblocks:framed_double_corner[solid=true]",
+      "case_id": "fb1061-038",
+      "companion_blocks": [],
+      "index": 38,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 199,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 202,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_double_half_slope",
+      "block_state": "framedblocks:framed_double_half_slope[solid=true]",
+      "case_id": "fb1061-039",
+      "companion_blocks": [],
+      "index": 39,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 202,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 205,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_double_half_stairs",
+      "block_state": "framedblocks:framed_double_half_stairs[solid=true]",
+      "case_id": "fb1061-040",
+      "companion_blocks": [],
+      "index": 40,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 205,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 208,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_double_panel",
+      "block_state": "framedblocks:framed_double_panel[solid=true]",
+      "case_id": "fb1061-041",
+      "companion_blocks": [],
+      "index": 41,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 208,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 211,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_double_prism_corner",
+      "block_state": "framedblocks:framed_double_prism_corner[solid=true]",
+      "case_id": "fb1061-042",
+      "companion_blocks": [],
+      "index": 42,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 211,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 214,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_double_slab",
+      "block_state": "framedblocks:framed_double_slab[solid=true]",
+      "case_id": "fb1061-043",
+      "companion_blocks": [],
+      "index": 43,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 217,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_double_slope",
+      "block_state": "framedblocks:framed_double_slope[solid=true]",
+      "case_id": "fb1061-044",
+      "companion_blocks": [],
+      "index": 44,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 217,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 220,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_double_slope_panel",
+      "block_state": "framedblocks:framed_double_slope_panel[solid=true]",
+      "case_id": "fb1061-045",
+      "companion_blocks": [],
+      "index": 45,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 220,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 223,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_double_slope_slab",
+      "block_state": "framedblocks:framed_double_slope_slab[solid=true]",
+      "case_id": "fb1061-046",
+      "companion_blocks": [],
+      "index": 46,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 226,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_double_stairs",
+      "block_state": "framedblocks:framed_double_stairs[solid=true]",
+      "case_id": "fb1061-047",
+      "companion_blocks": [],
+      "index": 47,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 226,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 229,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_double_threeway_corner",
+      "block_state": "framedblocks:framed_double_threeway_corner[solid=true]",
+      "case_id": "fb1061-048",
+      "companion_blocks": [],
+      "index": 48,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 229,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 232,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_double_threeway_corner_pillar",
+      "block_state": "framedblocks:framed_double_threeway_corner_pillar[solid=true]",
+      "case_id": "fb1061-049",
+      "companion_blocks": [],
+      "index": 49,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 232,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 235,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_elev_double_corner_slope_edge",
+      "block_state": "framedblocks:framed_elev_double_corner_slope_edge[solid=true]",
+      "case_id": "fb1061-050",
+      "companion_blocks": [],
+      "index": 50,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 235,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 238,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_elev_double_inner_corner_slope_edge",
+      "block_state": "framedblocks:framed_elev_double_inner_corner_slope_edge[solid=true]",
+      "case_id": "fb1061-051",
+      "companion_blocks": [],
+      "index": 51,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 238,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 241,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_elevated_corner_slope_edge",
+      "block_state": "framedblocks:framed_elevated_corner_slope_edge[solid=true]",
+      "case_id": "fb1061-052",
+      "companion_blocks": [],
+      "index": 52,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 241,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 244,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_elevated_double_slope_edge",
+      "block_state": "framedblocks:framed_elevated_double_slope_edge[solid=true]",
+      "case_id": "fb1061-053",
+      "companion_blocks": [],
+      "index": 53,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 244,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 247,
+        "y": 100,
+        "z": 202
+      },
+      "block_id": "framedblocks:framed_elevated_double_slope_slab",
+      "block_state": "framedblocks:framed_elevated_double_slope_slab[solid=true]",
+      "case_id": "fb1061-054",
+      "companion_blocks": [],
+      "index": 54,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 247,
+            "y": 99,
+            "z": 202
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 196,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_elevated_inner_corner_slope_edge",
+      "block_state": "framedblocks:framed_elevated_inner_corner_slope_edge[solid=true]",
+      "case_id": "fb1061-055",
+      "companion_blocks": [],
+      "index": 55,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 196,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 199,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_elevated_inner_double_prism",
+      "block_state": "framedblocks:framed_elevated_inner_double_prism[solid=true]",
+      "case_id": "fb1061-056",
+      "companion_blocks": [],
+      "index": 56,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 199,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 202,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_elevated_inner_double_sloped_prism",
+      "block_state": "framedblocks:framed_elevated_inner_double_sloped_prism[solid=true]",
+      "case_id": "fb1061-057",
+      "companion_blocks": [],
+      "index": 57,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 202,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 205,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_elevated_inner_prism",
+      "block_state": "framedblocks:framed_elevated_inner_prism[solid=true]",
+      "case_id": "fb1061-058",
+      "companion_blocks": [],
+      "index": 58,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 205,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 208,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_elevated_inner_sloped_prism",
+      "block_state": "framedblocks:framed_elevated_inner_sloped_prism[solid=true]",
+      "case_id": "fb1061-059",
+      "companion_blocks": [],
+      "index": 59,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 208,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 211,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_elevated_pyramid_slab",
+      "block_state": "framedblocks:framed_elevated_pyramid_slab[solid=true]",
+      "case_id": "fb1061-060",
+      "companion_blocks": [],
+      "index": 60,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 211,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 214,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_elevated_slope_edge",
+      "block_state": "framedblocks:framed_elevated_slope_edge[solid=true]",
+      "case_id": "fb1061-061",
+      "companion_blocks": [],
+      "index": 61,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 217,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_elevated_slope_slab",
+      "block_state": "framedblocks:framed_elevated_slope_slab[solid=true]",
+      "case_id": "fb1061-062",
+      "companion_blocks": [],
+      "index": 62,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 217,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 220,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_ext_corner_slope_panel",
+      "block_state": "framedblocks:framed_ext_corner_slope_panel[solid=true]",
+      "case_id": "fb1061-063",
+      "companion_blocks": [],
+      "index": 63,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 220,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 223,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_ext_corner_slope_panel_w",
+      "block_state": "framedblocks:framed_ext_corner_slope_panel_w[solid=true]",
+      "case_id": "fb1061-064",
+      "companion_blocks": [],
+      "index": 64,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 226,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_ext_double_corner_slope_panel",
+      "block_state": "framedblocks:framed_ext_double_corner_slope_panel[solid=true]",
+      "case_id": "fb1061-065",
+      "companion_blocks": [],
+      "index": 65,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 226,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 229,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_ext_double_corner_slope_panel_w",
+      "block_state": "framedblocks:framed_ext_double_corner_slope_panel_w[solid=true]",
+      "case_id": "fb1061-066",
+      "companion_blocks": [],
+      "index": 66,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 229,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 232,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_ext_inner_corner_slope_panel",
+      "block_state": "framedblocks:framed_ext_inner_corner_slope_panel[solid=true]",
+      "case_id": "fb1061-067",
+      "companion_blocks": [],
+      "index": 67,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 232,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 235,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_ext_inner_corner_slope_panel_w",
+      "block_state": "framedblocks:framed_ext_inner_corner_slope_panel_w[solid=true]",
+      "case_id": "fb1061-068",
+      "companion_blocks": [],
+      "index": 68,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 235,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 238,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_ext_inner_double_corner_slope_panel",
+      "block_state": "framedblocks:framed_ext_inner_double_corner_slope_panel[solid=true]",
+      "case_id": "fb1061-069",
+      "companion_blocks": [],
+      "index": 69,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 238,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 241,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_ext_inner_double_corner_slope_panel_w",
+      "block_state": "framedblocks:framed_ext_inner_double_corner_slope_panel_w[solid=true]",
+      "case_id": "fb1061-070",
+      "companion_blocks": [],
+      "index": 70,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 241,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 244,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_extended_double_slope_panel",
+      "block_state": "framedblocks:framed_extended_double_slope_panel[solid=true]",
+      "case_id": "fb1061-071",
+      "companion_blocks": [],
+      "index": 71,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 244,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 247,
+        "y": 100,
+        "z": 205
+      },
+      "block_id": "framedblocks:framed_extended_slope_panel",
+      "block_state": "framedblocks:framed_extended_slope_panel[solid=true]",
+      "case_id": "fb1061-072",
+      "companion_blocks": [],
+      "index": 72,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 247,
+            "y": 99,
+            "z": 205
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 196,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_fancy_activator_rail",
+      "block_state": "framedblocks:framed_fancy_activator_rail",
+      "case_id": "fb1061-073",
+      "companion_blocks": [],
+      "index": 73,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 196,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 199,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_fancy_activator_rail_slope",
+      "block_state": "framedblocks:framed_fancy_activator_rail_slope[solid=true]",
+      "case_id": "fb1061-074",
+      "companion_blocks": [],
+      "index": 74,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 199,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 202,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_fancy_detector_rail",
+      "block_state": "framedblocks:framed_fancy_detector_rail",
+      "case_id": "fb1061-075",
+      "companion_blocks": [],
+      "index": 75,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 202,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 205,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_fancy_detector_rail_slope",
+      "block_state": "framedblocks:framed_fancy_detector_rail_slope[solid=true]",
+      "case_id": "fb1061-076",
+      "companion_blocks": [],
+      "index": 76,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 205,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 208,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_fancy_powered_rail",
+      "block_state": "framedblocks:framed_fancy_powered_rail",
+      "case_id": "fb1061-077",
+      "companion_blocks": [],
+      "index": 77,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 208,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 211,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_fancy_powered_rail_slope",
+      "block_state": "framedblocks:framed_fancy_powered_rail_slope[solid=true]",
+      "case_id": "fb1061-078",
+      "companion_blocks": [],
+      "index": 78,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 211,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 214,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_fancy_rail",
+      "block_state": "framedblocks:framed_fancy_rail",
+      "case_id": "fb1061-079",
+      "companion_blocks": [],
+      "index": 79,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 217,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_fancy_rail_slope",
+      "block_state": "framedblocks:framed_fancy_rail_slope[solid=true]",
+      "case_id": "fb1061-080",
+      "companion_blocks": [],
+      "index": 80,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 217,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 220,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_fence",
+      "block_state": "framedblocks:framed_fence",
+      "case_id": "fb1061-081",
+      "companion_blocks": [],
+      "index": 81,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 220,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 223,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_fence_gate",
+      "block_state": "framedblocks:framed_fence_gate",
+      "case_id": "fb1061-082",
+      "companion_blocks": [],
+      "index": 82,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 226,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_flat_double_slope_panel_corner",
+      "block_state": "framedblocks:framed_flat_double_slope_panel_corner[solid=true]",
+      "case_id": "fb1061-083",
+      "companion_blocks": [],
+      "index": 83,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 226,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 229,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_flat_double_slope_slab_corner",
+      "block_state": "framedblocks:framed_flat_double_slope_slab_corner[solid=true]",
+      "case_id": "fb1061-084",
+      "companion_blocks": [],
+      "index": 84,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 229,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 232,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_flat_elev_double_slope_slab_corner",
+      "block_state": "framedblocks:framed_flat_elev_double_slope_slab_corner[solid=true]",
+      "case_id": "fb1061-085",
+      "companion_blocks": [],
+      "index": 85,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 232,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 235,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_flat_elev_inner_double_slope_slab_corner",
+      "block_state": "framedblocks:framed_flat_elev_inner_double_slope_slab_corner[solid=true]",
+      "case_id": "fb1061-086",
+      "companion_blocks": [],
+      "index": 86,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 235,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 238,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_flat_elev_inner_slope_slab_corner",
+      "block_state": "framedblocks:framed_flat_elev_inner_slope_slab_corner[solid=true]",
+      "case_id": "fb1061-087",
+      "companion_blocks": [],
+      "index": 87,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 238,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 241,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_flat_elev_slope_slab_corner",
+      "block_state": "framedblocks:framed_flat_elev_slope_slab_corner[solid=true]",
+      "case_id": "fb1061-088",
+      "companion_blocks": [],
+      "index": 88,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 241,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 244,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_flat_ext_double_slope_panel_corner",
+      "block_state": "framedblocks:framed_flat_ext_double_slope_panel_corner[solid=true]",
+      "case_id": "fb1061-089",
+      "companion_blocks": [],
+      "index": 89,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 244,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 247,
+        "y": 100,
+        "z": 208
+      },
+      "block_id": "framedblocks:framed_flat_ext_inner_double_slope_panel_corner",
+      "block_state": "framedblocks:framed_flat_ext_inner_double_slope_panel_corner[solid=true]",
+      "case_id": "fb1061-090",
+      "companion_blocks": [],
+      "index": 90,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 247,
+            "y": 99,
+            "z": 208
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 196,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_flat_ext_inner_slope_panel_corner",
+      "block_state": "framedblocks:framed_flat_ext_inner_slope_panel_corner[solid=true]",
+      "case_id": "fb1061-091",
+      "companion_blocks": [],
+      "index": 91,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 196,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 199,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_flat_ext_slope_panel_corner",
+      "block_state": "framedblocks:framed_flat_ext_slope_panel_corner[solid=true]",
+      "case_id": "fb1061-092",
+      "companion_blocks": [],
+      "index": 92,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 199,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 202,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_flat_inner_slope_panel_corner",
+      "block_state": "framedblocks:framed_flat_inner_slope_panel_corner[solid=true]",
+      "case_id": "fb1061-093",
+      "companion_blocks": [],
+      "index": 93,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 202,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 205,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_flat_inner_slope_slab_corner",
+      "block_state": "framedblocks:framed_flat_inner_slope_slab_corner[solid=true]",
+      "case_id": "fb1061-094",
+      "companion_blocks": [],
+      "index": 94,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 205,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 208,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_flat_inv_double_slope_panel_corner",
+      "block_state": "framedblocks:framed_flat_inv_double_slope_panel_corner[solid=true]",
+      "case_id": "fb1061-095",
+      "companion_blocks": [],
+      "index": 95,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 208,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 211,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_flat_inv_double_slope_slab_corner",
+      "block_state": "framedblocks:framed_flat_inv_double_slope_slab_corner[solid=true]",
+      "case_id": "fb1061-096",
+      "companion_blocks": [],
+      "index": 96,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 211,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 214,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_flat_slope_panel_corner",
+      "block_state": "framedblocks:framed_flat_slope_panel_corner[solid=true]",
+      "case_id": "fb1061-097",
+      "companion_blocks": [],
+      "index": 97,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 217,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_flat_slope_slab_corner",
+      "block_state": "framedblocks:framed_flat_slope_slab_corner[solid=true]",
+      "case_id": "fb1061-098",
+      "companion_blocks": [],
+      "index": 98,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 217,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 220,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_flat_stacked_inner_slope_panel_corner",
+      "block_state": "framedblocks:framed_flat_stacked_inner_slope_panel_corner[solid=true]",
+      "case_id": "fb1061-099",
+      "companion_blocks": [],
+      "index": 99,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 220,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 223,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_flat_stacked_inner_slope_slab_corner",
+      "block_state": "framedblocks:framed_flat_stacked_inner_slope_slab_corner[solid=true]",
+      "case_id": "fb1061-100",
+      "companion_blocks": [],
+      "index": 100,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 226,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_flat_stacked_slope_panel_corner",
+      "block_state": "framedblocks:framed_flat_stacked_slope_panel_corner[solid=true]",
+      "case_id": "fb1061-101",
+      "companion_blocks": [],
+      "index": 101,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 226,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 229,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_flat_stacked_slope_slab_corner",
+      "block_state": "framedblocks:framed_flat_stacked_slope_slab_corner[solid=true]",
+      "case_id": "fb1061-102",
+      "companion_blocks": [],
+      "index": 102,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 229,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 232,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_floor_board",
+      "block_state": "framedblocks:framed_floor_board[solid=true]",
+      "case_id": "fb1061-103",
+      "companion_blocks": [],
+      "index": 103,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 232,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 235,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_flower_pot",
+      "block_state": "framedblocks:framed_flower_pot",
+      "case_id": "fb1061-104",
+      "companion_blocks": [],
+      "index": 104,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 235,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 238,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_gate",
+      "block_state": "framedblocks:framed_gate[solid=true]",
+      "case_id": "fb1061-105",
+      "companion_blocks": [],
+      "index": 105,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 238,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 241,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_glowing_cube",
+      "block_state": "framedblocks:framed_glowing_cube[solid=true]",
+      "case_id": "fb1061-106",
+      "companion_blocks": [],
+      "index": 106,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 241,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 244,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_glowing_item_frame",
+      "block_state": "framedblocks:framed_glowing_item_frame[facing=north,map_frame=false]",
+      "case_id": "fb1061-107",
+      "companion_blocks": [],
+      "index": 107,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 244,
+            "y": 99,
+            "z": 211
+          }
+        },
+        {
+          "block_id": "minecraft:stone",
+          "kind": "north_backing",
+          "position": {
+            "x": 244,
+            "y": 100,
+            "z": 210
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 247,
+        "y": 100,
+        "z": 211
+      },
+      "block_id": "framedblocks:framed_gold_pressure_plate",
+      "block_state": "framedblocks:framed_gold_pressure_plate",
+      "case_id": "fb1061-108",
+      "companion_blocks": [],
+      "index": 108,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 247,
+            "y": 99,
+            "z": 211
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 196,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_half_pillar",
+      "block_state": "framedblocks:framed_half_pillar",
+      "case_id": "fb1061-109",
+      "companion_blocks": [],
+      "index": 109,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 196,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 199,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_half_slope",
+      "block_state": "framedblocks:framed_half_slope",
+      "case_id": "fb1061-110",
+      "companion_blocks": [],
+      "index": 110,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 199,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 202,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_half_stairs",
+      "block_state": "framedblocks:framed_half_stairs",
+      "case_id": "fb1061-111",
+      "companion_blocks": [],
+      "index": 111,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 202,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 205,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_hanging_sign",
+      "block_state": "framedblocks:framed_hanging_sign[attached=false,rotation=0]",
+      "case_id": "fb1061-112",
+      "companion_blocks": [],
+      "index": 112,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 205,
+            "y": 99,
+            "z": 214
+          }
+        },
+        {
+          "block_id": "minecraft:stone",
+          "kind": "ceiling",
+          "position": {
+            "x": 205,
+            "y": 101,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 208,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_hopper",
+      "block_state": "framedblocks:framed_hopper",
+      "case_id": "fb1061-113",
+      "companion_blocks": [],
+      "index": 113,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 208,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 211,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_horizontal_pane",
+      "block_state": "framedblocks:framed_horizontal_pane[solid=true]",
+      "case_id": "fb1061-114",
+      "companion_blocks": [],
+      "index": 114,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 211,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 214,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_inner_corner_slope",
+      "block_state": "framedblocks:framed_inner_corner_slope[solid=true]",
+      "case_id": "fb1061-115",
+      "companion_blocks": [],
+      "index": 115,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 217,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_inner_corner_slope_edge",
+      "block_state": "framedblocks:framed_inner_corner_slope_edge",
+      "case_id": "fb1061-116",
+      "companion_blocks": [],
+      "index": 116,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 217,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 220,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_inner_prism_corner",
+      "block_state": "framedblocks:framed_inner_prism_corner[solid=true]",
+      "case_id": "fb1061-117",
+      "companion_blocks": [],
+      "index": 117,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 220,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 223,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_inner_threeway_corner",
+      "block_state": "framedblocks:framed_inner_threeway_corner[solid=true]",
+      "case_id": "fb1061-118",
+      "companion_blocks": [],
+      "index": 118,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 226,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_inner_threeway_corner_slope_edge",
+      "block_state": "framedblocks:framed_inner_threeway_corner_slope_edge",
+      "case_id": "fb1061-119",
+      "companion_blocks": [],
+      "index": 119,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 226,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 229,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_inv_double_corner_slope_panel",
+      "block_state": "framedblocks:framed_inv_double_corner_slope_panel[solid=true]",
+      "case_id": "fb1061-120",
+      "companion_blocks": [],
+      "index": 120,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 229,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 232,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_inv_double_corner_slope_panel_w",
+      "block_state": "framedblocks:framed_inv_double_corner_slope_panel_w[solid=true]",
+      "case_id": "fb1061-121",
+      "companion_blocks": [],
+      "index": 121,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 232,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 235,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_inv_double_slope_panel",
+      "block_state": "framedblocks:framed_inv_double_slope_panel[solid=true]",
+      "case_id": "fb1061-122",
+      "companion_blocks": [],
+      "index": 122,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 235,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 238,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_inv_double_slope_slab",
+      "block_state": "framedblocks:framed_inv_double_slope_slab[solid=true]",
+      "case_id": "fb1061-123",
+      "companion_blocks": [],
+      "index": 123,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 238,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 241,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_iron_door",
+      "block_state": "framedblocks:framed_iron_door[facing=south,half=lower,hinge=left,open=false,powered=false,solid=true]",
+      "case_id": "fb1061-124",
+      "companion_blocks": [
+        {
+          "block_state": "framedblocks:framed_iron_door[facing=south,half=upper,hinge=left,open=false,powered=false,solid=true]",
+          "kind": "upper_half",
+          "position": {
+            "x": 241,
+            "y": 101,
+            "z": 214
+          },
+          "primary_camo": "minecraft:stone"
+        }
+      ],
+      "index": 124,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 241,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 244,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_iron_gate",
+      "block_state": "framedblocks:framed_iron_gate[solid=true]",
+      "case_id": "fb1061-125",
+      "companion_blocks": [],
+      "index": 125,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 244,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 247,
+        "y": 100,
+        "z": 214
+      },
+      "block_id": "framedblocks:framed_iron_pressure_plate",
+      "block_state": "framedblocks:framed_iron_pressure_plate",
+      "case_id": "fb1061-126",
+      "companion_blocks": [],
+      "index": 126,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 247,
+            "y": 99,
+            "z": 214
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 196,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_iron_trapdoor",
+      "block_state": "framedblocks:framed_iron_trapdoor[solid=true]",
+      "case_id": "fb1061-127",
+      "companion_blocks": [],
+      "index": 127,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 196,
+            "y": 99,
+            "z": 217
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 199,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_item_frame",
+      "block_state": "framedblocks:framed_item_frame[facing=north,map_frame=false]",
+      "case_id": "fb1061-128",
+      "companion_blocks": [],
+      "index": 128,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 199,
+            "y": 99,
+            "z": 217
+          }
+        },
+        {
+          "block_id": "minecraft:stone",
+          "kind": "north_backing",
+          "position": {
+            "x": 199,
+            "y": 100,
+            "z": 216
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 202,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_ladder",
+      "block_state": "framedblocks:framed_ladder[facing=north]",
+      "case_id": "fb1061-129",
+      "companion_blocks": [],
+      "index": 129,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 202,
+            "y": 99,
+            "z": 217
+          }
+        },
+        {
+          "block_id": "minecraft:stone",
+          "kind": "north_backing",
+          "position": {
+            "x": 202,
+            "y": 100,
+            "z": 216
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 205,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_lantern",
+      "block_state": "framedblocks:framed_lantern",
+      "case_id": "fb1061-130",
+      "companion_blocks": [],
+      "index": 130,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 205,
+            "y": 99,
+            "z": 217
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 208,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_large_button",
+      "block_state": "framedblocks:framed_large_button[face=floor,facing=south,powered=false]",
+      "case_id": "fb1061-131",
+      "companion_blocks": [],
+      "index": 131,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 208,
+            "y": 99,
+            "z": 217
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 211,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_large_corner_slope_panel",
+      "block_state": "framedblocks:framed_large_corner_slope_panel",
+      "case_id": "fb1061-132",
+      "companion_blocks": [],
+      "index": 132,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 211,
+            "y": 99,
+            "z": 217
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 214,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_large_corner_slope_panel_w",
+      "block_state": "framedblocks:framed_large_corner_slope_panel_w",
+      "case_id": "fb1061-133",
+      "companion_blocks": [],
+      "index": 133,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 217
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 217,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_large_double_corner_slope_panel",
+      "block_state": "framedblocks:framed_large_double_corner_slope_panel[solid=true]",
+      "case_id": "fb1061-134",
+      "companion_blocks": [],
+      "index": 134,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 217,
+            "y": 99,
+            "z": 217
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 220,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_large_double_corner_slope_panel_w",
+      "block_state": "framedblocks:framed_large_double_corner_slope_panel_w[solid=true]",
+      "case_id": "fb1061-135",
+      "companion_blocks": [],
+      "index": 135,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 220,
+            "y": 99,
+            "z": 217
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 223,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_large_inner_corner_slope_panel",
+      "block_state": "framedblocks:framed_large_inner_corner_slope_panel[solid=true]",
+      "case_id": "fb1061-136",
+      "companion_blocks": [],
+      "index": 136,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 217
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 226,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_large_inner_corner_slope_panel_w",
+      "block_state": "framedblocks:framed_large_inner_corner_slope_panel_w[solid=true]",
+      "case_id": "fb1061-137",
+      "companion_blocks": [],
+      "index": 137,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 226,
+            "y": 99,
+            "z": 217
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 229,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_large_stone_button",
+      "block_state": "framedblocks:framed_large_stone_button[face=floor,facing=south,powered=false]",
+      "case_id": "fb1061-138",
+      "companion_blocks": [],
+      "index": 138,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 229,
+            "y": 99,
+            "z": 217
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 232,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_lattice_block",
+      "block_state": "framedblocks:framed_lattice_block",
+      "case_id": "fb1061-139",
+      "companion_blocks": [],
+      "index": 139,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 232,
+            "y": 99,
+            "z": 217
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 235,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_layered_cube",
+      "block_state": "framedblocks:framed_layered_cube[solid=true]",
+      "case_id": "fb1061-140",
+      "companion_blocks": [],
+      "index": 140,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 235,
+            "y": 99,
+            "z": 217
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 238,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_lever",
+      "block_state": "framedblocks:framed_lever[face=floor,facing=south,powered=false]",
+      "case_id": "fb1061-141",
+      "companion_blocks": [],
+      "index": 141,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 238,
+            "y": 99,
+            "z": 217
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 241,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_lightning_rod",
+      "block_state": "framedblocks:framed_lightning_rod",
+      "case_id": "fb1061-142",
+      "companion_blocks": [],
+      "index": 142,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 241,
+            "y": 99,
+            "z": 217
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 244,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_masonry_corner",
+      "block_state": "framedblocks:framed_masonry_corner[solid=true]",
+      "case_id": "fb1061-143",
+      "companion_blocks": [],
+      "index": 143,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 244,
+            "y": 99,
+            "z": 217
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 247,
+        "y": 100,
+        "z": 217
+      },
+      "block_id": "framedblocks:framed_masonry_corner_segment",
+      "block_state": "framedblocks:framed_masonry_corner_segment",
+      "case_id": "fb1061-144",
+      "companion_blocks": [],
+      "index": 144,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 247,
+            "y": 99,
+            "z": 217
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 196,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_mini_cube",
+      "block_state": "framedblocks:framed_mini_cube",
+      "case_id": "fb1061-145",
+      "companion_blocks": [],
+      "index": 145,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 196,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 199,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_obsidian_pressure_plate",
+      "block_state": "framedblocks:framed_obsidian_pressure_plate",
+      "case_id": "fb1061-146",
+      "companion_blocks": [],
+      "index": 146,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 199,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 202,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_one_way_window",
+      "block_state": "framedblocks:framed_one_way_window",
+      "case_id": "fb1061-147",
+      "companion_blocks": [],
+      "index": 147,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 202,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 205,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_pane",
+      "block_state": "framedblocks:framed_pane",
+      "case_id": "fb1061-148",
+      "companion_blocks": [],
+      "index": 148,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 205,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 208,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_panel",
+      "block_state": "framedblocks:framed_panel[solid=true]",
+      "case_id": "fb1061-149",
+      "companion_blocks": [],
+      "index": 149,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 208,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 211,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_path",
+      "block_state": "framedblocks:framed_path[solid=true]",
+      "case_id": "fb1061-150",
+      "companion_blocks": [],
+      "index": 150,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 211,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 214,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_pillar",
+      "block_state": "framedblocks:framed_pillar",
+      "case_id": "fb1061-151",
+      "companion_blocks": [],
+      "index": 151,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 217,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_pillar_socket",
+      "block_state": "framedblocks:framed_pillar_socket[solid=true]",
+      "case_id": "fb1061-152",
+      "companion_blocks": [],
+      "index": 152,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 217,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 220,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_post",
+      "block_state": "framedblocks:framed_post",
+      "case_id": "fb1061-153",
+      "companion_blocks": [],
+      "index": 153,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 220,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 223,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_powered_rail_slope",
+      "block_state": "framedblocks:framed_powered_rail_slope[solid=true]",
+      "case_id": "fb1061-154",
+      "companion_blocks": [],
+      "index": 154,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 226,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_pressure_plate",
+      "block_state": "framedblocks:framed_pressure_plate",
+      "case_id": "fb1061-155",
+      "companion_blocks": [],
+      "index": 155,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 226,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 229,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_prism",
+      "block_state": "framedblocks:framed_prism[solid=true]",
+      "case_id": "fb1061-156",
+      "companion_blocks": [],
+      "index": 156,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 229,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 232,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_prism_corner",
+      "block_state": "framedblocks:framed_prism_corner",
+      "case_id": "fb1061-157",
+      "companion_blocks": [],
+      "index": 157,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 232,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 235,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_pyramid",
+      "block_state": "framedblocks:framed_pyramid[solid=true]",
+      "case_id": "fb1061-158",
+      "companion_blocks": [],
+      "index": 158,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 235,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 238,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_pyramid_slab",
+      "block_state": "framedblocks:framed_pyramid_slab[solid=true]",
+      "case_id": "fb1061-159",
+      "companion_blocks": [],
+      "index": 159,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 238,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 241,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_rail_slope",
+      "block_state": "framedblocks:framed_rail_slope[solid=true]",
+      "case_id": "fb1061-160",
+      "companion_blocks": [],
+      "index": 160,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 241,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 244,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_redstone_block",
+      "block_state": "framedblocks:framed_redstone_block[solid=true]",
+      "case_id": "fb1061-161",
+      "companion_blocks": [],
+      "index": 161,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 244,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 247,
+        "y": 100,
+        "z": 220
+      },
+      "block_id": "framedblocks:framed_redstone_torch",
+      "block_state": "framedblocks:framed_redstone_torch",
+      "case_id": "fb1061-162",
+      "companion_blocks": [],
+      "index": 162,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 247,
+            "y": 99,
+            "z": 220
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 196,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_redstone_wall_torch",
+      "block_state": "framedblocks:framed_redstone_wall_torch[facing=south,lit=true]",
+      "case_id": "fb1061-163",
+      "companion_blocks": [],
+      "index": 163,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 196,
+            "y": 99,
+            "z": 223
+          }
+        },
+        {
+          "block_id": "minecraft:stone",
+          "kind": "north_backing",
+          "position": {
+            "x": 196,
+            "y": 100,
+            "z": 222
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 199,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_secret_storage",
+      "block_state": "framedblocks:framed_secret_storage[solid=true]",
+      "case_id": "fb1061-164",
+      "companion_blocks": [],
+      "index": 164,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 199,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 202,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_sign",
+      "block_state": "framedblocks:framed_sign",
+      "case_id": "fb1061-165",
+      "companion_blocks": [],
+      "index": 165,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 202,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 205,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_slab",
+      "block_state": "framedblocks:framed_slab[solid=true]",
+      "case_id": "fb1061-166",
+      "companion_blocks": [],
+      "index": 166,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 205,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 208,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_slab_corner",
+      "block_state": "framedblocks:framed_slab_corner",
+      "case_id": "fb1061-167",
+      "companion_blocks": [],
+      "index": 167,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 208,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 211,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_slab_edge",
+      "block_state": "framedblocks:framed_slab_edge",
+      "case_id": "fb1061-168",
+      "companion_blocks": [],
+      "index": 168,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 211,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 214,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_sliced_sloped_stairs_slab",
+      "block_state": "framedblocks:framed_sliced_sloped_stairs_slab[solid=true]",
+      "case_id": "fb1061-169",
+      "companion_blocks": [],
+      "index": 169,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 217,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_sliced_sloped_stairs_slope",
+      "block_state": "framedblocks:framed_sliced_sloped_stairs_slope[solid=true]",
+      "case_id": "fb1061-170",
+      "companion_blocks": [],
+      "index": 170,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 217,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 220,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_sliced_stairs_panel",
+      "block_state": "framedblocks:framed_sliced_stairs_panel[solid=true]",
+      "case_id": "fb1061-171",
+      "companion_blocks": [],
+      "index": 171,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 220,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 223,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_sliced_stairs_slab",
+      "block_state": "framedblocks:framed_sliced_stairs_slab[solid=true]",
+      "case_id": "fb1061-172",
+      "companion_blocks": [],
+      "index": 172,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 226,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_slope",
+      "block_state": "framedblocks:framed_slope[solid=true]",
+      "case_id": "fb1061-173",
+      "companion_blocks": [],
+      "index": 173,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 226,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 229,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_slope_edge",
+      "block_state": "framedblocks:framed_slope_edge",
+      "case_id": "fb1061-174",
+      "companion_blocks": [],
+      "index": 174,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 229,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 232,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_slope_panel",
+      "block_state": "framedblocks:framed_slope_panel[solid=true]",
+      "case_id": "fb1061-175",
+      "companion_blocks": [],
+      "index": 175,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 232,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 235,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_slope_slab",
+      "block_state": "framedblocks:framed_slope_slab[solid=true]",
+      "case_id": "fb1061-176",
+      "companion_blocks": [],
+      "index": 176,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 235,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 238,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_sloped_double_stairs",
+      "block_state": "framedblocks:framed_sloped_double_stairs[solid=true]",
+      "case_id": "fb1061-177",
+      "companion_blocks": [],
+      "index": 177,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 238,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 241,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_sloped_prism",
+      "block_state": "framedblocks:framed_sloped_prism[solid=true]",
+      "case_id": "fb1061-178",
+      "companion_blocks": [],
+      "index": 178,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 241,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 244,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_sloped_stairs",
+      "block_state": "framedblocks:framed_sloped_stairs[solid=true]",
+      "case_id": "fb1061-179",
+      "companion_blocks": [],
+      "index": 179,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 244,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 247,
+        "y": 100,
+        "z": 223
+      },
+      "block_id": "framedblocks:framed_small_corner_slope_panel",
+      "block_state": "framedblocks:framed_small_corner_slope_panel",
+      "case_id": "fb1061-180",
+      "companion_blocks": [],
+      "index": 180,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 247,
+            "y": 99,
+            "z": 223
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 196,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_small_corner_slope_panel_w",
+      "block_state": "framedblocks:framed_small_corner_slope_panel_w",
+      "case_id": "fb1061-181",
+      "companion_blocks": [],
+      "index": 181,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 196,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 199,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_small_double_corner_slope_panel",
+      "block_state": "framedblocks:framed_small_double_corner_slope_panel",
+      "case_id": "fb1061-182",
+      "companion_blocks": [],
+      "index": 182,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 199,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 202,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_small_double_corner_slope_panel_w",
+      "block_state": "framedblocks:framed_small_double_corner_slope_panel_w",
+      "case_id": "fb1061-183",
+      "companion_blocks": [],
+      "index": 183,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 202,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 205,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_small_inner_corner_slope_panel",
+      "block_state": "framedblocks:framed_small_inner_corner_slope_panel",
+      "case_id": "fb1061-184",
+      "companion_blocks": [],
+      "index": 184,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 205,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 208,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_small_inner_corner_slope_panel_w",
+      "block_state": "framedblocks:framed_small_inner_corner_slope_panel_w",
+      "case_id": "fb1061-185",
+      "companion_blocks": [],
+      "index": 185,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 208,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 211,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_soul_lantern",
+      "block_state": "framedblocks:framed_soul_lantern",
+      "case_id": "fb1061-186",
+      "companion_blocks": [],
+      "index": 186,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 211,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 214,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_soul_torch",
+      "block_state": "framedblocks:framed_soul_torch",
+      "case_id": "fb1061-187",
+      "companion_blocks": [],
+      "index": 187,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 217,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_soul_wall_torch",
+      "block_state": "framedblocks:framed_soul_wall_torch[facing=south]",
+      "case_id": "fb1061-188",
+      "companion_blocks": [],
+      "index": 188,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 217,
+            "y": 99,
+            "z": 226
+          }
+        },
+        {
+          "block_id": "minecraft:stone",
+          "kind": "north_backing",
+          "position": {
+            "x": 217,
+            "y": 100,
+            "z": 225
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 220,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_split_pillar_socket",
+      "block_state": "framedblocks:framed_split_pillar_socket[solid=true]",
+      "case_id": "fb1061-189",
+      "companion_blocks": [],
+      "index": 189,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 220,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 223,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_stacked_corner_slope_edge",
+      "block_state": "framedblocks:framed_stacked_corner_slope_edge[solid=true]",
+      "case_id": "fb1061-190",
+      "companion_blocks": [],
+      "index": 190,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 226,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_stacked_corner_slope_panel",
+      "block_state": "framedblocks:framed_stacked_corner_slope_panel[solid=true]",
+      "case_id": "fb1061-191",
+      "companion_blocks": [],
+      "index": 191,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 226,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 229,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_stacked_corner_slope_panel_w",
+      "block_state": "framedblocks:framed_stacked_corner_slope_panel_w[solid=true]",
+      "case_id": "fb1061-192",
+      "companion_blocks": [],
+      "index": 192,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 229,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 232,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_stacked_inner_corner_slope_edge",
+      "block_state": "framedblocks:framed_stacked_inner_corner_slope_edge[solid=true]",
+      "case_id": "fb1061-193",
+      "companion_blocks": [],
+      "index": 193,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 232,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 235,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_stacked_inner_corner_slope_panel",
+      "block_state": "framedblocks:framed_stacked_inner_corner_slope_panel[solid=true]",
+      "case_id": "fb1061-194",
+      "companion_blocks": [],
+      "index": 194,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 235,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 238,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_stacked_inner_corner_slope_panel_w",
+      "block_state": "framedblocks:framed_stacked_inner_corner_slope_panel_w[solid=true]",
+      "case_id": "fb1061-195",
+      "companion_blocks": [],
+      "index": 195,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 238,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 241,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_stacked_pyramid_slab",
+      "block_state": "framedblocks:framed_stacked_pyramid_slab[solid=true]",
+      "case_id": "fb1061-196",
+      "companion_blocks": [],
+      "index": 196,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 241,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 244,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_stacked_slope_edge",
+      "block_state": "framedblocks:framed_stacked_slope_edge[solid=true]",
+      "case_id": "fb1061-197",
+      "companion_blocks": [],
+      "index": 197,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 244,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 247,
+        "y": 100,
+        "z": 226
+      },
+      "block_id": "framedblocks:framed_stacked_slope_panel",
+      "block_state": "framedblocks:framed_stacked_slope_panel[solid=true]",
+      "case_id": "fb1061-198",
+      "companion_blocks": [],
+      "index": 198,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 247,
+            "y": 99,
+            "z": 226
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 196,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_stacked_slope_slab",
+      "block_state": "framedblocks:framed_stacked_slope_slab[solid=true]",
+      "case_id": "fb1061-199",
+      "companion_blocks": [],
+      "index": 199,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 196,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 199,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_stairs",
+      "block_state": "framedblocks:framed_stairs[solid=true]",
+      "case_id": "fb1061-200",
+      "companion_blocks": [],
+      "index": 200,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 199,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 202,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_stone_button",
+      "block_state": "framedblocks:framed_stone_button[face=floor,facing=south,powered=false]",
+      "case_id": "fb1061-201",
+      "companion_blocks": [],
+      "index": 201,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 202,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 205,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_stone_pressure_plate",
+      "block_state": "framedblocks:framed_stone_pressure_plate",
+      "case_id": "fb1061-202",
+      "companion_blocks": [],
+      "index": 202,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 205,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 208,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_tank",
+      "block_state": "framedblocks:framed_tank[solid=true]",
+      "case_id": "fb1061-203",
+      "companion_blocks": [],
+      "index": 203,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 208,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 211,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_target",
+      "block_state": "framedblocks:framed_target[solid=true]",
+      "case_id": "fb1061-204",
+      "companion_blocks": [],
+      "index": 204,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 211,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 214,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_thick_lattice",
+      "block_state": "framedblocks:framed_thick_lattice",
+      "case_id": "fb1061-205",
+      "companion_blocks": [],
+      "index": 205,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 217,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_threeway_corner",
+      "block_state": "framedblocks:framed_threeway_corner",
+      "case_id": "fb1061-206",
+      "companion_blocks": [],
+      "index": 206,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 217,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 220,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_threeway_corner_pillar",
+      "block_state": "framedblocks:framed_threeway_corner_pillar",
+      "case_id": "fb1061-207",
+      "companion_blocks": [],
+      "index": 207,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 220,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 223,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_threeway_corner_slope_edge",
+      "block_state": "framedblocks:framed_threeway_corner_slope_edge",
+      "case_id": "fb1061-208",
+      "companion_blocks": [],
+      "index": 208,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 226,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_torch",
+      "block_state": "framedblocks:framed_torch",
+      "case_id": "fb1061-209",
+      "companion_blocks": [],
+      "index": 209,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 226,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 229,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_trapdoor",
+      "block_state": "framedblocks:framed_trapdoor[solid=true]",
+      "case_id": "fb1061-210",
+      "companion_blocks": [],
+      "index": 210,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 229,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 232,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_tube",
+      "block_state": "framedblocks:framed_tube[solid=true]",
+      "case_id": "fb1061-211",
+      "companion_blocks": [],
+      "index": 211,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 232,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 235,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_upper_pyramid_slab",
+      "block_state": "framedblocks:framed_upper_pyramid_slab[solid=true]",
+      "case_id": "fb1061-212",
+      "companion_blocks": [],
+      "index": 212,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 235,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 238,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_vertical_divided_stairs",
+      "block_state": "framedblocks:framed_vertical_divided_stairs[solid=true]",
+      "case_id": "fb1061-213",
+      "companion_blocks": [],
+      "index": 213,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 238,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 241,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_vertical_double_half_slope",
+      "block_state": "framedblocks:framed_vertical_double_half_slope[solid=true]",
+      "case_id": "fb1061-214",
+      "companion_blocks": [],
+      "index": 214,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 241,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 244,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_vertical_double_half_stairs",
+      "block_state": "framedblocks:framed_vertical_double_half_stairs[solid=true]",
+      "case_id": "fb1061-215",
+      "companion_blocks": [],
+      "index": 215,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 244,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 247,
+        "y": 100,
+        "z": 229
+      },
+      "block_id": "framedblocks:framed_vertical_double_stairs",
+      "block_state": "framedblocks:framed_vertical_double_stairs[solid=true]",
+      "case_id": "fb1061-216",
+      "companion_blocks": [],
+      "index": 216,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 247,
+            "y": 99,
+            "z": 229
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 196,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_vertical_half_slope",
+      "block_state": "framedblocks:framed_vertical_half_slope",
+      "case_id": "fb1061-217",
+      "companion_blocks": [],
+      "index": 217,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 196,
+            "y": 99,
+            "z": 232
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 199,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_vertical_half_stairs",
+      "block_state": "framedblocks:framed_vertical_half_stairs",
+      "case_id": "fb1061-218",
+      "companion_blocks": [],
+      "index": 218,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 199,
+            "y": 99,
+            "z": 232
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 202,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_vertical_sliced_sloped_stairs_panel",
+      "block_state": "framedblocks:framed_vertical_sliced_sloped_stairs_panel[solid=true]",
+      "case_id": "fb1061-219",
+      "companion_blocks": [],
+      "index": 219,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 202,
+            "y": 99,
+            "z": 232
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 205,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_vertical_sliced_sloped_stairs_slope",
+      "block_state": "framedblocks:framed_vertical_sliced_sloped_stairs_slope[solid=true]",
+      "case_id": "fb1061-220",
+      "companion_blocks": [],
+      "index": 220,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 205,
+            "y": 99,
+            "z": 232
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 208,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_vertical_sliced_stairs",
+      "block_state": "framedblocks:framed_vertical_sliced_stairs[solid=true]",
+      "case_id": "fb1061-221",
+      "companion_blocks": [],
+      "index": 221,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 208,
+            "y": 99,
+            "z": 232
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 211,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_vertical_sloped_double_stairs",
+      "block_state": "framedblocks:framed_vertical_sloped_double_stairs[solid=true]",
+      "case_id": "fb1061-222",
+      "companion_blocks": [],
+      "index": 222,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "generic_double",
+      "secondary_camo": "minecraft:gold_block",
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 211,
+            "y": 99,
+            "z": 232
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 214,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_vertical_sloped_stairs",
+      "block_state": "framedblocks:framed_vertical_sloped_stairs[solid=true]",
+      "case_id": "fb1061-223",
+      "companion_blocks": [],
+      "index": 223,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 214,
+            "y": 99,
+            "z": 232
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 217,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_vertical_stairs",
+      "block_state": "framedblocks:framed_vertical_stairs[solid=true]",
+      "case_id": "fb1061-224",
+      "companion_blocks": [],
+      "index": 224,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 217,
+            "y": 99,
+            "z": 232
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 220,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_wall",
+      "block_state": "framedblocks:framed_wall",
+      "case_id": "fb1061-225",
+      "companion_blocks": [],
+      "index": 225,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 220,
+            "y": 99,
+            "z": 232
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 223,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_wall_board",
+      "block_state": "framedblocks:framed_wall_board[solid=true]",
+      "case_id": "fb1061-226",
+      "companion_blocks": [],
+      "index": 226,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": true,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 223,
+            "y": 99,
+            "z": 232
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 226,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_wall_hanging_sign",
+      "block_state": "framedblocks:framed_wall_hanging_sign[facing=south]",
+      "case_id": "fb1061-227",
+      "companion_blocks": [],
+      "index": 227,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 226,
+            "y": 99,
+            "z": 232
+          }
+        },
+        {
+          "block_id": "minecraft:stone",
+          "kind": "east_arm",
+          "position": {
+            "x": 227,
+            "y": 100,
+            "z": 232
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 229,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_wall_sign",
+      "block_state": "framedblocks:framed_wall_sign[facing=south]",
+      "case_id": "fb1061-228",
+      "companion_blocks": [],
+      "index": 228,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 229,
+            "y": 99,
+            "z": 232
+          }
+        },
+        {
+          "block_id": "minecraft:stone",
+          "kind": "north_backing",
+          "position": {
+            "x": 229,
+            "y": 100,
+            "z": 231
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 232,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_wall_torch",
+      "block_state": "framedblocks:framed_wall_torch[facing=south]",
+      "case_id": "fb1061-229",
+      "companion_blocks": [],
+      "index": 229,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 232,
+            "y": 99,
+            "z": 232
+          }
+        },
+        {
+          "block_id": "minecraft:stone",
+          "kind": "north_backing",
+          "position": {
+            "x": 232,
+            "y": 100,
+            "z": 231
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 235,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_waterloggable_gold_pressure_plate",
+      "block_state": "framedblocks:framed_waterloggable_gold_pressure_plate",
+      "case_id": "fb1061-230",
+      "companion_blocks": [],
+      "index": 230,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 235,
+            "y": 99,
+            "z": 232
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 238,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_waterloggable_iron_pressure_plate",
+      "block_state": "framedblocks:framed_waterloggable_iron_pressure_plate",
+      "case_id": "fb1061-231",
+      "companion_blocks": [],
+      "index": 231,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 238,
+            "y": 99,
+            "z": 232
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 241,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_waterloggable_obsidian_pressure_plate",
+      "block_state": "framedblocks:framed_waterloggable_obsidian_pressure_plate",
+      "case_id": "fb1061-232",
+      "companion_blocks": [],
+      "index": 232,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 241,
+            "y": 99,
+            "z": 232
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 244,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_waterloggable_pressure_plate",
+      "block_state": "framedblocks:framed_waterloggable_pressure_plate",
+      "case_id": "fb1061-233",
+      "companion_blocks": [],
+      "index": 233,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 244,
+            "y": 99,
+            "z": 232
+          }
+        }
+      ]
+    },
+    {
+      "anchor": {
+        "x": 247,
+        "y": 100,
+        "z": 232
+      },
+      "block_id": "framedblocks:framed_waterloggable_stone_pressure_plate",
+      "block_state": "framedblocks:framed_waterloggable_stone_pressure_plate",
+      "case_id": "fb1061-234",
+      "companion_blocks": [],
+      "index": 234,
+      "primary_camo": "minecraft:stone",
+      "renderer_family": "primary_only",
+      "secondary_camo": null,
+      "solid_camo_state": false,
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 247,
+            "y": 99,
+            "z": 232
+          }
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "excluded_saws": 2,
+    "generic_double_cases": 84,
+    "primary_only_cases": 150,
+    "roster_cases": 234,
+    "solid_camo_state_cases": 153,
+    "tracked_blockstates": 236
+  },
+  "excluded_block_ids": [
+    "framedblocks:framing_saw",
+    "framedblocks:powered_framing_saw"
+  ],
+  "layout": {
+    "columns": 18,
+    "configured_map_mask_xz": {
+      "max": 320,
+      "min": 192
+    },
+    "dimension": "minecraft:overworld",
+    "exact_m0_fixture_aabb": {
+      "max": {
+        "x": 258,
+        "y": 101,
+        "z": 256
+      },
+      "min": {
+        "x": 256,
+        "y": 99,
+        "z": 256
+      }
+    },
+    "gallery_clear_aabb": {
+      "max": {
+        "x": 248,
+        "y": 102,
+        "z": 233
+      },
+      "min": {
+        "x": 195,
+        "y": 98,
+        "z": 195
+      }
+    },
+    "protected_m0_corridor_aabb": {
+      "max": {
+        "x": 261,
+        "y": 319,
+        "z": 320
+      },
+      "min": {
+        "x": 252,
+        "y": -64,
+        "z": 192
+      }
+    },
+    "reserved": "The roster functions touch only gallery_clear_aabb. The separate renderer-path and observation-deck functions use their own AABBs. The full x=252..261, z=192..320 M0 corridor remains untouched.",
+    "roster_anchor_aabb": {
+      "max": {
+        "x": 247,
+        "y": 100,
+        "z": 232
+      },
+      "min": {
+        "x": 196,
+        "y": 100,
+        "z": 196
+      }
+    },
+    "rows": 13,
+    "spacing_blocks": 3
+  },
+  "related_generated_contracts": {
+    "observation_pose_review_table": "observation-poses.tsv",
+    "renderer_path_and_observation_manifest": "renderer-path-matrix.json",
+    "renderer_path_review_table": "renderer-path-matrix.tsv"
+  },
+  "schema_version": 1,
+  "source": {
+    "framedblocks_source_commit": "99522893fce0c9cd543194be1e8cefd488e0eec8",
+    "generic_double_ids_sha256": "88978d117b9a3fd81b40a34d6cf6ac128222bb9fb058fb0765c0c7a2d9bf5bc6",
+    "generic_double_rule": "BlockType seventh constructor argument doubleBlock == true",
+    "solid_capable_ids_sha256": "768a9897351f221bda84e6ea048c78d2395251623a94ebbdc94db574c88254bd",
+    "solid_capable_rule": "BlockType first constructor argument canOcclude == true",
+    "tracked_blockstate_manifest": "../src/main/resources/bluemap-framedblocks/profiles/10.6.1/blockstate-ids.txt",
+    "tracked_blockstate_manifest_sha256": "e4aed367abf2f037d92496e5028fc9493ae7fb48c5e8dd6ffb85eeddb13330c9"
+  },
+  "target": {
+    "framedblocks": "10.6.1",
+    "minecraft": "1.21.1",
+    "pack_format": 48
+  }
+}

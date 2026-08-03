@@ -1,0 +1,235 @@
+case_id	index	block_id	renderer_family	x	y	z	block_state	primary_camo	secondary_camo	solid_camo_state	support_profile	companion_profile
+fb1061-001	1	framedblocks:framed_activator_rail_slope	primary_only	196	100	196	framedblocks:framed_activator_rail_slope[solid=true]	minecraft:stone		true	base	none
+fb1061-002	2	framedblocks:framed_adj_double_copycat_panel	generic_double	199	100	196	framedblocks:framed_adj_double_copycat_panel[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-003	3	framedblocks:framed_adj_double_copycat_slab	generic_double	202	100	196	framedblocks:framed_adj_double_copycat_slab[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-004	4	framedblocks:framed_adj_double_panel	generic_double	205	100	196	framedblocks:framed_adj_double_panel[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-005	5	framedblocks:framed_adj_double_slab	generic_double	208	100	196	framedblocks:framed_adj_double_slab[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-006	6	framedblocks:framed_bars	primary_only	211	100	196	framedblocks:framed_bars	minecraft:stone		false	base	none
+fb1061-007	7	framedblocks:framed_bookshelf	primary_only	214	100	196	framedblocks:framed_bookshelf[solid=true]	minecraft:stone		true	base	none
+fb1061-008	8	framedblocks:framed_bouncy_cube	primary_only	217	100	196	framedblocks:framed_bouncy_cube[solid=true]	minecraft:stone		true	base	none
+fb1061-009	9	framedblocks:framed_button	primary_only	220	100	196	framedblocks:framed_button[face=floor,facing=south,powered=false]	minecraft:stone		false	base	none
+fb1061-010	10	framedblocks:framed_centered_panel	primary_only	223	100	196	framedblocks:framed_centered_panel[solid=true]	minecraft:stone		true	base	none
+fb1061-011	11	framedblocks:framed_centered_slab	primary_only	226	100	196	framedblocks:framed_centered_slab[solid=true]	minecraft:stone		true	base	none
+fb1061-012	12	framedblocks:framed_chain	primary_only	229	100	196	framedblocks:framed_chain	minecraft:stone		false	base	none
+fb1061-013	13	framedblocks:framed_checkered_cube	generic_double	232	100	196	framedblocks:framed_checkered_cube[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-014	14	framedblocks:framed_checkered_cube_segment	primary_only	235	100	196	framedblocks:framed_checkered_cube_segment	minecraft:stone		false	base	none
+fb1061-015	15	framedblocks:framed_checkered_panel	generic_double	238	100	196	framedblocks:framed_checkered_panel[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-016	16	framedblocks:framed_checkered_panel_segment	primary_only	241	100	196	framedblocks:framed_checkered_panel_segment	minecraft:stone		false	base	none
+fb1061-017	17	framedblocks:framed_checkered_slab	generic_double	244	100	196	framedblocks:framed_checkered_slab[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-018	18	framedblocks:framed_checkered_slab_segment	primary_only	247	100	196	framedblocks:framed_checkered_slab_segment	minecraft:stone		false	base	none
+fb1061-019	19	framedblocks:framed_chest	primary_only	196	100	199	framedblocks:framed_chest	minecraft:stone		false	base	none
+fb1061-020	20	framedblocks:framed_chiseled_bookshelf	primary_only	199	100	199	framedblocks:framed_chiseled_bookshelf[solid=true]	minecraft:stone		true	base	none
+fb1061-021	21	framedblocks:framed_collapsible_block	primary_only	202	100	199	framedblocks:framed_collapsible_block	minecraft:stone		false	base	none
+fb1061-022	22	framedblocks:framed_collapsible_copycat_block	primary_only	205	100	199	framedblocks:framed_collapsible_copycat_block	minecraft:stone		false	base	none
+fb1061-023	23	framedblocks:framed_compound_slope_panel	primary_only	208	100	199	framedblocks:framed_compound_slope_panel[solid=true]	minecraft:stone		true	base	none
+fb1061-024	24	framedblocks:framed_compound_slope_slab	primary_only	211	100	199	framedblocks:framed_compound_slope_slab[solid=true]	minecraft:stone		true	base	none
+fb1061-025	25	framedblocks:framed_corner_pillar	primary_only	214	100	199	framedblocks:framed_corner_pillar	minecraft:stone		false	base	none
+fb1061-026	26	framedblocks:framed_corner_slope	primary_only	217	100	199	framedblocks:framed_corner_slope[solid=true]	minecraft:stone		true	base	none
+fb1061-027	27	framedblocks:framed_corner_slope_edge	primary_only	220	100	199	framedblocks:framed_corner_slope_edge	minecraft:stone		false	base	none
+fb1061-028	28	framedblocks:framed_corner_strip	primary_only	223	100	199	framedblocks:framed_corner_strip	minecraft:stone		false	base	none
+fb1061-029	29	framedblocks:framed_corner_tube	primary_only	226	100	199	framedblocks:framed_corner_tube[solid=true]	minecraft:stone		true	base	none
+fb1061-030	30	framedblocks:framed_cube	primary_only	229	100	199	framedblocks:framed_cube[solid=true]	minecraft:stone		true	base	none
+fb1061-031	31	framedblocks:framed_detector_rail_slope	primary_only	232	100	199	framedblocks:framed_detector_rail_slope[solid=true]	minecraft:stone		true	base	none
+fb1061-032	32	framedblocks:framed_divided_panel_horizontal	generic_double	235	100	199	framedblocks:framed_divided_panel_horizontal[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-033	33	framedblocks:framed_divided_panel_vertical	generic_double	238	100	199	framedblocks:framed_divided_panel_vertical[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-034	34	framedblocks:framed_divided_slab	generic_double	241	100	199	framedblocks:framed_divided_slab[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-035	35	framedblocks:framed_divided_slope	generic_double	244	100	199	framedblocks:framed_divided_slope[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-036	36	framedblocks:framed_divided_stairs	generic_double	247	100	199	framedblocks:framed_divided_stairs[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-037	37	framedblocks:framed_door	primary_only	196	100	202	framedblocks:framed_door[facing=south,half=lower,hinge=left,open=false,powered=false,solid=true]	minecraft:stone		true	base	upper_half
+fb1061-038	38	framedblocks:framed_double_corner	generic_double	199	100	202	framedblocks:framed_double_corner[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-039	39	framedblocks:framed_double_half_slope	generic_double	202	100	202	framedblocks:framed_double_half_slope[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-040	40	framedblocks:framed_double_half_stairs	generic_double	205	100	202	framedblocks:framed_double_half_stairs[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-041	41	framedblocks:framed_double_panel	generic_double	208	100	202	framedblocks:framed_double_panel[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-042	42	framedblocks:framed_double_prism_corner	generic_double	211	100	202	framedblocks:framed_double_prism_corner[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-043	43	framedblocks:framed_double_slab	generic_double	214	100	202	framedblocks:framed_double_slab[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-044	44	framedblocks:framed_double_slope	generic_double	217	100	202	framedblocks:framed_double_slope[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-045	45	framedblocks:framed_double_slope_panel	generic_double	220	100	202	framedblocks:framed_double_slope_panel[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-046	46	framedblocks:framed_double_slope_slab	generic_double	223	100	202	framedblocks:framed_double_slope_slab[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-047	47	framedblocks:framed_double_stairs	generic_double	226	100	202	framedblocks:framed_double_stairs[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-048	48	framedblocks:framed_double_threeway_corner	generic_double	229	100	202	framedblocks:framed_double_threeway_corner[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-049	49	framedblocks:framed_double_threeway_corner_pillar	generic_double	232	100	202	framedblocks:framed_double_threeway_corner_pillar[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-050	50	framedblocks:framed_elev_double_corner_slope_edge	generic_double	235	100	202	framedblocks:framed_elev_double_corner_slope_edge[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-051	51	framedblocks:framed_elev_double_inner_corner_slope_edge	generic_double	238	100	202	framedblocks:framed_elev_double_inner_corner_slope_edge[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-052	52	framedblocks:framed_elevated_corner_slope_edge	primary_only	241	100	202	framedblocks:framed_elevated_corner_slope_edge[solid=true]	minecraft:stone		true	base	none
+fb1061-053	53	framedblocks:framed_elevated_double_slope_edge	generic_double	244	100	202	framedblocks:framed_elevated_double_slope_edge[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-054	54	framedblocks:framed_elevated_double_slope_slab	generic_double	247	100	202	framedblocks:framed_elevated_double_slope_slab[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-055	55	framedblocks:framed_elevated_inner_corner_slope_edge	primary_only	196	100	205	framedblocks:framed_elevated_inner_corner_slope_edge[solid=true]	minecraft:stone		true	base	none
+fb1061-056	56	framedblocks:framed_elevated_inner_double_prism	generic_double	199	100	205	framedblocks:framed_elevated_inner_double_prism[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-057	57	framedblocks:framed_elevated_inner_double_sloped_prism	generic_double	202	100	205	framedblocks:framed_elevated_inner_double_sloped_prism[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-058	58	framedblocks:framed_elevated_inner_prism	primary_only	205	100	205	framedblocks:framed_elevated_inner_prism[solid=true]	minecraft:stone		true	base	none
+fb1061-059	59	framedblocks:framed_elevated_inner_sloped_prism	primary_only	208	100	205	framedblocks:framed_elevated_inner_sloped_prism[solid=true]	minecraft:stone		true	base	none
+fb1061-060	60	framedblocks:framed_elevated_pyramid_slab	primary_only	211	100	205	framedblocks:framed_elevated_pyramid_slab[solid=true]	minecraft:stone		true	base	none
+fb1061-061	61	framedblocks:framed_elevated_slope_edge	primary_only	214	100	205	framedblocks:framed_elevated_slope_edge[solid=true]	minecraft:stone		true	base	none
+fb1061-062	62	framedblocks:framed_elevated_slope_slab	primary_only	217	100	205	framedblocks:framed_elevated_slope_slab[solid=true]	minecraft:stone		true	base	none
+fb1061-063	63	framedblocks:framed_ext_corner_slope_panel	primary_only	220	100	205	framedblocks:framed_ext_corner_slope_panel[solid=true]	minecraft:stone		true	base	none
+fb1061-064	64	framedblocks:framed_ext_corner_slope_panel_w	primary_only	223	100	205	framedblocks:framed_ext_corner_slope_panel_w[solid=true]	minecraft:stone		true	base	none
+fb1061-065	65	framedblocks:framed_ext_double_corner_slope_panel	generic_double	226	100	205	framedblocks:framed_ext_double_corner_slope_panel[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-066	66	framedblocks:framed_ext_double_corner_slope_panel_w	generic_double	229	100	205	framedblocks:framed_ext_double_corner_slope_panel_w[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-067	67	framedblocks:framed_ext_inner_corner_slope_panel	primary_only	232	100	205	framedblocks:framed_ext_inner_corner_slope_panel[solid=true]	minecraft:stone		true	base	none
+fb1061-068	68	framedblocks:framed_ext_inner_corner_slope_panel_w	primary_only	235	100	205	framedblocks:framed_ext_inner_corner_slope_panel_w[solid=true]	minecraft:stone		true	base	none
+fb1061-069	69	framedblocks:framed_ext_inner_double_corner_slope_panel	generic_double	238	100	205	framedblocks:framed_ext_inner_double_corner_slope_panel[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-070	70	framedblocks:framed_ext_inner_double_corner_slope_panel_w	generic_double	241	100	205	framedblocks:framed_ext_inner_double_corner_slope_panel_w[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-071	71	framedblocks:framed_extended_double_slope_panel	generic_double	244	100	205	framedblocks:framed_extended_double_slope_panel[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-072	72	framedblocks:framed_extended_slope_panel	primary_only	247	100	205	framedblocks:framed_extended_slope_panel[solid=true]	minecraft:stone		true	base	none
+fb1061-073	73	framedblocks:framed_fancy_activator_rail	primary_only	196	100	208	framedblocks:framed_fancy_activator_rail	minecraft:stone		false	base	none
+fb1061-074	74	framedblocks:framed_fancy_activator_rail_slope	generic_double	199	100	208	framedblocks:framed_fancy_activator_rail_slope[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-075	75	framedblocks:framed_fancy_detector_rail	primary_only	202	100	208	framedblocks:framed_fancy_detector_rail	minecraft:stone		false	base	none
+fb1061-076	76	framedblocks:framed_fancy_detector_rail_slope	generic_double	205	100	208	framedblocks:framed_fancy_detector_rail_slope[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-077	77	framedblocks:framed_fancy_powered_rail	primary_only	208	100	208	framedblocks:framed_fancy_powered_rail	minecraft:stone		false	base	none
+fb1061-078	78	framedblocks:framed_fancy_powered_rail_slope	generic_double	211	100	208	framedblocks:framed_fancy_powered_rail_slope[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-079	79	framedblocks:framed_fancy_rail	primary_only	214	100	208	framedblocks:framed_fancy_rail	minecraft:stone		false	base	none
+fb1061-080	80	framedblocks:framed_fancy_rail_slope	generic_double	217	100	208	framedblocks:framed_fancy_rail_slope[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-081	81	framedblocks:framed_fence	primary_only	220	100	208	framedblocks:framed_fence	minecraft:stone		false	base	none
+fb1061-082	82	framedblocks:framed_fence_gate	primary_only	223	100	208	framedblocks:framed_fence_gate	minecraft:stone		false	base	none
+fb1061-083	83	framedblocks:framed_flat_double_slope_panel_corner	generic_double	226	100	208	framedblocks:framed_flat_double_slope_panel_corner[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-084	84	framedblocks:framed_flat_double_slope_slab_corner	generic_double	229	100	208	framedblocks:framed_flat_double_slope_slab_corner[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-085	85	framedblocks:framed_flat_elev_double_slope_slab_corner	generic_double	232	100	208	framedblocks:framed_flat_elev_double_slope_slab_corner[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-086	86	framedblocks:framed_flat_elev_inner_double_slope_slab_corner	generic_double	235	100	208	framedblocks:framed_flat_elev_inner_double_slope_slab_corner[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-087	87	framedblocks:framed_flat_elev_inner_slope_slab_corner	primary_only	238	100	208	framedblocks:framed_flat_elev_inner_slope_slab_corner[solid=true]	minecraft:stone		true	base	none
+fb1061-088	88	framedblocks:framed_flat_elev_slope_slab_corner	primary_only	241	100	208	framedblocks:framed_flat_elev_slope_slab_corner[solid=true]	minecraft:stone		true	base	none
+fb1061-089	89	framedblocks:framed_flat_ext_double_slope_panel_corner	generic_double	244	100	208	framedblocks:framed_flat_ext_double_slope_panel_corner[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-090	90	framedblocks:framed_flat_ext_inner_double_slope_panel_corner	generic_double	247	100	208	framedblocks:framed_flat_ext_inner_double_slope_panel_corner[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-091	91	framedblocks:framed_flat_ext_inner_slope_panel_corner	primary_only	196	100	211	framedblocks:framed_flat_ext_inner_slope_panel_corner[solid=true]	minecraft:stone		true	base	none
+fb1061-092	92	framedblocks:framed_flat_ext_slope_panel_corner	primary_only	199	100	211	framedblocks:framed_flat_ext_slope_panel_corner[solid=true]	minecraft:stone		true	base	none
+fb1061-093	93	framedblocks:framed_flat_inner_slope_panel_corner	primary_only	202	100	211	framedblocks:framed_flat_inner_slope_panel_corner[solid=true]	minecraft:stone		true	base	none
+fb1061-094	94	framedblocks:framed_flat_inner_slope_slab_corner	primary_only	205	100	211	framedblocks:framed_flat_inner_slope_slab_corner[solid=true]	minecraft:stone		true	base	none
+fb1061-095	95	framedblocks:framed_flat_inv_double_slope_panel_corner	generic_double	208	100	211	framedblocks:framed_flat_inv_double_slope_panel_corner[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-096	96	framedblocks:framed_flat_inv_double_slope_slab_corner	generic_double	211	100	211	framedblocks:framed_flat_inv_double_slope_slab_corner[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-097	97	framedblocks:framed_flat_slope_panel_corner	primary_only	214	100	211	framedblocks:framed_flat_slope_panel_corner[solid=true]	minecraft:stone		true	base	none
+fb1061-098	98	framedblocks:framed_flat_slope_slab_corner	primary_only	217	100	211	framedblocks:framed_flat_slope_slab_corner[solid=true]	minecraft:stone		true	base	none
+fb1061-099	99	framedblocks:framed_flat_stacked_inner_slope_panel_corner	generic_double	220	100	211	framedblocks:framed_flat_stacked_inner_slope_panel_corner[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-100	100	framedblocks:framed_flat_stacked_inner_slope_slab_corner	generic_double	223	100	211	framedblocks:framed_flat_stacked_inner_slope_slab_corner[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-101	101	framedblocks:framed_flat_stacked_slope_panel_corner	generic_double	226	100	211	framedblocks:framed_flat_stacked_slope_panel_corner[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-102	102	framedblocks:framed_flat_stacked_slope_slab_corner	generic_double	229	100	211	framedblocks:framed_flat_stacked_slope_slab_corner[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-103	103	framedblocks:framed_floor_board	primary_only	232	100	211	framedblocks:framed_floor_board[solid=true]	minecraft:stone		true	base	none
+fb1061-104	104	framedblocks:framed_flower_pot	primary_only	235	100	211	framedblocks:framed_flower_pot	minecraft:stone		false	base	none
+fb1061-105	105	framedblocks:framed_gate	primary_only	238	100	211	framedblocks:framed_gate[solid=true]	minecraft:stone		true	base	none
+fb1061-106	106	framedblocks:framed_glowing_cube	primary_only	241	100	211	framedblocks:framed_glowing_cube[solid=true]	minecraft:stone		true	base	none
+fb1061-107	107	framedblocks:framed_glowing_item_frame	primary_only	244	100	211	framedblocks:framed_glowing_item_frame[facing=north,map_frame=false]	minecraft:stone		false	base+north_backing	none
+fb1061-108	108	framedblocks:framed_gold_pressure_plate	primary_only	247	100	211	framedblocks:framed_gold_pressure_plate	minecraft:stone		false	base	none
+fb1061-109	109	framedblocks:framed_half_pillar	primary_only	196	100	214	framedblocks:framed_half_pillar	minecraft:stone		false	base	none
+fb1061-110	110	framedblocks:framed_half_slope	primary_only	199	100	214	framedblocks:framed_half_slope	minecraft:stone		false	base	none
+fb1061-111	111	framedblocks:framed_half_stairs	primary_only	202	100	214	framedblocks:framed_half_stairs	minecraft:stone		false	base	none
+fb1061-112	112	framedblocks:framed_hanging_sign	primary_only	205	100	214	framedblocks:framed_hanging_sign[attached=false,rotation=0]	minecraft:stone		false	base+ceiling	none
+fb1061-113	113	framedblocks:framed_hopper	primary_only	208	100	214	framedblocks:framed_hopper	minecraft:stone		false	base	none
+fb1061-114	114	framedblocks:framed_horizontal_pane	primary_only	211	100	214	framedblocks:framed_horizontal_pane[solid=true]	minecraft:stone		true	base	none
+fb1061-115	115	framedblocks:framed_inner_corner_slope	primary_only	214	100	214	framedblocks:framed_inner_corner_slope[solid=true]	minecraft:stone		true	base	none
+fb1061-116	116	framedblocks:framed_inner_corner_slope_edge	primary_only	217	100	214	framedblocks:framed_inner_corner_slope_edge	minecraft:stone		false	base	none
+fb1061-117	117	framedblocks:framed_inner_prism_corner	primary_only	220	100	214	framedblocks:framed_inner_prism_corner[solid=true]	minecraft:stone		true	base	none
+fb1061-118	118	framedblocks:framed_inner_threeway_corner	primary_only	223	100	214	framedblocks:framed_inner_threeway_corner[solid=true]	minecraft:stone		true	base	none
+fb1061-119	119	framedblocks:framed_inner_threeway_corner_slope_edge	primary_only	226	100	214	framedblocks:framed_inner_threeway_corner_slope_edge	minecraft:stone		false	base	none
+fb1061-120	120	framedblocks:framed_inv_double_corner_slope_panel	generic_double	229	100	214	framedblocks:framed_inv_double_corner_slope_panel[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-121	121	framedblocks:framed_inv_double_corner_slope_panel_w	generic_double	232	100	214	framedblocks:framed_inv_double_corner_slope_panel_w[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-122	122	framedblocks:framed_inv_double_slope_panel	generic_double	235	100	214	framedblocks:framed_inv_double_slope_panel[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-123	123	framedblocks:framed_inv_double_slope_slab	generic_double	238	100	214	framedblocks:framed_inv_double_slope_slab[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-124	124	framedblocks:framed_iron_door	primary_only	241	100	214	framedblocks:framed_iron_door[facing=south,half=lower,hinge=left,open=false,powered=false,solid=true]	minecraft:stone		true	base	upper_half
+fb1061-125	125	framedblocks:framed_iron_gate	primary_only	244	100	214	framedblocks:framed_iron_gate[solid=true]	minecraft:stone		true	base	none
+fb1061-126	126	framedblocks:framed_iron_pressure_plate	primary_only	247	100	214	framedblocks:framed_iron_pressure_plate	minecraft:stone		false	base	none
+fb1061-127	127	framedblocks:framed_iron_trapdoor	primary_only	196	100	217	framedblocks:framed_iron_trapdoor[solid=true]	minecraft:stone		true	base	none
+fb1061-128	128	framedblocks:framed_item_frame	primary_only	199	100	217	framedblocks:framed_item_frame[facing=north,map_frame=false]	minecraft:stone		false	base+north_backing	none
+fb1061-129	129	framedblocks:framed_ladder	primary_only	202	100	217	framedblocks:framed_ladder[facing=north]	minecraft:stone		false	base+north_backing	none
+fb1061-130	130	framedblocks:framed_lantern	primary_only	205	100	217	framedblocks:framed_lantern	minecraft:stone		false	base	none
+fb1061-131	131	framedblocks:framed_large_button	primary_only	208	100	217	framedblocks:framed_large_button[face=floor,facing=south,powered=false]	minecraft:stone		false	base	none
+fb1061-132	132	framedblocks:framed_large_corner_slope_panel	primary_only	211	100	217	framedblocks:framed_large_corner_slope_panel	minecraft:stone		false	base	none
+fb1061-133	133	framedblocks:framed_large_corner_slope_panel_w	primary_only	214	100	217	framedblocks:framed_large_corner_slope_panel_w	minecraft:stone		false	base	none
+fb1061-134	134	framedblocks:framed_large_double_corner_slope_panel	generic_double	217	100	217	framedblocks:framed_large_double_corner_slope_panel[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-135	135	framedblocks:framed_large_double_corner_slope_panel_w	generic_double	220	100	217	framedblocks:framed_large_double_corner_slope_panel_w[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-136	136	framedblocks:framed_large_inner_corner_slope_panel	primary_only	223	100	217	framedblocks:framed_large_inner_corner_slope_panel[solid=true]	minecraft:stone		true	base	none
+fb1061-137	137	framedblocks:framed_large_inner_corner_slope_panel_w	primary_only	226	100	217	framedblocks:framed_large_inner_corner_slope_panel_w[solid=true]	minecraft:stone		true	base	none
+fb1061-138	138	framedblocks:framed_large_stone_button	primary_only	229	100	217	framedblocks:framed_large_stone_button[face=floor,facing=south,powered=false]	minecraft:stone		false	base	none
+fb1061-139	139	framedblocks:framed_lattice_block	primary_only	232	100	217	framedblocks:framed_lattice_block	minecraft:stone		false	base	none
+fb1061-140	140	framedblocks:framed_layered_cube	primary_only	235	100	217	framedblocks:framed_layered_cube[solid=true]	minecraft:stone		true	base	none
+fb1061-141	141	framedblocks:framed_lever	primary_only	238	100	217	framedblocks:framed_lever[face=floor,facing=south,powered=false]	minecraft:stone		false	base	none
+fb1061-142	142	framedblocks:framed_lightning_rod	primary_only	241	100	217	framedblocks:framed_lightning_rod	minecraft:stone		false	base	none
+fb1061-143	143	framedblocks:framed_masonry_corner	generic_double	244	100	217	framedblocks:framed_masonry_corner[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-144	144	framedblocks:framed_masonry_corner_segment	primary_only	247	100	217	framedblocks:framed_masonry_corner_segment	minecraft:stone		false	base	none
+fb1061-145	145	framedblocks:framed_mini_cube	primary_only	196	100	220	framedblocks:framed_mini_cube	minecraft:stone		false	base	none
+fb1061-146	146	framedblocks:framed_obsidian_pressure_plate	primary_only	199	100	220	framedblocks:framed_obsidian_pressure_plate	minecraft:stone		false	base	none
+fb1061-147	147	framedblocks:framed_one_way_window	primary_only	202	100	220	framedblocks:framed_one_way_window	minecraft:stone		false	base	none
+fb1061-148	148	framedblocks:framed_pane	primary_only	205	100	220	framedblocks:framed_pane	minecraft:stone		false	base	none
+fb1061-149	149	framedblocks:framed_panel	primary_only	208	100	220	framedblocks:framed_panel[solid=true]	minecraft:stone		true	base	none
+fb1061-150	150	framedblocks:framed_path	primary_only	211	100	220	framedblocks:framed_path[solid=true]	minecraft:stone		true	base	none
+fb1061-151	151	framedblocks:framed_pillar	primary_only	214	100	220	framedblocks:framed_pillar	minecraft:stone		false	base	none
+fb1061-152	152	framedblocks:framed_pillar_socket	primary_only	217	100	220	framedblocks:framed_pillar_socket[solid=true]	minecraft:stone		true	base	none
+fb1061-153	153	framedblocks:framed_post	primary_only	220	100	220	framedblocks:framed_post	minecraft:stone		false	base	none
+fb1061-154	154	framedblocks:framed_powered_rail_slope	primary_only	223	100	220	framedblocks:framed_powered_rail_slope[solid=true]	minecraft:stone		true	base	none
+fb1061-155	155	framedblocks:framed_pressure_plate	primary_only	226	100	220	framedblocks:framed_pressure_plate	minecraft:stone		false	base	none
+fb1061-156	156	framedblocks:framed_prism	primary_only	229	100	220	framedblocks:framed_prism[solid=true]	minecraft:stone		true	base	none
+fb1061-157	157	framedblocks:framed_prism_corner	primary_only	232	100	220	framedblocks:framed_prism_corner	minecraft:stone		false	base	none
+fb1061-158	158	framedblocks:framed_pyramid	primary_only	235	100	220	framedblocks:framed_pyramid[solid=true]	minecraft:stone		true	base	none
+fb1061-159	159	framedblocks:framed_pyramid_slab	primary_only	238	100	220	framedblocks:framed_pyramid_slab[solid=true]	minecraft:stone		true	base	none
+fb1061-160	160	framedblocks:framed_rail_slope	primary_only	241	100	220	framedblocks:framed_rail_slope[solid=true]	minecraft:stone		true	base	none
+fb1061-161	161	framedblocks:framed_redstone_block	primary_only	244	100	220	framedblocks:framed_redstone_block[solid=true]	minecraft:stone		true	base	none
+fb1061-162	162	framedblocks:framed_redstone_torch	primary_only	247	100	220	framedblocks:framed_redstone_torch	minecraft:stone		false	base	none
+fb1061-163	163	framedblocks:framed_redstone_wall_torch	primary_only	196	100	223	framedblocks:framed_redstone_wall_torch[facing=south,lit=true]	minecraft:stone		false	base+north_backing	none
+fb1061-164	164	framedblocks:framed_secret_storage	primary_only	199	100	223	framedblocks:framed_secret_storage[solid=true]	minecraft:stone		true	base	none
+fb1061-165	165	framedblocks:framed_sign	primary_only	202	100	223	framedblocks:framed_sign	minecraft:stone		false	base	none
+fb1061-166	166	framedblocks:framed_slab	primary_only	205	100	223	framedblocks:framed_slab[solid=true]	minecraft:stone		true	base	none
+fb1061-167	167	framedblocks:framed_slab_corner	primary_only	208	100	223	framedblocks:framed_slab_corner	minecraft:stone		false	base	none
+fb1061-168	168	framedblocks:framed_slab_edge	primary_only	211	100	223	framedblocks:framed_slab_edge	minecraft:stone		false	base	none
+fb1061-169	169	framedblocks:framed_sliced_sloped_stairs_slab	generic_double	214	100	223	framedblocks:framed_sliced_sloped_stairs_slab[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-170	170	framedblocks:framed_sliced_sloped_stairs_slope	generic_double	217	100	223	framedblocks:framed_sliced_sloped_stairs_slope[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-171	171	framedblocks:framed_sliced_stairs_panel	generic_double	220	100	223	framedblocks:framed_sliced_stairs_panel[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-172	172	framedblocks:framed_sliced_stairs_slab	generic_double	223	100	223	framedblocks:framed_sliced_stairs_slab[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-173	173	framedblocks:framed_slope	primary_only	226	100	223	framedblocks:framed_slope[solid=true]	minecraft:stone		true	base	none
+fb1061-174	174	framedblocks:framed_slope_edge	primary_only	229	100	223	framedblocks:framed_slope_edge	minecraft:stone		false	base	none
+fb1061-175	175	framedblocks:framed_slope_panel	primary_only	232	100	223	framedblocks:framed_slope_panel[solid=true]	minecraft:stone		true	base	none
+fb1061-176	176	framedblocks:framed_slope_slab	primary_only	235	100	223	framedblocks:framed_slope_slab[solid=true]	minecraft:stone		true	base	none
+fb1061-177	177	framedblocks:framed_sloped_double_stairs	generic_double	238	100	223	framedblocks:framed_sloped_double_stairs[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-178	178	framedblocks:framed_sloped_prism	primary_only	241	100	223	framedblocks:framed_sloped_prism[solid=true]	minecraft:stone		true	base	none
+fb1061-179	179	framedblocks:framed_sloped_stairs	primary_only	244	100	223	framedblocks:framed_sloped_stairs[solid=true]	minecraft:stone		true	base	none
+fb1061-180	180	framedblocks:framed_small_corner_slope_panel	primary_only	247	100	223	framedblocks:framed_small_corner_slope_panel	minecraft:stone		false	base	none
+fb1061-181	181	framedblocks:framed_small_corner_slope_panel_w	primary_only	196	100	226	framedblocks:framed_small_corner_slope_panel_w	minecraft:stone		false	base	none
+fb1061-182	182	framedblocks:framed_small_double_corner_slope_panel	generic_double	199	100	226	framedblocks:framed_small_double_corner_slope_panel	minecraft:stone	minecraft:gold_block	false	base	none
+fb1061-183	183	framedblocks:framed_small_double_corner_slope_panel_w	generic_double	202	100	226	framedblocks:framed_small_double_corner_slope_panel_w	minecraft:stone	minecraft:gold_block	false	base	none
+fb1061-184	184	framedblocks:framed_small_inner_corner_slope_panel	primary_only	205	100	226	framedblocks:framed_small_inner_corner_slope_panel	minecraft:stone		false	base	none
+fb1061-185	185	framedblocks:framed_small_inner_corner_slope_panel_w	primary_only	208	100	226	framedblocks:framed_small_inner_corner_slope_panel_w	minecraft:stone		false	base	none
+fb1061-186	186	framedblocks:framed_soul_lantern	primary_only	211	100	226	framedblocks:framed_soul_lantern	minecraft:stone		false	base	none
+fb1061-187	187	framedblocks:framed_soul_torch	primary_only	214	100	226	framedblocks:framed_soul_torch	minecraft:stone		false	base	none
+fb1061-188	188	framedblocks:framed_soul_wall_torch	primary_only	217	100	226	framedblocks:framed_soul_wall_torch[facing=south]	minecraft:stone		false	base+north_backing	none
+fb1061-189	189	framedblocks:framed_split_pillar_socket	generic_double	220	100	226	framedblocks:framed_split_pillar_socket[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-190	190	framedblocks:framed_stacked_corner_slope_edge	generic_double	223	100	226	framedblocks:framed_stacked_corner_slope_edge[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-191	191	framedblocks:framed_stacked_corner_slope_panel	generic_double	226	100	226	framedblocks:framed_stacked_corner_slope_panel[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-192	192	framedblocks:framed_stacked_corner_slope_panel_w	generic_double	229	100	226	framedblocks:framed_stacked_corner_slope_panel_w[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-193	193	framedblocks:framed_stacked_inner_corner_slope_edge	generic_double	232	100	226	framedblocks:framed_stacked_inner_corner_slope_edge[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-194	194	framedblocks:framed_stacked_inner_corner_slope_panel	generic_double	235	100	226	framedblocks:framed_stacked_inner_corner_slope_panel[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-195	195	framedblocks:framed_stacked_inner_corner_slope_panel_w	generic_double	238	100	226	framedblocks:framed_stacked_inner_corner_slope_panel_w[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-196	196	framedblocks:framed_stacked_pyramid_slab	generic_double	241	100	226	framedblocks:framed_stacked_pyramid_slab[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-197	197	framedblocks:framed_stacked_slope_edge	generic_double	244	100	226	framedblocks:framed_stacked_slope_edge[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-198	198	framedblocks:framed_stacked_slope_panel	generic_double	247	100	226	framedblocks:framed_stacked_slope_panel[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-199	199	framedblocks:framed_stacked_slope_slab	generic_double	196	100	229	framedblocks:framed_stacked_slope_slab[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-200	200	framedblocks:framed_stairs	primary_only	199	100	229	framedblocks:framed_stairs[solid=true]	minecraft:stone		true	base	none
+fb1061-201	201	framedblocks:framed_stone_button	primary_only	202	100	229	framedblocks:framed_stone_button[face=floor,facing=south,powered=false]	minecraft:stone		false	base	none
+fb1061-202	202	framedblocks:framed_stone_pressure_plate	primary_only	205	100	229	framedblocks:framed_stone_pressure_plate	minecraft:stone		false	base	none
+fb1061-203	203	framedblocks:framed_tank	primary_only	208	100	229	framedblocks:framed_tank[solid=true]	minecraft:stone		true	base	none
+fb1061-204	204	framedblocks:framed_target	primary_only	211	100	229	framedblocks:framed_target[solid=true]	minecraft:stone		true	base	none
+fb1061-205	205	framedblocks:framed_thick_lattice	primary_only	214	100	229	framedblocks:framed_thick_lattice	minecraft:stone		false	base	none
+fb1061-206	206	framedblocks:framed_threeway_corner	primary_only	217	100	229	framedblocks:framed_threeway_corner	minecraft:stone		false	base	none
+fb1061-207	207	framedblocks:framed_threeway_corner_pillar	primary_only	220	100	229	framedblocks:framed_threeway_corner_pillar	minecraft:stone		false	base	none
+fb1061-208	208	framedblocks:framed_threeway_corner_slope_edge	primary_only	223	100	229	framedblocks:framed_threeway_corner_slope_edge	minecraft:stone		false	base	none
+fb1061-209	209	framedblocks:framed_torch	primary_only	226	100	229	framedblocks:framed_torch	minecraft:stone		false	base	none
+fb1061-210	210	framedblocks:framed_trapdoor	primary_only	229	100	229	framedblocks:framed_trapdoor[solid=true]	minecraft:stone		true	base	none
+fb1061-211	211	framedblocks:framed_tube	primary_only	232	100	229	framedblocks:framed_tube[solid=true]	minecraft:stone		true	base	none
+fb1061-212	212	framedblocks:framed_upper_pyramid_slab	primary_only	235	100	229	framedblocks:framed_upper_pyramid_slab[solid=true]	minecraft:stone		true	base	none
+fb1061-213	213	framedblocks:framed_vertical_divided_stairs	generic_double	238	100	229	framedblocks:framed_vertical_divided_stairs[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-214	214	framedblocks:framed_vertical_double_half_slope	generic_double	241	100	229	framedblocks:framed_vertical_double_half_slope[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-215	215	framedblocks:framed_vertical_double_half_stairs	generic_double	244	100	229	framedblocks:framed_vertical_double_half_stairs[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-216	216	framedblocks:framed_vertical_double_stairs	generic_double	247	100	229	framedblocks:framed_vertical_double_stairs[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-217	217	framedblocks:framed_vertical_half_slope	primary_only	196	100	232	framedblocks:framed_vertical_half_slope	minecraft:stone		false	base	none
+fb1061-218	218	framedblocks:framed_vertical_half_stairs	primary_only	199	100	232	framedblocks:framed_vertical_half_stairs	minecraft:stone		false	base	none
+fb1061-219	219	framedblocks:framed_vertical_sliced_sloped_stairs_panel	generic_double	202	100	232	framedblocks:framed_vertical_sliced_sloped_stairs_panel[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-220	220	framedblocks:framed_vertical_sliced_sloped_stairs_slope	generic_double	205	100	232	framedblocks:framed_vertical_sliced_sloped_stairs_slope[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-221	221	framedblocks:framed_vertical_sliced_stairs	generic_double	208	100	232	framedblocks:framed_vertical_sliced_stairs[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-222	222	framedblocks:framed_vertical_sloped_double_stairs	generic_double	211	100	232	framedblocks:framed_vertical_sloped_double_stairs[solid=true]	minecraft:stone	minecraft:gold_block	true	base	none
+fb1061-223	223	framedblocks:framed_vertical_sloped_stairs	primary_only	214	100	232	framedblocks:framed_vertical_sloped_stairs[solid=true]	minecraft:stone		true	base	none
+fb1061-224	224	framedblocks:framed_vertical_stairs	primary_only	217	100	232	framedblocks:framed_vertical_stairs[solid=true]	minecraft:stone		true	base	none
+fb1061-225	225	framedblocks:framed_wall	primary_only	220	100	232	framedblocks:framed_wall	minecraft:stone		false	base	none
+fb1061-226	226	framedblocks:framed_wall_board	primary_only	223	100	232	framedblocks:framed_wall_board[solid=true]	minecraft:stone		true	base	none
+fb1061-227	227	framedblocks:framed_wall_hanging_sign	primary_only	226	100	232	framedblocks:framed_wall_hanging_sign[facing=south]	minecraft:stone		false	base+east_arm	none
+fb1061-228	228	framedblocks:framed_wall_sign	primary_only	229	100	232	framedblocks:framed_wall_sign[facing=south]	minecraft:stone		false	base+north_backing	none
+fb1061-229	229	framedblocks:framed_wall_torch	primary_only	232	100	232	framedblocks:framed_wall_torch[facing=south]	minecraft:stone		false	base+north_backing	none
+fb1061-230	230	framedblocks:framed_waterloggable_gold_pressure_plate	primary_only	235	100	232	framedblocks:framed_waterloggable_gold_pressure_plate	minecraft:stone		false	base	none
+fb1061-231	231	framedblocks:framed_waterloggable_iron_pressure_plate	primary_only	238	100	232	framedblocks:framed_waterloggable_iron_pressure_plate	minecraft:stone		false	base	none
+fb1061-232	232	framedblocks:framed_waterloggable_obsidian_pressure_plate	primary_only	241	100	232	framedblocks:framed_waterloggable_obsidian_pressure_plate	minecraft:stone		false	base	none
+fb1061-233	233	framedblocks:framed_waterloggable_pressure_plate	primary_only	244	100	232	framedblocks:framed_waterloggable_pressure_plate	minecraft:stone		false	base	none
+fb1061-234	234	framedblocks:framed_waterloggable_stone_pressure_plate	primary_only	247	100	232	framedblocks:framed_waterloggable_stone_pressure_plate	minecraft:stone		false	base	none

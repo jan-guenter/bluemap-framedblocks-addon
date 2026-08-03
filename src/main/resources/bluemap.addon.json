@@ -1,0 +1,6 @@
+{
+  "id": "bluemap-framedblocks",
+  "entrypoint": "io.github.janguenter.bluemap.framedblocks.BlueMapFramedBlocksAddon",
+  "dependencies": [],
+  "soft-dependencies": []
+}
