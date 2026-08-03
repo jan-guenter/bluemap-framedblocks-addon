@@ -30,7 +30,16 @@ jobs:
           ref: fe79cf5b9f4d8ca28f4e41c2aeb9ef792e336a8d
           path: .ci/bluemap
           submodules: recursive
+          fetch-depth: 0
           persist-credentials: false
+
+      - name: Materialize exact BlueMap build identity
+        run: |
+          git -C .ci/bluemap/api fetch --force --tags origin
+          git -C .ci/bluemap switch --create \
+            agent/backport-5.22-mc1.21.1
+          test "$(git -C .ci/bluemap describe --tags --abbrev=0)" = "v5.22"
+          test "$(git -C .ci/bluemap/api describe --tags --abbrev=0)" = "v2.8.0"
 
       - name: Set up Java 21
         uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
