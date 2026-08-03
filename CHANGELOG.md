@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [0.1.0-alpha.1] - 2026-08-03
+
 - Establish the exact Java 21 BlueMap 5.22 and FramedBlocks 10.6.1 profile.
 - Add complete-state schema-v3 projected geometry for 206 positively routed
   block IDs, with strict bounded material proofs and original-resource
