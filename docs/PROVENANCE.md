@@ -19,7 +19,32 @@ The current decoder behavior is based on these exact/release-correlated inputs:
   factory blobs recorded in the machine-readable manifest;
 - BlueMap upstream 5.22 commit
   `fe5115d5548a30d34175b8e0449aaca280af199f` and exact Java 21 backport
-  commit `fe79cf5b9f4d8ca28f4e41c2aeb9ef792e336a8d`.
+  `5.22-agent.backport-5.22-mc1.21.1-2`, tag
+  `v5.22-agent.backport-5.22-mc1.21.1-2`, commit
+  `9be321df995a1103808621d529eb72773e719d4d`.
+
+The current pack baseline is the exact All the Mons 1.2.0 export with SHA-256
+`1d37df201daddecf5454115f5205cca15ca6ab84ed102bcc2e312f4c14876e5d`,
+pack commit `c7bb230f21d14d26859d0b92548f089b3a493ad9`, and NeoForge 21.1.248.
+It contains the same exact FramedBlocks 10.6.1 artifact and Minecraft 1.21.1
+client resources used by the existing profile. The BlueMap delta from the
+historical accepted host commit
+`fe79cf5b9f4d8ca28f4e41c2aeb9ef792e336a8d` changes only the NeoForge compile
+dependency pin; all adapter-facing source blobs recorded in the manifest are
+byte-identical.
+
+The tracked schema-v3 projection deliberately retains its immutable 1.1.1 /
+NeoForge 21.1.234 schema-v2 capture fingerprint. Retargeting the host does not
+rewrite that header or pretend a new physical capture occurred. The 1.2.0
+server-side resource stack still requires fresh staging and visual acceptance,
+consistent with the existing no-live-resource-attestation limitation.
+
+The accepted `0.1.0-alpha.1` artifact (1,326,858 bytes, SHA-256
+`4a88fd3a78acf4bcc24ac173db5b9db9efc56e057eec31eeded6432b3bd695c5`)
+and its All the Mons 1.1.1 / NeoForge 21.1.234 / BlueMap backport
+`5.22-agent.backport-5.22-mc1.21.1-1` row are retained in
+`provenance/upstreams.json` as historical accepted evidence. They do not
+broaden the current runtime gate.
 
 The camouflage material proof was additionally validated against the exact
 Minecraft 1.21.1 client-resource JAR downloaded by BlueMap in the isolated

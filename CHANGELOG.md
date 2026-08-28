@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## [0.1.0-alpha.2] - 2026-08-28
+
+- Retarget the fail-closed BlueMap host identity and exact composite/CI source
+  pins to the All the Mons 1.2.0 NeoForge 21.1.248 backport while retaining
+  the accepted 1.1.1 artifact row as historical evidence.
+
 ## [0.1.0-alpha.1] - 2026-08-03
 
 - Establish the exact Java 21 BlueMap 5.22 and FramedBlocks 10.6.1 profile.

@@ -3,11 +3,30 @@
   "project_license": "LGPL-3.0-only",
   "source_use_lane": "adapted-source",
   "baseline": {
+    "pack": "All the Mons 1.2.0",
+    "pack_commit": "c7bb230f21d14d26859d0b92548f089b3a493ad9",
+    "pack_export_sha256": "1d37df201daddecf5454115f5205cca15ca6ab84ed102bcc2e312f4c14876e5d",
+    "minecraft": "1.21.1",
+    "neoforge": "21.1.248",
+    "java": 21
+  },
+  "profile_capture_baseline": {
     "pack": "All the Mons 1.1.1",
     "pack_commit": "94a224acf6eace3edf7ea64e6033b458f5bda288",
     "minecraft": "1.21.1",
     "neoforge": "21.1.234",
-    "java": 21
+    "note": "The schema-v3 projection retains the immutable schema-v2 capture fingerprint. It is not rewritten to claim a new physical capture or live resource-stack attestation."
+  },
+  "historical_accepted_runtime": {
+    "addon_version": "0.1.0-alpha.1",
+    "artifact_size": 1326858,
+    "artifact_sha256": "4a88fd3a78acf4bcc24ac173db5b9db9efc56e057eec31eeded6432b3bd695c5",
+    "pack": "All the Mons 1.1.1",
+    "pack_commit": "94a224acf6eace3edf7ea64e6033b458f5bda288",
+    "neoforge": "21.1.234",
+    "bluemap_backport_version": "5.22-agent.backport-5.22-mc1.21.1-1",
+    "bluemap_backport_commit": "fe79cf5b9f4d8ca28f4e41c2aeb9ef792e336a8d",
+    "status": "Retained accepted rollback evidence only; it is not an active runtime identity for this compatibility candidate."
   },
   "minecraft_resource_evidence": {
     "artifact": {
@@ -45,6 +64,15 @@
       "sha512": "051d07cb372bfafd746ff658ef2ad3485606328e445099c17b499b14df6844a0c75e8c6decaff1267934fbd6dfaa0eb1938906b0dbeaa20500c1789b4175e3b6",
       "bundled": false
     },
+    "pack_1_2_0_verification": {
+      "curseforge_project_id": 441647,
+      "curseforge_file_id": 8349218,
+      "artifact_byte_identical_to_profile": true,
+      "client_config_path": "config/framedblocks-client.toml",
+      "client_config_size": 7109,
+      "client_config_sha256": "02e7e1c004fc6a15247dd0ddb5c5210a9e0cc901f18f85ad689886eae3d3ea83",
+      "client_config_matches_profile": true
+    },
     "source": {
       "commit": "99522893fce0c9cd543194be1e8cefd488e0eec8",
       "tree": "f99458e96e82e4804fa3148ae9df7654ed9b76cc",
@@ -74,11 +102,13 @@
     "backport_repository": "https://github.com/jan-guenter/BlueMap",
     "upstream_version": "5.22",
     "upstream_commit": "fe5115d5548a30d34175b8e0449aaca280af199f",
-    "backport_version": "5.22-agent.backport-5.22-mc1.21.1-1",
-    "backport_commit": "fe79cf5b9f4d8ca28f4e41c2aeb9ef792e336a8d",
+    "backport_version": "5.22-agent.backport-5.22-mc1.21.1-2",
+    "backport_tag": "v5.22-agent.backport-5.22-mc1.21.1-2",
+    "backport_commit": "9be321df995a1103808621d529eb72773e719d4d",
     "api_commit": "285c9a60eff3ac2b0cab308ce1058d1565be0971",
     "license": "MIT",
     "bundled": false,
+    "compatibility_delta": "Compared with the historical accepted backport commit, the only implementation change is the NeoForge compile dependency pin from 21.1.234 to 21.1.248; all audited adapter-facing source blobs below are byte-identical.",
     "source_blobs": {
       "common/src/main/java/de/bluecolored/bluemap/common/addons/AddonLoader.java": "538b66f064f4d25c1b03655144afcae5b0b5c3e8",
       "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/BlockRenderer.java": "787b1b9d2f8f597f789aa92bb7bfe77e9ecf2b95",

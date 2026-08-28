@@ -5,22 +5,28 @@ file, `README.md`, and `docs/RELEASING.md` before changing it. Portfolio researc
 parent workspace under `bluemap-addons/framedblocks/` and is evidence, not a
 source directory to copy wholesale.
 
-## Exact Phase 3 target
+## Exact current compatibility target
 
 | Component | Locked identity |
 | --- | --- |
-| All the Mons | `1.1.1`, pack commit `94a224acf6eace3edf7ea64e6033b458f5bda288` |
+| All the Mons | `1.2.0`, pack commit `c7bb230f21d14d26859d0b92548f089b3a493ad9` |
 | Minecraft | `1.21.1` |
-| NeoForge | `21.1.234` |
+| NeoForge | `21.1.248` |
 | Java | `21` |
 | FramedBlocks | `10.6.1`, SHA-1 `3007be0007d09c0225ca33b647461f342eac0503`, SHA-256 `3337f29e1fa3331e8740eef9c20b0750d81fd86d1057fb81012a5c4792aa3369` |
 | FramedBlocks source | release-correlated commit `99522893fce0c9cd543194be1e8cefd488e0eec8` |
 | BlueMap upstream | `5.22`, commit `fe5115d5548a30d34175b8e0449aaca280af199f` |
-| BlueMap backport | commit `fe79cf5b9f4d8ca28f4e41c2aeb9ef792e336a8d` |
+| BlueMap backport | `5.22-agent.backport-5.22-mc1.21.1-2`, tag `v5.22-agent.backport-5.22-mc1.21.1-2`, commit `9be321df995a1103808621d529eb72773e719d4d` |
 | BlueMapAPI fork | commit `285c9a60eff3ac2b0cab308ce1058d1565be0971` |
 
 The initial implementation supports only the exact FramedBlocks artifact.
 Later FramedBlocks versions require Phase 4 profiles and fixtures.
+
+The accepted `0.1.0-alpha.1` artifact remains historical evidence for All the
+Mons 1.1.1, NeoForge 21.1.234, and BlueMap backport
+`5.22-agent.backport-5.22-mc1.21.1-1` at
+`fe79cf5b9f4d8ca28f4e41c2aeb9ef792e336a8d`. It is not an active host
+identity for the current compatibility candidate.
 
 ## Project invariants
 
@@ -29,8 +35,8 @@ Later FramedBlocks versions require Phase 4 profiles and fixtures.
   hooks, or a FramedBlocks runtime dependency.
 - Never bundle BlueMap, BlueNBT, FramedBlocks, Minecraft, NeoForge, modpack
   resources, worlds, screenshots, chunks, or third-party JARs.
-- Compile against the exact Java 21 BlueMap backport source checkout while
-  keeping all internal calls inside `adapter/bluemap522`.
+- Compile against the exact Java 21 BlueMap backport tag in a clean detached
+  checkout while keeping all internal calls inside `adapter/bluemap522`.
 - Unknown BlueMap or FramedBlocks builds remain inactive. Malformed NBT and
   unsupported states use the direct stock-resource fallback without
   interrupting BlueMap.

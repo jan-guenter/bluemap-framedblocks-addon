@@ -17,9 +17,9 @@ broaden a fail-closed rendering policy.
 
 ## Development
 
-The default build expects the exact BlueMap backport in a sibling
-`../bluemap-backport` directory. An alternative checkout can be supplied with
-`-PbluemapSourcePath=/absolute/path/to/BlueMap`.
+The default build expects the exact BlueMap backport tag in a clean detached
+sibling `../bluemap-backport` checkout. An alternative detached checkout can
+be supplied with `-PbluemapSourcePath=/absolute/path/to/BlueMap`.
 
 Run before submitting a pull request:
 
