@@ -10,10 +10,11 @@ client renderer.
 
 **Experimental pre-release — exact-version support only.** This alpha targets:
 
-- Minecraft `1.21.1`, NeoForge `21.1.234`, Java `21`;
+- All the Mons `1.2.0`, Minecraft `1.21.1`, NeoForge `21.1.248`, Java `21`;
 - FramedBlocks `10.6.1` only;
-- upstream BlueMap `5.22` internal renderer ABI through the exact workspace
-  Java 21 backport.
+- upstream BlueMap `5.22` internal renderer ABI through exact Java 21 backport
+  `5.22-agent.backport-5.22-mc1.21.1-2` at commit
+  `9be321df995a1103808621d529eb72773e719d4d`.
 
 The current exact-profile lane recognizes the hash-locked FramedBlocks
 JAR, retains the 51 ordinary FramedBlocks block-entity payloads, and consumes a
@@ -58,14 +59,23 @@ the resource stack actually loaded by BlueMap at runtime. A differing
 server-side resource stack is therefore a deployment and visual-acceptance
 risk, not something the fingerprint gate proves absent.
 
-The expanded profile passed its Java 21 build, 52-test suite, generated-profile
-integrity, production-JAR, POM, exact-artifact, and reproducibility gates. In
-isolated full-pack staging it also passed a 234-anchor default-state gallery,
-a 15-case renderer-path matrix represented by 16 physical blocks, and a full
+The previously accepted `0.1.0-alpha.1` artifact passed its Java 21 build,
+52-test suite, generated-profile integrity, production-JAR, POM,
+exact-artifact, and reproducibility gates against the All the Mons 1.1.1 host.
+In isolated staging it also passed a 234-anchor default-state gallery, a
+15-case renderer-path matrix represented by 16 physical blocks, and a full
 enabled-to-stock-to-re-enabled lifecycle. Three matrix cases used add-on
 geometry; twelve intentionally used bounded stock fallback. All 58 compared
 web-render artifacts outside `rstate` were byte-identical after re-enabling;
-six `rstate` bookkeeping files changed.
+six `rstate` bookkeeping files changed. That artifact and host identity remain
+historical rollback evidence, not validation of the current 1.2.0 candidate.
+
+The current source retargets only the exact BlueMap backport host identity.
+FramedBlocks 10.6.1 and every audited BlueMap adapter-facing source blob are
+unchanged; the host's implementation delta is its NeoForge 21.1.248 compile
+pin. A fresh build, exact-host load, gallery render, stock rollback, restored
+render, and human visual acceptance remain required before this candidate can
+replace the accepted historical artifact.
 
 Two fixed-view modded-client captures and a BlueMap software-WebGL overview
 provide qualitative technical evidence. They are not human-approved or
@@ -104,9 +114,12 @@ See [architecture](docs/ARCHITECTURE.md),
 
 ## Build
 
-The build requires the exact sibling BlueMap backport checkout by default:
+The build requires the exact sibling BlueMap backport tag in a clean detached
+checkout by default:
 
 ```bash
+git -C ../bluemap-backport checkout --detach \
+  v5.22-agent.backport-5.22-mc1.21.1-2
 ./gradlew --no-daemon clean check build
 ```
 

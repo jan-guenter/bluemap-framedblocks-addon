@@ -9,7 +9,8 @@ pluginManagement {
 
 rootProject.name = 'bluemap-framedblocks-addon'
 
-def expectedBlueMapCommit = 'fe79cf5b9f4d8ca28f4e41c2aeb9ef792e336a8d'
+def expectedBlueMapTag = 'v5.22-agent.backport-5.22-mc1.21.1-2'
+def expectedBlueMapCommit = '9be321df995a1103808621d529eb72773e719d4d'
 def expectedBlueMapApiCommit = '285c9a60eff3ac2b0cab308ce1058d1565be0971'
 def blueMapSourcePath = providers.gradleProperty('bluemapSourcePath')
         .getOrElse('../bluemap-backport')
@@ -32,6 +33,21 @@ def blueMapHead = gitOutput(blueMapSource, 'rev-parse', 'HEAD')
 if (blueMapHead != expectedBlueMapCommit) {
     throw new GradleException(
             "Refusing to evaluate BlueMap ${blueMapHead}; expected ${expectedBlueMapCommit}"
+    )
+}
+
+def blueMapTag = gitOutput(blueMapSource, 'describe', '--exact-match', '--tags', 'HEAD')
+if (blueMapTag != expectedBlueMapTag) {
+    throw new GradleException(
+            "Refusing to evaluate BlueMap tag ${blueMapTag}; expected ${expectedBlueMapTag}"
+    )
+}
+
+def blueMapBranch = gitOutput(blueMapSource, 'branch', '--show-current')
+if (!blueMapBranch.isEmpty()) {
+    throw new GradleException(
+            "Refusing to evaluate BlueMap on branch ${blueMapBranch}; " +
+                    "check out ${expectedBlueMapTag} detached so BlueMap.VERSION is canonical"
     )
 }
 

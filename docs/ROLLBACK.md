@@ -18,10 +18,17 @@ Rollback:
 The add-on writes no required world data, configuration state, blocks, items,
 entities, or network payloads. No world conversion or cleanup is expected.
 
-## Observed isolated lifecycle
+## Current compatibility-candidate status
 
-The final expanded exact-profile artifact completed this full-restart sequence
-in disposable full-pack staging:
+The All the Mons 1.2.0 / NeoForge 21.1.248 / BlueMap backport
+`5.22-agent.backport-5.22-mc1.21.1-2` candidate has not yet completed the
+enabled-to-stock-to-restored lifecycle below. Until it does, the observed row
+remains historical evidence rather than a current-host rollback claim.
+
+## Historical observed isolated lifecycle
+
+The accepted `0.1.0-alpha.1` expanded exact-profile artifact completed this
+full-restart sequence in disposable All the Mons 1.1.1 full-pack staging:
 
 1. enabled add-on discovery, exact-profile activation, fixture assertion, and
    bounded BlueMap render;
