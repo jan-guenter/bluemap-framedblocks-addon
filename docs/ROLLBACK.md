@@ -5,7 +5,7 @@ complete remaining-gate list.
 
 When approved, install the single production JAR into
 `config/bluemap/packs`, then restart the JVM. Do not use `/bluemap reload` as
-an installation, upgrade, or removal procedure because BlueMap 5.22 has no
+an installation, upgrade, or removal procedure because this BlueMap host has no
 add-on unload or registry-unregister lifecycle.
 
 Rollback:
@@ -20,10 +20,11 @@ entities, or network payloads. No world conversion or cleanup is expected.
 
 ## Current compatibility-candidate status
 
-The All the Mons 1.2.0 / NeoForge 21.1.248 / BlueMap backport
-`5.22-agent.backport-5.22-mc1.21.1-2` candidate has not yet completed the
+The All the Mons 1.2.0 / NeoForge 21.1.248 / BlueMap feature-backport
+commit `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac` has not yet completed the
 enabled-to-stock-to-restored lifecycle below. Until it does, the observed row
-remains historical evidence rather than a current-host rollback claim.
+remains historical evidence rather than a current-host rollback claim. Its
+targeted composite gallery passed owner visual review on 2026-09-01.
 
 ## Historical observed isolated lifecycle
 

@@ -100,15 +100,15 @@
   "bluemap": {
     "repository": "https://github.com/BlueMap-Minecraft/BlueMap",
     "backport_repository": "https://github.com/jan-guenter/BlueMap",
-    "upstream_version": "5.22",
-    "upstream_commit": "fe5115d5548a30d34175b8e0449aaca280af199f",
-    "backport_version": "5.22-agent.backport-5.22-mc1.21.1-2",
-    "backport_tag": "v5.22-agent.backport-5.22-mc1.21.1-2",
-    "backport_commit": "9be321df995a1103808621d529eb72773e719d4d",
+    "upstream_version": "5.23",
+    "upstream_commit": "4c4cbc291b361ceff6ee239448e9f988f9019dbb",
+    "backport_version": "5.22-feature.backport-5.23-stateless-java-web-server-46",
+    "backport_branch": "feature/backport-5.23-stateless-java-web-server",
+    "backport_commit": "7e07f4e74ec1e92a6ead9aa1e66054af3e133aac",
     "api_commit": "285c9a60eff3ac2b0cab308ce1058d1565be0971",
     "license": "MIT",
     "bundled": false,
-    "compatibility_delta": "Compared with the historical accepted backport commit, the only implementation change is the NeoForge compile dependency pin from 21.1.234 to 21.1.248; all audited adapter-facing source blobs below are byte-identical.",
+    "compatibility_delta": "The exact 5.23 feature-backport commit retains every audited adapter-facing source blob listed below byte-identically.",
     "source_blobs": {
       "common/src/main/java/de/bluecolored/bluemap/common/addons/AddonLoader.java": "538b66f064f4d25c1b03655144afcae5b0b5c3e8",
       "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/BlockRenderer.java": "787b1b9d2f8f597f789aa92bb7bfe77e9ecf2b95",
@@ -139,7 +139,7 @@
     {
       "local": "src/main/resources/bluemap-framedblocks/profiles/10.6.1/geometry-templates.json.gz",
       "license": "LGPL-3.0-only",
-      "derivation": "Deterministic schema-v3 production projection produced by the explicit Gradle projectGeometryProfile task from the private exact-client schema-v2 physical capture. Raw-state, template, and alias identities are preserved; geometry is emptied for every template owned by the closed 28-ID block-level fallback set.",
+      "derivation": "Deterministic schema-v3 production projection produced by the explicit Gradle projectGeometryProfile task from the private exact-client schema-v2 physical capture. Raw-state, template, and alias identities are preserved; geometry is emptied for every template owned by the closed 28-ID client-dynamic family set.",
       "private_source_evidence": {
         "tracked": false,
         "bundled": false,
@@ -221,8 +221,8 @@
         "core/src/main/java/de/bluecolored/bluemap/core/world/mca/blockentity/BlockEntityType.java",
         "core/src/main/java/de/bluecolored/bluemap/core/world/mca/data/BlockEntityTypeResolver.java"
       ],
-      "modification": "Independent internal-ABI adapter using audited interfaces, including bounded strict and uniform-weighted opaque full-cube material proofs plus stable bounded fallback reasons. Weighted alternatives are normalized only when every face proves the same material; non-persisted random UV orientation is explicitly outside pixel-identical coverage. No BlueMap or Minecraft source, binary, texture, or model is bundled.",
-      "modified_on": "2026-08-03",
+      "modification": "Independent internal-ABI adapter using audited interfaces, including bounded strict and uniform-weighted opaque full-cube material proofs, stable bounded fallback reasons, dynamic-family surrogate geometry, manual compact bodies, and placeholder-only stock-model camouflage substitution. Weighted alternatives are normalized only when every face proves the same material; non-persisted random UV orientation is explicitly outside pixel-identical coverage. No BlueMap or Minecraft source, binary, texture, or model is bundled.",
+      "modified_on": "2026-09-01",
       "spdx": "LGPL-3.0-only; upstream interfaces MIT"
     }
   ],

@@ -13,6 +13,7 @@ import de.bluecolored.bluemap.core.world.BlockState;
 import io.github.janguenter.bluemap.framedblocks.diagnostics.BoundedDiagnostics;
 import io.github.janguenter.bluemap.framedblocks.profile.framedblocks10_6.ExactArtifactDetector;
 import io.github.janguenter.bluemap.framedblocks.profile.framedblocks10_6.FramedBlocks1061Profile;
+import io.github.janguenter.bluemap.framedblocks.profile.framedblocks10_6.FramedBlocks1061Support;
 import io.github.janguenter.bluemap.framedblocks.profile.framedblocks10_6.GeometryTemplateProfile;
 
 import java.io.IOException;
@@ -171,7 +172,7 @@ final class FramedBlocksResourceExtension implements ResourcePackExtension {
     public Key getBlockStateKey(Key key) {
         if (activation.isActive()
                 && activation.geometryProfile()
-                        .map(profile -> profile.routedBlockIds().contains(key.getFormatted()))
+                        .map(profile -> profile.renderedBlockIds().contains(key.getFormatted()))
                         .orElse(false)) {
             return FramedBlocks1061Profile.SYNTHETIC_FRAMED_SHAPE;
         }
@@ -187,7 +188,7 @@ final class FramedBlocksResourceExtension implements ResourcePackExtension {
                 && activation.geometryProfile()
                         .map(profile -> profile.find(blockState).isPresent()
                                 && profile.support(blockState)
-                                        .map(classification -> classification.routed())
+                                        .map(FramedBlocksResourceExtension::usesSyntheticProperties)
                                         .orElse(false))
                         .orElse(false)) {
             // The one synthetic model is only a renderer dispatch target. Its
@@ -198,6 +199,26 @@ final class FramedBlocksResourceExtension implements ResourcePackExtension {
                     .occluding(false)
                     .cullingIdentical(false);
         }
+    }
+
+    private static boolean usesSyntheticProperties(
+            FramedBlocks1061Support.Classification classification
+    ) {
+        if (classification.routed()) {
+            return true;
+        }
+        return switch (classification.family()) {
+            case BLOCK_ENTITY_RENDERER,
+                    ADJUSTABLE,
+                    COLLAPSIBLE,
+                    FLOWER_POT,
+                    ONE_WAY_WINDOW,
+                    SPECIAL_CAMO_OVERLAY -> true;
+            case WATERLOGGED_FLUID,
+                    DYNAMIC_LIGHT,
+                    DYNAMIC_SKYLIGHT,
+                    STATIC_BAKED_MODEL -> false;
+        };
     }
 
     static boolean isExpectedSyntheticBlockState(

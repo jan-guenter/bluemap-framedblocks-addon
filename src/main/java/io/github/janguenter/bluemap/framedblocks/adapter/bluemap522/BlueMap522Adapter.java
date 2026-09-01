@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/** All direct BlueMap 5.22 internal-ABI integration lives in this package. */
+/** All direct integration with the inherited BlueMap 5.22 internal ABI lives here. */
 public final class BlueMap522Adapter {
 
     private static final AdapterActivation ACTIVATION = new AdapterActivation();

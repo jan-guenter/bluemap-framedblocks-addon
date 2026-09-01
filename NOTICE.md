@@ -29,7 +29,7 @@ On 2026-08-03, this project also prepared an LGPL-3.0-only schema-v3 neutral
 geometry projection from a private, twice-byte-identical schema-v2 physical
 capture of the exact FramedBlocks client rendering result. The projection
 preserves state, template, and alias identity but omits geometry for the 28
-block-level fallback IDs. The add-on bundles this derived geometry data and
+client-dynamic family IDs. The add-on bundles this derived geometry data and
 sprite identifiers; it does not bundle the raw capture, FramedBlocks code or
 binaries, textures, model files, source archives, or JARs.
 
@@ -46,3 +46,8 @@ resources, which remain non-bundled evidence. Because FramedBlocks does not
 persist the random client model-cache choice in Anvil, the adapter normalizes
 mirrored/rotated UV orientation and claims matching geometry and material, not
 pixel-identical randomized texture orientation.
+
+On 2026-09-01, the adapter added bounded rendering for the 28 client-dynamic
+families. It uses projected surrogate geometry, independently defined compact
+bodies, or placeholder-only camouflage substitution over BlueMap's stock body
+model. No FramedBlocks or Minecraft model, texture, code, or binary was added.

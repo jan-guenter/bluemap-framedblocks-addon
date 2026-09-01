@@ -7,7 +7,7 @@ coverage, compatibility, and provenance documents under `docs/`.
 ## Scope
 
 The current profile supports only FramedBlocks `10.6.1` and the exact Java 21
-BlueMap 5.22 backport identified in `AGENTS.md`. Compatibility with a different
+BlueMap 5.23 feature-backport commit identified in `AGENTS.md`. Compatibility with a different
 artifact, BlueMap ABI, Minecraft version, resource stack, or FramedBlocks
 release must be demonstrated rather than inferred.
 
@@ -17,9 +17,10 @@ broaden a fail-closed rendering policy.
 
 ## Development
 
-The default build expects the exact BlueMap backport tag in a clean detached
-sibling `../bluemap-backport` checkout. An alternative detached checkout can
-be supplied with `-PbluemapSourcePath=/absolute/path/to/BlueMap`.
+The default build expects the exact BlueMap backport commit on the named
+feature branch in a clean sibling `../bluemap-backport` checkout. An
+alternative matching checkout can be supplied with
+`-PbluemapSourcePath=/absolute/path/to/BlueMap`.
 
 Run before submitting a pull request:
 

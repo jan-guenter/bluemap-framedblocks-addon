@@ -33,6 +33,8 @@ final class CamoMaterialResolver {
     private static final Vector3f FULL_BLOCK_MIN = Vector3f.ZERO;
     private static final Vector3f FULL_BLOCK_MAX = new Vector3f(16F, 16F, 16F);
     private static final Vector4f FULL_FACE_UV = new Vector4f(0F, 0F, 16F, 16F);
+    private static final Key CAMOL_OVERLAY_RENDERER_KEY =
+            Key.parse("bluemap_camol:overlay");
     private static final Material MISSING = new Material(ResourcePack.MISSING_TEXTURE, -1, 0);
 
     private final ResourcePack resourcePack;
@@ -222,7 +224,7 @@ final class CamoMaterialResolver {
 
     static boolean isSimpleStaticCube(Variant variant, Model model) {
         if (variant == null
-                || variant.getRenderer() != BlockRendererType.DEFAULT
+                || !isSupportedMaterialRenderer(variant.getRenderer())
                 || variant.isUvlock()
                 || variant.isTransformed()
                 || model == null
@@ -261,7 +263,7 @@ final class CamoMaterialResolver {
 
     static boolean isUniformOpaqueFullCubeVariant(Variant variant, Model model) {
         if (variant == null
-                || variant.getRenderer() != BlockRendererType.DEFAULT
+                || !isSupportedMaterialRenderer(variant.getRenderer())
                 || variant.isUvlock()
                 || !isQuarterTurn(variant.getX())
                 || !isQuarterTurn(variant.getY())
@@ -293,6 +295,12 @@ final class CamoMaterialResolver {
             }
         }
         return true;
+    }
+
+    static boolean isSupportedMaterialRenderer(BlockRendererType renderer) {
+        return renderer == BlockRendererType.DEFAULT
+                || (renderer != null
+                        && renderer == BlockRendererType.REGISTRY.get(CAMOL_OVERLAY_RENDERER_KEY));
     }
 
     private static boolean hasCanonicalFullCubeBody(Element element) {

@@ -30,6 +30,23 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class FramedBlocksResourceExtensionTest {
 
     @Test
+    void bundledProfileRoutesFormerBlockLevelFallbackFamilies() throws IOException {
+        AdapterActivation activation = new AdapterActivation();
+        activation.activate(GeometryTemplateProfile.loadBundled());
+        FramedBlocksResourceExtension extension =
+                new FramedBlocksResourceExtension(null, activation);
+
+        assertEquals(
+                FramedBlocks1061Profile.SYNTHETIC_FRAMED_SHAPE,
+                extension.getBlockStateKey(Key.parse("framedblocks:framed_tank"))
+        );
+        assertEquals(
+                FramedBlocks1061Profile.SYNTHETIC_FRAMED_SHAPE,
+                extension.getBlockStateKey(Key.parse("framedblocks:framed_chest"))
+        );
+    }
+
+    @Test
     void routedShapesDoNotInheritSyntheticMissingCubeOcclusion() throws IOException {
         AdapterActivation activation = new AdapterActivation();
         activation.activate(profileWithFramedCube());
@@ -63,7 +80,7 @@ class FramedBlocksResourceExtensionTest {
                 extension.getBlockStateKey(FramedBlocks1061Profile.FRAMED_CUBE)
         );
         assertEquals(
-                de.bluecolored.bluemap.core.util.Key.parse("framedblocks:framed_tank"),
+                FramedBlocks1061Profile.SYNTHETIC_FRAMED_SHAPE,
                 extension.getBlockStateKey(
                         de.bluecolored.bluemap.core.util.Key.parse("framedblocks:framed_tank")
                 )
@@ -75,9 +92,9 @@ class FramedBlocksResourceExtensionTest {
                 dynamicProperties
         );
         BlockProperties dynamic = dynamicProperties.build();
-        assertTrue(dynamic.isCulling());
-        assertTrue(dynamic.isOccluding());
-        assertTrue(dynamic.getCullingIdentical());
+        assertFalse(dynamic.isCulling());
+        assertFalse(dynamic.isOccluding());
+        assertFalse(dynamic.getCullingIdentical());
 
         BlockProperties.Builder waterloggedProperties = allCullingPropertiesEnabled();
         extension.getBlockProperties(

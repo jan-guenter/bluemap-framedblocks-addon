@@ -15,8 +15,8 @@ source directory to copy wholesale.
 | Java | `21` |
 | FramedBlocks | `10.6.1`, SHA-1 `3007be0007d09c0225ca33b647461f342eac0503`, SHA-256 `3337f29e1fa3331e8740eef9c20b0750d81fd86d1057fb81012a5c4792aa3369` |
 | FramedBlocks source | release-correlated commit `99522893fce0c9cd543194be1e8cefd488e0eec8` |
-| BlueMap upstream | `5.22`, commit `fe5115d5548a30d34175b8e0449aaca280af199f` |
-| BlueMap backport | `5.22-agent.backport-5.22-mc1.21.1-2`, tag `v5.22-agent.backport-5.22-mc1.21.1-2`, commit `9be321df995a1103808621d529eb72773e719d4d` |
+| BlueMap upstream | `5.23`, commit `4c4cbc291b361ceff6ee239448e9f988f9019dbb` |
+| BlueMap backport | build `5.22-feature.backport-5.23-stateless-java-web-server-46`, branch `feature/backport-5.23-stateless-java-web-server`, commit `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac` |
 | BlueMapAPI fork | commit `285c9a60eff3ac2b0cab308ce1058d1565be0971` |
 
 The initial implementation supports only the exact FramedBlocks artifact.
@@ -35,8 +35,9 @@ identity for the current compatibility candidate.
   hooks, or a FramedBlocks runtime dependency.
 - Never bundle BlueMap, BlueNBT, FramedBlocks, Minecraft, NeoForge, modpack
   resources, worlds, screenshots, chunks, or third-party JARs.
-- Compile against the exact Java 21 BlueMap backport tag in a clean detached
-  checkout while keeping all internal calls inside `adapter/bluemap522`.
+- Compile against the exact Java 21 BlueMap feature-backport commit on its
+  named branch in a clean checkout while keeping all internal calls inside
+  `adapter/bluemap522`. The package name records the inherited internal ABI.
 - Unknown BlueMap or FramedBlocks builds remain inactive. Malformed NBT and
   unsupported states use the direct stock-resource fallback without
   interrupting BlueMap.
@@ -49,7 +50,8 @@ identity for the current compatibility candidate.
 - There is no unload lifecycle. Installation, update, removal, and rollback
   require a JVM restart; no required world state may be written.
 - The exact positive-support profile is generated and digest-bound. Do not
-  silently broaden its 206-ID route, material proof, or runtime gates.
+  silently broaden its 234-ID synthetic dispatch set, 206-ID projected-
+  geometry set, material proof, or runtime gates.
 - Keep diagnostics bounded and once-per-reason. Do not log NBT, locations,
   player data, server paths, or resource contents.
 - Keep all source under `LGPL-3.0-only` unless a future file records a
