@@ -3,8 +3,8 @@
 [![CI](https://github.com/jan-guenter/bluemap-framedblocks-addon/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/jan-guenter/bluemap-framedblocks-addon/actions/workflows/ci.yml)
 [![Release](https://github.com/jan-guenter/bluemap-framedblocks-addon/actions/workflows/release.yml/badge.svg)](https://github.com/jan-guenter/bluemap-framedblocks-addon/actions/workflows/release.yml)
 
-A BlueMap 5.22 add-on for rendering FramedBlocks without loading Minecraft's
-client renderer.
+A BlueMap 5.23 feature-backport add-on for rendering FramedBlocks without
+loading Minecraft's client renderer.
 
 ## Current status
 
@@ -12,9 +12,10 @@ client renderer.
 
 - All the Mons `1.2.0`, Minecraft `1.21.1`, NeoForge `21.1.248`, Java `21`;
 - FramedBlocks `10.6.1` only;
-- upstream BlueMap `5.22` internal renderer ABI through exact Java 21 backport
-  `5.22-agent.backport-5.22-mc1.21.1-2` at commit
-  `9be321df995a1103808621d529eb72773e719d4d`.
+- upstream BlueMap `5.23` behavior through exact Java 21 feature-backport
+  build `5.22-feature.backport-5.23-stateless-java-web-server-46` at commit
+  `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac`, with BlueMapAPI commit
+  `285c9a60eff3ac2b0cab308ce1058d1565be0971`.
 
 The current exact-profile lane recognizes the hash-locked FramedBlocks
 JAR, retains the 51 ordinary FramedBlocks block-entity payloads, and consumes a
@@ -23,19 +24,22 @@ schema-v2 physical capture of the exact client/config/resource-pack
 fingerprint. It maps 74,180 renderable raw states onto 5,382 representative
 geometry templates and retains 16 explicit null saw aliases. The projection
 preserves every raw-state, template, and alias identity while emptying 524
-templates for the 28 block-level fallback IDs. It therefore ships 58,708
-quads, rather than the private capture's 62,746, and references 18 fixed
-sprites confined to the `minecraft` and `framedblocks` namespaces.
+templates for 28 client-dynamic families. It therefore ships 58,708 quads,
+rather than the private capture's 62,746, and references 18 fixed sprites
+confined to the `minecraft` and `framedblocks` namespaces. Those 28 families
+now use bounded surrogate geometry, manual compact bodies, or placeholder-
+only camouflage substitution over BlueMap's stock body model.
 
 Runtime lookup requires the complete exact state key; unknown, omitted, or
-extra properties fall back. The base policy positively routes 206 state-only
-block IDs and keeps 28 BER, adjustable, collapsible, flower-pot,
-one-way-window, and special-overlay IDs on BlueMap's original-resource
-fallback.
+extra properties fall back. The exact dispatch set contains all 234 rendered
+block IDs. Of those, 206 use projected geometry and 28 BER, adjustable,
+collapsible, flower-pot, one-way-window, and special-overlay families use
+their bounded family renderers.
 
 Routing is additionally fail-closed per state and render context. Waterlogged,
-dynamic-light/skylight, reinforced, and framed-to-framed-adjacent blocks use
-the original FramedBlocks resource fallback. That fallback is a routing-safety
+dynamic-light/skylight, reinforced, and unsupported framed-to-framed-adjacent
+blocks use the original FramedBlocks resource fallback. Matching upper and
+lower halves of the same door are handled as one shape. Fallback is a safety
 path, not a claim of client-equivalent rendering for model-data- or
 block-entity-renderer-driven blocks. Block camouflage is accepted when
 BlueMap's baked resource metadata proves either one canonical untransformed
@@ -70,16 +74,16 @@ web-render artifacts outside `rstate` were byte-identical after re-enabling;
 six `rstate` bookkeeping files changed. That artifact and host identity remain
 historical rollback evidence, not validation of the current 1.2.0 candidate.
 
-The current source retargets only the exact BlueMap backport host identity.
-FramedBlocks 10.6.1 and every audited BlueMap adapter-facing source blob are
-unchanged; the host's implementation delta is its NeoForge 21.1.248 compile
-pin. A fresh build, exact-host load, gallery render, stock rollback, restored
-render, and human visual acceptance remain required before this candidate can
-replace the accepted historical artifact.
+The current functional candidate passed its local Java 21 tests, build, POM,
+production-JAR audit, exact-host activation, and targeted full-pack composite
+render. The owner accepted the FramedBlocks gallery on 2026-09-01. The older
+enabled-to-stock-to-restored lifecycle remains historical evidence; this
+candidate has not repeated that full rollback sequence.
 
-Two fixed-view modded-client captures and a BlueMap software-WebGL overview
-provide qualitative technical evidence. They are not human-approved or
-pixel-repeatable comparisons. The gallery places one default state for each
+Two historical fixed-view modded-client captures and a BlueMap software-WebGL
+overview provide qualitative technical evidence. The current integration
+gallery has owner visual acceptance, but it is not a pixel-repeatable
+comparison. The gallery places one default state for each
 placeable/displayable ID, not all 74,196 projected states. Add-on-owned framed-
 neighbor culling, comprehensive model-data/BER and non-default-state coverage,
 malformed/reload/concurrency matrices, performance budgets, and production
@@ -97,13 +101,13 @@ contains no FramedBlocks, Minecraft, NeoForge, BlueMap, or BlueNBT classes.
 ```text
 BlueMap add-on entrypoint
         |
-exact BlueMap 5.22 adapter and inactive-by-default registry hooks
+exact BlueMap 5.23 feature-backport adapter and inactive-by-default registry hooks
         |
 FramedBlocks 10.6.1 artifact/profile gate
         |
 bounded NBT decoder -> normalized camouflage state
         |
-digest-validated schema-v3 projected aliases/templates + positive support policy + conservative runtime gates
+digest-validated schema-v3 projected aliases/templates + bounded dynamic-family renderers + conservative runtime gates
         |
 strict or uniform-weighted opaque full-cube material substitution, otherwise original-resource fallback
 ```
@@ -114,12 +118,15 @@ See [architecture](docs/ARCHITECTURE.md),
 
 ## Build
 
-The build requires the exact sibling BlueMap backport tag in a clean detached
-checkout by default:
+The build requires the exact BlueMap feature-backport commit on its named
+branch in a clean checkout by default. The branch name is part of the
+backport's generated runtime version:
 
 ```bash
-git -C ../bluemap-backport checkout --detach \
-  v5.22-agent.backport-5.22-mc1.21.1-2
+git -C ../bluemap-backport checkout \
+  feature/backport-5.23-stateless-java-web-server
+test "$(git -C ../bluemap-backport rev-parse HEAD)" = \
+  7e07f4e74ec1e92a6ead9aa1e66054af3e133aac
 ./gradlew --no-daemon clean check build
 ```
 

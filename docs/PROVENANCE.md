@@ -5,8 +5,9 @@ The implementation uses the adapted-source lane and the repository is
 
 The reduced block-entity DTO and bounded camouflage decoder were
 modified/adapted for BlueMap interoperability on 2026-08-02. The projected
-geometry profile was prepared on 2026-08-03. The corresponding local files,
-exact upstream inputs, and nature of each modification are listed in
+geometry profile was prepared on 2026-08-03. On 2026-09-01, the adapter added
+bounded client-dynamic family renderers. The corresponding local files, exact
+upstream inputs, and nature of each modification are listed in
 `provenance/upstreams.json` and in the packaged `NOTICE.md`.
 
 The current decoder behavior is based on these exact/release-correlated inputs:
@@ -17,27 +18,28 @@ The current decoder behavior is based on these exact/release-correlated inputs:
 - FramedBlocks commit `99522893fce0c9cd543194be1e8cefd488e0eec8`,
   especially its exact `FBContent`, `BlockType`, block-entity, camouflage and
   factory blobs recorded in the machine-readable manifest;
-- BlueMap upstream 5.22 commit
-  `fe5115d5548a30d34175b8e0449aaca280af199f` and exact Java 21 backport
-  `5.22-agent.backport-5.22-mc1.21.1-2`, tag
-  `v5.22-agent.backport-5.22-mc1.21.1-2`, commit
-  `9be321df995a1103808621d529eb72773e719d4d`.
+- BlueMap upstream 5.23 commit
+  `4c4cbc291b361ceff6ee239448e9f988f9019dbb` and exact Java 21 feature-
+  backport build `5.22-feature.backport-5.23-stateless-java-web-server-46`,
+  branch `feature/backport-5.23-stateless-java-web-server`, commit
+  `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac`, and API commit
+  `285c9a60eff3ac2b0cab308ce1058d1565be0971`.
 
 The current pack baseline is the exact All the Mons 1.2.0 export with SHA-256
 `1d37df201daddecf5454115f5205cca15ca6ab84ed102bcc2e312f4c14876e5d`,
 pack commit `c7bb230f21d14d26859d0b92548f089b3a493ad9`, and NeoForge 21.1.248.
 It contains the same exact FramedBlocks 10.6.1 artifact and Minecraft 1.21.1
-client resources used by the existing profile. The BlueMap delta from the
-historical accepted host commit
-`fe79cf5b9f4d8ca28f4e41c2aeb9ef792e336a8d` changes only the NeoForge compile
-dependency pin; all adapter-facing source blobs recorded in the manifest are
-byte-identical.
+client resources used by the existing profile. Every adapter-facing source
+blob recorded in the manifest remains byte-identical at the exact 5.23
+feature-backport commit.
 
 The tracked schema-v3 projection deliberately retains its immutable 1.1.1 /
 NeoForge 21.1.234 schema-v2 capture fingerprint. Retargeting the host does not
 rewrite that header or pretend a new physical capture occurred. The 1.2.0
-server-side resource stack still requires fresh staging and visual acceptance,
-consistent with the existing no-live-resource-attestation limitation.
+server-side resource stack still requires deployment control and visual
+acceptance, consistent with the existing no-live-resource-attestation
+limitation. The current combined integration gallery passed that visual review
+on 2026-09-01; the fingerprint does not attest future resource stacks.
 
 The accepted `0.1.0-alpha.1` artifact (1,326,858 bytes, SHA-256
 `4a88fd3a78acf4bcc24ac173db5b9db9efc56e057eec31eeded6432b3bd695c5`)
@@ -84,9 +86,11 @@ The repository and production JAR do not contain those evidence captures. The
 tracked schema-v3 gzip is canonical UTF-8 JSON under deterministic compression
 and is the preferred form for editing or otherwise modifying the geometry that
 is actually shipped. It preserves all raw-state, template, and alias
-identities. Geometry is emptied for the 524 templates belonging to the 28
-block-level fallback IDs, removing 4,038 unreachable quads and leaving 5,382
-templates with 58,708 quads. The canonical LF-terminated exclusion-ID list has
+identities. Geometry is emptied for the 524 templates belonging to 28 client-
+dynamic family IDs, removing 4,038 captured quads and leaving 5,382 templates
+with 58,708 quads. Those families now use bounded surrogate geometry, manual
+compact bodies, or placeholder-only substitution over the stock body model.
+The canonical LF-terminated exclusion-ID list has
 SHA-256
 `f0be4b79e8ee82686414b5745634d9096d272fc16730ef06bb1de7a15de62529`.
 The projection references 18 fixed sprites, all in the `minecraft` or

@@ -47,6 +47,7 @@ import java.util.EnumMap;
 import java.util.HexFormat;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.zip.GZIPOutputStream;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -63,6 +64,34 @@ class FramedGeometryRendererEmissionTest {
     private static final Key SECONDARY_EAST = Key.parse("test:block/secondary_east");
     private static final Key FIXED = Key.parse("test:block/fixed");
     private static final Key ORIGINAL = Key.parse("test:block/original");
+
+    @Test
+    void substitutesOnlyPlaceholderFacesAndAppliesCamoTintAndEmission() {
+        RecordingTileModel model = new RecordingTileModel();
+        model.add(2);
+        CamoSubstitutionTileModel proxy = new CamoSubstitutionTileModel(
+                model,
+                Set.of(41),
+                73,
+                9,
+                new Color().set(0.5F, 0.25F, 1F, 1F, true)
+        );
+
+        proxy.setMaterialIndex(0, 41)
+                .setColor(0, 0.8F, 0.8F, 0.8F)
+                .setBlocklight(0, 3);
+        proxy.setMaterialIndex(1, 42)
+                .setColor(1, 0.8F, 0.8F, 0.8F)
+                .setBlocklight(1, 3);
+
+        assertEquals(73, model.face(0).material());
+        assertArrayEquals(new float[]{0.4F, 0.2F, 0.8F}, model.face(0).color(), 0F);
+        assertEquals(9, model.face(0).blocklight());
+        assertEquals(42, model.face(1).material());
+        assertArrayEquals(new float[]{0.8F, 0.8F, 0.8F}, model.face(1).color(), 0F);
+        assertEquals(3, model.face(1).blocklight());
+        assertEquals(true, proxy.substituted());
+    }
 
     @Test
     void emitsProfileTrianglesWithFaceMaterialsUvsTintLightAndAo() throws Exception {

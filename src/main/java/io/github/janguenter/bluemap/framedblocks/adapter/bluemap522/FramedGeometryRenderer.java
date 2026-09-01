@@ -28,10 +28,50 @@ import io.github.janguenter.bluemap.framedblocks.profile.framedblocks10_6.Geomet
 import io.github.janguenter.bluemap.framedblocks.profile.framedblocks10_6.NormalizedCamo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /** Generic exact-profile renderer for every client-wrapped FramedBlocks block. */
 final class FramedGeometryRenderer implements BlockRenderer {
+
+    private static final Key FRAME_PLACEHOLDER =
+            Key.parse("framedblocks:block/framed_block");
+    private static final Set<String> ITEM_FRAME_IDS = Set.of(
+            "framedblocks:framed_item_frame",
+            "framedblocks:framed_glowing_item_frame"
+    );
+    private static final Set<String> MANUAL_BODY_IDS = Set.of(
+            "framedblocks:framed_chest",
+            "framedblocks:framed_flower_pot",
+            "framedblocks:framed_sign",
+            "framedblocks:framed_wall_sign",
+            "framedblocks:framed_hanging_sign",
+            "framedblocks:framed_wall_hanging_sign"
+    );
+    private static final Map<String, String> ADJUSTABLE_SURROGATES = Map.of(
+            "framedblocks:framed_adj_double_panel",
+            "framedblocks:framed_double_panel",
+            "framedblocks:framed_adj_double_copycat_panel",
+            "framedblocks:framed_double_panel",
+            "framedblocks:framed_adj_double_slab",
+            "framedblocks:framed_double_slab",
+            "framedblocks:framed_adj_double_copycat_slab",
+            "framedblocks:framed_double_slab"
+    );
+    private static final BlockState CUBE_SURROGATE = new BlockState(
+            Key.parse("framedblocks:framed_cube"),
+            Map.of(
+                    "alt", "false",
+                    "glowing", "false",
+                    "propagates_skylight", "false",
+                    "reinforced", "false",
+                    "solid", "false",
+                    "solid_bg", "false"
+            )
+    );
 
     private final ResourcePack resourcePack;
     private final TextureGallery textureGallery;
@@ -75,17 +115,11 @@ final class FramedGeometryRenderer implements BlockRenderer {
             FramedBlocks1061Support.Classification support = profile.support(
                     block.getBlockState()
             ).orElse(null);
-            if (support == null || !support.routed()) {
-                fallback(
-                        support == null ? "unclassified-state" : support.reason(),
-                        block,
-                        tileModel,
-                        blockColor,
-                        renderStart
-                );
+            if (support == null) {
+                fallback("unclassified-state", block, tileModel, blockColor, renderStart);
                 return;
             }
-            if (hasFramedNeighbor(block)) {
+            if (support.routed() && hasUnsupportedFramedNeighbor(block)) {
                 fallback("neighbor-hidden-face-model-data-required",
                         block, tileModel, blockColor, renderStart);
                 return;
@@ -141,6 +175,20 @@ final class FramedGeometryRenderer implements BlockRenderer {
                 return;
             }
 
+            if (!support.routed()) {
+                renderFallbackFamily(
+                        profile,
+                        support,
+                        primaryResolution.palette(),
+                        blockEntity,
+                        block,
+                        tileModel,
+                        blockColor,
+                        renderStart
+                );
+                return;
+            }
+
             boolean requiresSecondary = template.quads().stream()
                     .anyMatch(quad -> "secondary".equals(quad.component()));
             PaletteResolution secondaryResolution = requiresSecondary
@@ -174,6 +222,291 @@ final class FramedGeometryRenderer implements BlockRenderer {
                     "BlueMap FramedBlocks geometry rendering failed; using the stock resource."
             );
             fallback("geometry-render-exception", block, tileModel, blockColor, renderStart);
+        }
+    }
+
+    private void renderFallbackFamily(
+            GeometryTemplateProfile profile,
+            FramedBlocks1061Support.Classification support,
+            CamoMaterialResolver.MaterialPalette primary,
+            FramedBlockEntityData blockEntity,
+            BlockNeighborhood block,
+            TileModelView tileModel,
+            Color blockColor,
+            int renderStart
+    ) {
+        String blockId = block.getBlockState().getId().getFormatted();
+        String surrogateId = ADJUSTABLE_SURROGATES.get(blockId);
+        if (surrogateId != null) {
+            GeometryTemplateProfile.StateTemplate surrogate = profile.find(new BlockState(
+                    Key.parse(surrogateId),
+                    block.getBlockState().getProperties()
+            )).orElse(null);
+            PaletteResolution secondary = decodePalette(
+                    blockEntity.getCamoTwo(),
+                    "secondary-camo",
+                    block
+            );
+            if (surrogate == null || !secondary.success()) {
+                fallback(
+                        surrogate == null ? "adjustable-surrogate-state-missing"
+                                : secondary.reason(),
+                        block,
+                        tileModel,
+                        blockColor,
+                        renderStart
+                );
+                return;
+            }
+            renderTemplateAndFinish(
+                    surrogate,
+                    primary,
+                    secondary.palette(),
+                    blockEntity,
+                    block,
+                    tileModel,
+                    blockColor,
+                    renderStart
+            );
+            return;
+        }
+
+        CamoMaterialResolver.Material uniform = uniformMaterial(primary);
+        if (uniform == null) {
+            fallback(
+                    support.reason() + "-directional-camo-unsupported",
+                    block,
+                    tileModel,
+                    blockColor,
+                    renderStart
+            );
+            return;
+        }
+
+        if (MANUAL_BODY_IDS.contains(blockId)) {
+            renderManualBody(
+                    profile,
+                    primary,
+                    blockEntity,
+                    block,
+                    tileModel,
+                    blockColor,
+                    renderStart
+            );
+            return;
+        }
+
+        Color tint = calculateTint(
+                new SelectedMaterial(uniform, primary.tintState(), uniform.tintIndex() >= 0),
+                blockEntity,
+                block
+        );
+        Set<Integer> placeholderMaterials = new HashSet<>();
+        placeholderMaterials.add(textureGallery.get(FRAME_PLACEHOLDER));
+        if (ITEM_FRAME_IDS.contains(blockId)) {
+            placeholderMaterials.add(textureGallery.get(ResourcePack.MISSING_TEXTURE));
+        }
+        int camoMaterial = textureGallery.get(uniform.texture());
+        tileModel.initialize(renderStart).reset();
+        blockColor.set(0F, 0F, 0F, 0F, true);
+        SubstitutedRender result = renderSubstitutedOriginal(
+                block,
+                tileModel,
+                blockColor,
+                placeholderMaterials,
+                camoMaterial,
+                uniform.lightEmission(),
+                tint
+        );
+        if (!result.rendered() || !result.substituted()) {
+            fallback(
+                    result.rendered()
+                            ? support.reason() + "-placeholder-missing"
+                            : support.reason() + "-stock-model-missing",
+                    block,
+                    tileModel,
+                    blockColor,
+                    renderStart
+            );
+            return;
+        }
+        setCamoMapColor(uniform, tint, blockEntity, block, blockColor);
+        tileModel.initialize(renderStart);
+    }
+
+    private void renderManualBody(
+            GeometryTemplateProfile profile,
+            CamoMaterialResolver.MaterialPalette primary,
+            FramedBlockEntityData blockEntity,
+            BlockNeighborhood block,
+            TileModelView tileModel,
+            Color blockColor,
+            int renderStart
+    ) {
+        GeometryTemplateProfile.StateTemplate cube = profile.find(CUBE_SURROGATE).orElse(null);
+        if (cube == null) {
+            fallback("manual-body-surrogate-missing", block, tileModel, blockColor, renderStart);
+            return;
+        }
+
+        String blockId = block.getBlockState().getId().getFormatted();
+        tileModel.initialize(renderStart).reset();
+        blockColor.set(0F, 0F, 0F, 0F, true);
+        if ("framedblocks:framed_chest".equals(blockId)
+                || "framedblocks:framed_hanging_sign".equals(blockId)
+                || "framedblocks:framed_wall_hanging_sign".equals(blockId)) {
+            de.bluecolored.bluemap.core.resources.pack.resourcepack.blockstate.BlockState original =
+                    resourcePack.getBlockStates().get(block.getBlockState().getId());
+            renderResource(original, block.getBlockState(), block, tileModel, blockColor);
+        }
+
+        if ("framedblocks:framed_flower_pot".equals(blockId)) {
+            renderScaledCube(cube, primary, blockEntity, block, tileModel, blockColor,
+                    0.375F, 0.375F, 0.375F, 0.3125F, 0F, 0.3125F);
+            renderFlower(blockEntity, block, tileModel, blockColor);
+        } else if ("framedblocks:framed_sign".equals(blockId)) {
+            renderScaledCube(cube, primary, blockEntity, block, tileModel, blockColor,
+                    0.75F, 0.5F, 0.125F, 0.125F, 0.45F, 0.4375F);
+            renderScaledCube(cube, primary, blockEntity, block, tileModel, blockColor,
+                    0.125F, 0.45F, 0.125F, 0.4375F, 0F, 0.4375F);
+        } else if ("framedblocks:framed_wall_sign".equals(blockId)) {
+            renderScaledCube(cube, primary, blockEntity, block, tileModel, blockColor,
+                    0.75F, 0.5F, 0.125F, 0.125F, 0.25F, 0.75F);
+        } else if ("framedblocks:framed_chest".equals(blockId)) {
+            renderScaledCube(cube, primary, blockEntity, block, tileModel, blockColor,
+                    0.875F, 0.875F, 0.875F, 0.0625F, 0F, 0.0625F);
+        } else {
+            renderScaledCube(cube, primary, blockEntity, block, tileModel, blockColor,
+                    0.75F, 0.5F, 0.125F, 0.125F, 0.25F, 0.4375F);
+        }
+
+        if (blockColor.a > 0F) {
+            blockColor.flatten().straight();
+        }
+        tileModel.initialize(renderStart);
+    }
+
+    private void renderScaledCube(
+            GeometryTemplateProfile.StateTemplate cube,
+            CamoMaterialResolver.MaterialPalette primary,
+            FramedBlockEntityData blockEntity,
+            BlockNeighborhood block,
+            TileModelView tileModel,
+            Color blockColor,
+            float scaleX,
+            float scaleY,
+            float scaleZ,
+            float translateX,
+            float translateY,
+            float translateZ
+    ) {
+        int componentStart = tileModel.getTileModel().size();
+        renderTemplate(
+                cube,
+                primary,
+                CamoMaterialResolver.MaterialPalette.emptyPalette(),
+                blockEntity,
+                block,
+                tileModel,
+                blockColor
+        );
+        tileModel.initialize(componentStart)
+                .scale(scaleX, scaleY, scaleZ)
+                .translate(translateX, translateY, translateZ);
+    }
+
+    private void renderFlower(
+            FramedBlockEntityData blockEntity,
+            BlockNeighborhood block,
+            TileModelView tileModel,
+            Color blockColor
+    ) {
+        String flowerId = blockEntity.getFlower();
+        if (flowerId == null || flowerId.isBlank()) {
+            return;
+        }
+        BlockState flowerState;
+        try {
+            flowerState = BlockState.fromString(flowerId);
+        } catch (IllegalArgumentException exception) {
+            return;
+        }
+        de.bluecolored.bluemap.core.resources.pack.resourcepack.blockstate.BlockState resource =
+                resourcePack.getBlockStates().get(flowerState.getId());
+        int flowerStart = tileModel.getTileModel().size();
+        if (renderResource(resource, flowerState, block, tileModel, blockColor)) {
+            tileModel.initialize(flowerStart)
+                    .scale(0.75F, 0.75F, 0.75F)
+                    .translate(0.125F, 0.375F, 0.125F);
+        }
+    }
+
+    private void renderTemplateAndFinish(
+            GeometryTemplateProfile.StateTemplate template,
+            CamoMaterialResolver.MaterialPalette primary,
+            CamoMaterialResolver.MaterialPalette secondary,
+            FramedBlockEntityData blockEntity,
+            BlockNeighborhood block,
+            TileModelView tileModel,
+            Color blockColor,
+            int renderStart
+    ) {
+        blockColor.set(0F, 0F, 0F, 0F, true);
+        float colorOpacity = renderTemplate(
+                template,
+                primary,
+                secondary,
+                blockEntity,
+                block,
+                tileModel,
+                blockColor
+        );
+        if (blockColor.a > 0F) {
+            blockColor.flatten().straight();
+            blockColor.a = colorOpacity;
+        }
+        tileModel.initialize(renderStart);
+    }
+
+    private static CamoMaterialResolver.Material uniformMaterial(
+            CamoMaterialResolver.MaterialPalette palette
+    ) {
+        CamoMaterialResolver.Material uniform = null;
+        for (Direction direction : Direction.values()) {
+            CamoMaterialResolver.Material material = palette.get(direction);
+            if (material == null || uniform != null && !uniform.equals(material)) {
+                return null;
+            }
+            uniform = material;
+        }
+        return uniform;
+    }
+
+    private void setCamoMapColor(
+            CamoMaterialResolver.Material material,
+            Color tint,
+            FramedBlockEntityData blockEntity,
+            BlockNeighborhood block,
+            Color blockColor
+    ) {
+        Texture texture = materialResolver.texture(material);
+        if (texture == null) {
+            return;
+        }
+        Color mapColor = new Color().set(texture.getColorPremultiplied());
+        mapColor.multiply(tint);
+        LightLevels light = calculateBaseLight(Direction.UP, material, blockEntity, block);
+        float combinedLight = Math.max(light.sunlight() / 15F, light.blocklight() / 15F);
+        combinedLight = (1F - renderSettings.getAmbientLight()) * combinedLight
+                + renderSettings.getAmbientLight();
+        mapColor.r *= combinedLight;
+        mapColor.g *= combinedLight;
+        mapColor.b *= combinedLight;
+        blockColor.set(0F, 0F, 0F, 0F, true);
+        blockColor.add(mapColor);
+        if (blockColor.a > 0F) {
+            blockColor.flatten().straight();
+            blockColor.a = mapColor.a;
         }
     }
 
@@ -517,16 +850,42 @@ final class FramedGeometryRenderer implements BlockRenderer {
         return 0;
     }
 
-    static boolean hasFramedNeighbor(BlockNeighborhood block) {
+    static boolean hasUnsupportedFramedNeighbor(BlockNeighborhood block) {
         for (Direction direction : Direction.values()) {
-            if ("framedblocks".equals(neighbor(block, direction)
-                    .getBlockState()
-                    .getId()
-                    .getNamespace())) {
+            BlockState neighborState = neighbor(block, direction).getBlockState();
+            if ("framedblocks".equals(neighborState.getId().getNamespace())
+                    && !isDoorCompanion(block.getBlockState(), neighborState, direction)) {
                 return true;
             }
         }
         return false;
+    }
+
+    private static boolean isDoorCompanion(
+            BlockState state,
+            BlockState neighborState,
+            Direction direction
+    ) {
+        String blockId = state.getId().getFormatted();
+        if ((direction != Direction.UP && direction != Direction.DOWN)
+                || !blockId.equals(neighborState.getId().getFormatted())
+                || !Set.of(
+                        "framedblocks:framed_door",
+                        "framedblocks:framed_iron_door"
+                ).contains(blockId)) {
+            return false;
+        }
+        String half = state.getProperties().get("half");
+        String neighborHalf = neighborState.getProperties().get("half");
+        if (!("lower".equals(half) && "upper".equals(neighborHalf)
+                || "upper".equals(half) && "lower".equals(neighborHalf))) {
+            return false;
+        }
+        Map<String, String> properties = new HashMap<>(state.getProperties());
+        Map<String, String> neighborProperties = new HashMap<>(neighborState.getProperties());
+        properties.remove("half");
+        neighborProperties.remove("half");
+        return properties.equals(neighborProperties);
     }
 
     private static float upwardNormalComponent(
@@ -598,6 +957,62 @@ final class FramedGeometryRenderer implements BlockRenderer {
         }
     }
 
+    private SubstitutedRender renderSubstitutedOriginal(
+            BlockNeighborhood block,
+            TileModelView tileModel,
+            Color blockColor,
+            Set<Integer> placeholderMaterials,
+            int camoMaterial,
+            int camoLightEmission,
+            Color tint
+    ) {
+        de.bluecolored.bluemap.core.resources.pack.resourcepack.blockstate.BlockState resource =
+                resourcePack.getBlockStates().get(block.getBlockState().getId());
+        if (resource == null) {
+            return new SubstitutedRender(false, false);
+        }
+        int modelStart = tileModel.getStart();
+        List<Variant> variants = new ArrayList<>();
+        resource.forEach(
+                block.getBlockState(),
+                block.getX(),
+                block.getY(),
+                block.getZ(),
+                variants::add
+        );
+        if (variants.isEmpty()) {
+            return new SubstitutedRender(false, false);
+        }
+
+        float colorOpacity = 0F;
+        boolean rendered = false;
+        boolean substituted = false;
+        for (Variant variant : variants) {
+            if (variant.getModel().getResource(resourcePack.getModels()::get) == null) {
+                continue;
+            }
+            CamoSubstitutionTileModel proxy = new CamoSubstitutionTileModel(
+                    tileModel.getTileModel(),
+                    placeholderMaterials,
+                    camoMaterial,
+                    camoLightEmission,
+                    tint
+            );
+            Color variantColor = new Color().set(0F, 0F, 0F, 0F, true);
+            stockRenderer.render(block, variant, new TileModelView(proxy), variantColor);
+            rendered = true;
+            substituted |= proxy.substituted();
+            colorOpacity = Math.max(colorOpacity, variantColor.a);
+            blockColor.add(variantColor.premultiplied());
+        }
+        if (blockColor.a > 0F) {
+            blockColor.flatten().straight();
+            blockColor.a = colorOpacity;
+        }
+        tileModel.initialize(modelStart);
+        return new SubstitutedRender(rendered, substituted);
+    }
+
     private boolean renderResource(
             de.bluecolored.bluemap.core.resources.pack.resourcepack.blockstate.BlockState resource,
             BlockState state,
@@ -648,6 +1063,9 @@ final class FramedGeometryRenderer implements BlockRenderer {
     }
 
     private record LightLevels(int sunlight, int blocklight) {
+    }
+
+    private record SubstitutedRender(boolean rendered, boolean substituted) {
     }
 
     private record PaletteResolution(

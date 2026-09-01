@@ -6,6 +6,7 @@ package io.github.janguenter.bluemap.framedblocks.adapter.bluemap522;
 import com.flowpowered.math.vector.Vector3f;
 import com.flowpowered.math.vector.Vector4f;
 import de.bluecolored.bluemap.core.map.hires.block.BlockRendererType;
+import de.bluecolored.bluemap.core.map.hires.block.ResourceModelRenderer;
 import de.bluecolored.bluemap.core.resources.ResourcePath;
 import de.bluecolored.bluemap.core.resources.pack.PackVersion;
 import de.bluecolored.bluemap.core.resources.pack.resourcepack.ResourcePack;
@@ -41,6 +42,24 @@ class CamoMaterialResolverTest {
 
     private static final ResourcePath<Model> MODEL_PATH =
             new ResourcePath<>("minecraft:block/test_cube");
+
+    @Test
+    void acceptsTheExactRegisteredCamolWrapperButNoOtherCustomRenderer() {
+        Key camolKey = Key.parse("bluemap_camol:overlay");
+        BlockRendererType camol = BlockRendererType.REGISTRY.get(camolKey);
+        if (camol == null) {
+            camol = new BlockRendererType.Impl(camolKey, ResourceModelRenderer::new);
+            BlockRendererType.REGISTRY.register(camol);
+        }
+
+        assertTrue(CamoMaterialResolver.isSupportedMaterialRenderer(
+                BlockRendererType.DEFAULT
+        ));
+        assertTrue(CamoMaterialResolver.isSupportedMaterialRenderer(camol));
+        assertFalse(CamoMaterialResolver.isSupportedMaterialRenderer(
+                BlockRendererType.LIQUID
+        ));
+    }
 
     @Test
     void acceptsOnlyCanonicalUntransformedFullCubeFaces() {

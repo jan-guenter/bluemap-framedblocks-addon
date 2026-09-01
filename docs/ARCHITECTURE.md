@@ -15,8 +15,8 @@ extension before BlueMap creates its resource pack.
 
 ## Activation sequence
 
-1. A minimal bootstrap rejects a BlueMap runtime outside the two audited
-   upstream/backport 5.22 identities before reflectively loading the exact
+1. A minimal bootstrap rejects every BlueMap runtime except the exact 5.23
+   feature-backport build and commit before reflectively loading the inherited
    internal adapter; linkage failures remain contained at the entrypoint.
 2. Preflight every `framedblocks:framed_tile` and namespace-disjoint renderer
    and resource-extension key, register them, verify their identities, then
@@ -31,8 +31,8 @@ extension before BlueMap creates its resource pack.
 6. Load and validate the schema-v3 production projection: 236 block IDs,
    74,196 raw states, 74,180 renderable aliases, 5,382 representative
    templates, 58,708 quads, 18 fixed sprites, the 16 expected null saw aliases,
-   and the closed 206-route/28-fallback block-family policy. The 28 fallback
-   IDs are also bound by their canonical LF-list digest.
+   and the closed 206 projected-geometry/28 dynamic-family policy. The 28
+   dynamic-family IDs are also bound by their canonical LF-list digest.
 7. Prove BlueNBT retains the exact nested plain-stone payload, ID, coordinates,
    flags, and data version.
 8. Activate only after all preceding checks pass.
@@ -47,12 +47,14 @@ cannot be made formally atomic by the add-on.
 
 ## Exact-profile rendering
 
-Only IDs in the positive state-only allowlist are redirected to the synthetic
-dispatch resource. Each render consults the machine-readable
-status/family/reason classification again. Waterlogged, dynamic-light/skylight,
-reinforced, and any framed-adjacent context goes directly to the original
-FramedBlocks resource; the adjacent-block rule conservatively preserves broad
-hidden-face model-data behavior.
+All 234 rendered IDs are redirected to the synthetic dispatch resource. Each
+render consults the machine-readable status/family/reason classification
+again. The 206 state-only families use projected geometry. The 28 client-
+dynamic families use bounded surrogates, manual bodies, or stock-model
+placeholder substitution. Waterlogged, dynamic-light/skylight, reinforced,
+and unsupported framed-adjacent contexts go directly to the original
+FramedBlocks resource. Matching upper and lower halves of the same closed or
+open door remain in the projected path.
 
 The geometry renderer performs only an exact raw-state-key lookup and consumes
 the referenced representative template. It does not recreate FramedBlocks'
@@ -87,10 +89,10 @@ components, digests, or bounded sizes fail closed.
 The bundled resource is a deterministic schema-v3 production projection of
 that capture. It preserves the ordering and identity of all 74,196 state rows,
 5,382 template rows, and 74,180 non-null alias relationships. It empties the
-geometry lists of the 524 templates owned by the 28 block-level fallback IDs,
-removing 4,038 quads while retaining the template identities needed for exact
-lookup and policy validation. The private capture contains 62,746 quads; the
-projection contains 58,708. Its exclusion-ID list is canonical, LF-terminated,
+geometry lists of the 524 templates owned by the 28 client-dynamic family IDs,
+removing 4,038 captured quads while retaining the template identities needed
+for exact lookup and policy validation. The private capture contains 62,746
+quads; the projection contains 58,708. Its exclusion-ID list is canonical, LF-terminated,
 and bound by SHA-256
 `f0be4b79e8ee82686414b5745634d9096d272fc16730ef06bb1de7a15de62529`.
 The 18 remaining fixed sprite identifiers are restricted to the `minecraft`
@@ -103,9 +105,9 @@ private and untracked. Neither form contributes a third-party binary, texture,
 model file, source archive, or JAR to the production add-on.
 
 The observed 4,858 figure counts templates whose block ID belongs to a base
-routed family. It is an activation inventory check, not a rendering-safety
-shortcut. Empty-geometry and routing decisions are still evaluated for every
-complete raw state so waterlogged and dynamic-property fallbacks cannot inherit
+projected-geometry family. It is an activation inventory check, not a
+rendering-safety shortcut. Empty-geometry and routing decisions are still
+evaluated for every complete raw state so waterlogged and dynamic-property fallbacks cannot inherit
 the base-family result.
 
 Camouflage substitution is deliberately narrower than ordinary BlueMap model
@@ -135,8 +137,8 @@ BlueMap's ordinary resource renderer while bypassing the add-on's synthetic
 route. This prevents recursion and contains failures; it does not make dynamic
 model-data or block-entity-renderer families client-equivalent.
 
-BlueMap 5.22 does not expose the modded client's final `BakedQuad` stream or
-render-layer decision. Consequently the metadata proof cannot distinguish an
+The exact BlueMap 5.23 feature backport does not expose the modded client's
+final `BakedQuad` stream or render-layer decision. Consequently the metadata proof cannot distinguish an
 arbitrary client wrapper that presents canonical cube metadata but replaces it
 later in the client pipeline. Such cases are outside the accepted support
 claim and remain a candidate for a future explicit camouflage allowlist.

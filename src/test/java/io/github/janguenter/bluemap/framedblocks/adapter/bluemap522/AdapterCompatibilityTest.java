@@ -23,11 +23,11 @@ class AdapterCompatibilityTest {
                 AdapterCompatibility.BACKPORT_COMMIT + " (dirty)"
         ));
         assertFalse(AdapterCompatibility.supported(
-                "5.22-agent.backport-5.22-mc1.21.1-1",
-                "fe79cf5b9f4d8ca28f4e41c2aeb9ef792e336a8d"
+                "5.22-agent.backport-5.22-mc1.21.1-2",
+                "9be321df995a1103808621d529eb72773e719d4d"
         ));
         assertFalse(AdapterCompatibility.supported(
-                "5.22-agent.backport-5.22-mc1.21.1-2-agent.backport-5.22-mc1.21.1",
+                AdapterCompatibility.BACKPORT_VERSION + "-dirty",
                 AdapterCompatibility.BACKPORT_COMMIT
         ));
         assertFalse(AdapterCompatibility.supported(

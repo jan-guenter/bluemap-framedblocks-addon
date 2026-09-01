@@ -78,8 +78,8 @@ tasks.register('projectGeometryProfile', JavaExec) {
     }
 }
 
-def expectedBlueMapTag = 'v5.22-agent.backport-5.22-mc1.21.1-2'
-def expectedBlueMapCommit = '9be321df995a1103808621d529eb72773e719d4d'
+def expectedBlueMapCommit = '7e07f4e74ec1e92a6ead9aa1e66054af3e133aac'
+def expectedBlueMapBranch = 'feature/backport-5.23-stateless-java-web-server'
 def expectedBlueMapApiCommit = '285c9a60eff3ac2b0cab308ce1058d1565be0971'
 def expectedGeometryGzipBytes = 1256231L
 def expectedGeometryGzipSha256 =
@@ -112,19 +112,11 @@ tasks.register('verifyBlueMapSource') {
                 commandLine(['git', '-C', repository.absolutePath] + arguments.toList())
             }.standardOutput.asText.get().trim()
         }
-        def blueMapTag = resolveGit(
-                blueMapSourceDir.get(), 'describe', '--exact-match', '--tags', 'HEAD'
-        )
-        if (blueMapTag != expectedBlueMapTag) {
-            throw new GradleException(
-                    "BlueMap source tag is ${blueMapTag}; expected ${expectedBlueMapTag}"
-            )
-        }
         def blueMapBranch = resolveGit(blueMapSourceDir.get(), 'branch', '--show-current')
-        if (!blueMapBranch.isEmpty()) {
+        if (blueMapBranch != expectedBlueMapBranch) {
             throw new GradleException(
                     "BlueMap source is on branch ${blueMapBranch}; " +
-                            "check out ${expectedBlueMapTag} detached"
+                            "expected ${expectedBlueMapBranch} at ${expectedBlueMapCommit}"
             )
         }
 
@@ -413,7 +405,7 @@ tasks.register('verifyPublicationPom') {
         }
         if (pom.name.text() != addon_name ||
                 pom.description.text() !=
-                        'BlueMap 5.22 renderer add-on for FramedBlocks 10.6.1' ||
+                        'BlueMap 5.23 feature-backport renderer add-on for FramedBlocks 10.6.1' ||
                 pom.url.text() !=
                         'https://github.com/jan-guenter/bluemap-framedblocks-addon' ||
                 pom.licenses.license.name.text() !=
@@ -469,7 +461,8 @@ publishing {
 
             pom {
                 name = addon_name
-                description = 'BlueMap 5.22 renderer add-on for FramedBlocks 10.6.1'
+                description =
+                        'BlueMap 5.23 feature-backport renderer add-on for FramedBlocks 10.6.1'
                 url = 'https://github.com/jan-guenter/bluemap-framedblocks-addon'
                 licenses {
                     license {

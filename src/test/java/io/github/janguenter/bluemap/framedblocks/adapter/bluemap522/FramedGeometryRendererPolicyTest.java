@@ -43,8 +43,31 @@ class FramedGeometryRendererPolicyTest {
 
         assertEquals("framedblocks", adjacentFramed.getNeighborBlock(1, 0, 0)
                 .getBlockState().getId().getNamespace());
-        assertTrue(FramedGeometryRenderer.hasFramedNeighbor(adjacentFramed));
-        assertFalse(FramedGeometryRenderer.hasFramedNeighbor(adjacentTerrain));
+        assertTrue(FramedGeometryRenderer.hasUnsupportedFramedNeighbor(adjacentFramed));
+        assertFalse(FramedGeometryRenderer.hasUnsupportedFramedNeighbor(adjacentTerrain));
+    }
+
+    @Test
+    void matchingVerticalDoorCompanionDoesNotForceFallback() {
+        BlockNeighborhood matchingDoor = neighborhood(Map.of(
+                new Position(X, Y, Z), BlockState.fromString(
+                        "framedblocks:framed_door[facing=north,half=lower,open=false]"
+                ),
+                new Position(X, Y + 1, Z), BlockState.fromString(
+                        "framedblocks:framed_door[facing=north,half=upper,open=false]"
+                )
+        ));
+        BlockNeighborhood mismatchedDoor = neighborhood(Map.of(
+                new Position(X, Y, Z), BlockState.fromString(
+                        "framedblocks:framed_door[facing=north,half=lower,open=false]"
+                ),
+                new Position(X, Y + 1, Z), BlockState.fromString(
+                        "framedblocks:framed_door[facing=north,half=upper,open=true]"
+                )
+        ));
+
+        assertFalse(FramedGeometryRenderer.hasUnsupportedFramedNeighbor(matchingDoor));
+        assertTrue(FramedGeometryRenderer.hasUnsupportedFramedNeighbor(mismatchedDoor));
     }
 
     @Test
