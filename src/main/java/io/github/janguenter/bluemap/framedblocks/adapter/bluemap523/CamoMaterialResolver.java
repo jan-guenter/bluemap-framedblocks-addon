@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: LGPL-3.0-only
  */
-package io.github.janguenter.bluemap.framedblocks.adapter.bluemap522;
+package io.github.janguenter.bluemap.framedblocks.adapter.bluemap523;
 
 import com.flowpowered.math.vector.Vector3f;
 import com.flowpowered.math.vector.Vector4f;

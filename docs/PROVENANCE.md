@@ -6,8 +6,11 @@ The implementation uses the adapted-source lane and the repository is
 The reduced block-entity DTO and bounded camouflage decoder were
 modified/adapted for BlueMap interoperability on 2026-08-02. The projected
 geometry profile was prepared on 2026-08-03. On 2026-09-01, the adapter added
-bounded client-dynamic family renderers. The corresponding local files, exact
-upstream inputs, and nature of each modification are listed in
+bounded client-dynamic family renderers. On 2026-09-02, four repeated BlueMap
+integration primitives moved to the exact source-compiled Adapter API pin at
+commit `e81f08bc4bfbf02d810ec8949a019130e2e61634`, source tree
+`2f974c9bb2ba13888d69682f86f30f58922d30eb`. The corresponding local files,
+exact upstream inputs, and nature of each modification are listed in
 `provenance/upstreams.json` and in the packaged `NOTICE.md`.
 
 The current decoder behavior is based on these exact/release-correlated inputs:
@@ -23,7 +26,11 @@ The current decoder behavior is based on these exact/release-correlated inputs:
   backport build `5.22-feature.backport-5.23-stateless-java-web-server-46`,
   branch `feature/backport-5.23-stateless-java-web-server`, commit
   `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac`, and API commit
-  `285c9a60eff3ac2b0cab308ce1058d1565be0971`.
+  `285c9a60eff3ac2b0cab308ce1058d1565be0971`;
+- BlueMap Add-on Adapter API `0.1.0-alpha.2`, commit
+  `e81f08bc4bfbf02d810ec8949a019130e2e61634`, source tree
+  `2f974c9bb2ba13888d69682f86f30f58922d30eb`, MIT licensed and compiled from
+  source into the consumer JAR without a nested module JAR.
 
 The current pack baseline is the exact All the Mons 1.2.0 export with SHA-256
 `1d37df201daddecf5454115f5205cca15ca6ab84ed102bcc2e312f4c14876e5d`,
@@ -38,8 +45,10 @@ NeoForge 21.1.234 schema-v2 capture fingerprint. Retargeting the host does not
 rewrite that header or pretend a new physical capture occurred. The 1.2.0
 server-side resource stack still requires deployment control and visual
 acceptance, consistent with the existing no-live-resource-attestation
-limitation. The current combined integration gallery passed that visual review
-on 2026-09-01; the fingerprint does not attest future resource stacks.
+limitation. The `0.1.0-alpha.3` combined integration gallery passed that visual
+review on 2026-09-01. The source-consolidated `0.1.0-alpha.4` candidate still
+needs its combined integration rerender; the fingerprint does not attest
+future resource stacks.
 
 The accepted `0.1.0-alpha.1` artifact (1,326,858 bytes, SHA-256
 `4a88fd3a78acf4bcc24ac173db5b9db9efc56e057eec31eeded6432b3bd695c5`)

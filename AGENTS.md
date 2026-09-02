@@ -18,6 +18,7 @@ source directory to copy wholesale.
 | BlueMap upstream | `5.23`, commit `4c4cbc291b361ceff6ee239448e9f988f9019dbb` |
 | BlueMap backport | build `5.22-feature.backport-5.23-stateless-java-web-server-46`, branch `feature/backport-5.23-stateless-java-web-server`, commit `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac` |
 | BlueMapAPI fork | commit `285c9a60eff3ac2b0cab308ce1058d1565be0971` |
+| Shared Adapter API | `0.1.0-alpha.2`, commit `e81f08bc4bfbf02d810ec8949a019130e2e61634`, source tree `2f974c9bb2ba13888d69682f86f30f58922d30eb` |
 
 The initial implementation supports only the exact FramedBlocks artifact.
 Later FramedBlocks versions require Phase 4 profiles and fixtures.
@@ -36,8 +37,12 @@ identity for the current compatibility candidate.
 - Never bundle BlueMap, BlueNBT, FramedBlocks, Minecraft, NeoForge, modpack
   resources, worlds, screenshots, chunks, or third-party JARs.
 - Compile against the exact Java 21 BlueMap feature-backport commit on its
-  named branch in a clean checkout while keeping all internal calls inside
-  `adapter/bluemap522`. The package name records the inherited internal ABI.
+  named branch in a clean checkout. Compile the exact gitlink-pinned Adapter
+  API sources into the add-on, and keep FramedBlocks-owned internal calls
+  inside `adapter/bluemap523`.
+- Never install or nest an Adapter API JAR. The production and sources-JAR
+  gates must require one copy of each of its four allowed files and reject
+  displaced local `bluemap522` helpers.
 - Unknown BlueMap or FramedBlocks builds remain inactive. Malformed NBT and
   unsupported states use the direct stock-resource fallback without
   interrupting BlueMap.

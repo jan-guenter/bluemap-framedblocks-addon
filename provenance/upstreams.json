@@ -122,6 +122,21 @@
       "core/src/main/java/de/bluecolored/bluemap/core/world/mca/data/BlockEntityTypeResolver.java": "2dd4786fa853c915cab765f390e5920edd3e033b"
     }
   },
+  "shared_source_components": [
+    {
+      "name": "BlueMap Add-on Adapter API",
+      "repository": "https://github.com/jan-guenter/bluemap-addon-adapter-api",
+      "version": "0.1.0-alpha.2",
+      "commit": "e81f08bc4bfbf02d810ec8949a019130e2e61634",
+      "source_tree": "2f974c9bb2ba13888d69682f86f30f58922d30eb",
+      "integration": "exact-gitlink-pinned-sources",
+      "compiled_source_count": 4,
+      "license": "MIT",
+      "bundled": true,
+      "standalone_jar_bundled": false,
+      "scope": "Exact runtime identity, identity-safe registry operations, the resource-extension wrapper, and synthetic dispatch validation only."
+    }
+  ],
   "derived_outputs": [
     {
       "local": "src/main/resources/bluemap-framedblocks/profiles/10.6.1/blockstate-ids.txt",
@@ -185,7 +200,7 @@
   ],
   "local_adaptations": [
     {
-      "local": "src/main/java/io/github/janguenter/bluemap/framedblocks/adapter/bluemap522/FramedBlockEntityData.java",
+      "local": "src/main/java/io/github/janguenter/bluemap/framedblocks/adapter/bluemap523/FramedBlockEntityData.java",
       "upstream_files": [
         "src/main/java/xfacthd/framedblocks/api/block/blockentity/FramedBlockEntity.java",
         "src/main/java/xfacthd/framedblocks/api/block/blockentity/IFramedDoubleBlockEntity.java",
@@ -208,7 +223,7 @@
       "spdx": "LGPL-3.0-only"
     },
     {
-      "local": "src/main/java/io/github/janguenter/bluemap/framedblocks/adapter/bluemap522",
+      "local": "src/main/java/io/github/janguenter/bluemap/framedblocks/adapter/bluemap523",
       "upstream_files": [
         "common/src/main/java/de/bluecolored/bluemap/common/addons/AddonLoader.java",
         "core/src/main/java/de/bluecolored/bluemap/core/map/hires/block/BlockRenderer.java",
@@ -221,8 +236,8 @@
         "core/src/main/java/de/bluecolored/bluemap/core/world/mca/blockentity/BlockEntityType.java",
         "core/src/main/java/de/bluecolored/bluemap/core/world/mca/data/BlockEntityTypeResolver.java"
       ],
-      "modification": "Independent internal-ABI adapter using audited interfaces, including bounded strict and uniform-weighted opaque full-cube material proofs, stable bounded fallback reasons, dynamic-family surrogate geometry, manual compact bodies, and placeholder-only stock-model camouflage substitution. Weighted alternatives are normalized only when every face proves the same material; non-persisted random UV orientation is explicitly outside pixel-identical coverage. No BlueMap or Minecraft source, binary, texture, or model is bundled.",
-      "modified_on": "2026-09-01",
+      "modification": "Consumer-owned internal-ABI adapter using audited interfaces and the exact four source-compiled Adapter API integration primitives. It retains the bounded strict and uniform-weighted opaque full-cube material proofs, stable fallback reasons, dynamic-family surrogate geometry, manual compact bodies, and placeholder-only stock-model camouflage substitution. Weighted alternatives are normalized only when every face proves the same material; non-persisted random UV orientation is explicitly outside pixel-identical coverage. No BlueMap or Minecraft source, binary, texture, or model is bundled.",
+      "modified_on": "2026-09-02",
       "spdx": "LGPL-3.0-only; upstream interfaces MIT"
     }
   ],

@@ -14,6 +14,11 @@ BlueMap is copyright Blue (Lukas Rieger) and contributors and is distributed
 under the MIT License. This project compiles against its interfaces but does
 not bundle BlueMap source or binaries.
 
+BlueMap Add-on Adapter API is copyright Jan Günter and contributors and is
+distributed under the MIT License. This project compiles its four exact
+gitlink-pinned production sources into the add-on. The module's MIT license is
+packaged as `LICENSE-bluemap-addon-adapter-api`.
+
 The complete source-use record is in `provenance/upstreams.json` and
 `docs/PROVENANCE.md`.
 
@@ -51,3 +56,8 @@ On 2026-09-01, the adapter added bounded rendering for the 28 client-dynamic
 families. It uses projected surrogate geometry, independently defined compact
 bodies, or placeholder-only camouflage substitution over BlueMap's stock body
 model. No FramedBlocks or Minecraft model, texture, code, or binary was added.
+
+On 2026-09-02, the add-on replaced its local runtime-identity, registry,
+resource-extension-wrapper, and synthetic-dispatch helpers with the exact four
+source-compiled Adapter API classes. Renderer, profile, camouflage, geometry,
+activation, BlueNBT probe, and fallback behavior remain consumer-owned.

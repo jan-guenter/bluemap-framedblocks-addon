@@ -24,6 +24,16 @@ jobs:
           submodules: recursive
           persist-credentials: false
 
+      - name: Verify exact Adapter API source pin
+        run: |
+          test "$(git -C modules/bluemap-addon-adapter-api rev-parse HEAD)" = \
+            "e81f08bc4bfbf02d810ec8949a019130e2e61634"
+          test "$(git -C modules/bluemap-addon-adapter-api \
+            rev-parse HEAD:src/main/java)" = \
+            "2f974c9bb2ba13888d69682f86f30f58922d30eb"
+          test -z "$(git -C modules/bluemap-addon-adapter-api \
+            status --porcelain --untracked-files=all)"
+
       - name: Check out exact BlueMap backport
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:

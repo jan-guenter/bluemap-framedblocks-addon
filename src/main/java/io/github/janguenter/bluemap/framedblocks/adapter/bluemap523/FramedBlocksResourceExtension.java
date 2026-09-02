@@ -1,15 +1,14 @@
 /*
  * SPDX-License-Identifier: LGPL-3.0-only
  */
-package io.github.janguenter.bluemap.framedblocks.adapter.bluemap522;
+package io.github.janguenter.bluemap.framedblocks.adapter.bluemap523;
 
 import de.bluecolored.bluemap.core.resources.pack.resourcepack.ResourcePack;
 import de.bluecolored.bluemap.core.resources.pack.resourcepack.ResourcePackExtension;
-import de.bluecolored.bluemap.core.resources.pack.resourcepack.blockstate.VariantSet;
-import de.bluecolored.bluemap.core.resources.pack.resourcepack.blockstate.Variants;
 import de.bluecolored.bluemap.core.util.Key;
 import de.bluecolored.bluemap.core.world.BlockProperties;
 import de.bluecolored.bluemap.core.world.BlockState;
+import io.github.janguenter.bluemap.addon.adapter.api.bluemap523.SyntheticDispatch;
 import io.github.janguenter.bluemap.framedblocks.diagnostics.BoundedDiagnostics;
 import io.github.janguenter.bluemap.framedblocks.profile.framedblocks10_6.ExactArtifactDetector;
 import io.github.janguenter.bluemap.framedblocks.profile.framedblocks10_6.FramedBlocks1061Profile;
@@ -115,7 +114,7 @@ final class FramedBlocksResourceExtension implements ResourcePackExtension {
 
         // BlueNBT snapshots the registered DTO set on first use. This must run
         // after every BlueMap add-on entrypoint has had a chance to register.
-        if (!BlueMap522Adapter.probeBlockEntityRetention()) {
+        if (!BlueMap523Adapter.probeBlockEntityRetention()) {
             activation.disable("bluenbt-retention-probe-failed");
             BoundedDiagnostics.warning(
                     "bluenbt-retention-probe-failed",
@@ -224,19 +223,6 @@ final class FramedBlocksResourceExtension implements ResourcePackExtension {
     static boolean isExpectedSyntheticBlockState(
             de.bluecolored.bluemap.core.resources.pack.resourcepack.blockstate.BlockState resource
     ) {
-        if (resource == null || resource.getMultipart() != null) {
-            return false;
-        }
-        Variants variants = resource.getVariants();
-        if (variants == null
-                || variants.getVariants().length != 0
-                || variants.getDefaultVariant() == null) {
-            return false;
-        }
-        VariantSet defaultVariant = variants.getDefaultVariant();
-        return defaultVariant.getVariants().length == 1
-                && BlueMap522Adapter.isExpectedSyntheticVariant(
-                        defaultVariant.getVariants()[0]
-                );
+        return SyntheticDispatch.matches(resource, BlueMap523Adapter.RENDERER_TYPE);
     }
 }

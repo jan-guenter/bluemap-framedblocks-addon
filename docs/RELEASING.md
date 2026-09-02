@@ -29,6 +29,10 @@ authentication even for public packages.
      verifyReleaseMetadata
    ```
 
+   The checkout must be recursive. Settings and archive gates must verify the
+   exact Adapter API gitlink, clean module HEAD, source tree, four production
+   classes, four sources-JAR files, and packaged MIT license.
+
 5. Open a pull request and wait for required CI checks.
 6. Merge without bypassing failed or pending checks.
 

@@ -24,7 +24,9 @@ The All the Mons 1.2.0 / NeoForge 21.1.248 / BlueMap feature-backport
 commit `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac` has not yet completed the
 enabled-to-stock-to-restored lifecycle below. Until it does, the observed row
 remains historical evidence rather than a current-host rollback claim. Its
-targeted composite gallery passed owner visual review on 2026-09-01.
+`0.1.0-alpha.3` targeted composite gallery passed owner visual review on
+2026-09-01. The `0.1.0-alpha.4` source-consolidation candidate still needs a
+combined integration rerender.
 
 ## Historical observed isolated lifecycle
 

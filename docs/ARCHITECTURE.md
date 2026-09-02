@@ -7,20 +7,27 @@ resource inventories, bounded persisted-data decoder, projected
 geometry-template schema, and closed support classification. It has no
 FramedBlocks or Minecraft class dependency.
 
-`adapter/bluemap522` is the only package allowed to reference BlueMap core
-internals. It installs the block-entity DTO, custom renderer type, and resource
-extension before BlueMap creates its resource pack.
+`adapter/bluemap523` holds FramedBlocks-owned BlueMap integration. It installs
+the block-entity DTO, custom renderer type, and resource extension before
+BlueMap creates its resource pack.
+
+The exact gitlink-pinned Adapter API contributes four source-compiled classes:
+runtime identity, registry admission, the resource-extension wrapper, and
+synthetic dispatch validation. The add-on keeps activation, registration
+plans, BlueNBT probes, profile policy, renderer behavior, and failure reasons.
+No Adapter API JAR is installed or nested.
 
 `diagnostics` contains bounded reason counters and no-flood logging.
 
 ## Activation sequence
 
-1. A minimal bootstrap rejects every BlueMap runtime except the exact 5.23
-   feature-backport build and commit before reflectively loading the inherited
-   internal adapter; linkage failures remain contained at the entrypoint.
+1. The shared runtime bootstrap rejects every BlueMap runtime except the exact
+   5.23 feature-backport build and commit before reflectively loading the
+   consumer-owned internal adapter; linkage failures remain contained at the
+   entrypoint.
 2. Preflight every `framedblocks:framed_tile` and namespace-disjoint renderer
-   and resource-extension key, register them, verify their identities, then
-   leave routing inactive.
+   and resource-extension key with the shared registry guard, register them,
+   verify their identities, then leave routing inactive.
 3. Do not deserialize NBT during add-on discovery. BlueNBT snapshots all
    possible DTO types on first use, so every add-on must register its types
    before any add-on triggers that freeze.

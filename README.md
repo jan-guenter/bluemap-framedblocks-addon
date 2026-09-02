@@ -15,7 +15,11 @@ loading Minecraft's client renderer.
 - upstream BlueMap `5.23` behavior through exact Java 21 feature-backport
   build `5.22-feature.backport-5.23-stateless-java-web-server-46` at commit
   `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac`, with BlueMapAPI commit
-  `285c9a60eff3ac2b0cab308ce1058d1565be0971`.
+  `285c9a60eff3ac2b0cab308ce1058d1565be0971`;
+- the four shared integration primitives compiled from Adapter API
+  `0.1.0-alpha.2` at commit
+  `e81f08bc4bfbf02d810ec8949a019130e2e61634` and source tree
+  `2f974c9bb2ba13888d69682f86f30f58922d30eb`.
 
 The current exact-profile lane recognizes the hash-locked FramedBlocks
 JAR, retains the 51 ordinary FramedBlocks block-entity payloads, and consumes a
@@ -74,15 +78,16 @@ web-render artifacts outside `rstate` were byte-identical after re-enabling;
 six `rstate` bookkeeping files changed. That artifact and host identity remain
 historical rollback evidence, not validation of the current 1.2.0 candidate.
 
-The current functional candidate passed its local Java 21 tests, build, POM,
+The `0.1.0-alpha.3` renderer passed its local Java 21 tests, build, POM,
 production-JAR audit, exact-host activation, and targeted full-pack composite
-render. The owner accepted the FramedBlocks gallery on 2026-09-01. The older
-enabled-to-stock-to-restored lifecycle remains historical evidence; this
-candidate has not repeated that full rollback sequence.
+render. The owner accepted its FramedBlocks gallery on 2026-09-01. The current
+`0.1.0-alpha.4` candidate changes source ownership and packaging only. It must
+repeat the combined integration render before inheriting that visual result.
+The older enabled-to-stock-to-restored lifecycle remains historical evidence.
 
 Two historical fixed-view modded-client captures and a BlueMap software-WebGL
-overview provide qualitative technical evidence. The current integration
-gallery has owner visual acceptance, but it is not a pixel-repeatable
+overview provide qualitative technical evidence. The `0.1.0-alpha.3`
+integration gallery has owner visual acceptance, but it is not a pixel-repeatable
 comparison. The gallery places one default state for each
 placeable/displayable ID, not all 74,196 projected states. Add-on-owned framed-
 neighbor culling, comprehensive model-data/BER and non-default-state coverage,
@@ -118,11 +123,14 @@ See [architecture](docs/ARCHITECTURE.md),
 
 ## Build
 
-The build requires the exact BlueMap feature-backport commit on its named
-branch in a clean checkout by default. The branch name is part of the
-backport's generated runtime version:
+Clone recursively. The build compiles four exact shared Adapter API source
+files into the add-on and refuses a missing, dirty, or differently pinned
+module checkout. It also requires the exact BlueMap feature-backport commit on
+its named branch in a clean checkout:
 
 ```bash
+git clone --recurse-submodules \
+  https://github.com/jan-guenter/bluemap-framedblocks-addon.git
 git -C ../bluemap-backport checkout \
   feature/backport-5.23-stateless-java-web-server
 test "$(git -C ../bluemap-backport rev-parse HEAD)" = \

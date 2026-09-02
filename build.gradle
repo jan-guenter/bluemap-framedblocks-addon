@@ -15,6 +15,9 @@ base {
 }
 
 sourceSets {
+    main {
+        java.srcDir 'modules/bluemap-addon-adapter-api/src/main/java'
+    }
     geometryProjection {
         java.srcDirs = ['src/geometryProjection/java']
         resources.srcDirs = []
@@ -133,6 +136,23 @@ tasks.named('compileJava').configure {
     dependsOn tasks.named('verifyBlueMapSource')
 }
 
+def sharedAdapterApiPackage =
+        'io/github/janguenter/bluemap/addon/adapter/api/bluemap523/'
+def sharedAdapterApiClasses = [
+        "${sharedAdapterApiPackage}BlueMapRuntimeCompatibility.class",
+        "${sharedAdapterApiPackage}RegistryGuard.class",
+        "${sharedAdapterApiPackage}ResourceExtensionType.class",
+        "${sharedAdapterApiPackage}SyntheticDispatch.class"
+].collect { it.toString() }
+def sharedAdapterApiSources = [
+        "${sharedAdapterApiPackage}BlueMapRuntimeCompatibility.java",
+        "${sharedAdapterApiPackage}RegistryGuard.java",
+        "${sharedAdapterApiPackage}ResourceExtensionType.java",
+        "${sharedAdapterApiPackage}SyntheticDispatch.java"
+].collect { it.toString() }
+def legacyLocalAdapterPackage =
+        'io/github/janguenter/bluemap/framedblocks/adapter/bluemap522/'
+
 tasks.named('jar', Jar).configure {
     manifest {
         attributes(
@@ -146,6 +166,10 @@ tasks.named('jar', Jar).configure {
     from('LICENSE') {
         into 'META-INF'
         rename { 'LICENSE-bluemap-framedblocks-addon' }
+    }
+    from('modules/bluemap-addon-adapter-api/LICENSE') {
+        into 'META-INF'
+        rename { 'LICENSE-bluemap-addon-adapter-api' }
     }
     from('NOTICE.md') {
         into 'META-INF'
@@ -170,6 +194,10 @@ tasks.named('sourcesJar', Jar).configure {
         into 'META-INF'
         rename { 'LICENSE-bluemap-framedblocks-addon' }
     }
+    from('modules/bluemap-addon-adapter-api/LICENSE') {
+        into 'META-INF'
+        rename { 'LICENSE-bluemap-addon-adapter-api' }
+    }
     from('LICENSES') {
         into 'META-INF/LICENSES'
     }
@@ -187,6 +215,7 @@ tasks.named('sourcesJar', Jar).configure {
 }
 
 def productionJar = tasks.named('jar', Jar).flatMap { it.archiveFile }
+def publishedSourcesJar = tasks.named('sourcesJar', Jar).flatMap { it.archiveFile }
 
 tasks.register('verifyProductionJar') {
     dependsOn tasks.named('jar')
@@ -214,15 +243,22 @@ tasks.register('verifyProductionJar') {
                     'bluemap-framedblocks/profiles/10.6.1/blockstate-ids.txt',
                     'bluemap-framedblocks/profiles/10.6.1/geometry-templates.json.gz',
                     'META-INF/LICENSE-bluemap-framedblocks-addon',
+                    'META-INF/LICENSE-bluemap-addon-adapter-api',
                     'META-INF/LICENSES/GPL-3.0-only.txt',
                     'META-INF/LICENSES/LGPL-3.0-only.txt',
                     'META-INF/NOTICE-bluemap-framedblocks-addon.md',
                     'META-INF/THIRD_PARTY-bluemap-framedblocks-addon.md',
                     'META-INF/bluemap-framedblocks/upstreams.json'
-            ]
+            ] + sharedAdapterApiClasses
             def missing = requiredEntries.findAll { !entries.contains(it) }
-            if (!missing.isEmpty()) {
-                throw new GradleException("Production JAR is missing required entries: ${missing}")
+            def duplicateShared = sharedAdapterApiClasses.findAll { shared ->
+                entries.count { it == shared } != 1
+            }
+            if (!missing.isEmpty() || !duplicateShared.isEmpty()) {
+                throw new GradleException(
+                        "Production JAR shared boundary mismatch: missing=${missing}, "
+                                + "nonUnique=${duplicateShared}"
+                )
             }
 
             def manifest = new java.util.jar.Manifest(
@@ -282,10 +318,17 @@ tasks.register('verifyProductionJar') {
                         it == 'META-INF/neoforge.mods.toml' ||
                         it == 'fabric.mod.json' ||
                         it.endsWith('.mixins.json') ||
+                        (it.endsWith('.class') &&
+                                !it.startsWith(
+                                        'io/github/janguenter/bluemap/framedblocks/'
+                                ) && !sharedAdapterApiClasses.contains(it)) ||
                         it.startsWith('de/bluecolored/') ||
                         it.startsWith('xfacthd/') ||
                         it.startsWith('net/minecraft/') ||
-                        it.startsWith('net/neoforged/')
+                        it.startsWith('net/neoforged/') ||
+                        (it.startsWith(legacyLocalAdapterPackage) && !it.endsWith('/')) ||
+                        (it.startsWith(sharedAdapterApiPackage) && !it.endsWith('/') &&
+                                !sharedAdapterApiClasses.contains(it))
             }
             if (!forbidden.isEmpty()) {
                 throw new GradleException("Production JAR contains forbidden entries: ${forbidden}")
@@ -295,7 +338,8 @@ tasks.register('verifyProductionJar') {
                 !(it == 'META-INF/MANIFEST.MF') &&
                         !(it in requiredEntries) &&
                         !(it.startsWith('io/github/janguenter/bluemap/framedblocks/') &&
-                                it.endsWith('.class'))
+                                it.endsWith('.class')) &&
+                        !sharedAdapterApiClasses.contains(it)
             }
             if (!unexpected.isEmpty()) {
                 throw new GradleException("Production JAR contains unexpected entries: ${unexpected}")
@@ -309,7 +353,7 @@ tasks.register('verifyProductionJar') {
                 throw new GradleException('Production JAR contains no project classes')
             }
 
-            projectClasses.each { className ->
+            (projectClasses + sharedAdapterApiClasses).each { className ->
                 def classEntry = zipFile.getEntry(className)
                 def header = zipFile.getInputStream(classEntry).withCloseable {
                     it.readNBytes(8)
@@ -324,6 +368,54 @@ tasks.register('verifyProductionJar') {
                             "${className} has class-file major ${majorVersion}; expected 65"
                     )
                 }
+            }
+        } finally {
+            zipFile.close()
+        }
+    }
+}
+
+tasks.register('verifySourcesJar') {
+    dependsOn tasks.named('sourcesJar')
+    inputs.file(publishedSourcesJar)
+
+    doLast {
+        def zipFile = new java.util.zip.ZipFile(inputs.files.singleFile)
+        try {
+            def entries = zipFile.entries()
+                    .findAll { !it.directory }
+                    .collect { it.name }
+            def required = [
+                    'META-INF/LICENSE-bluemap-addon-adapter-api'
+            ] + sharedAdapterApiSources
+            def missing = required.findAll { !entries.contains(it) }
+            def duplicateShared = sharedAdapterApiSources.findAll { shared ->
+                entries.count { it == shared } != 1
+            }
+            def projectJava = entries.findAll { it.endsWith('.java') }
+            def foreignJava = projectJava.findAll {
+                !it.startsWith('io/github/janguenter/bluemap/framedblocks/') &&
+                        !sharedAdapterApiSources.contains(it)
+            }
+            def forbidden = entries.findAll {
+                it.endsWith('.class') ||
+                        it.endsWith('.jar') ||
+                        it.startsWith('de/bluecolored/') ||
+                        it.startsWith('xfacthd/') ||
+                        it.startsWith('net/minecraft/') ||
+                        it.startsWith('net/neoforged/') ||
+                        (it.startsWith(legacyLocalAdapterPackage) && !it.endsWith('/')) ||
+                        (it.startsWith(sharedAdapterApiPackage) && !it.endsWith('/') &&
+                                !sharedAdapterApiSources.contains(it))
+            }
+            if (!missing.isEmpty() || !duplicateShared.isEmpty() ||
+                    projectJava.isEmpty() || !foreignJava.isEmpty() ||
+                    !forbidden.isEmpty()) {
+                throw new GradleException(
+                        "Sources JAR boundary mismatch: missing=${missing}, " +
+                                "nonUnique=${duplicateShared}, " +
+                                "foreignJava=${foreignJava}, forbidden=${forbidden}"
+                )
             }
         } finally {
             zipFile.close()
@@ -385,6 +477,7 @@ tasks.register('verifyReleaseMetadata') {
 
 tasks.named('check').configure {
     dependsOn tasks.named('verifyProductionJar')
+    dependsOn tasks.named('verifySourcesJar')
 }
 
 def generatedPom = layout.buildDirectory.file(

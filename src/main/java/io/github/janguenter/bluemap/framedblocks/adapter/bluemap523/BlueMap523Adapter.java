@@ -1,18 +1,18 @@
 /*
  * SPDX-License-Identifier: LGPL-3.0-only
  */
-package io.github.janguenter.bluemap.framedblocks.adapter.bluemap522;
+package io.github.janguenter.bluemap.framedblocks.adapter.bluemap523;
 
 import de.bluecolored.bluemap.core.logger.Logger;
 import de.bluecolored.bluemap.core.map.hires.block.BlockRendererType;
 import de.bluecolored.bluemap.core.resources.pack.resourcepack.ResourcePack;
-import de.bluecolored.bluemap.core.resources.pack.resourcepack.blockstate.Variant;
-import de.bluecolored.bluemap.core.util.Keyed;
-import de.bluecolored.bluemap.core.util.Registry;
 import de.bluecolored.bluemap.core.world.BlockEntity;
 import de.bluecolored.bluemap.core.world.mca.MCAUtil;
 import de.bluecolored.bluemap.core.world.mca.blockentity.BlockEntityType;
 import de.bluecolored.bluenbt.NBTWriter;
+import io.github.janguenter.bluemap.addon.adapter.api.bluemap523.BlueMapRuntimeCompatibility;
+import io.github.janguenter.bluemap.addon.adapter.api.bluemap523.RegistryGuard;
+import io.github.janguenter.bluemap.addon.adapter.api.bluemap523.ResourceExtensionType;
 import io.github.janguenter.bluemap.framedblocks.diagnostics.BoundedDiagnostics;
 import io.github.janguenter.bluemap.framedblocks.profile.framedblocks10_6.FramedBlocks1061Profile;
 import io.github.janguenter.bluemap.framedblocks.profile.framedblocks10_6.FramedCamoDecoder;
@@ -25,12 +25,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/** All direct integration with the inherited BlueMap 5.22 internal ABI lives here. */
-public final class BlueMap522Adapter {
+/** FramedBlocks-owned integration with the exact BlueMap 5.23 feature backport. */
+public final class BlueMap523Adapter {
 
     private static final AdapterActivation ACTIVATION = new AdapterActivation();
     private static List<BlockEntityType> blockEntityTypes;
-    private static final BlockRendererType RENDERER_TYPE = new BlockRendererType.Impl(
+    static final BlockRendererType RENDERER_TYPE = new BlockRendererType.Impl(
             FramedBlocks1061Profile.RENDERER,
             (resourcePack, textureGallery, renderSettings) -> new FramedGeometryRenderer(
                     resourcePack,
@@ -40,13 +40,16 @@ public final class BlueMap522Adapter {
             )
     );
     private static final ResourcePack.Extension<FramedBlocksResourceExtension> RESOURCE_EXTENSION_TYPE =
-            new FramedBlocksResourceExtensionType(ACTIVATION);
+            new ResourceExtensionType<>(
+                    FramedBlocks1061Profile.RESOURCE_EXTENSION,
+                    resourcePack -> new FramedBlocksResourceExtension(resourcePack, ACTIVATION)
+            );
 
-    private BlueMap522Adapter() {
+    private BlueMap523Adapter() {
     }
 
     public static synchronized boolean install() {
-        if (!AdapterCompatibility.currentRuntimeSupported()) {
+        if (!BlueMapRuntimeCompatibility.matchesCurrent()) {
             ACTIVATION.disable("unsupported-bluemap-runtime");
             BoundedDiagnostics.warning(
                     "unsupported-bluemap-runtime",
@@ -68,26 +71,32 @@ public final class BlueMap522Adapter {
         }
 
         if (!exactBlockEntityTypes.stream().allMatch(
-                type -> canRegisterExact(BlockEntityType.REGISTRY, type)
+                type -> RegistryGuard.canRegister(BlockEntityType.REGISTRY, type)
         )) {
             return disableForCollision("block-entity-registry-collision");
         }
-        if (!canRegisterExact(BlockRendererType.REGISTRY, RENDERER_TYPE)) {
+        if (!RegistryGuard.canRegister(BlockRendererType.REGISTRY, RENDERER_TYPE)) {
             return disableForCollision("renderer-registry-collision");
         }
-        if (!canRegisterExact(ResourcePack.Extension.REGISTRY, RESOURCE_EXTENSION_TYPE)) {
+        if (!RegistryGuard.canRegister(
+                ResourcePack.Extension.REGISTRY,
+                RESOURCE_EXTENSION_TYPE
+        )) {
             return disableForCollision("resource-extension-registry-collision");
         }
 
         for (BlockEntityType blockEntityType : exactBlockEntityTypes) {
-            if (!registerExact(BlockEntityType.REGISTRY, blockEntityType)) {
+            if (!RegistryGuard.register(BlockEntityType.REGISTRY, blockEntityType)) {
                 return disableForCollision("block-entity-registry-collision");
             }
         }
-        if (!registerExact(BlockRendererType.REGISTRY, RENDERER_TYPE)) {
+        if (!RegistryGuard.register(BlockRendererType.REGISTRY, RENDERER_TYPE)) {
             return disableForCollision("renderer-registry-collision");
         }
-        if (!registerExact(ResourcePack.Extension.REGISTRY, RESOURCE_EXTENSION_TYPE)) {
+        if (!RegistryGuard.register(
+                ResourcePack.Extension.REGISTRY,
+                RESOURCE_EXTENSION_TYPE
+        )) {
             return disableForCollision("resource-extension-registry-collision");
         }
 
@@ -100,15 +109,6 @@ public final class BlueMap522Adapter {
 
     static AdapterActivation activationForTesting() {
         return ACTIVATION;
-    }
-
-    static boolean isExpectedSyntheticVariant(Variant variant) {
-        return variant != null
-                && variant.getRenderer() == RENDERER_TYPE
-                && ResourcePack.MISSING_BLOCK_MODEL.equals(variant.getModel())
-                && !variant.isTransformed()
-                && !variant.isUvlock()
-                && Double.compare(variant.getWeight(), 1D) == 0;
     }
 
     private static synchronized List<BlockEntityType> blockEntityTypes() throws IOException {
@@ -130,23 +130,6 @@ public final class BlueMap522Adapter {
                 "BlueMap FramedBlocks add-on is inactive because an internal registry key is already owned."
         );
         return false;
-    }
-
-    private static <T extends Keyed> boolean registerExact(Registry<T> registry, T candidate) {
-        T existing = registry.get(candidate.getKey());
-        if (existing == null) {
-            registry.register(candidate);
-            existing = registry.get(candidate.getKey());
-        }
-        return existing == candidate;
-    }
-
-    private static <T extends Keyed> boolean canRegisterExact(
-            Registry<T> registry,
-            T candidate
-    ) {
-        T existing = registry.get(candidate.getKey());
-        return existing == null || existing == candidate;
     }
 
     static boolean probeBlockEntityRetention() {

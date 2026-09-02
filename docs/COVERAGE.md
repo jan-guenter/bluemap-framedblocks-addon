@@ -61,10 +61,10 @@ client wrapper whose resource metadata itself looks canonical. That is a
 remaining limitation, not supported behavior.
 
 The exported-geometry lane preserves exported ambient-occlusion and block/sky
-light inputs. Its bounded expanded runtime fixtures have passed. The current
-combined integration gallery passed owner visual review on 2026-09-01. The
-malformed-profile, concurrency, and performance limits below still constrain
-the support claim.
+light inputs. Its bounded expanded runtime fixtures have passed. The
+`0.1.0-alpha.3` combined integration gallery passed owner visual review on
+2026-09-01. The malformed-profile, concurrency, and performance limits below
+still constrain the support claim.
 
 Its recorded client fingerprint is not compared with a cryptographic inventory
 of the resource stack BlueMap actually loads. A server-side resource-pack
@@ -74,11 +74,13 @@ and client-versus-BlueMap visual acceptance remain explicit requirements.
 
 ## Current integration review
 
-The exact BlueMap feature-backport host activated the current profile in the
-All the Mons 1.2.0 combined integration server. A targeted FramedBlocks render
-completed with zero container restarts, and the owner accepted the gallery on
-2026-09-01. This is a visual acceptance result, not a pixel-by-pixel proof or
-an enabled-to-stock-to-restored lifecycle.
+The exact BlueMap feature-backport host activated the `0.1.0-alpha.3` profile
+in the All the Mons 1.2.0 combined integration server. A targeted
+FramedBlocks render completed with zero container restarts, and the owner
+accepted the gallery on 2026-09-01. The `0.1.0-alpha.4` candidate retains the
+same renderer and profile but changes shared-source ownership and packaging,
+so it still needs a combined rerender. Neither result is a pixel-by-pixel
+proof or an enabled-to-stock-to-restored lifecycle.
 
 ## Historical expanded exact-profile fixtures
 
