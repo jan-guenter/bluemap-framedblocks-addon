@@ -27,6 +27,16 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      - name: Verify exact Adapter API source pin
+        run: |
+          test "$(git -C modules/bluemap-addon-adapter-api rev-parse HEAD)" = \
+            "e81f08bc4bfbf02d810ec8949a019130e2e61634"
+          test "$(git -C modules/bluemap-addon-adapter-api \
+            rev-parse HEAD:src/main/java)" = \
+            "2f974c9bb2ba13888d69682f86f30f58922d30eb"
+          test -z "$(git -C modules/bluemap-addon-adapter-api \
+            status --porcelain --untracked-files=all)"
+
       - name: Verify release identity
         run: |
           version="$(sed -n 's/^addon_version=//p' gradle.properties)"
@@ -82,6 +92,7 @@ jobs:
         run: |
           python3 gallery/generate.py --check
           python3 -m json.tool provenance/upstreams.json >/dev/null
+          python3 -m json.tool provenance/release.json >/dev/null
           cd gallery
           sha256sum --check SHA256SUMS
 

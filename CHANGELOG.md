@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+## [0.1.0-alpha.4] - 2026-09-02
+
+- Compile the four BlueMap 5.23 integration primitives from the exact
+  `bluemap-addon-adapter-api` source pin instead of retaining local copies.
+- Rename the consumer-owned adapter package to `bluemap523` while preserving
+  the accepted FramedBlocks 10.6.1 profile, geometry, camouflage, and fallback
+  policy.
+- Add exact gitlink, source-tree, production-JAR, and sources-JAR boundary
+  checks for the shared source module.
+
 ## [0.1.0-alpha.3] - 2026-09-01
 
 - Target only BlueMap 5.23 feature-backport commit

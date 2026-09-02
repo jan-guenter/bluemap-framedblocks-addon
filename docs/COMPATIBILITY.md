@@ -8,6 +8,7 @@
 | Java | `21` | toolchain and class-file gate |
 | FramedBlocks | exactly `10.6.1` | SHA-1 `3007be0007d09c0225ca33b647461f342eac0503`; SHA-256 `3337f29e1fa3331e8740eef9c20b0750d81fd86d1057fb81012a5c4792aa3369` |
 | BlueMap | feature-backport build `5.22-feature.backport-5.23-stateless-java-web-server-46` only | branch `feature/backport-5.23-stateless-java-web-server`; commit `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac`; API commit `285c9a60eff3ac2b0cab308ce1058d1565be0971`; upstream 5.23 commit `4c4cbc291b361ceff6ee239448e9f988f9019dbb` |
+| Adapter API | exactly `0.1.0-alpha.2` | commit `e81f08bc4bfbf02d810ec8949a019130e2e61634`; source tree `2f974c9bb2ba13888d69682f86f30f58922d30eb`; four source-compiled classes |
 
 The FramedBlocks runtime archive is `T2_ARTIFACT_EXACT`. Commit
 `99522893fce0c9cd543194be1e8cefd488e0eec8` declares 10.6.1 and matches the
@@ -22,7 +23,8 @@ matching the profile's pinned client config. The active feature-backport
 commit keeps every audited registry, renderer, resource-extension, add-on-
 loader, and NBT source blob recorded in `provenance/upstreams.json` byte-
 identical to the inherited internal ABI. No other BlueMap commit or binary is
-an accepted runtime identity.
+an accepted runtime identity. The Adapter API pin centralizes only the four
+repeated integration primitives and does not broaden that runtime gate.
 
 ## Historical accepted row
 
@@ -31,8 +33,10 @@ The `0.1.0-alpha.1` artifact (1,326,858 bytes, SHA-256
 is retained as accepted evidence for All the Mons 1.1.1, NeoForge 21.1.234,
 and BlueMap backport `5.22-agent.backport-5.22-mc1.21.1-1` at
 `fe79cf5b9f4d8ca28f4e41c2aeb9ef792e336a8d`. The current runtime detector does
-not accept that old host identity. The current 1.2.0 candidate passed an
-exact-host composite render and owner visual review, but it has not repeated
-the historical full removal-and-restoration lifecycle.
+not accept that old host identity. The `0.1.0-alpha.3` 1.2.0 candidate passed
+an exact-host composite render and owner visual review. The
+`0.1.0-alpha.4` source-consolidation candidate still requires a combined
+integration rerender and has not repeated the historical full removal-and-
+restoration lifecycle.
 
 No later FramedBlocks version is supported or inferred from this profile.

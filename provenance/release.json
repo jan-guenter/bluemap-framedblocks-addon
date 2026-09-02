@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "status": "owner-accepted-release-candidate",
+  "version": "0.1.0-alpha.4",
+  "release_date": "2026-09-02",
+  "repository": "https://github.com/jan-guenter/bluemap-framedblocks-addon",
+  "tag": "v0.1.0-alpha.4",
+  "maven_coordinate": "io.github.jan-guenter:bluemap-framedblocks-addon:0.1.0-alpha.4",
+  "bluemap": {
+    "version": "5.22-feature.backport-5.23-stateless-java-web-server-46",
+    "commit": "7e07f4e74ec1e92a6ead9aa1e66054af3e133aac",
+    "api_commit": "285c9a60eff3ac2b0cab308ce1058d1565be0971"
+  },
+  "adapter_api": {
+    "version": "0.1.0-alpha.2",
+    "commit": "e81f08bc4bfbf02d810ec8949a019130e2e61634",
+    "source_tree": "2f974c9bb2ba13888d69682f86f30f58922d30eb",
+    "source_files_compiled": 4,
+    "module_jar_installed": false,
+    "module_jar_bundled": false,
+    "module_jar_nested": false,
+    "local_adapter_package": "io.github.janguenter.bluemap.framedblocks.adapter.bluemap523"
+  },
+  "render_core_reference": {
+    "repository": "https://github.com/jan-guenter/bluemap-addon-render-core",
+    "version": "0.1.0-alpha.2",
+    "tag": "v0.1.0-alpha.2",
+    "commit": "24b84efdc8235f3f1323e1a8e9fd033080e3a79e",
+    "source_tree": "424040931680fb82d37693f893ca887c0ed48eae",
+    "compiled_as_source": false,
+    "standalone_jar_bundled": false,
+    "reason": "FramedBlocks does not use the shared face-lighting sampler; this records the native 5.23 portfolio identity without claiming it as an input."
+  },
+  "previous_owner_accepted_release": {
+    "version": "0.1.0-alpha.3",
+    "tag": "v0.1.0-alpha.3",
+    "commit": "b4a3f3641b47aaf9b56a89db6215df121575ca08",
+    "production_jar_size": 1337598,
+    "production_jar_sha256": "1b4befc9b475e11e99d4af776ee776c724605b78b4879ab8a93ebfb217ce618a",
+    "visual_acceptance": true
+  },
+  "owner_accepted_combined_staging": {
+    "accepted_at": "2026-09-02",
+    "candidate_source_commit": "9cb68b11a7160d67a169c9bdeee7635808b5f9e0",
+    "candidate_manifest_sha256": "37edfde8510131ba513e9c46092552ce524b733307490a2a562bd90f0db8a514",
+    "runtime_suite_sha256": "308a321a5ad33b070758e577c24ddef0b1dbeaaec824a000efe49fc195530e59",
+    "runtime_attestation_sha256": "4a81be41fb0d1d26a5e3c8eb7a4ecbaf48e87925716b4afa02841eb7add2158e",
+    "gallery_composition_id": "b1af93b9280073770cefba809a44065457e658845c1d8f2051f43432a09890b7",
+    "gallery_composition_manifest_sha256": "ffa07f7cdf4b8ef7abb882e5bfac40beab613cf7f489d142cdf891880fd3fcbd",
+    "integration_gallery_count": 51,
+    "integration_gallery_failures": 0,
+    "framedblocks_mirrored_checks": 1084,
+    "framedblocks_failures": 0,
+    "visual_acceptance": true,
+    "scope": "The owner accepted the exact native alpha.4 FramedBlocks candidate in the combined ATMons 1.2.0 gallery, including camouflage substitution and absence of wooden base leakage."
+  },
+  "final_release_artifacts": {
+    "production_jar": {
+      "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.4.jar",
+      "size": 1341258,
+      "sha256": "de195ed764dea85099e238099f1fc98671b0bbfa951b939ec26ae4912a1971b2"
+    },
+    "sources_jar": {
+      "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.4-sources.jar",
+      "size": 1263584,
+      "sha256": "af39cfa7175b5419bdc8e256c026f72e8a57ee08fbb18b6fce7609f6a03602b4"
+    },
+    "pom": {
+      "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.4.pom",
+      "size": 1688,
+      "sha256": "e596866048bb60acef5cd9e81eefbedd5e0963f15a9e2b3b9fdefe3e67452380"
+    },
+    "gradle_module": {
+      "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.4.module.json",
+      "size": 2858,
+      "sha256": "f5d72388d3d494626a382273f11a16e59fe7e46fd83c1955bc271691ef3aa325"
+    }
+  },
+  "preserved_contract": {
+    "gallery_cases": 234,
+    "synthetic_dispatch_ids": 234,
+    "projected_geometry_ids": 206,
+    "renderer_matrix_logical_entries": 15,
+    "renderer_matrix_physical_entries": 16,
+    "camouflage_and_no_wooden_base_leakage_contract_changed": false
+  },
+  "verification": {
+    "production_jar_exact_byte_gate": true,
+    "sources_jar_exact_byte_gate": true,
+    "publication_metadata_exact_byte_gate": true,
+    "exact_input_gate": true,
+    "combined_runtime_review": true,
+    "owner_visual_acceptance_for_alpha_4": true
+  }
+}

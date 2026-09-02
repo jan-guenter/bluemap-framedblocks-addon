@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: LGPL-3.0-only
  */
-package io.github.janguenter.bluemap.framedblocks.adapter.bluemap522;
+package io.github.janguenter.bluemap.framedblocks.adapter.bluemap523;
 
 import de.bluecolored.bluemap.core.resources.adapter.ResourcesGson;
 import de.bluecolored.bluemap.core.resources.pack.PackVersion;
@@ -123,7 +123,7 @@ class FramedBlocksResourceExtensionTest {
 
     @Test
     void validatesTheEffectiveSyntheticDispatchResourceStructurally() {
-        assertTrue(BlueMap522Adapter.install());
+        assertTrue(BlueMap523Adapter.install());
         String exact = """
                 {"variants":{"":{"renderer":"bluemap_framedblocks:framed_shape",
                                    "model":"bluemap:block/missing"}}}

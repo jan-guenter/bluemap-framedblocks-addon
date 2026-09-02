@@ -22,6 +22,10 @@ feature branch in a clean sibling `../bluemap-backport` checkout. An
 alternative matching checkout can be supplied with
 `-PbluemapSourcePath=/absolute/path/to/BlueMap`.
 
+Clone recursively or initialize both gitlinks before Gradle runs. The build
+rejects any Adapter API checkout that differs from the commit and source-tree
+pins in `settings.gradle`; never copy or edit those shared files locally.
+
 Run before submitting a pull request:
 
 ```bash
