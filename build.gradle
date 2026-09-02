@@ -498,18 +498,18 @@ tasks.register('verifyReleaseMetadata') {
                 ]
         ]
         if (release.schema_version != 1 ||
-                release.status != 'unpublished-migration-candidate' ||
-                release.published != false ||
+                release.status != 'owner-accepted-release-candidate' ||
                 release.version != releaseVersion ||
                 release.tag != "v${releaseVersion}" ||
                 release.repository !=
                         'https://github.com/jan-guenter/bluemap-framedblocks-addon' ||
-                release.containsKey('final_release_artifacts') ||
-                !(release.candidate_artifacts instanceof Map)) {
-            throw new GradleException('Migration candidate provenance is not sealed')
+                release.containsKey('candidate_artifacts') ||
+                !(release.final_release_artifacts instanceof Map) ||
+                release.owner_accepted_combined_staging?.visual_acceptance != true) {
+            throw new GradleException('Owner-accepted release provenance is not sealed')
         }
         expectedArtifacts.each { name, expected ->
-            if (release.candidate_artifacts[name] != expected) {
+            if (release.final_release_artifacts[name] != expected) {
                 throw new GradleException("Release provenance mismatch for ${name}")
             }
         }

@@ -1,7 +1,6 @@
 {
   "schema_version": 1,
-  "status": "unpublished-migration-candidate",
-  "published": false,
+  "status": "owner-accepted-release-candidate",
   "version": "0.1.0-alpha.4",
   "release_date": "2026-09-02",
   "repository": "https://github.com/jan-guenter/bluemap-framedblocks-addon",
@@ -40,7 +39,22 @@
     "production_jar_sha256": "1b4befc9b475e11e99d4af776ee776c724605b78b4879ab8a93ebfb217ce618a",
     "visual_acceptance": true
   },
-  "candidate_artifacts": {
+  "owner_accepted_combined_staging": {
+    "accepted_at": "2026-09-02",
+    "candidate_source_commit": "9cb68b11a7160d67a169c9bdeee7635808b5f9e0",
+    "candidate_manifest_sha256": "37edfde8510131ba513e9c46092552ce524b733307490a2a562bd90f0db8a514",
+    "runtime_suite_sha256": "308a321a5ad33b070758e577c24ddef0b1dbeaaec824a000efe49fc195530e59",
+    "runtime_attestation_sha256": "4a81be41fb0d1d26a5e3c8eb7a4ecbaf48e87925716b4afa02841eb7add2158e",
+    "gallery_composition_id": "b1af93b9280073770cefba809a44065457e658845c1d8f2051f43432a09890b7",
+    "gallery_composition_manifest_sha256": "ffa07f7cdf4b8ef7abb882e5bfac40beab613cf7f489d142cdf891880fd3fcbd",
+    "integration_gallery_count": 51,
+    "integration_gallery_failures": 0,
+    "framedblocks_mirrored_checks": 1084,
+    "framedblocks_failures": 0,
+    "visual_acceptance": true,
+    "scope": "The owner accepted the exact native alpha.4 FramedBlocks candidate in the combined ATMons 1.2.0 gallery, including camouflage substitution and absence of wooden base leakage."
+  },
+  "final_release_artifacts": {
     "production_jar": {
       "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.4.jar",
       "size": 1341258,
@@ -75,7 +89,7 @@
     "sources_jar_exact_byte_gate": true,
     "publication_metadata_exact_byte_gate": true,
     "exact_input_gate": true,
-    "combined_runtime_review": false,
-    "owner_visual_acceptance_for_alpha_4": false
+    "combined_runtime_review": true,
+    "owner_visual_acceptance_for_alpha_4": true
   }
 }

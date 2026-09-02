@@ -33,12 +33,11 @@ authentication even for public packages.
    exact Adapter API gitlink, clean module HEAD, source tree, four production
    classes, four sources-JAR files, and packaged MIT license.
 
-   While a native migration is still awaiting combined runtime review,
-   `provenance/release.json` must remain an
-   `unpublished-migration-candidate` with `published: false` and exact
-   production JAR, sources JAR, POM, and Gradle module identities under
-   `candidate_artifacts`. Do not convert that record to a release candidate
-   until the missing review is complete.
+   A native migration remains an `unpublished-migration-candidate` until its
+   combined runtime and owner visual reviews are complete. After acceptance,
+   bind that exact evidence and the unchanged production JAR, sources JAR,
+   POM, and Gradle module identities under `final_release_artifacts` and use
+   `owner-accepted-release-candidate`.
 
 5. Open a pull request and wait for required CI checks.
 6. Merge without bypassing failed or pending checks.
