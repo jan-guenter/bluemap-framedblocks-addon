@@ -77,6 +77,7 @@ jobs:
         run: |
           python3 gallery/generate.py --check
           python3 -m json.tool provenance/upstreams.json >/dev/null
+          python3 -m json.tool provenance/release.json >/dev/null
           cd gallery
           sha256sum --check SHA256SUMS
 
@@ -89,13 +90,15 @@ jobs:
 
       - name: Build and test
         run: |
+          version="$(sed -n 's/^addon_version=//p' gradle.properties)"
           ./gradlew --no-daemon \
             -PbluemapSourcePath=.ci/bluemap \
             -PframedblocksJar="${RUNNER_TEMP}/framedblocks/FramedBlocks-10.6.1.jar" \
+            -PreleaseTag="v${version}" \
             clean check build geometryProjectionClasses \
             generatePomFileForAddonPublication \
             generateMetadataFileForAddonPublication \
-            verifyPublicationPom verifyPinnedArtifact
+            verifyPublicationPom verifyPinnedArtifact verifyReleaseMetadata
           test -s build/publications/addon/pom-default.xml
           test -s build/publications/addon/module.json
 

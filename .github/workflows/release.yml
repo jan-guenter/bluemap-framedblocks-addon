@@ -92,6 +92,7 @@ jobs:
         run: |
           python3 gallery/generate.py --check
           python3 -m json.tool provenance/upstreams.json >/dev/null
+          python3 -m json.tool provenance/release.json >/dev/null
           cd gallery
           sha256sum --check SHA256SUMS
 

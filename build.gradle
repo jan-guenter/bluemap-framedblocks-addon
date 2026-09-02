@@ -440,6 +440,7 @@ def releaseTag = providers.gradleProperty('releaseTag')
 
 tasks.register('verifyReleaseMetadata') {
     inputs.file('CHANGELOG.md')
+    inputs.file('provenance/release.json')
     inputs.property('releaseTag', releaseTag.orElse(''))
 
     doLast {
@@ -471,6 +472,46 @@ tasks.register('verifyReleaseMetadata') {
             throw new GradleException(
                     "CHANGELOG.md has no dated release heading for ${releaseVersion}"
             )
+        }
+        def release = new groovy.json.JsonSlurper()
+                .parse(file('provenance/release.json'))
+        def expectedArtifacts = [
+                production_jar: [
+                        file_name: "${artifact_id}-${project.version}.jar",
+                        size: 1341258,
+                        sha256: 'de195ed764dea85099e238099f1fc98671b0bbfa951b939ec26ae4912a1971b2'
+                ],
+                sources_jar: [
+                        file_name: "${artifact_id}-${project.version}-sources.jar",
+                        size: 1263584,
+                        sha256: 'af39cfa7175b5419bdc8e256c026f72e8a57ee08fbb18b6fce7609f6a03602b4'
+                ],
+                pom: [
+                        file_name: "${artifact_id}-${project.version}.pom",
+                        size: 1688,
+                        sha256: 'e596866048bb60acef5cd9e81eefbedd5e0963f15a9e2b3b9fdefe3e67452380'
+                ],
+                gradle_module: [
+                        file_name: "${artifact_id}-${project.version}.module.json",
+                        size: 2858,
+                        sha256: 'f5d72388d3d494626a382273f11a16e59fe7e46fd83c1955bc271691ef3aa325'
+                ]
+        ]
+        if (release.schema_version != 1 ||
+                release.status != 'unpublished-migration-candidate' ||
+                release.published != false ||
+                release.version != releaseVersion ||
+                release.tag != "v${releaseVersion}" ||
+                release.repository !=
+                        'https://github.com/jan-guenter/bluemap-framedblocks-addon' ||
+                release.containsKey('final_release_artifacts') ||
+                !(release.candidate_artifacts instanceof Map)) {
+            throw new GradleException('Migration candidate provenance is not sealed')
+        }
+        expectedArtifacts.each { name, expected ->
+            if (release.candidate_artifacts[name] != expected) {
+                throw new GradleException("Release provenance mismatch for ${name}")
+            }
         }
     }
 }
