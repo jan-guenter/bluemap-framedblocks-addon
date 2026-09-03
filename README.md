@@ -65,8 +65,10 @@ flags directly. When the exact Dyenamics and Friends `2.2.2` JAR is installed,
 the add-on also reads a bounded 90-file Luminax full-block closure and one
 Productive Metalworks texture from that JAR's hidden client compatibility packs.
 Those third-party files remain runtime inputs and are not bundled.
-Fluid, multipart, multi-element, random-offset, always-waterlogged, or otherwise
-unresolved camouflage falls back. BlueMap does not
+The exact Minecraft 1.21.1 mushroom-stem multipart model is reduced to its six
+directional face materials. Fluid, other multipart, multi-element,
+random-offset, always-waterlogged, or otherwise unresolved camouflage falls
+back. BlueMap does not
 expose the client `BakedQuad` or render-layer result, so metadata alone cannot
 identify every mod-supplied client wrapper; that residual case remains outside
 the accepted support claim.

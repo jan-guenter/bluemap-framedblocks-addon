@@ -14,6 +14,9 @@
   allow one empty component of a double frame without falling back both slots.
 - Decode the exact Crystalix custom glass camo, including its persisted RGB
   colour and emission state.
+- Keep translucent fixed-tint camouflage in BlueMap's premultiplied-alpha
+  compositing path.
+- Resolve the exact six-face Minecraft 1.21.1 mushroom-stem multipart material.
 - Recover only the exact FramedBlocks-relevant Luminax and Productive
   Metalworks resources from the installed Dyenamics and Friends compatibility
   packs without bundling third-party assets.

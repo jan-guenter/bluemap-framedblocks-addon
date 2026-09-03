@@ -56,9 +56,12 @@ fast path, while differing alternatives use BlueMap's deterministic position
 hash. A transformed selected alternative must use one uniform material.
 Generated Fusion cell-zero textures are used when present to avoid mapping a
 whole connected-texture atlas onto each face; neighbor-aware camo connectivity
-is not claimed. Random-offset, always-waterlogged, multipart, multi-element,
-transformed-directional, fluid, custom-camouflage, and all other unresolved
-camouflage falls back. BlueMap does not expose
+is not claimed. Exact quarter-turn transforms remap directional face
+materials. The exact Minecraft 1.21.1 mushroom-stem multipart model and exact
+Crystalix 3.0.0 persisted-colour glass camouflage have bounded dedicated
+paths. Random-offset, always-waterlogged, other multipart, multi-element,
+fluid, custom-camouflage, and all other unresolved camouflage falls back.
+BlueMap does not expose
 the actual modded-client
 `BakedQuad` or render-layer result, so this proof cannot detect every possible
 client wrapper whose resource metadata itself looks canonical. That is a
@@ -81,10 +84,15 @@ and client-versus-BlueMap visual acceptance remain explicit requirements.
 The exact BlueMap feature-backport host activated the `0.1.0-alpha.3` profile
 in the All the Mons 1.2.0 combined integration server. A targeted
 FramedBlocks render completed with zero container restarts, and the owner
-accepted the gallery on 2026-09-01. The `0.1.0-alpha.4` structure-audit
-candidate also changes camouflage material resolution, so it still needs a
-combined rerender. Neither result is a pixel-by-pixel
-proof or an enabled-to-stock-to-restored lifecycle.
+accepted the gallery on 2026-09-01. The unreleased structure-audit candidate
+subsequently scanned 204 located overworld structures and found 11 whose own
+bounds contain persisted FramedBlocks camouflage. All 11 were rerendered and
+opened in BlueMap on 2026-09-04; a material-index audit found no direct stock
+frame association in 10 structures and three spatial associations in one Bee
+Gym tile, where runtime diagnostics and close-up inspection found no camouflage
+resolution failure or visible wood fallback. Owner acceptance is still
+pending. These results are neither a pixel-by-pixel proof nor an
+enabled-to-stock-to-restored lifecycle.
 
 ## Historical expanded exact-profile fixtures
 
