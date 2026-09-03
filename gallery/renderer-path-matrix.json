@@ -286,13 +286,13 @@
       "block_id": "framedblocks:framed_slab",
       "block_state": "framedblocks:framed_slab[glowing=false,propagates_skylight=false,solid=true,top=false,waterlogged=true]",
       "case_id": "fb1061-rp-10",
-      "category": "fallback_waterlogged",
+      "category": "proven_waterlogged",
       "companion_blocks": [],
-      "expected_path": "stock_fallback",
-      "expected_reason": "waterlogged-fluid-rendering-required",
+      "expected_path": "addon_geometry",
+      "expected_reason": "state-only-baked-model",
       "index": 10,
       "primary_camo": "minecraft:stone",
-      "routing_stage": "addon_renderer_runtime_fallback",
+      "routing_stage": "addon_renderer_geometry",
       "secondary_camo": null,
       "supports": [
         {
@@ -398,13 +398,13 @@
       "block_id": "framedblocks:framed_slab",
       "block_state": "framedblocks:framed_slab[glowing=true,propagates_skylight=false,solid=true,top=false,waterlogged=false]",
       "case_id": "fb1061-rp-13",
-      "category": "fallback_glowing",
+      "category": "proven_glowing",
       "companion_blocks": [],
-      "expected_path": "stock_fallback",
-      "expected_reason": "dynamic-light-camo-required",
+      "expected_path": "addon_geometry",
+      "expected_reason": "state-only-baked-model",
       "index": 13,
       "primary_camo": "minecraft:stone",
-      "routing_stage": "addon_renderer_runtime_fallback",
+      "routing_stage": "addon_renderer_geometry",
       "secondary_camo": null,
       "supports": [
         {
@@ -424,17 +424,17 @@
         "y": 100,
         "z": 248
       },
-      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:glass\"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
       "block_id": "framedblocks:framed_slab",
       "block_state": "framedblocks:framed_slab[glowing=false,propagates_skylight=true,solid=false,top=false,waterlogged=false]",
       "case_id": "fb1061-rp-14",
-      "category": "fallback_propagates_skylight",
+      "category": "proven_propagates_skylight",
       "companion_blocks": [],
-      "expected_path": "stock_fallback",
-      "expected_reason": "dynamic-skylight-camo-required",
+      "expected_path": "addon_geometry",
+      "expected_reason": "state-only-baked-model",
       "index": 14,
-      "primary_camo": "minecraft:glass",
-      "routing_stage": "addon_renderer_runtime_fallback",
+      "primary_camo": "minecraft:stone",
+      "routing_stage": "addon_renderer_geometry",
       "secondary_camo": null,
       "supports": [
         {
@@ -532,14 +532,14 @@
     }
   ],
   "counts": {
-    "addon_geometry_cases": 5,
-    "addon_renderer_runtime_fallback_cases": 5,
+    "addon_geometry_cases": 8,
+    "addon_renderer_runtime_fallback_cases": 2,
     "observation_deck_blocks": 224,
     "observation_decks": 2,
     "renderer_anchor_blocks": 18,
     "renderer_path_cases": 16,
     "resource_extension_unrouted_cases": 6,
-    "stock_fallback_cases": 11,
+    "stock_fallback_cases": 8,
     "unbuilt_camo_corruption_cases": 2
   },
   "functions": {

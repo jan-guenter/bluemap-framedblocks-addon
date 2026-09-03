@@ -164,6 +164,24 @@ class FramedGeometryRendererEmissionTest {
     }
 
     @Test
+    void emitsGlowingProjectedCamoAtFullBlockLight() throws Exception {
+        Fixture fixture = fixture(false, true);
+        RecordingTileModel model = new RecordingTileModel();
+
+        fixture.renderer().render(
+                fixture.neighborhood(),
+                null,
+                new TileModelView(model),
+                new Color()
+        );
+
+        assertEquals(6, model.size());
+        for (int face = 0; face < model.size(); face++) {
+            assertEquals(15, model.face(face).blocklight());
+        }
+    }
+
+    @Test
     void rollsBackPartialProfileGeometryBeforeRenderingTheStockResource() throws Exception {
         Fixture fixture = fixture();
         RecordingTileModel model = new RecordingTileModel();
@@ -194,6 +212,11 @@ class FramedGeometryRendererEmissionTest {
     }
 
     private static Fixture fixture(boolean adjacentFramedBlock) throws Exception {
+        return fixture(adjacentFramedBlock, false);
+    }
+
+    private static Fixture fixture(boolean adjacentFramedBlock, boolean glowing)
+            throws Exception {
         ResourcePack resourcePack = new ResourcePack(new PackVersion(34, 0));
         Key primary = Key.parse("test:block/primary");
         Key secondary = Key.parse("test:block/secondary");
@@ -246,7 +269,7 @@ class FramedGeometryRendererEmissionTest {
         TextureGallery gallery = new TextureGallery();
         gallery.put(resourcePack.getTextures());
 
-        FramedBlockEntityData blockEntity = blockEntity();
+        FramedBlockEntityData blockEntity = blockEntity(glowing);
         Map<Position, BlockState> states = adjacentFramedBlock
                 ? Map.of(
                         new Position(X, Y, Z),
@@ -333,11 +356,12 @@ class FramedGeometryRendererEmissionTest {
         );
     }
 
-    private static FramedBlockEntityData blockEntity() throws ReflectiveOperationException {
+    private static FramedBlockEntityData blockEntity(boolean glowing)
+            throws ReflectiveOperationException {
         FramedBlockEntityData data = new FramedBlockEntityData();
         setField(data, "camo", blockCamo("test:primary"));
         setField(data, "camoTwo", blockCamo("test:secondary"));
-        setField(data, "glowing", false);
+        setField(data, "glowing", glowing);
         setField(data, "intangible", false);
         setField(data, "reinforced", false);
         setField(data, "updated", (byte) 3);

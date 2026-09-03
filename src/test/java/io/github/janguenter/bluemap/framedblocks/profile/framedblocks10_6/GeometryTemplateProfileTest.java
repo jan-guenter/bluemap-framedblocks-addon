@@ -138,20 +138,21 @@ class GeometryTemplateProfileTest {
     }
 
     @Test
-    void classifiesDynamicFamiliesAndWaterloggedStatesForStockFallback() throws IOException {
+    void routesWaterloggedAndLightBearingGeometryButKeepsDynamicModelsOnFallback()
+            throws IOException {
         String states = """
                 {"blockId":"framedblocks:framed_cube",
                  "properties":{"glowing":"false","propagates_skylight":"false",
-                               "waterlogged":"true"},"quads":[]},
+                               "waterlogged":"true"},"quads":[%s]},
                 {"blockId":"framedblocks:framed_cube",
                  "properties":{"glowing":"false","propagates_skylight":"true",
-                               "waterlogged":"false"},"quads":[]},
+                               "waterlogged":"false"},"quads":[%s]},
                 {"blockId":"framedblocks:framed_cube",
                  "properties":{"glowing":"true","propagates_skylight":"false",
-                               "waterlogged":"false"},"quads":[]},
+                               "waterlogged":"false"},"quads":[%s]},
                 {"blockId":"framedblocks:framed_tank","properties":{},"quads":[]}
-                """;
-        GeometryTemplateProfile profile = load(document(4, 0, states));
+                """.formatted(QUAD, QUAD, QUAD);
+        GeometryTemplateProfile profile = load(document(4, 3, states));
 
         FramedBlocks1061Support.Classification waterlogged = profile.support(
                 new BlockState(
@@ -163,11 +164,11 @@ class GeometryTemplateProfileTest {
                         )
                 )
         ).orElseThrow();
-        assertEquals(FramedBlocks1061Support.Status.STOCK_FALLBACK,
+        assertEquals(FramedBlocks1061Support.Status.SUPPORTED,
                 waterlogged.status());
-        assertEquals(FramedBlocks1061Support.Family.WATERLOGGED_FLUID,
+        assertEquals(FramedBlocks1061Support.Family.STATIC_BAKED_MODEL,
                 waterlogged.family());
-        assertEquals("waterlogged-fluid-rendering-required", waterlogged.reason());
+        assertEquals("state-only-baked-model", waterlogged.reason());
 
         FramedBlocks1061Support.Classification dynamicLight = profile.support(
                 new BlockState(
@@ -179,9 +180,11 @@ class GeometryTemplateProfileTest {
                         )
                 )
         ).orElseThrow();
-        assertEquals(FramedBlocks1061Support.Family.DYNAMIC_LIGHT,
+        assertEquals(FramedBlocks1061Support.Status.SUPPORTED,
+                dynamicLight.status());
+        assertEquals(FramedBlocks1061Support.Family.STATIC_BAKED_MODEL,
                 dynamicLight.family());
-        assertEquals("dynamic-light-camo-required", dynamicLight.reason());
+        assertEquals("state-only-baked-model", dynamicLight.reason());
 
         FramedBlocks1061Support.Classification dynamicSkylight = profile.support(
                 new BlockState(
@@ -193,9 +196,11 @@ class GeometryTemplateProfileTest {
                         )
                 )
         ).orElseThrow();
-        assertEquals(FramedBlocks1061Support.Family.DYNAMIC_SKYLIGHT,
+        assertEquals(FramedBlocks1061Support.Status.SUPPORTED,
+                dynamicSkylight.status());
+        assertEquals(FramedBlocks1061Support.Family.STATIC_BAKED_MODEL,
                 dynamicSkylight.family());
-        assertEquals("dynamic-skylight-camo-required", dynamicSkylight.reason());
+        assertEquals("state-only-baked-model", dynamicSkylight.reason());
 
         FramedBlocks1061Support.Classification tank = profile.support(
                 BlockState.fromString("framedblocks:framed_tank")
@@ -614,11 +619,16 @@ class GeometryTemplateProfileTest {
         assertEquals(0, load(document(1, 0, explicitFallback)).quadCount());
 
         for (String property : Set.of("waterlogged", "glowing", "propagates_skylight")) {
-            String stateFallback = """
+            String emptyRoutedState = """
                     {"blockId":"framedblocks:framed_cube",
                      "properties":{"%s":"true"},"quads":[]}
                     """.formatted(property);
-            assertEquals(0, load(document(1, 0, stateFallback)).quadCount());
+            assertThrows(IOException.class, () -> load(document(1, 0, emptyRoutedState)));
+            String routedState = emptyRoutedState.replace(
+                    "\"quads\":[]",
+                    "\"quads\":[" + QUAD + "]"
+            );
+            assertEquals(1, load(document(1, 1, routedState)).quadCount());
         }
         assertThrows(IOException.class, () -> load(document(
                 1,

@@ -46,21 +46,23 @@ door IDs receive an upper half with matching primary camouflage.
 
 ## Renderer-path matrix
 
-The compact matrix, included by `framedblocks_gallery:build`, has five expected
+The compact matrix, included by `framedblocks_gallery:build`, has eight expected
 add-on geometry cases: a single cube, a
 double slab with primary and secondary camouflage, an explicitly oriented
 slope, an adjacent cube pair, and an adjacent double panel with primary and
-secondary camouflage. Its eleven expected stock-fallback cases cover adjustable
-model data, collapsible offsets, a potted flower, one-way-window direction, a
-sign BER, special camouflage overlay, `waterlogged=true`, `glowing=true`,
-`propagates_skylight=true`, reinforcement, and permitted-but-non-opaque glass
+secondary camouflage, plus waterlogged, glowing, and skylight-propagating
+states. Its eight expected stock-fallback cases cover adjustable model data,
+collapsible offsets, a potted flower, one-way-window direction, a sign BER,
+special camouflage overlay, reinforcement, and permitted-but-non-opaque glass
 camouflage. The manifest records the exact expected reason for every path.
 
 The six model-data/BER family cases remain on their original resource in the
-resource extension. Waterlogged, glowing, skylight-propagating, reinforced,
-and glass cases enter the add-on renderer and then take its runtime fallback.
-Both adjacent-neighbor cases remain on the add-on geometry path. The manifest
-and TSV record this routing stage separately from the final expected path.
+resource extension. Reinforced and glass cases enter the add-on renderer and
+then take its runtime fallback. Waterlogged, glowing, skylight-propagating, and
+both adjacent-neighbor cases remain on the add-on geometry path. BlueMap adds
+the standard water overlay after custom geometry, while the FramedBlocks
+renderer applies persisted glowing light. The manifest and TSV record routing
+separately from the final expected path.
 
 Missing and malformed camouflage are deliberately not built. FramedBlocks
 normalizes either form while loading the block entity and writes canonical

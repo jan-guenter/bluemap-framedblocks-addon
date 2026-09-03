@@ -340,32 +340,8 @@ public final class GeometryTemplateProfile {
         }
         return Optional.of(new StateResolution(
                 exact.templateIndex(),
-                classifyState(blockId, exact.key().properties(), supportByBlockId.get(blockId))
+                supportByBlockId.get(blockId)
         ));
-    }
-
-    private static FramedBlocks1061Support.Classification classifyState(
-            String blockId,
-            Map<String, String> properties,
-            FramedBlocks1061Support.Classification classification
-    ) {
-        if (classification != null
-                && classification.routed()
-                && "true".equals(properties.get("waterlogged"))) {
-            classification = FramedBlocks1061Support.waterloggedFallback();
-        }
-        if (classification != null
-                && classification.routed()
-                && "true".equals(properties.get("glowing"))
-                && !"framedblocks:framed_glowing_cube".equals(blockId)) {
-            classification = FramedBlocks1061Support.dynamicLightFallback();
-        }
-        if (classification != null
-                && classification.routed()
-                && "true".equals(properties.get("propagates_skylight"))) {
-            classification = FramedBlocks1061Support.dynamicSkylightFallback();
-        }
-        return classification;
     }
 
     public Map<String, FramedBlocks1061Support.Classification> supportByBlockId() {
@@ -646,11 +622,8 @@ public final class GeometryTemplateProfile {
             }
         }
         for (StateAliasEntry state : rawStates.values()) {
-            FramedBlocks1061Support.Classification classification = classifyState(
-                    state.key().blockId(),
-                    state.key().properties(),
-                    support.get(state.key().blockId())
-            );
+            FramedBlocks1061Support.Classification classification =
+                    support.get(state.key().blockId());
             if (classification != null
                     && classification.routed()
                     && state.templateIndex() >= 0

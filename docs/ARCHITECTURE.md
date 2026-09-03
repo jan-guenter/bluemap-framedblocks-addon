@@ -58,10 +58,12 @@ All 234 rendered IDs are redirected to the synthetic dispatch resource. Each
 render consults the machine-readable status/family/reason classification
 again. The 206 state-only families use projected geometry. The 28 client-
 dynamic families use bounded surrogates, manual bodies, or stock-model
-placeholder substitution. Waterlogged, dynamic-light/skylight, and reinforced
-contexts go directly to the original FramedBlocks resource. Routed blocks next
-to another framed block remain in the projected path instead of exposing the
-stock wooden frame.
+placeholder substitution. Waterlogged, glowing, and skylight-propagating
+contexts remain on projected geometry; BlueMap supplies its standard
+waterlogged overlay and the renderer applies persisted glowing light.
+Reinforced contexts go directly to the original FramedBlocks resource. Routed
+blocks next to another framed block remain in the projected path instead of
+exposing the stock wooden frame.
 
 The geometry renderer performs only an exact raw-state-key lookup and consumes
 the referenced representative template. It does not recreate FramedBlocks'
@@ -117,11 +119,12 @@ model file, source archive, or JAR to the production add-on.
 The observed 4,858 figure counts templates whose block ID belongs to a base
 projected-geometry family. It is an activation inventory check, not a
 rendering-safety shortcut. Empty-geometry and routing decisions are still
-evaluated for every complete raw state so waterlogged and dynamic-property fallbacks cannot inherit
-the base-family result.
+evaluated for every complete raw state.
 
 Camouflage substitution is deliberately narrower than ordinary BlueMap model
-rendering. The strict lane requires exactly one untransformed variant and one
+rendering. Resolution reads the original blockstate resource directly so an
+installed add-on's synthetic renderer dispatch cannot replace the camouflage
+material definition. The strict lane requires exactly one untransformed variant and one
 shaded, ambient-occluded, non-emissive 0..16 cube element. All six faces must
 use full 0..16 UVs, zero face rotation, their matching cull face, and an opaque
 texture. A second bounded lane accepts at most 16 weighted alternatives only

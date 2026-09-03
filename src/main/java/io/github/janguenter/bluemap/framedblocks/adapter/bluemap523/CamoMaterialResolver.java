@@ -66,7 +66,7 @@ final class CamoMaterialResolver {
     ) {
         BlockState state = new BlockState(Key.parse(normalized.id()), normalized.properties());
         de.bluecolored.bluemap.core.resources.pack.resourcepack.blockstate.BlockState resource =
-                resourcePack.getBlockState(state);
+                resourcePack.getBlockStates().get(state.getId());
         if (resource == null) {
             return MaterialPalette.missing(state, "blockstate-resource-missing");
         }

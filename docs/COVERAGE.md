@@ -29,12 +29,13 @@ identifiers, all in the `minecraft` or `framedblocks` namespace. Empty
 dynamic-family templates remain in the inventory so policy and exact-state
 validation cannot silently broaden coverage.
 
-Unknown IDs never become supported implicitly. Dispatched IDs also fall back
-for waterlogged, dynamic-light/skylight, or reinforced contexts. Routed blocks
-beside other framed blocks remain on the projected geometry path, which avoids
-exposing the stock wooden frame instead of camouflage. The renderer applies
-BlueMap's general neighborhood culling metadata, not FramedBlocks' complete
-client-side, shape-aware hidden-face model data.
+Unknown IDs never become supported implicitly. Waterlogged, glowing, and
+skylight-propagating states remain on projected geometry; reinforced contexts
+still fall back. Routed blocks beside other framed blocks remain on the
+projected geometry path, which avoids exposing the stock wooden frame instead
+of camouflage. The renderer applies BlueMap's general neighborhood culling
+metadata, not FramedBlocks' complete client-side, shape-aware hidden-face model
+data.
 The fallback renders the original resource without recursing through the
 add-on. It keeps routing failures contained, but it cannot reconstruct omitted
 client model data or block-entity-renderer output and is not classified as
@@ -110,13 +111,14 @@ overview passed as qualitative technical references only.
 
 ## Current renderer regression gallery
 
-The unreleased adjacency candidate's canonical gallery build includes 16
-logical renderer-path cases with 18 physical framed blocks. Five cases expect
+The unreleased structure-audit candidate's canonical gallery build includes 16
+logical renderer-path cases with 18 physical framed blocks. Eight cases expect
 projected add-on geometry:
 the original single cube, double slab, and oriented slope, plus an adjacent
-cube pair and an adjacent dual-camouflage double panel. Eleven cases retain
-the bounded stock fallback. This generated fixture checks routing and saved
-state, not client-exact hidden-face parity.
+cube pair, an adjacent dual-camouflage double panel, and waterlogged, glowing,
+and skylight-propagating states. Eight cases retain bounded stock fallback.
+This generated fixture checks routing and saved state, not client-exact
+hidden-face parity.
 
 ## Implemented M0 path
 

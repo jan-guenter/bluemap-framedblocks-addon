@@ -213,10 +213,7 @@ final class FramedBlocksResourceExtension implements ResourcePackExtension {
                     FLOWER_POT,
                     ONE_WAY_WINDOW,
                     SPECIAL_CAMO_OVERLAY -> true;
-            case WATERLOGGED_FLUID,
-                    DYNAMIC_LIGHT,
-                    DYNAMIC_SKYLIGHT,
-                    STATIC_BAKED_MODEL -> false;
+            case STATIC_BAKED_MODEL -> false;
         };
     }
 

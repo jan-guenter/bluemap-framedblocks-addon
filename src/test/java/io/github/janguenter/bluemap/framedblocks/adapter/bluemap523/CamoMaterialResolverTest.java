@@ -229,6 +229,47 @@ class CamoMaterialResolverTest {
     }
 
     @Test
+    void readsTheCamoBlockstateBeforeOtherAddonsRouteItToSyntheticDispatch() throws IOException {
+        Key blockId = Key.parse("chipped:polished_tuff");
+        Key textureId = Key.parse("chipped:block/polished_tuff");
+        Key modelId = Key.parse("chipped:block/polished_tuff");
+        var synthetic = resource(new VariantSet(
+                new Variant(new ResourcePath<Model>("bluemap_chipped:block/dispatch"))
+        ));
+        ResourcePack resourcePack = new ResourcePack(new PackVersion(34, 0)) {
+            @Override
+            public de.bluecolored.bluemap.core.resources.pack.resourcepack.blockstate.BlockState
+                    getBlockState(BlockState ignored) {
+                return synthetic;
+            }
+
+            @Override
+            public BlockProperties getBlockProperties(BlockState ignored) {
+                return properties(false, false);
+            }
+        };
+        putOpaqueTexture(resourcePack, textureId);
+        putModel(resourcePack, modelId, modelWithTexture(textureId));
+        putDefaultVariants(
+                resourcePack,
+                blockId,
+                new Variant(new ResourcePath<Model>(modelId))
+        );
+
+        CamoMaterialResolver.MaterialPalette palette = new CamoMaterialResolver(resourcePack)
+                .resolve(NormalizedCamo.block(new NormalizedBlockState(
+                        blockId.getFormatted(),
+                        Map.of()
+                )), null);
+
+        assertTrue(palette.resolved());
+        assertEquals("ok", palette.reason());
+        for (Direction direction : Direction.values()) {
+            assertEquals(textureId, palette.get(direction).texture());
+        }
+    }
+
+    @Test
     void rejectsWeightedCubeAlternativesWithDifferentMaterials() throws IOException {
         ResourcePack resourcePack = new ResourcePack(new PackVersion(34, 0));
         Key blockId = Key.parse("test:materially_different_variants");

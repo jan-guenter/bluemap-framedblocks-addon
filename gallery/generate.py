@@ -587,14 +587,14 @@ RENDERER_CASE_SPECS = (
     ),
     RendererCaseSpec(
         "fb1061-rp-10",
-        "fallback_waterlogged",
+        "proven_waterlogged",
         "framedblocks:framed_slab",
         (
             "framedblocks:framed_slab[glowing=false,propagates_skylight=false,"
             "solid=true,top=false,waterlogged=true]"
         ),
-        "stock_fallback",
-        "waterlogged-fluid-rendering-required",
+        "addon_geometry",
+        "state-only-baked-model",
         "minecraft:stone",
     ),
     RendererCaseSpec(
@@ -627,28 +627,28 @@ RENDERER_CASE_SPECS = (
     ),
     RendererCaseSpec(
         "fb1061-rp-13",
-        "fallback_glowing",
+        "proven_glowing",
         "framedblocks:framed_slab",
         (
             "framedblocks:framed_slab[glowing=true,propagates_skylight=false,"
             "solid=true,top=false,waterlogged=false]"
         ),
-        "stock_fallback",
-        "dynamic-light-camo-required",
+        "addon_geometry",
+        "state-only-baked-model",
         "minecraft:stone",
         glowing_modifier=True,
     ),
     RendererCaseSpec(
         "fb1061-rp-14",
-        "fallback_propagates_skylight",
+        "proven_propagates_skylight",
         "framedblocks:framed_slab",
         (
             "framedblocks:framed_slab[glowing=false,propagates_skylight=true,"
             "solid=false,top=false,waterlogged=false]"
         ),
-        "stock_fallback",
-        "dynamic-skylight-camo-required",
-        "minecraft:glass",
+        "addon_geometry",
+        "state-only-baked-model",
+        "minecraft:stone",
     ),
     RendererCaseSpec(
         "fb1061-rp-15",
@@ -1034,10 +1034,10 @@ def validate_renderer_layout(cases: list[dict[str, object]]) -> None:
     actual_categories = {case["category"] for case in cases}
     if len(expected_categories) != len(cases) or actual_categories != expected_categories:
         raise ValueError("renderer-path categories must be unique and complete")
-    if sum(case["expected_path"] == "addon_geometry" for case in cases) != 5:
-        raise ValueError("renderer-path matrix must contain five add-on cases")
-    if sum(case["expected_path"] == "stock_fallback" for case in cases) != 11:
-        raise ValueError("renderer-path matrix must contain eleven stock fallbacks")
+    if sum(case["expected_path"] == "addon_geometry" for case in cases) != 8:
+        raise ValueError("renderer-path matrix must contain eight add-on cases")
+    if sum(case["expected_path"] == "stock_fallback" for case in cases) != 8:
+        raise ValueError("renderer-path matrix must contain eight stock fallbacks")
     if sum(
         case["routing_stage"] == "resource_extension_unrouted" for case in cases
     ) != 6:
@@ -1045,8 +1045,8 @@ def validate_renderer_layout(cases: list[dict[str, object]]) -> None:
     if sum(
         case["routing_stage"] == "addon_renderer_runtime_fallback"
         for case in cases
-    ) != 5:
-        raise ValueError("renderer-path matrix must contain five runtime fallbacks")
+    ) != 2:
+        raise ValueError("renderer-path matrix must contain two runtime fallbacks")
 
     occupied: set[Position] = set(anchors)
     companion_count = 0

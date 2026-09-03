@@ -6,6 +6,10 @@
   framed block is adjacent instead of exposing the stock wooden frame.
 - Extend the renderer-path gallery with adjacent single- and dual-camouflage
   cases.
+- Resolve camouflage from its original blockstate resource before other
+  BlueMap add-ons apply synthetic dispatch mappings.
+- Keep waterlogged, glowing, and skylight-propagating states on projected
+  geometry; retain BlueMap's water overlay and persisted full-bright lighting.
 
 ## [0.1.0-alpha.4] - 2026-09-02
 

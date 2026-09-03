@@ -41,9 +41,12 @@ collapsible, flower-pot, one-way-window, and special-overlay families use
 their bounded family renderers.
 
 Routing is additionally fail-closed per state and render context. Waterlogged,
-dynamic-light/skylight, and reinforced blocks use the original FramedBlocks
-resource fallback. Routed blocks beside other framed blocks keep their
-projected camouflage geometry and apply BlueMap's neighborhood culling rules.
+glowing, and skylight-propagating states keep their projected camouflage
+geometry; BlueMap adds its standard water overlay after custom rendering and
+the geometry renderer applies persisted glowing light. Reinforced blocks use
+the original FramedBlocks resource fallback. Routed blocks beside other framed
+blocks keep their projected camouflage geometry and apply BlueMap's
+neighborhood culling rules.
 Those rules do not reproduce every client-side, shape-aware hidden-face
 decision. Fallback is a safety path, not a claim of client-equivalent rendering
 for model-data- or block-entity-renderer-driven blocks. Block camouflage is accepted when
@@ -86,11 +89,12 @@ render. The owner accepted its FramedBlocks gallery on 2026-09-01. The current
 repeat the combined integration render before inheriting that visual result.
 The older enabled-to-stock-to-restored lifecycle remains historical evidence.
 
-The unreleased adjacency candidate replaces the stock wooden fallback for
-routed blocks beside other framed blocks. Its canonical gallery build includes
-a generated renderer-path matrix with 16 logical cases and 18 physical framed
-blocks. Five cases expect add-on geometry, including adjacent single- and
-dual-camouflage cases, and eleven expect bounded stock fallback.
+The unreleased structure-audit candidate replaces stock wooden fallback for
+routed blocks beside other framed blocks, resolves camouflage from the original
+blockstate resource before another add-on's synthetic dispatch mapping, and
+keeps waterlogged and light-bearing states on projected geometry. Its canonical
+gallery build includes 16 logical cases and 18 physical framed blocks. Eight
+cases expect add-on geometry and eight expect bounded stock fallback.
 
 Two historical fixed-view modded-client captures and a BlueMap software-WebGL
 overview provide qualitative technical evidence. The `0.1.0-alpha.3`

@@ -264,10 +264,11 @@ final class FramedGeometryRenderer implements BlockRenderer {
             return;
         }
 
-        CamoMaterialResolver.Material uniform = uniformMaterial(primary);
-        if (uniform == null) {
-            fallback(
-                    support.reason() + "-directional-camo-unsupported",
+        if (MANUAL_BODY_IDS.contains(blockId)) {
+            renderManualBody(
+                    profile,
+                    primary,
+                    blockEntity,
                     block,
                     tileModel,
                     blockColor,
@@ -276,11 +277,10 @@ final class FramedGeometryRenderer implements BlockRenderer {
             return;
         }
 
-        if (MANUAL_BODY_IDS.contains(blockId)) {
-            renderManualBody(
-                    profile,
-                    primary,
-                    blockEntity,
+        CamoMaterialResolver.Material uniform = uniformMaterial(primary);
+        if (uniform == null) {
+            fallback(
+                    support.reason() + "-directional-camo-unsupported",
                     block,
                     tileModel,
                     blockColor,

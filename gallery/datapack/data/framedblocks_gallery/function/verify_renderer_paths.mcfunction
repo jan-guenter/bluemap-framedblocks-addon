@@ -48,7 +48,7 @@ execute unless block 206 100 244 framedblocks:framed_bouncy_cube[glowing=false,p
 execute unless data block 206 100 244 {camo:{type:"framedblocks:block",state:{Name:"minecraft:stone"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b} run scoreboard players add #failures fbgr1061 1
 execute unless block 206 99 244 minecraft:stone run scoreboard players add #failures fbgr1061 1
 
-# fb1061-rp-10 fallback_waterlogged
+# fb1061-rp-10 proven_waterlogged
 execute unless block 210 100 244 framedblocks:framed_slab[glowing=false,propagates_skylight=false,solid=true,top=false,waterlogged=true] run scoreboard players add #failures fbgr1061 1
 execute unless data block 210 100 244 {camo:{type:"framedblocks:block",state:{Name:"minecraft:stone"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b} run scoreboard players add #failures fbgr1061 1
 execute unless block 210 99 244 minecraft:stone run scoreboard players add #failures fbgr1061 1
@@ -66,14 +66,14 @@ execute unless block 218 100 244 framedblocks:framed_cube[alt=false,glowing=fals
 execute unless data block 218 100 244 {camo:{type:"framedblocks:block",state:{Name:"minecraft:glass"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b} run scoreboard players add #failures fbgr1061 1
 execute unless block 218 99 244 minecraft:stone run scoreboard players add #failures fbgr1061 1
 
-# fb1061-rp-13 fallback_glowing
+# fb1061-rp-13 proven_glowing
 execute unless block 198 100 248 framedblocks:framed_slab[glowing=true,propagates_skylight=false,solid=true,top=false,waterlogged=false] run scoreboard players add #failures fbgr1061 1
 execute unless data block 198 100 248 {camo:{type:"framedblocks:block",state:{Name:"minecraft:stone"}},glowing:1b,intangible:0b,reinforced:0b,updated:3b} run scoreboard players add #failures fbgr1061 1
 execute unless block 198 99 248 minecraft:stone run scoreboard players add #failures fbgr1061 1
 
-# fb1061-rp-14 fallback_propagates_skylight
+# fb1061-rp-14 proven_propagates_skylight
 execute unless block 202 100 248 framedblocks:framed_slab[glowing=false,propagates_skylight=true,solid=false,top=false,waterlogged=false] run scoreboard players add #failures fbgr1061 1
-execute unless data block 202 100 248 {camo:{type:"framedblocks:block",state:{Name:"minecraft:glass"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b} run scoreboard players add #failures fbgr1061 1
+execute unless data block 202 100 248 {camo:{type:"framedblocks:block",state:{Name:"minecraft:stone"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b} run scoreboard players add #failures fbgr1061 1
 execute unless block 202 99 248 minecraft:stone run scoreboard players add #failures fbgr1061 1
 
 # fb1061-rp-15 fallback_reinforced
