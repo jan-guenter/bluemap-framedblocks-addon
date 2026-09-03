@@ -46,6 +46,13 @@ jobs:
 
       - name: Materialize exact BlueMap feature-branch identity
         run: |
+          mapfile -t fork_release_tags < <(
+            git -C .ci/bluemap tag --list \
+              'v5.23-agent.backport-5.23-mc1.21.1-*'
+          )
+          if ((${#fork_release_tags[@]})); then
+            git -C .ci/bluemap tag --delete "${fork_release_tags[@]}"
+          fi
           git -C .ci/bluemap switch -C \
             feature/backport-5.23-stateless-java-web-server
           test "$(git -C .ci/bluemap rev-parse HEAD)" = \
@@ -91,14 +98,22 @@ jobs:
       - name: Build and test
         run: |
           version="$(sed -n 's/^addon_version=//p' gradle.properties)"
-          ./gradlew --no-daemon \
-            -PbluemapSourcePath=.ci/bluemap \
-            -PframedblocksJar="${RUNNER_TEMP}/framedblocks/FramedBlocks-10.6.1.jar" \
-            -PreleaseTag="v${version}" \
-            clean check build geometryProjectionClasses \
-            generatePomFileForAddonPublication \
-            generateMetadataFileForAddonPublication \
-            verifyPublicationPom verifyPinnedArtifact verifyReleaseMetadata
+          gradle_args=(
+            --no-daemon
+            -PbluemapSourcePath=.ci/bluemap
+            -PframedblocksJar="${RUNNER_TEMP}/framedblocks/FramedBlocks-10.6.1.jar"
+          )
+          tasks=(
+            clean check build geometryProjectionClasses
+            generatePomFileForAddonPublication
+            generateMetadataFileForAddonPublication
+            verifyPublicationPom verifyPinnedArtifact
+          )
+          if [[ "${version}" != *-SNAPSHOT ]]; then
+            gradle_args+=("-PreleaseTag=v${version}")
+            tasks+=(verifyReleaseMetadata)
+          fi
+          ./gradlew "${gradle_args[@]}" "${tasks[@]}"
           test -s build/publications/addon/pom-default.xml
           test -s build/publications/addon/module.json
 
