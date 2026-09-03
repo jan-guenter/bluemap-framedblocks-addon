@@ -33,7 +33,7 @@
       "version": "3.0.0",
       "artifact_size": 817004,
       "artifact_sha256": "42f97cf776cff8261bf671e64a333bbec65a8bf28e519d39cd958e0af9848e6c",
-      "license": "LGPL-3.0",
+      "license": "LGPL-3.0-or-later",
       "use": "Exact persisted custom-camouflage type, RGB value, and glass-state contract.",
       "bundled": false
     },
