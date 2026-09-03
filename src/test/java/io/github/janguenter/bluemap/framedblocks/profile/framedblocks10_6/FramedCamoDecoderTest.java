@@ -70,6 +70,40 @@ class FramedCamoDecoderTest {
     }
 
     @Test
+    void decodesTheExactCrystalixGlassCamoAndItsPersistedColor() {
+        CamoDecodeResult result = decoder.decode(Map.of(
+                "type", "crystalix:crystalix_glass",
+                "color", 0x98_1234,
+                "state", Map.of(
+                        "Name", "crystalix:crystalix_glass",
+                        "Properties", Map.of(
+                                "ghost", "block_all",
+                                "invisible", "false",
+                                "light", "light",
+                                "shadeless", "false",
+                                "transparent", "false",
+                                "waterlogged", "false"
+                        )
+                )
+        ));
+
+        NormalizedCamo camo = result.camo().orElseThrow();
+        assertEquals(NormalizedCamo.Kind.BLOCK, camo.kind());
+        assertEquals("crystalix:crystalix_glass", camo.blockState().orElseThrow().id());
+        assertEquals(0x98_1234, camo.fixedTintRgb());
+    }
+
+    @Test
+    void rejectsCrystalixCamoWithoutItsPersistedColor() {
+        CamoDecodeResult result = decoder.decode(Map.of(
+                "type", "crystalix:crystalix_glass",
+                "state", Map.of("Name", "crystalix:crystalix_glass")
+        ));
+
+        assertEquals("invalid-crystalix-camo-color", result.reason());
+    }
+
+    @Test
     void rejectsUnsupportedMalformedAndRecursiveInputs() {
         assertEquals("missing-camo", decoder.decode(null).reason());
         assertEquals(

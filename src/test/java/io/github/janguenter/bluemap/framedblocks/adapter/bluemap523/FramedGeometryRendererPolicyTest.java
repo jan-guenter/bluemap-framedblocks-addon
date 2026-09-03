@@ -15,6 +15,7 @@ import de.bluecolored.bluemap.core.world.LightData;
 import de.bluecolored.bluemap.core.world.biome.Biome;
 import de.bluecolored.bluemap.core.world.block.BlockAccess;
 import de.bluecolored.bluemap.core.world.block.BlockNeighborhood;
+import de.bluecolored.bluemap.core.util.math.Color;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
@@ -29,46 +30,6 @@ class FramedGeometryRendererPolicyTest {
     private static final int X = 1;
     private static final int Y = 64;
     private static final int Z = 1;
-
-    @Test
-    void framedAdjacencyForcesTheHiddenFaceFallbackLane() {
-        BlockNeighborhood adjacentFramed = neighborhood(Map.of(
-                new Position(X, Y, Z), BlockState.fromString("framedblocks:framed_cube"),
-                new Position(X + 1, Y, Z), BlockState.fromString("framedblocks:framed_slope")
-        ));
-        BlockNeighborhood adjacentTerrain = neighborhood(Map.of(
-                new Position(X, Y, Z), BlockState.fromString("framedblocks:framed_cube"),
-                new Position(X + 1, Y, Z), BlockState.fromString("minecraft:stone")
-        ));
-
-        assertEquals("framedblocks", adjacentFramed.getNeighborBlock(1, 0, 0)
-                .getBlockState().getId().getNamespace());
-        assertTrue(FramedGeometryRenderer.hasUnsupportedFramedNeighbor(adjacentFramed));
-        assertFalse(FramedGeometryRenderer.hasUnsupportedFramedNeighbor(adjacentTerrain));
-    }
-
-    @Test
-    void matchingVerticalDoorCompanionDoesNotForceFallback() {
-        BlockNeighborhood matchingDoor = neighborhood(Map.of(
-                new Position(X, Y, Z), BlockState.fromString(
-                        "framedblocks:framed_door[facing=north,half=lower,open=false]"
-                ),
-                new Position(X, Y + 1, Z), BlockState.fromString(
-                        "framedblocks:framed_door[facing=north,half=upper,open=false]"
-                )
-        ));
-        BlockNeighborhood mismatchedDoor = neighborhood(Map.of(
-                new Position(X, Y, Z), BlockState.fromString(
-                        "framedblocks:framed_door[facing=north,half=lower,open=false]"
-                ),
-                new Position(X, Y + 1, Z), BlockState.fromString(
-                        "framedblocks:framed_door[facing=north,half=upper,open=true]"
-                )
-        ));
-
-        assertFalse(FramedGeometryRenderer.hasUnsupportedFramedNeighbor(matchingDoor));
-        assertTrue(FramedGeometryRenderer.hasUnsupportedFramedNeighbor(mismatchedDoor));
-    }
 
     @Test
     void appliedCamoProfileRejectsEmptyAndUnresolvedPalettes() {
@@ -117,6 +78,16 @@ class FramedGeometryRendererPolicyTest {
         assertEquals(0, FramedGeometryRenderer.boundaryOffset(0.5F));
         assertEquals(0, FramedGeometryRenderer.boundaryOffset(0.001F));
         assertEquals(0, FramedGeometryRenderer.boundaryOffset(0.999F));
+    }
+
+    @Test
+    void fixedTintPreservesPremultipliedAlphaForTranslucentTextures() {
+        Color tint = FramedGeometryRenderer.fixedTint(0x12_34ab, new Color());
+        Color translucent = new Color().set(0x80ff_ffff, true).multiply(tint);
+
+        assertTrue(tint.premultiplied);
+        assertTrue(translucent.premultiplied);
+        new Color().set(0F, 0F, 0F, 0F, true).add(translucent);
     }
 
     @Test

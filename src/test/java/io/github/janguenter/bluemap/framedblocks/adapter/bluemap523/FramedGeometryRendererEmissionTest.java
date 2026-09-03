@@ -146,6 +146,60 @@ class FramedGeometryRendererEmissionTest {
     }
 
     @Test
+    void emitsProjectedCamoBesideAnotherFramedBlock() throws Exception {
+        Fixture fixture = fixture(true);
+        RecordingTileModel model = new RecordingTileModel();
+
+        fixture.renderer().render(
+                fixture.neighborhood(),
+                null,
+                new TileModelView(model),
+                new Color()
+        );
+
+        assertEquals(6, model.size());
+        assertMaterial(model, 0, fixture.gallery().get(PRIMARY_NORTH));
+        assertMaterial(model, 2, fixture.gallery().get(SECONDARY_EAST));
+        assertMaterial(model, 4, fixture.gallery().get(FIXED));
+    }
+
+    @Test
+    void emitsGlowingProjectedCamoAtFullBlockLight() throws Exception {
+        Fixture fixture = fixture(false, true);
+        RecordingTileModel model = new RecordingTileModel();
+
+        fixture.renderer().render(
+                fixture.neighborhood(),
+                null,
+                new TileModelView(model),
+                new Color()
+        );
+
+        assertEquals(6, model.size());
+        for (int face = 0; face < model.size(); face++) {
+            assertEquals(15, model.face(face).blocklight());
+        }
+    }
+
+    @Test
+    void emissiveCamoSuppressesTheZeroEmissionTemplateAo() throws Exception {
+        Fixture fixture = fixture(false, false, 15);
+        RecordingTileModel model = new RecordingTileModel();
+
+        fixture.renderer().render(
+                fixture.neighborhood(),
+                null,
+                new TileModelView(model),
+                new Color()
+        );
+
+        assertEquals(15, model.face(0).blocklight());
+        assertEquals(15, model.face(1).blocklight());
+        assertArrayEquals(new float[]{1F, 1F, 1F}, model.face(0).aos(), 0F);
+        assertArrayEquals(new float[]{1F, 1F, 1F}, model.face(1).aos(), 0F);
+    }
+
+    @Test
     void rollsBackPartialProfileGeometryBeforeRenderingTheStockResource() throws Exception {
         Fixture fixture = fixture();
         RecordingTileModel model = new RecordingTileModel();
@@ -172,6 +226,23 @@ class FramedGeometryRendererEmissionTest {
     }
 
     private static Fixture fixture() throws Exception {
+        return fixture(false);
+    }
+
+    private static Fixture fixture(boolean adjacentFramedBlock) throws Exception {
+        return fixture(adjacentFramedBlock, false);
+    }
+
+    private static Fixture fixture(boolean adjacentFramedBlock, boolean glowing)
+            throws Exception {
+        return fixture(adjacentFramedBlock, glowing, 0);
+    }
+
+    private static Fixture fixture(
+            boolean adjacentFramedBlock,
+            boolean glowing,
+            int primaryEmission
+    ) throws Exception {
         ResourcePack resourcePack = new ResourcePack(new PackVersion(34, 0));
         Key primary = Key.parse("test:block/primary");
         Key secondary = Key.parse("test:block/secondary");
@@ -194,7 +265,8 @@ class FramedGeometryRendererEmissionTest {
                 Key.parse("test:block/primary_model"),
                 primary,
                 Direction.NORTH,
-                PRIMARY_NORTH
+                PRIMARY_NORTH,
+                primaryEmission
         );
         putCube(
                 resourcePack,
@@ -224,11 +296,22 @@ class FramedGeometryRendererEmissionTest {
         TextureGallery gallery = new TextureGallery();
         gallery.put(resourcePack.getTextures());
 
-        FramedBlockEntityData blockEntity = blockEntity();
-        Map<Position, BlockState> states = Map.of(
-                new Position(X, Y, Z), BlockState.fromString(FRAMED_CUBE.getFormatted()),
-                new Position(X - 1, Y + 1, Z), BlockState.fromString("test:occluder")
-        );
+        FramedBlockEntityData blockEntity = blockEntity(glowing);
+        Map<Position, BlockState> states = adjacentFramedBlock
+                ? Map.of(
+                        new Position(X, Y, Z),
+                        BlockState.fromString(FRAMED_CUBE.getFormatted()),
+                        new Position(X + 1, Y, Z),
+                        BlockState.fromString("framedblocks:framed_double_slab"),
+                        new Position(X - 1, Y + 1, Z),
+                        BlockState.fromString("test:occluder")
+                )
+                : Map.of(
+                        new Position(X, Y, Z),
+                        BlockState.fromString(FRAMED_CUBE.getFormatted()),
+                        new Position(X - 1, Y + 1, Z),
+                        BlockState.fromString("test:occluder")
+                );
         Map<Position, BlockEntity> blockEntities = Map.of(
                 new Position(X, Y, Z), blockEntity
         );
@@ -272,6 +355,26 @@ class FramedGeometryRendererEmissionTest {
             Direction specialDirection,
             Key specialTexture
     ) {
+        putCube(
+                resourcePack,
+                blockId,
+                modelId,
+                defaultTexture,
+                specialDirection,
+                specialTexture,
+                0
+        );
+    }
+
+    private static void putCube(
+            ResourcePack resourcePack,
+            Key blockId,
+            Key modelId,
+            Key defaultTexture,
+            Direction specialDirection,
+            Key specialTexture,
+            int lightEmission
+    ) {
         EnumMap<Direction, Face> faces = new EnumMap<>(Direction.class);
         for (Direction direction : Direction.values()) {
             Key texture = direction == specialDirection ? specialTexture : defaultTexture;
@@ -286,6 +389,9 @@ class FramedGeometryRendererEmissionTest {
         Model model = new Model(new Element(
                 Vector3f.ZERO,
                 new Vector3f(16F, 16F, 16F),
+                de.bluecolored.bluemap.core.resources.pack.resourcepack.model.Rotation.ZERO,
+                true,
+                lightEmission,
                 faces
         ));
         model.calculateProperties(resourcePack.getTextures());
@@ -300,11 +406,12 @@ class FramedGeometryRendererEmissionTest {
         );
     }
 
-    private static FramedBlockEntityData blockEntity() throws ReflectiveOperationException {
+    private static FramedBlockEntityData blockEntity(boolean glowing)
+            throws ReflectiveOperationException {
         FramedBlockEntityData data = new FramedBlockEntityData();
         setField(data, "camo", blockCamo("test:primary"));
         setField(data, "camoTwo", blockCamo("test:secondary"));
-        setField(data, "glowing", false);
+        setField(data, "glowing", glowing);
         setField(data, "intangible", false);
         setField(data, "reinforced", false);
         setField(data, "updated", (byte) 3);

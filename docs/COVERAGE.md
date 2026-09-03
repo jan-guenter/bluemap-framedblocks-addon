@@ -29,11 +29,13 @@ identifiers, all in the `minecraft` or `framedblocks` namespace. Empty
 dynamic-family templates remain in the inventory so policy and exact-state
 validation cannot silently broaden coverage.
 
-Unknown IDs never become supported implicitly. Dispatched IDs also fall back
-for waterlogged, dynamic-light/skylight, reinforced, or unsupported framed-
-adjacent contexts. Matching vertical halves of the same door remain in the
-projected path. Other adjacent framed blocks fall back because FramedBlocks
-hidden-face model data depends on the neighboring shape.
+Unknown IDs never become supported implicitly. Waterlogged, glowing, and
+skylight-propagating states remain on projected geometry; reinforced contexts
+still fall back. Routed blocks beside other framed blocks remain on the
+projected geometry path, which avoids exposing the stock wooden frame instead
+of camouflage. The renderer applies BlueMap's general neighborhood culling
+metadata, not FramedBlocks' complete client-side, shape-aware hidden-face model
+data.
 The fallback renders the original resource without recursing through the
 add-on. It keeps routing failures contained, but it cannot reconstruct omitted
 client model data or block-entity-renderer output and is not classified as
@@ -45,16 +47,21 @@ produce stock fallback. Multiple raw states may reference one representative
 template only within the same block ID, and every representative must retain a
 self-alias.
 
-Block camouflage is accepted when BlueMap resource metadata proves either a
-single canonical untransformed opaque full cube or at most 16 weighted
-full-cube alternatives whose faces all collapse to one identical opaque,
-non-animated texture, tint, and emission. The weighted lane covers Minecraft
-1.21.1 stone's normal, mirrored, and 180-degree alternatives, but normalizes
-their random UV orientation: FramedBlocks' selected client-cache alternative
-is not persisted in Anvil. This lane therefore claims correct material and
-geometry, not pixel-identical random texture orientation. Random-offset,
-always-waterlogged, multipart, materially directional, arbitrary-transform,
-fluid, and all other unproven camouflage falls back. BlueMap does not expose
+Block camouflage is accepted when BlueMap resource metadata proves a bounded
+single-element full-cube material model. Directional textures, tint, alpha,
+and emission are retained, so leaves, glass, non-occluding cubes, and no-shade
+emissive cubes can supply the material for projected frame geometry. At most 16
+weighted alternatives are accepted: identical alternatives use the normalized
+fast path, while differing alternatives use BlueMap's deterministic position
+hash. A transformed selected alternative must use one uniform material.
+Generated Fusion cell-zero textures are used when present to avoid mapping a
+whole connected-texture atlas onto each face; neighbor-aware camo connectivity
+is not claimed. Exact quarter-turn transforms remap directional face
+materials. The exact Minecraft 1.21.1 mushroom-stem multipart model and exact
+Crystalix 3.0.0 persisted-colour glass camouflage have bounded dedicated
+paths. Random-offset, always-waterlogged, other multipart, multi-element,
+fluid, custom-camouflage, and all other unresolved camouflage falls back.
+BlueMap does not expose
 the actual modded-client
 `BakedQuad` or render-layer result, so this proof cannot detect every possible
 client wrapper whose resource metadata itself looks canonical. That is a
@@ -77,10 +84,15 @@ and client-versus-BlueMap visual acceptance remain explicit requirements.
 The exact BlueMap feature-backport host activated the `0.1.0-alpha.3` profile
 in the All the Mons 1.2.0 combined integration server. A targeted
 FramedBlocks render completed with zero container restarts, and the owner
-accepted the gallery on 2026-09-01. The `0.1.0-alpha.4` candidate retains the
-same renderer and profile but changes shared-source ownership and packaging,
-so it still needs a combined rerender. Neither result is a pixel-by-pixel
-proof or an enabled-to-stock-to-restored lifecycle.
+accepted the gallery on 2026-09-01. The `0.1.0-alpha.5` structure-audit
+candidate subsequently scanned 204 located overworld structures and found 11
+whose own bounds contain persisted FramedBlocks camouflage. All 11 were
+rerendered and opened in BlueMap on 2026-09-04; a material-index audit found no
+direct stock frame association in 10 structures and three spatial associations
+in one Bee Gym tile, where runtime diagnostics and close-up inspection found no
+camouflage resolution failure or visible wood fallback. The owner accepted the
+complete 11-structure review set on 2026-09-04. These results are neither a
+pixel-by-pixel proof nor an enabled-to-stock-to-restored lifecycle.
 
 ## Historical expanded exact-profile fixtures
 
@@ -98,7 +110,7 @@ framed blocks:
   add-on geometry and materials;
 - twelve cases intentionally used the original-resource fallback for selected
   model-data, BER, overlay, waterlogged, dynamic-light/skylight, reinforced,
-  adjacent-framed, and non-opaque-material conditions.
+  adjacent-framed, and unresolved-material conditions.
 
 The final exact artifact completed an enabled-to-stock-absent-to-re-enabled
 full-restart lifecycle with zero container restarts in each accepted run. All
@@ -106,6 +118,17 @@ full-restart lifecycle with zero container restarts in each accepted run. All
 re-enabling. Six `rstate` bookkeeping files changed, so whole-tree byte
 identity is not claimed. Two fixed-view client captures and a BlueMap WebGL
 overview passed as qualitative technical references only.
+
+## Current renderer regression gallery
+
+The `0.1.0-alpha.5` structure-audit release's canonical gallery build includes
+16 logical renderer-path cases with 18 physical framed blocks. Eight cases
+expect projected add-on geometry:
+the original single cube, double slab, and oriented slope, plus an adjacent
+cube pair, an adjacent dual-camouflage double panel, and waterlogged, glowing,
+and skylight-propagating states. Eight cases retain bounded stock fallback.
+This generated fixture checks routing and saved state, not client-exact
+hidden-face parity.
 
 ## Implemented M0 path
 
@@ -151,7 +174,7 @@ stone-control PRBM byte-for-byte.
 
 - non-default-state and comprehensive block-entity/model-data/BER matrices;
 - secondary-camouflage and modifier matrices beyond the focused cases;
-- add-on-owned framed-neighbor culling rather than intentional fallback;
+- client-exact, shape-aware framed-neighbor hidden-face behavior;
 - pixel-repeatable modded-client reference;
 - malformed/incompatible-profile, in-process resource-reload, and
   concurrent-render matrices;

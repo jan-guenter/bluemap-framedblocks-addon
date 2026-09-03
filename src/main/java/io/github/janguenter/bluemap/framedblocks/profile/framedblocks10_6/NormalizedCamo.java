@@ -11,25 +11,33 @@ public record NormalizedCamo(
         Kind kind,
         Optional<NormalizedBlockState> blockState,
         String fluidId,
-        String flowDirection
+        String flowDirection,
+        int fixedTintRgb
 ) {
     public NormalizedCamo {
         Objects.requireNonNull(kind, "kind");
         blockState = Objects.requireNonNull(blockState, "blockState");
         fluidId = Objects.requireNonNull(fluidId, "fluidId");
         flowDirection = Objects.requireNonNull(flowDirection, "flowDirection");
+        if (fixedTintRgb < -1 || fixedTintRgb > 0x00ff_ffff) {
+            throw new IllegalArgumentException("fixedTintRgb is outside the RGB range");
+        }
     }
 
     public static NormalizedCamo empty() {
-        return new NormalizedCamo(Kind.EMPTY, Optional.empty(), "", "down");
+        return new NormalizedCamo(Kind.EMPTY, Optional.empty(), "", "down", -1);
     }
 
     public static NormalizedCamo block(NormalizedBlockState state) {
-        return new NormalizedCamo(Kind.BLOCK, Optional.of(state), "", "down");
+        return new NormalizedCamo(Kind.BLOCK, Optional.of(state), "", "down", -1);
+    }
+
+    public static NormalizedCamo fixedTintBlock(NormalizedBlockState state, int rgb) {
+        return new NormalizedCamo(Kind.BLOCK, Optional.of(state), "", "down", rgb);
     }
 
     public static NormalizedCamo fluid(String fluidId, String flowDirection) {
-        return new NormalizedCamo(Kind.FLUID, Optional.empty(), fluidId, flowDirection);
+        return new NormalizedCamo(Kind.FLUID, Optional.empty(), fluidId, flowDirection, -1);
     }
 
     public enum Kind {

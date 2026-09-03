@@ -62,48 +62,48 @@ class CamoMaterialResolverTest {
     }
 
     @Test
-    void acceptsOnlyCanonicalUntransformedFullCubeFaces() {
+    void acceptsOnlyBoundedFullCubeMaterialModels() {
         Model canonical = model(Vector3f.ZERO, new Vector3f(16F, 16F, 16F), 0, true);
-        assertTrue(CamoMaterialResolver.isSimpleStaticCube(
+        assertTrue(CamoMaterialResolver.isFullCubeMaterialVariant(
                 new Variant(MODEL_PATH),
                 canonical
         ));
 
-        assertFalse(CamoMaterialResolver.isSimpleStaticCube(
+        assertTrue(CamoMaterialResolver.isFullCubeMaterialVariant(
                 new Variant(MODEL_PATH, 0F, 90F, 0F),
                 canonical
         ));
         Variant customRenderer = new Variant(MODEL_PATH);
         customRenderer.setRenderer(BlockRendererType.LIQUID);
-        assertFalse(CamoMaterialResolver.isSimpleStaticCube(customRenderer, canonical));
-        assertFalse(CamoMaterialResolver.isSimpleStaticCube(
+        assertFalse(CamoMaterialResolver.isFullCubeMaterialVariant(customRenderer, canonical));
+        assertTrue(CamoMaterialResolver.isFullCubeMaterialVariant(
                 new Variant(MODEL_PATH, 0F, 0F, 0F, true, 1D),
                 canonical
         ));
-        assertFalse(CamoMaterialResolver.isSimpleStaticCube(
+        assertFalse(CamoMaterialResolver.isFullCubeMaterialVariant(
                 new Variant(MODEL_PATH),
                 model(Vector3f.ZERO, new Vector3f(16F, 15F, 16F), 0, true)
         ));
-        assertFalse(CamoMaterialResolver.isSimpleStaticCube(
+        assertTrue(CamoMaterialResolver.isFullCubeMaterialVariant(
                 new Variant(MODEL_PATH),
                 model(Vector3f.ZERO, new Vector3f(16F, 16F, 16F), 90, true)
         ));
-        assertFalse(CamoMaterialResolver.isSimpleStaticCube(
+        assertTrue(CamoMaterialResolver.isFullCubeMaterialVariant(
                 new Variant(MODEL_PATH),
                 model(Vector3f.ZERO, new Vector3f(16F, 16F, 16F), 0, false)
         ));
-        assertFalse(CamoMaterialResolver.isSimpleStaticCube(
+        assertTrue(CamoMaterialResolver.isFullCubeMaterialVariant(
                 new Variant(MODEL_PATH),
                 model(Vector3f.ZERO, new Vector3f(16F, 16F, 16F), 0, true, 15)
         ));
-        assertFalse(CamoMaterialResolver.isSimpleStaticCube(
+        assertFalse(CamoMaterialResolver.isFullCubeMaterialVariant(
                 new Variant(MODEL_PATH),
                 model(Vector3f.ZERO, new Vector3f(16F, 16F, 16F), 0, true, 0, 1)
         ));
     }
 
     @Test
-    void rejectsCutoutAndTranslucentTexturesFromTheOpaqueLane() throws IOException {
+    void acceptsOpaqueCutoutAndTranslucentMaterialTextures() throws IOException {
         BufferedImage opaqueImage = new BufferedImage(2, 1, BufferedImage.TYPE_INT_ARGB);
         opaqueImage.setRGB(0, 0, 0xFFFFFFFF);
         opaqueImage.setRGB(1, 0, 0xFFFFFFFF);
@@ -113,18 +113,19 @@ class CamoMaterialResolverTest {
         BufferedImage translucentImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
         translucentImage.setRGB(0, 0, 0x80FFFFFF);
 
-        assertTrue(CamoMaterialResolver.isCanonicalOpaque(Texture.from(
+        assertTrue(CamoMaterialResolver.isUsableTexture(Texture.from(
                 Key.parse("minecraft:block/opaque"),
                 opaqueImage
         )));
-        assertFalse(CamoMaterialResolver.isCanonicalOpaque(Texture.from(
+        assertTrue(CamoMaterialResolver.isUsableTexture(Texture.from(
                 Key.parse("minecraft:block/cutout"),
                 cutoutImage
         )));
-        assertFalse(CamoMaterialResolver.isCanonicalOpaque(Texture.from(
+        assertTrue(CamoMaterialResolver.isUsableTexture(Texture.from(
                 Key.parse("minecraft:block/translucent"),
                 translucentImage
         )));
+        assertFalse(CamoMaterialResolver.isUsableTexture(null));
     }
 
     @Test
@@ -144,6 +145,23 @@ class CamoMaterialResolverTest {
     }
 
     @Test
+    void selectsWeightedVariantsWithThePinnedBlueMapPositionHash() {
+        Variant first = new Variant(MODEL_PATH);
+        Variant second = new Variant(new ResourcePath<>("minecraft:block/test_cube_two"));
+        VariantSet variants = new VariantSet(first, second);
+
+        assertSame(first, CamoMaterialResolver.selectVariantAt(variants, 1, 64, 1));
+        assertSame(second, CamoMaterialResolver.selectVariantAt(variants, 3, 64, 1));
+        assertSame(second, CamoMaterialResolver.selectVariantAt(variants, 3, 64, 1));
+        assertNull(CamoMaterialResolver.selectVariantAt(
+                new VariantSet(new Variant(MODEL_PATH, 0F, 0F, 0F, false, 0D)),
+                1,
+                64,
+                1
+        ));
+    }
+
+    @Test
     void weightedUniformLaneAllowsOnlyUnambiguousQuarterTurnCubeTransforms() {
         Model mirrored = model(
                 Vector3f.ZERO,
@@ -156,19 +174,19 @@ class CamoMaterialResolverTest {
                 null
         );
 
-        assertTrue(CamoMaterialResolver.isUniformOpaqueFullCubeVariant(
+        assertTrue(CamoMaterialResolver.isFullCubeMaterialVariant(
                 new Variant(MODEL_PATH, 0F, 180F, 0F),
                 mirrored
         ));
-        assertFalse(CamoMaterialResolver.isUniformOpaqueFullCubeVariant(
+        assertTrue(CamoMaterialResolver.isFullCubeMaterialVariant(
                 new Variant(MODEL_PATH, 0F, 180F, 0F, true, 1D),
                 mirrored
         ));
-        assertFalse(CamoMaterialResolver.isUniformOpaqueFullCubeVariant(
+        assertFalse(CamoMaterialResolver.isFullCubeMaterialVariant(
                 new Variant(MODEL_PATH, 0F, 45F, 0F),
                 mirrored
         ));
-        assertFalse(CamoMaterialResolver.isUniformOpaqueFullCubeVariant(
+        assertFalse(CamoMaterialResolver.isFullCubeMaterialVariant(
                 new Variant(MODEL_PATH, 0F, 180F, 0F, false, 0D),
                 mirrored
         ));
@@ -229,6 +247,229 @@ class CamoMaterialResolverTest {
     }
 
     @Test
+    void rotatesDirectionalMaterialsWithTheSelectedQuarterTurnVariant() throws IOException {
+        ResourcePack resourcePack = new ResourcePack(new PackVersion(34, 0));
+        Key blockId = Key.parse("test:directional_cube");
+        Key modelId = Key.parse("test:block/directional_cube");
+        for (Direction direction : Direction.values()) {
+            putOpaqueTexture(resourcePack, Key.parse(
+                    "minecraft:block/test_"
+                            + direction.name().toLowerCase(java.util.Locale.ROOT)
+            ));
+        }
+        putModel(resourcePack, modelId, model(
+                Vector3f.ZERO,
+                new Vector3f(16F, 16F, 16F),
+                0,
+                true
+        ));
+        putDefaultVariants(
+                resourcePack,
+                blockId,
+                new Variant(new ResourcePath<Model>(modelId), 0F, 90F, 0F)
+        );
+
+        CamoMaterialResolver.MaterialPalette palette = new CamoMaterialResolver(resourcePack)
+                .resolve(NormalizedCamo.block(new NormalizedBlockState(
+                        blockId.getFormatted(),
+                        Map.of()
+                )), null);
+
+        assertTrue(palette.resolved());
+        assertEquals(Key.parse("minecraft:block/test_north"),
+                palette.get(Direction.EAST).texture());
+        assertEquals(Key.parse("minecraft:block/test_east"),
+                palette.get(Direction.SOUTH).texture());
+        assertEquals(Key.parse("minecraft:block/test_south"),
+                palette.get(Direction.WEST).texture());
+        assertEquals(Key.parse("minecraft:block/test_west"),
+                palette.get(Direction.NORTH).texture());
+        assertEquals(Key.parse("minecraft:block/test_up"),
+                palette.get(Direction.UP).texture());
+        assertEquals(Key.parse("minecraft:block/test_down"),
+                palette.get(Direction.DOWN).texture());
+    }
+
+    @Test
+    void readsTheCamoBlockstateBeforeOtherAddonsRouteItToSyntheticDispatch() throws IOException {
+        Key blockId = Key.parse("chipped:polished_tuff");
+        Key textureId = Key.parse("chipped:block/polished_tuff");
+        Key modelId = Key.parse("chipped:block/polished_tuff");
+        var synthetic = resource(new VariantSet(
+                new Variant(new ResourcePath<Model>("bluemap_chipped:block/dispatch"))
+        ));
+        ResourcePack resourcePack = new ResourcePack(new PackVersion(34, 0)) {
+            @Override
+            public de.bluecolored.bluemap.core.resources.pack.resourcepack.blockstate.BlockState
+                    getBlockState(BlockState ignored) {
+                return synthetic;
+            }
+
+            @Override
+            public BlockProperties getBlockProperties(BlockState ignored) {
+                return properties(false, false);
+            }
+        };
+        putOpaqueTexture(resourcePack, textureId);
+        putModel(resourcePack, modelId, modelWithTexture(textureId));
+        putDefaultVariants(
+                resourcePack,
+                blockId,
+                new Variant(new ResourcePath<Model>(modelId))
+        );
+
+        CamoMaterialResolver.MaterialPalette palette = new CamoMaterialResolver(resourcePack)
+                .resolve(NormalizedCamo.block(new NormalizedBlockState(
+                        blockId.getFormatted(),
+                        Map.of()
+                )), null);
+
+        assertTrue(palette.resolved());
+        assertEquals("ok", palette.reason());
+        for (Direction direction : Direction.values()) {
+            assertEquals(textureId, palette.get(direction).texture());
+        }
+    }
+
+    @Test
+    void resolvesGeneratedFusionTileAndLuminaxMaterialSemantics() throws IOException {
+        ResourcePack resourcePack = new ResourcePack(new PackVersion(34, 0));
+        Key glassBlock = Key.parse("connectedglass:clear_glass_cyan");
+        Key glassModel = Key.parse("connectedglass:clear_glass_cyan");
+        Key glassSheet = Key.parse("connectedglass:clear_glass/clear_glass_cyan");
+        Key glassTile = Key.parse(
+                "bluemap_connectedglass:tiles/connectedglass/"
+                        + "clear_glass/clear_glass_cyan/0"
+        );
+        putTexture(resourcePack, glassSheet, 0x80FFFFFF);
+        putTexture(resourcePack, glassTile, 0x80FFFFFF);
+        putModel(resourcePack, glassModel, modelWithAppearance(glassSheet, true, true, 0));
+        putDefaultVariants(
+                resourcePack,
+                glassBlock,
+                new Variant(new ResourcePath<Model>(glassModel))
+        );
+
+        CamoMaterialResolver resolver = new CamoMaterialResolver(resourcePack);
+        CamoMaterialResolver.MaterialPalette glass = resolver.resolve(
+                NormalizedCamo.block(new NormalizedBlockState(
+                        glassBlock.getFormatted(),
+                        Map.of()
+                )),
+                null
+        );
+
+        assertTrue(glass.resolved());
+        for (Direction direction : Direction.values()) {
+            assertEquals(glassTile, glass.get(direction).texture());
+        }
+
+        Key luminaxBlock = Key.parse("luminax:white_luminax_block");
+        Key luminaxModel = Key.parse("luminax:block/white_luminax_block");
+        Key luminaxTexture = Key.parse("luminax:block/white_luminax_block");
+        putTexture(resourcePack, luminaxTexture, 0xFFFFFFFF);
+        putModel(
+                resourcePack,
+                luminaxModel,
+                modelWithAppearance(luminaxTexture, false, false, 0)
+        );
+        putDefaultVariants(
+                resourcePack,
+                luminaxBlock,
+                new Variant(new ResourcePath<Model>(luminaxModel))
+        );
+
+        CamoMaterialResolver.MaterialPalette luminax = resolver.resolve(
+                NormalizedCamo.block(new NormalizedBlockState(
+                        luminaxBlock.getFormatted(),
+                        Map.of()
+                )),
+                null
+        );
+
+        assertTrue(luminax.resolved());
+        for (Direction direction : Direction.values()) {
+            assertEquals(15, luminax.get(direction).lightEmission());
+        }
+
+        Key dimLuminaxBlock = Key.parse("luminax:dim_white_luminax_block");
+        putDefaultVariants(
+                resourcePack,
+                dimLuminaxBlock,
+                new Variant(new ResourcePath<Model>(luminaxModel))
+        );
+        CamoMaterialResolver.MaterialPalette dimLuminax = resolver.resolve(
+                NormalizedCamo.block(new NormalizedBlockState(
+                        dimLuminaxBlock.getFormatted(),
+                        Map.of()
+                )),
+                null
+        );
+        assertTrue(dimLuminax.resolved());
+        for (Direction direction : Direction.values()) {
+            assertEquals(0, dimLuminax.get(direction).lightEmission());
+        }
+    }
+
+    @Test
+    void resolvesCrystalixGlassFromItsExactPersistedColorAndLightState() throws IOException {
+        ResourcePack resourcePack = new ResourcePack(new PackVersion(34, 0));
+        Key texture = Key.parse("crystalix:block/colored_crystalix_glass");
+        putTexture(resourcePack, texture, 0x80FFFFFF);
+        NormalizedBlockState state = new NormalizedBlockState(
+                "crystalix:crystalix_glass",
+                Map.of(
+                        "ghost", "block_all",
+                        "invisible", "false",
+                        "light", "light",
+                        "shadeless", "false",
+                        "transparent", "false",
+                        "waterlogged", "false"
+                )
+        );
+
+        CamoMaterialResolver.MaterialPalette palette = new CamoMaterialResolver(resourcePack)
+                .resolve(NormalizedCamo.fixedTintBlock(state, 0x12_34ab), null);
+
+        assertTrue(palette.resolved());
+        assertEquals(0x12_34ab, palette.fixedTintRgb());
+        for (Direction direction : Direction.values()) {
+            assertEquals(texture, palette.get(direction).texture());
+            assertEquals(15, palette.get(direction).lightEmission());
+        }
+    }
+
+    @Test
+    void resolvesMinecraft1211MushroomStemMultipartFacesExactly() throws IOException {
+        ResourcePack resourcePack = new ResourcePack(new PackVersion(34, 0));
+        Key stem = Key.parse("minecraft:block/mushroom_stem");
+        Key inside = Key.parse("minecraft:block/mushroom_block_inside");
+        putOpaqueTexture(resourcePack, stem);
+        putOpaqueTexture(resourcePack, inside);
+
+        CamoMaterialResolver.MaterialPalette palette = new CamoMaterialResolver(resourcePack)
+                .resolve(NormalizedCamo.block(new NormalizedBlockState(
+                        "minecraft:mushroom_stem",
+                        Map.of(
+                                "down", "true",
+                                "east", "false",
+                                "north", "true",
+                                "south", "false",
+                                "up", "true",
+                                "west", "false"
+                        )
+                )), null);
+
+        assertTrue(palette.resolved());
+        assertEquals(stem, palette.get(Direction.DOWN).texture());
+        assertEquals(inside, palette.get(Direction.EAST).texture());
+        assertEquals(stem, palette.get(Direction.NORTH).texture());
+        assertEquals(inside, palette.get(Direction.SOUTH).texture());
+        assertEquals(stem, palette.get(Direction.UP).texture());
+        assertEquals(inside, palette.get(Direction.WEST).texture());
+    }
+
+    @Test
     void rejectsWeightedCubeAlternativesWithDifferentMaterials() throws IOException {
         ResourcePack resourcePack = new ResourcePack(new PackVersion(34, 0));
         Key blockId = Key.parse("test:materially_different_variants");
@@ -258,17 +499,25 @@ class CamoMaterialResolverTest {
     }
 
     @Test
-    void rejectsDynamicBlockPropertiesFromTheStaticOpaqueLane() {
-        assertTrue(CamoMaterialResolver.isSimpleStaticProperties(
+    void ignoresRenderLayerPropertiesButRejectsDynamicMaterialSources() {
+        assertTrue(CamoMaterialResolver.isStableMaterialProperties(
                 properties(false, false)
         ));
-        assertFalse(CamoMaterialResolver.isSimpleStaticProperties(
+        assertTrue(CamoMaterialResolver.isStableMaterialProperties(
+                BlockProperties.builder()
+                        .culling(false)
+                        .occluding(false)
+                        .alwaysWaterlogged(false)
+                        .randomOffset(false)
+                        .build()
+        ));
+        assertFalse(CamoMaterialResolver.isStableMaterialProperties(
                 properties(true, false)
         ));
-        assertFalse(CamoMaterialResolver.isSimpleStaticProperties(
+        assertFalse(CamoMaterialResolver.isStableMaterialProperties(
                 properties(false, true)
         ));
-        assertFalse(CamoMaterialResolver.isSimpleStaticProperties(null));
+        assertFalse(CamoMaterialResolver.isStableMaterialProperties(null));
     }
 
     private static BlockProperties properties(
@@ -342,6 +591,36 @@ class CamoMaterialResolverTest {
         );
     }
 
+    private static Model modelWithAppearance(
+            Key textureId,
+            boolean ambientOcclusion,
+            boolean shade,
+            int lightEmission
+    ) {
+        EnumMap<Direction, Face> faces = new EnumMap<>(Direction.class);
+        for (Direction direction : Direction.values()) {
+            faces.put(direction, new Face(
+                    new Vector4f(0F, 0F, 16F, 16F),
+                    new TextureVariable(new ResourcePath<Texture>(textureId)),
+                    direction,
+                    0,
+                    -1
+            ));
+        }
+        return new Model(
+                Map.of(),
+                new Element[]{new Element(
+                        Vector3f.ZERO,
+                        new Vector3f(16F, 16F, 16F),
+                        Rotation.ZERO,
+                        shade,
+                        lightEmission,
+                        faces
+                )},
+                ambientOcclusion
+        );
+    }
+
     private static Model model(
             Vector3f from,
             Vector3f to,
@@ -381,8 +660,13 @@ class CamoMaterialResolverTest {
 
     private static void putOpaqueTexture(ResourcePack resourcePack, Key textureId)
             throws IOException {
+        putTexture(resourcePack, textureId, 0xFFFFFFFF);
+    }
+
+    private static void putTexture(ResourcePack resourcePack, Key textureId, int argb)
+            throws IOException {
         BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
-        image.setRGB(0, 0, 0xFFFFFFFF);
+        image.setRGB(0, 0, argb);
         resourcePack.getTextures().put(textureId, Texture.from(textureId, image));
     }
 

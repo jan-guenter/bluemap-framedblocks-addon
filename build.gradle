@@ -437,10 +437,24 @@ tasks.register('verifyPinnedArtifact', Exec) {
 }
 
 def releaseTag = providers.gradleProperty('releaseTag')
+def generatedPom = layout.buildDirectory.file(
+        'publications/addon/pom-default.xml'
+)
+def generatedModule = layout.buildDirectory.file(
+        'publications/addon/module.json'
+)
 
 tasks.register('verifyReleaseMetadata') {
+    dependsOn tasks.named('jar')
+    dependsOn tasks.named('sourcesJar')
+    dependsOn tasks.named('generatePomFileForAddonPublication')
+    dependsOn tasks.named('generateMetadataFileForAddonPublication')
     inputs.file('CHANGELOG.md')
     inputs.file('provenance/release.json')
+    inputs.file(productionJar)
+    inputs.file(publishedSourcesJar)
+    inputs.file(generatedPom)
+    inputs.file(generatedModule)
     inputs.property('releaseTag', releaseTag.orElse(''))
 
     doLast {
@@ -475,28 +489,6 @@ tasks.register('verifyReleaseMetadata') {
         }
         def release = new groovy.json.JsonSlurper()
                 .parse(file('provenance/release.json'))
-        def expectedArtifacts = [
-                production_jar: [
-                        file_name: "${artifact_id}-${project.version}.jar",
-                        size: 1341258,
-                        sha256: 'de195ed764dea85099e238099f1fc98671b0bbfa951b939ec26ae4912a1971b2'
-                ],
-                sources_jar: [
-                        file_name: "${artifact_id}-${project.version}-sources.jar",
-                        size: 1263584,
-                        sha256: 'af39cfa7175b5419bdc8e256c026f72e8a57ee08fbb18b6fce7609f6a03602b4'
-                ],
-                pom: [
-                        file_name: "${artifact_id}-${project.version}.pom",
-                        size: 1688,
-                        sha256: 'e596866048bb60acef5cd9e81eefbedd5e0963f15a9e2b3b9fdefe3e67452380'
-                ],
-                gradle_module: [
-                        file_name: "${artifact_id}-${project.version}.module.json",
-                        size: 2858,
-                        sha256: 'f5d72388d3d494626a382273f11a16e59fe7e46fd83c1955bc271691ef3aa325'
-                ]
-        ]
         if (release.schema_version != 1 ||
                 release.status != 'owner-accepted-release-candidate' ||
                 release.version != releaseVersion ||
@@ -508,9 +500,38 @@ tasks.register('verifyReleaseMetadata') {
                 release.owner_accepted_combined_staging?.visual_acceptance != true) {
             throw new GradleException('Owner-accepted release provenance is not sealed')
         }
-        expectedArtifacts.each { name, expected ->
-            if (release.final_release_artifacts[name] != expected) {
-                throw new GradleException("Release provenance mismatch for ${name}")
+        def actualArtifacts = [
+                production_jar: [
+                        file: productionJar.get().asFile,
+                        file_name: "${artifact_id}-${project.version}.jar"
+                ],
+                sources_jar: [
+                        file: publishedSourcesJar.get().asFile,
+                        file_name: "${artifact_id}-${project.version}-sources.jar"
+                ],
+                pom: [
+                        file: generatedPom.get().asFile,
+                        file_name: "${artifact_id}-${project.version}.pom"
+                ],
+                gradle_module: [
+                        file: generatedModule.get().asFile,
+                        file_name: "${artifact_id}-${project.version}.module.json"
+                ]
+        ]
+        actualArtifacts.each { name, actual ->
+            def recorded = release.final_release_artifacts[name]
+            def digest = java.security.MessageDigest.getInstance('SHA-256')
+                    .digest(actual.file.bytes)
+                    .encodeHex()
+                    .toString()
+            if (!(recorded instanceof Map) ||
+                    recorded.file_name != actual.file_name ||
+                    recorded.size != actual.file.length() ||
+                    recorded.sha256 != digest) {
+                throw new GradleException(
+                        "Release provenance mismatch for ${name}: " +
+                                "actual=${actual.file.name}/${actual.file.length()}/${digest}"
+                )
             }
         }
     }
@@ -520,10 +541,6 @@ tasks.named('check').configure {
     dependsOn tasks.named('verifyProductionJar')
     dependsOn tasks.named('verifySourcesJar')
 }
-
-def generatedPom = layout.buildDirectory.file(
-        'publications/addon/pom-default.xml'
-)
 
 tasks.register('verifyPublicationPom') {
     dependsOn tasks.named('generatePomFileForAddonPublication')

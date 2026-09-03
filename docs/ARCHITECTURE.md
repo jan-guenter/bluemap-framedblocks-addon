@@ -58,10 +58,12 @@ All 234 rendered IDs are redirected to the synthetic dispatch resource. Each
 render consults the machine-readable status/family/reason classification
 again. The 206 state-only families use projected geometry. The 28 client-
 dynamic families use bounded surrogates, manual bodies, or stock-model
-placeholder substitution. Waterlogged, dynamic-light/skylight, reinforced,
-and unsupported framed-adjacent contexts go directly to the original
-FramedBlocks resource. Matching upper and lower halves of the same closed or
-open door remain in the projected path.
+placeholder substitution. Waterlogged, glowing, and skylight-propagating
+contexts remain on projected geometry; BlueMap supplies its standard
+waterlogged overlay and the renderer applies persisted glowing light.
+Reinforced contexts go directly to the original FramedBlocks resource. Routed
+blocks next to another framed block remain in the projected path instead of
+exposing the stock wooden frame.
 
 The geometry renderer performs only an exact raw-state-key lookup and consumes
 the referenced representative template. It does not recreate FramedBlocks'
@@ -71,7 +73,10 @@ intentional: accepting a plausible subset would silently bind geometry to the
 wrong client state. Exported face UVs, winding, cull direction, ambient
 occlusion, and block/sky light values remain explicit inputs. Primary
 camouflage and a template-conditional secondary camouflage may supply face
-materials.
+materials. Projected faces with a cull direction use BlueMap's general
+neighborhood culling properties. This removes faces against culling neighbors
+but does not recreate every FramedBlocks client-side, shape-aware hidden-face
+decision.
 
 The private physical capture uses schema v2 to separate the complete registry
 inventory from deduplicated geometry:
@@ -114,19 +119,26 @@ model file, source archive, or JAR to the production add-on.
 The observed 4,858 figure counts templates whose block ID belongs to a base
 projected-geometry family. It is an activation inventory check, not a
 rendering-safety shortcut. Empty-geometry and routing decisions are still
-evaluated for every complete raw state so waterlogged and dynamic-property fallbacks cannot inherit
-the base-family result.
+evaluated for every complete raw state.
 
 Camouflage substitution is deliberately narrower than ordinary BlueMap model
-rendering. The strict lane requires exactly one untransformed variant and one
-shaded, ambient-occluded, non-emissive 0..16 cube element. All six faces must
-use full 0..16 UVs, zero face rotation, their matching cull face, and an opaque
-texture. A second bounded lane accepts at most 16 weighted alternatives only
-when every positive finite-weight, non-UV-locked default-renderer alternative
-is a full cube with quarter-turn transforms and every face across every model
-resolves to one identical opaque, non-animated texture, tint index, and
-emission value. Both lanes require effective block properties to be culling
-and occluding, non-random-offset, and not always-waterlogged.
+rendering. Resolution reads the original blockstate resource directly so an
+installed add-on's synthetic renderer dispatch cannot replace the camouflage
+material definition. The material lane requires one 0..16 cube element with
+six full-face UVs, bounded tint and emission, no element transform, a supported
+renderer, and only quarter-turn blockstate or face transforms. Occlusion,
+culling, ambient-occlusion, shading, and texture alpha are material semantics,
+not geometry proof, so cutout, translucent, non-occluding, and no-shade cubes
+remain eligible. Effective block properties must be non-random-offset and not
+always-waterlogged.
+
+At most 16 positive finite-weight alternatives are inspected. If they collapse
+to one material, the normalized fast path is used. Otherwise the renderer uses
+the same coordinate hash as BlueMap's `VariantSet` and resolves only the chosen
+alternative. A transformed chosen model must be materially uniform because the
+add-on does not rotate directional palettes. When another active add-on has
+cropped a Fusion sheet, its generated cell-zero texture replaces the raw atlas;
+the raw sheet is never preferred over that generated tile.
 
 The bounded weighted lane is a deliberate material-level approximation.
 FramedBlocks 10.6.1 supplies its caller's random source to the camouflage baked
@@ -135,9 +147,10 @@ in Anvil. Minecraft 1.21.1 stone therefore has provably equivalent material
 across its normal, mirrored, and 180-degree alternatives, while its random UV
 orientation cannot be recovered by BlueMap. The add-on normalizes that UV
 orientation and claims correct geometry/material, not client-pixel-identical
-texture orientation. Multipart, materially directional, animated-weighted,
-arbitrary-transform, cutout/translucent, emissive, fluid, or otherwise
-unresolved camouflage falls back.
+texture orientation. Multipart, multi-element, arbitrary-transform,
+transformed-directional, fluid, custom-camouflage, or otherwise unresolved
+camouflage falls back. Fusion cell zero is a safe disconnected material, not a
+claim of connected-texture parity across neighboring framed blocks.
 
 Fallback invokes the original FramedBlocks blockstate resource through
 BlueMap's ordinary resource renderer while bypassing the add-on's synthetic

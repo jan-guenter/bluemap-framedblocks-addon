@@ -2,6 +2,27 @@
 
 ## Unreleased
 
+## [0.1.0-alpha.5] - 2026-09-04
+
+- Keep routed FramedBlocks on projected camouflage geometry when another
+  framed block is adjacent instead of exposing the stock wooden frame.
+- Extend the renderer-path gallery with adjacent single- and dual-camouflage
+  cases.
+- Resolve camouflage from its original blockstate resource before other
+  BlueMap add-ons apply synthetic dispatch mappings.
+- Keep waterlogged, glowing, and skylight-propagating states on projected
+  geometry; retain BlueMap's water overlay and persisted full-bright lighting.
+- Remap directional materials for exact quarter-turn blockstate variants and
+  allow one empty component of a double frame without falling back both slots.
+- Decode the exact Crystalix custom glass camo, including its persisted RGB
+  colour and emission state.
+- Keep translucent fixed-tint camouflage in BlueMap's premultiplied-alpha
+  compositing path.
+- Resolve the exact six-face Minecraft 1.21.1 mushroom-stem multipart material.
+- Recover only the exact FramedBlocks-relevant Luminax and Productive
+  Metalworks resources from the installed Dyenamics and Friends compatibility
+  packs without bundling third-party assets.
+
 ## [0.1.0-alpha.4] - 2026-09-02
 
 - Compile the four BlueMap 5.23 integration primitives from the exact

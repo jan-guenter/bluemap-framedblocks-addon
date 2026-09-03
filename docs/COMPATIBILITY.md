@@ -35,8 +35,8 @@ and BlueMap backport `5.22-agent.backport-5.22-mc1.21.1-1` at
 `fe79cf5b9f4d8ca28f4e41c2aeb9ef792e336a8d`. The current runtime detector does
 not accept that old host identity. The `0.1.0-alpha.3` 1.2.0 candidate passed
 an exact-host composite render and owner visual review. The
-`0.1.0-alpha.4` source-consolidation candidate still requires a combined
-integration rerender and has not repeated the historical full removal-and-
-restoration lifecycle.
+`0.1.0-alpha.5` structure-audit candidate passed its combined structure
+rerender and owner visual review on 2026-09-04. It has not repeated the
+historical full removal-and-restoration lifecycle.
 
 No later FramedBlocks version is supported or inferred from this profile.

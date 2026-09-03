@@ -41,22 +41,34 @@ collapsible, flower-pot, one-way-window, and special-overlay families use
 their bounded family renderers.
 
 Routing is additionally fail-closed per state and render context. Waterlogged,
-dynamic-light/skylight, reinforced, and unsupported framed-to-framed-adjacent
-blocks use the original FramedBlocks resource fallback. Matching upper and
-lower halves of the same door are handled as one shape. Fallback is a safety
-path, not a claim of client-equivalent rendering for model-data- or
-block-entity-renderer-driven blocks. Block camouflage is accepted when
-BlueMap's baked resource metadata proves either one canonical untransformed
-opaque full-cube variant or a bounded set of uniform-material opaque full-cube
-variants. The latter lane admits Minecraft 1.21.1's normal, mirrored, and
-quarter-turned stone alternatives only after every face of every alternative
-resolves to the same non-animated texture, tint, and emission. It normalizes
-their UV orientation because FramedBlocks does not persist the random client
-cache choice in Anvil data; shape and material are reproduced, but random
-texture orientation is not pixel-identical to an arbitrary client session.
-Fluid, cutout, translucent, non-occluding, materially directional,
-multipart, multi-element, random-offset, always-waterlogged, or otherwise
-unproven camouflage falls back. BlueMap does not
+glowing, and skylight-propagating states keep their projected camouflage
+geometry; BlueMap adds its standard water overlay after custom rendering and
+the geometry renderer applies persisted glowing light. Reinforced blocks use
+the original FramedBlocks resource fallback. Routed blocks beside other framed
+blocks keep their projected camouflage geometry and apply BlueMap's
+neighborhood culling rules.
+Those rules do not reproduce every client-side, shape-aware hidden-face
+decision. Fallback is a safety path, not a claim of client-equivalent rendering
+for model-data- or block-entity-renderer-driven blocks. Block camouflage is accepted when
+BlueMap's baked resource metadata proves a bounded one-element full-cube
+material model. The material lane preserves directional textures, tint, alpha,
+and emission while FramedBlocks supplies the host geometry. Cutout leaves,
+translucent glass, non-occluding cubes, and no-shade emissive cubes are therefore
+valid material sources. For at most 16 weighted alternatives, identical
+materials use the normalized fast path; materially different alternatives use
+BlueMap's stable position hash. Exact quarter-turn blockstate transforms remap
+directional face materials onto the framed geometry. Generated cell-zero textures supplied by the installed
+Fusion add-ons prevent connected-texture atlases from being stretched across a
+frame, but this does not reproduce camo-aware connectivity between frames.
+The exact Crystalix `3.0.0` custom camo reads its persisted RGB value and glass
+flags directly. When the exact Dyenamics and Friends `2.2.2` JAR is installed,
+the add-on also reads a bounded 90-file Luminax full-block closure and one
+Productive Metalworks texture from that JAR's hidden client compatibility packs.
+Those third-party files remain runtime inputs and are not bundled.
+The exact Minecraft 1.21.1 mushroom-stem multipart model is reduced to its six
+directional face materials. Fluid, other multipart, multi-element,
+random-offset, always-waterlogged, or otherwise unresolved camouflage falls
+back. BlueMap does not
 expose the client `BakedQuad` or render-layer result, so metadata alone cannot
 identify every mod-supplied client wrapper; that residual case remains outside
 the accepted support claim.
@@ -80,17 +92,28 @@ historical rollback evidence, not validation of the current 1.2.0 candidate.
 
 The `0.1.0-alpha.3` renderer passed its local Java 21 tests, build, POM,
 production-JAR audit, exact-host activation, and targeted full-pack composite
-render. The owner accepted its FramedBlocks gallery on 2026-09-01. The current
-`0.1.0-alpha.4` candidate changes source ownership and packaging only. It must
-repeat the combined integration render before inheriting that visual result.
+render. The owner accepted its FramedBlocks gallery on 2026-09-01. The
+`0.1.0-alpha.5` structure-audit release candidate also changes camouflage
+material resolution. It passed the combined structure render and owner visual
+review on 2026-09-04.
 The older enabled-to-stock-to-restored lifecycle remains historical evidence.
 
-Two historical fixed-view modded-client captures and a BlueMap software-WebGL
-overview provide qualitative technical evidence. The `0.1.0-alpha.3`
-integration gallery has owner visual acceptance, but it is not a pixel-repeatable
+The `0.1.0-alpha.5` release replaces stock wooden fallback for
+routed blocks beside other framed blocks, resolves camouflage from the original
+blockstate resource before another add-on's synthetic dispatch mapping, keeps
+waterlogged and light-bearing host states on projected geometry, and adds the
+bounded material lane described above. Its canonical gallery build includes 16
+logical cases and 18 physical framed blocks. Eight cases expect add-on geometry
+and eight expect bounded stock fallback; transparent, emissive, Fusion-tile,
+and weighted-position cases are covered by focused unit tests and the combined
+structure render.
+
+Two historical fixed-view modded-client captures and BlueMap software-WebGL
+captures provide qualitative technical evidence. The `0.1.0-alpha.5`
+structure audit has owner visual acceptance, but it is not a pixel-repeatable
 comparison. The gallery places one default state for each
 placeable/displayable ID, not all 74,196 projected states. Add-on-owned framed-
-neighbor culling, comprehensive model-data/BER and non-default-state coverage,
+neighbor hidden-face parity, comprehensive model-data/BER and non-default-state coverage,
 malformed/reload/concurrency matrices, performance budgets, and production
 deployment remain open. Intentional fallback preserves BlueMap operation but
 is not necessarily client-equivalent.
@@ -114,7 +137,7 @@ bounded NBT decoder -> normalized camouflage state
         |
 digest-validated schema-v3 projected aliases/templates + bounded dynamic-family renderers + conservative runtime gates
         |
-strict or uniform-weighted opaque full-cube material substitution, otherwise original-resource fallback
+bounded full-cube material substitution with positional weighted selection, otherwise original-resource fallback
 ```
 
 See [architecture](docs/ARCHITECTURE.md),

@@ -104,9 +104,9 @@ class FramedBlocksResourceExtensionTest {
                 waterloggedProperties
         );
         BlockProperties waterlogged = waterloggedProperties.build();
-        assertTrue(waterlogged.isCulling());
-        assertTrue(waterlogged.isOccluding());
-        assertTrue(waterlogged.getCullingIdentical());
+        assertFalse(waterlogged.isCulling());
+        assertFalse(waterlogged.isOccluding());
+        assertFalse(waterlogged.getCullingIdentical());
 
         BlockProperties.Builder glowingProperties = allCullingPropertiesEnabled();
         extension.getBlockProperties(
@@ -116,9 +116,9 @@ class FramedBlocksResourceExtensionTest {
                 glowingProperties
         );
         BlockProperties glowing = glowingProperties.build();
-        assertTrue(glowing.isCulling());
-        assertTrue(glowing.isOccluding());
-        assertTrue(glowing.getCullingIdentical());
+        assertFalse(glowing.isCulling());
+        assertFalse(glowing.isOccluding());
+        assertFalse(glowing.getCullingIdentical());
     }
 
     @Test
@@ -228,7 +228,7 @@ class FramedBlocksResourceExtensionTest {
                    "93bd36887dec2684fd7f31dc267e4d8353536284c1fbd96cd3ead74fd22b4448",
                  "alias_pairs_sha256":
                    "dba8fceeb4f7802e51574b1137c32cdbd0aaa62434ab8e7f70c88b254c5a10b3",
-                 "quadCount":1,
+                 "quadCount":3,
                  "nonCamoUtilityBlocks":["framedblocks:framing_saw",
                                          "framedblocks:powered_framing_saw"],
                  "excludedDynamicInputs":["world_block_entity_model_data",
@@ -259,10 +259,46 @@ class FramedBlocksResourceExtensionTest {
                                   "blockLight":0,"skyLight":0}]}]},
                            {"blockId":"framedblocks:framed_cube",
                             "properties":{"glowing":"false","waterlogged":"true"},
-                            "quads":[]},
+                            "quads":[
+                              {"layer":"solid","cullFace":"none",
+                               "direction":"up","component":"fixed",
+                               "sourceFace":"none",
+                               "atlas":"minecraft:textures/atlas/blocks.png",
+                               "sprite":"minecraft:block/stone","tintIndex":-1,
+                               "shade":true,"ambientOcclusion":true,
+                               "modelAmbientOcclusion":"true",
+                               "effectiveAmbientOcclusionUnderZeroEmission":true,
+                               "blockLight":0,"skyLight":0,
+                               "vertices":[
+                                 {"x":0,"y":1,"z":0,"u":0,"v":0,
+                                  "blockLight":0,"skyLight":0},
+                                 {"x":1,"y":1,"z":0,"u":1,"v":0,
+                                  "blockLight":0,"skyLight":0},
+                                 {"x":1,"y":1,"z":1,"u":1,"v":1,
+                                  "blockLight":0,"skyLight":0},
+                                 {"x":0,"y":1,"z":1,"u":0,"v":1,
+                                  "blockLight":0,"skyLight":0}]}]},
                            {"blockId":"framedblocks:framed_cube",
                             "properties":{"glowing":"true","waterlogged":"false"},
-                            "quads":[]},
+                            "quads":[
+                              {"layer":"solid","cullFace":"none",
+                               "direction":"up","component":"fixed",
+                               "sourceFace":"none",
+                               "atlas":"minecraft:textures/atlas/blocks.png",
+                               "sprite":"minecraft:block/stone","tintIndex":-1,
+                               "shade":true,"ambientOcclusion":true,
+                               "modelAmbientOcclusion":"true",
+                               "effectiveAmbientOcclusionUnderZeroEmission":true,
+                               "blockLight":0,"skyLight":0,
+                               "vertices":[
+                                 {"x":0,"y":1,"z":0,"u":0,"v":0,
+                                  "blockLight":0,"skyLight":0},
+                                 {"x":1,"y":1,"z":0,"u":1,"v":0,
+                                  "blockLight":0,"skyLight":0},
+                                 {"x":1,"y":1,"z":1,"u":1,"v":1,
+                                  "blockLight":0,"skyLight":0},
+                                 {"x":0,"y":1,"z":1,"u":0,"v":1,
+                                  "blockLight":0,"skyLight":0}]}]},
                            {"blockId":"framedblocks:framed_tank",
                             "properties":{},"quads":[]}],
                  "states":[{"blockId":"framedblocks:framed_cube",

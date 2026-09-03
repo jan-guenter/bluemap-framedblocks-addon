@@ -46,9 +46,9 @@ rewrite that header or pretend a new physical capture occurred. The 1.2.0
 server-side resource stack still requires deployment control and visual
 acceptance, consistent with the existing no-live-resource-attestation
 limitation. The `0.1.0-alpha.3` combined integration gallery passed that visual
-review on 2026-09-01. The source-consolidated `0.1.0-alpha.4` candidate still
-needs its combined integration rerender; the fingerprint does not attest
-future resource stacks.
+review on 2026-09-01. The `0.1.0-alpha.5` structure-audit candidate passed its
+combined structure rerender and owner visual review on 2026-09-04. The
+fingerprint does not attest future resource stacks.
 
 The accepted `0.1.0-alpha.1` artifact (1,326,858 bytes, SHA-256
 `4a88fd3a78acf4bcc24ac173db5b9db9efc56e057eec31eeded6432b3bd695c5`)
@@ -71,13 +71,30 @@ The exact evidence used from that JAR is:
   `f6127c3048b1812b664209825271553c71c2b2dae9d6a19933702b6fdbe34370`.
 
 The blockstate contains four weighted default alternatives: normal, mirrored,
-and both at a 180-degree Y rotation. The add-on accepts this set only after
-proving that every face of every alternative resolves to one opaque,
-non-animated material. It normalizes UV orientation because FramedBlocks'
-random client cache choice is not persisted in Anvil. This establishes the
-rendered geometry and material, not pixel-identical randomized texture
-orientation. The Minecraft JAR and its assets are evidence only and are not
-bundled or redistributed.
+and both at a 180-degree Y rotation. Every alternative resolves to one
+identical material, so it enters the normalized weighted fast path. Differing
+bounded alternatives instead use BlueMap's coordinate-stable selector. The
+normalization establishes rendered geometry and material, not pixel-identical
+randomized texture orientation. The Minecraft JAR and its assets are evidence
+only and are not bundled or redistributed.
+
+The structure audit also established two exact optional-camouflage inputs:
+
+- Crystalix `3.0.0`, 817,004 bytes, SHA-256
+  `42f97cf776cff8261bf671e64a333bbec65a8bf28e519d39cd958e0af9848e6c`;
+  its custom `crystalix:crystalix_glass` camo stores the 24-bit colour beside
+  the exact glass blockstate in FramedBlocks block-entity data;
+- Dyenamics and Friends `1.21.1-2.2.2`, 8,361,784 bytes, SHA-256
+  `c9797951ec4773d885cad8e15944374d9e33a43102cfafdb883a71d142a3510f`.
+  Its NeoForge client hook exposes resources below `compat_packs/`, which
+  BlueMap's resource-root scan does not execute. The adapter therefore reads
+  only the exact 90-file, 58,086-byte Luminax full-block closure (canonical
+  SHA-256 `ed4180e18caa2f31d62453dee79e36197eb5dcf826788a5d3a4365aa8c86190c`)
+  and the exact 864-byte Productive Metalworks honey-fire-bricks PNG (SHA-256
+  `9880929dba2bae8430658e8cf968b312f5a9dc5a44aad340a1d43d39dc00312d`).
+
+Both artifacts are runtime evidence only. No Crystalix or Dyenamics and
+Friends class, binary, JSON, model, texture, or encoded derivative is bundled.
 
 ## Physical-capture evidence and production source form
 

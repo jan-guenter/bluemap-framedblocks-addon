@@ -21,22 +21,6 @@ public final class FramedBlocks1061Support {
             Family.STATIC_BAKED_MODEL,
             "state-only-baked-model"
     );
-    private static final Classification WATERLOGGED = new Classification(
-            Status.STOCK_FALLBACK,
-            Family.WATERLOGGED_FLUID,
-            "waterlogged-fluid-rendering-required"
-    );
-    private static final Classification DYNAMIC_LIGHT = new Classification(
-            Status.STOCK_FALLBACK,
-            Family.DYNAMIC_LIGHT,
-            "dynamic-light-camo-required"
-    );
-    private static final Classification DYNAMIC_SKYLIGHT = new Classification(
-            Status.STOCK_FALLBACK,
-            Family.DYNAMIC_SKYLIGHT,
-            "dynamic-skylight-camo-required"
-    );
-
     private static final Map<String, Classification> EXCEPTIONS = buildExceptions();
 
     private FramedBlocks1061Support() {
@@ -74,18 +58,6 @@ public final class FramedBlocks1061Support {
             classifications.put(blockId, classification);
         }
         return Map.copyOf(classifications);
-    }
-
-    public static Classification waterloggedFallback() {
-        return WATERLOGGED;
-    }
-
-    public static Classification dynamicLightFallback() {
-        return DYNAMIC_LIGHT;
-    }
-
-    public static Classification dynamicSkylightFallback() {
-        return DYNAMIC_SKYLIGHT;
     }
 
     /** Exact block-family policy used by both runtime routing and profile projection. */
@@ -162,10 +134,7 @@ public final class FramedBlocks1061Support {
         COLLAPSIBLE,
         FLOWER_POT,
         ONE_WAY_WINDOW,
-        SPECIAL_CAMO_OVERLAY,
-        WATERLOGGED_FLUID,
-        DYNAMIC_LIGHT,
-        DYNAMIC_SKYLIGHT
+        SPECIAL_CAMO_OVERLAY
     }
 
     public record Classification(Status status, Family family, String reason) {
