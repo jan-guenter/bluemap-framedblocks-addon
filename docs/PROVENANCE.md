@@ -71,13 +71,12 @@ The exact evidence used from that JAR is:
   `f6127c3048b1812b664209825271553c71c2b2dae9d6a19933702b6fdbe34370`.
 
 The blockstate contains four weighted default alternatives: normal, mirrored,
-and both at a 180-degree Y rotation. The add-on accepts this set only after
-proving that every face of every alternative resolves to one opaque,
-non-animated material. It normalizes UV orientation because FramedBlocks'
-random client cache choice is not persisted in Anvil. This establishes the
-rendered geometry and material, not pixel-identical randomized texture
-orientation. The Minecraft JAR and its assets are evidence only and are not
-bundled or redistributed.
+and both at a 180-degree Y rotation. Every alternative resolves to one
+identical material, so it enters the normalized weighted fast path. Differing
+bounded alternatives instead use BlueMap's coordinate-stable selector. The
+normalization establishes rendered geometry and material, not pixel-identical
+randomized texture orientation. The Minecraft JAR and its assets are evidence
+only and are not bundled or redistributed.
 
 ## Physical-capture evidence and production source form
 

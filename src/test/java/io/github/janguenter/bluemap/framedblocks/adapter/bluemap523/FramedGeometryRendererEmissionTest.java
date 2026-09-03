@@ -182,6 +182,24 @@ class FramedGeometryRendererEmissionTest {
     }
 
     @Test
+    void emissiveCamoSuppressesTheZeroEmissionTemplateAo() throws Exception {
+        Fixture fixture = fixture(false, false, 15);
+        RecordingTileModel model = new RecordingTileModel();
+
+        fixture.renderer().render(
+                fixture.neighborhood(),
+                null,
+                new TileModelView(model),
+                new Color()
+        );
+
+        assertEquals(15, model.face(0).blocklight());
+        assertEquals(15, model.face(1).blocklight());
+        assertArrayEquals(new float[]{1F, 1F, 1F}, model.face(0).aos(), 0F);
+        assertArrayEquals(new float[]{1F, 1F, 1F}, model.face(1).aos(), 0F);
+    }
+
+    @Test
     void rollsBackPartialProfileGeometryBeforeRenderingTheStockResource() throws Exception {
         Fixture fixture = fixture();
         RecordingTileModel model = new RecordingTileModel();
@@ -217,6 +235,14 @@ class FramedGeometryRendererEmissionTest {
 
     private static Fixture fixture(boolean adjacentFramedBlock, boolean glowing)
             throws Exception {
+        return fixture(adjacentFramedBlock, glowing, 0);
+    }
+
+    private static Fixture fixture(
+            boolean adjacentFramedBlock,
+            boolean glowing,
+            int primaryEmission
+    ) throws Exception {
         ResourcePack resourcePack = new ResourcePack(new PackVersion(34, 0));
         Key primary = Key.parse("test:block/primary");
         Key secondary = Key.parse("test:block/secondary");
@@ -239,7 +265,8 @@ class FramedGeometryRendererEmissionTest {
                 Key.parse("test:block/primary_model"),
                 primary,
                 Direction.NORTH,
-                PRIMARY_NORTH
+                PRIMARY_NORTH,
+                primaryEmission
         );
         putCube(
                 resourcePack,
@@ -328,6 +355,26 @@ class FramedGeometryRendererEmissionTest {
             Direction specialDirection,
             Key specialTexture
     ) {
+        putCube(
+                resourcePack,
+                blockId,
+                modelId,
+                defaultTexture,
+                specialDirection,
+                specialTexture,
+                0
+        );
+    }
+
+    private static void putCube(
+            ResourcePack resourcePack,
+            Key blockId,
+            Key modelId,
+            Key defaultTexture,
+            Direction specialDirection,
+            Key specialTexture,
+            int lightEmission
+    ) {
         EnumMap<Direction, Face> faces = new EnumMap<>(Direction.class);
         for (Direction direction : Direction.values()) {
             Key texture = direction == specialDirection ? specialTexture : defaultTexture;
@@ -342,6 +389,9 @@ class FramedGeometryRendererEmissionTest {
         Model model = new Model(new Element(
                 Vector3f.ZERO,
                 new Vector3f(16F, 16F, 16F),
+                de.bluecolored.bluemap.core.resources.pack.resourcepack.model.Rotation.ZERO,
+                true,
+                lightEmission,
                 faces
         ));
         model.calculateProperties(resourcePack.getTextures());

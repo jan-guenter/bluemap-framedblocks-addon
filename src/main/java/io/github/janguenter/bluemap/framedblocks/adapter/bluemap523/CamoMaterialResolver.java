@@ -32,7 +32,13 @@ final class CamoMaterialResolver {
     private static final int MAX_WEIGHTED_VARIANTS = 16;
     private static final Vector3f FULL_BLOCK_MIN = Vector3f.ZERO;
     private static final Vector3f FULL_BLOCK_MAX = new Vector3f(16F, 16F, 16F);
-    private static final Vector4f FULL_FACE_UV = new Vector4f(0F, 0F, 16F, 16F);
+    private static final String[] GENERATED_TILE_NAMESPACES = {
+            "bluemap_connectedglass",
+            "bluemap_glassential",
+            "bluemap_rechiseled",
+            "bluemap_rechiseled_create",
+            "bluemap_crystalix"
+    };
     private static final Key CAMOL_OVERLAY_RENDERER_KEY =
             Key.parse("bluemap_camol:overlay");
     private static final Material MISSING = new Material(ResourcePack.MISSING_TEXTURE, -1, 0);
@@ -79,8 +85,8 @@ final class CamoMaterialResolver {
         }
         de.bluecolored.bluemap.core.world.BlockProperties properties =
                 resourcePack.getBlockProperties(state);
-        if (!isSimpleStaticProperties(properties)) {
-            return MaterialPalette.missing(state, "block-properties-not-static-opaque");
+        if (!isStableMaterialProperties(properties)) {
+            return MaterialPalette.missing(state, "block-properties-not-stable");
         }
 
         Variant[] variants = variantSet.getVariants();
@@ -90,21 +96,43 @@ final class CamoMaterialResolver {
         if (variants.length > MAX_WEIGHTED_VARIANTS) {
             return MaterialPalette.missing(state, "weighted-variant-count-unsupported");
         }
-        return resolveUniformVariantSet(state, variants);
+        MaterialPalette uniform = resolveUniformVariantSet(state, variants);
+        if (uniform.resolved() || block == null) {
+            return uniform;
+        }
+
+        Variant positional = selectVariantAt(
+                variantSet,
+                block.getX(),
+                block.getY(),
+                block.getZ()
+        );
+        if (positional == null) {
+            return MaterialPalette.missing(state, "weighted-variant-selection-failed");
+        }
+        return resolveDirectionalVariant(state, positional);
     }
 
     private MaterialPalette resolveDirectionalVariant(BlockState state, Variant variant) {
         Model model = variant == null
                 ? null
                 : variant.getModel().getResource(resourcePack.getModels()::get);
-        if (!isSimpleStaticCube(variant, model)
-                || !model.isOccluding()
-                || !model.isCulling()) {
+        if (!isFullCubeMaterialVariant(variant, model)) {
             return MaterialPalette.missing(state, "single-variant-model-unsupported");
         }
-        EnumMap<Direction, Material> materials = resolveMaterials(model);
+        EnumMap<Direction, Material> materials = resolveMaterials(state, model);
         if (materials == null) {
             return MaterialPalette.missing(state, "single-variant-material-unsupported");
+        }
+        if (variant.isTransformed()) {
+            Material uniform = uniformMaterial(materials);
+            if (uniform == null) {
+                return MaterialPalette.missing(
+                        state,
+                        "transformed-directional-material-unsupported"
+                );
+            }
+            return MaterialPalette.uniform(state, uniform);
         }
         return MaterialPalette.directional(state, materials);
     }
@@ -119,22 +147,16 @@ final class CamoMaterialResolver {
             Model model = variant == null
                     ? null
                     : variant.getModel().getResource(resourcePack.getModels()::get);
-            if (!isUniformOpaqueFullCubeVariant(variant, model)
-                    || !model.isOccluding()
-                    || !model.isCulling()) {
+            if (!isFullCubeMaterialVariant(variant, model)) {
                 return MaterialPalette.missing(state, "weighted-variant-model-unsupported");
             }
-            EnumMap<Direction, Material> materials = resolveMaterials(model);
+            EnumMap<Direction, Material> materials = resolveMaterials(state, model);
             if (materials == null) {
                 return MaterialPalette.missing(state, "weighted-variant-material-unsupported");
             }
             Material uniform = uniformMaterial(materials);
             if (uniform == null) {
                 return MaterialPalette.missing(state, "weighted-variant-material-not-uniform");
-            }
-            Texture texture = resourcePack.getTextures().get(uniform.texture());
-            if (texture == null || texture.getAnimation() != null) {
-                return MaterialPalette.missing(state, "weighted-variant-animation-unsupported");
             }
             if (common != null && !common.equals(uniform)) {
                 return MaterialPalette.missing(state, "weighted-variant-materials-differ");
@@ -147,27 +169,43 @@ final class CamoMaterialResolver {
         return MaterialPalette.uniform(state, common);
     }
 
-    private EnumMap<Direction, Material> resolveMaterials(Model model) {
+    private EnumMap<Direction, Material> resolveMaterials(BlockState state, Model model) {
         Element element = model.getElements()[0];
+        int lightEmission = effectiveLightEmission(state, element);
         EnumMap<Direction, Material> materials = new EnumMap<>(Direction.class);
         for (Direction direction : Direction.values()) {
             Face face = element.getFaces().get(direction);
             ResourcePath<Texture> texture = face.getTexture()
                     .getTexturePath(model.getTextures()::get);
-            Texture resolvedTexture = texture == null
-                    ? null : resourcePack.getTextures().get(texture);
             if (texture == null
-                    || ResourcePack.MISSING_TEXTURE.equals(texture)
-                    || !isCanonicalOpaque(resolvedTexture)) {
+                    || ResourcePack.MISSING_TEXTURE.equals(texture)) {
+                return null;
+            }
+            texture = materialTexture(texture);
+            Texture resolvedTexture = resourcePack.getTextures().get(texture);
+            if (!isUsableTexture(resolvedTexture)) {
                 return null;
             }
             materials.put(direction, new Material(
                     texture,
                     face.getTintindex(),
-                    element.getLightEmission()
+                    lightEmission
             ));
         }
         return materials;
+    }
+
+    private ResourcePath<Texture> materialTexture(ResourcePath<Texture> source) {
+        for (String namespace : GENERATED_TILE_NAMESPACES) {
+            ResourcePath<Texture> tile = new ResourcePath<>(
+                    namespace,
+                    "tiles/" + source.getNamespace() + "/" + source.getValue() + "/0"
+            );
+            if (resourcePack.getTextures().get(tile) != null) {
+                return tile;
+            }
+        }
+        return source;
     }
 
     private static Material uniformMaterial(EnumMap<Direction, Material> materials) {
@@ -222,56 +260,35 @@ final class CamoMaterialResolver {
         return selected.getVariants()[0];
     }
 
-    static boolean isSimpleStaticCube(Variant variant, Model model) {
-        if (variant == null
-                || !isSupportedMaterialRenderer(variant.getRenderer())
-                || variant.isUvlock()
-                || variant.isTransformed()
-                || model == null
-                || !model.isAmbientocclusion()) {
-            return false;
+    static Variant selectVariantAt(VariantSet variants, int x, int y, int z) {
+        if (variants == null || variants.getVariants() == null) {
+            return null;
         }
-        Element[] elements = model.getElements();
-        if (elements == null || elements.length != 1 || elements[0] == null) {
-            return false;
+        Variant[] candidates = variants.getVariants();
+        if (candidates.length == 0 || candidates.length > MAX_WEIGHTED_VARIANTS) {
+            return null;
         }
-
-        Element element = elements[0];
-        if (!FULL_BLOCK_MIN.equals(element.getFrom())
-                || !FULL_BLOCK_MAX.equals(element.getTo())
-                || !element.isShade()
-                || element.getLightEmission() != 0
-                || element.getRotation().getX() != 0F
-                || element.getRotation().getY() != 0F
-                || element.getRotation().getZ() != 0F
-                || element.getFaces().size() != Direction.values().length) {
-            return false;
-        }
-        for (Direction direction : Direction.values()) {
-            Face face = element.getFaces().get(direction);
-            if (face == null
-                    || face.getCullface() != direction
-                    || face.getRotation() != 0
-                    || face.getTintindex() < -1
-                    || face.getTintindex() > 0
-                    || !FULL_FACE_UV.equals(face.getUv())) {
-                return false;
+        for (Variant candidate : candidates) {
+            if (candidate == null
+                    || !Double.isFinite(candidate.getWeight())
+                    || candidate.getWeight() <= 0D) {
+                return null;
             }
         }
-        return true;
+        Variant[] selected = new Variant[1];
+        variants.forEach(x, y, z, variant -> selected[0] = variant);
+        return selected[0];
     }
 
-    static boolean isUniformOpaqueFullCubeVariant(Variant variant, Model model) {
+    static boolean isFullCubeMaterialVariant(Variant variant, Model model) {
         if (variant == null
                 || !isSupportedMaterialRenderer(variant.getRenderer())
-                || variant.isUvlock()
                 || !isQuarterTurn(variant.getX())
                 || !isQuarterTurn(variant.getY())
                 || !isQuarterTurn(variant.getZ())
                 || !Double.isFinite(variant.getWeight())
                 || variant.getWeight() <= 0D
-                || model == null
-                || !model.isAmbientocclusion()) {
+                || model == null) {
             return false;
         }
         Element[] elements = model.getElements();
@@ -280,13 +297,12 @@ final class CamoMaterialResolver {
         }
 
         Element element = elements[0];
-        if (!hasCanonicalFullCubeBody(element)) {
+        if (!hasFullCubeMaterialBody(element)) {
             return false;
         }
         for (Direction direction : Direction.values()) {
             Face face = element.getFaces().get(direction);
             if (face == null
-                    || face.getCullface() != direction
                     || !isQuarterTurn(face.getRotation())
                     || face.getTintindex() < -1
                     || face.getTintindex() > 0
@@ -303,11 +319,11 @@ final class CamoMaterialResolver {
                         && renderer == BlockRendererType.REGISTRY.get(CAMOL_OVERLAY_RENDERER_KEY));
     }
 
-    private static boolean hasCanonicalFullCubeBody(Element element) {
+    private static boolean hasFullCubeMaterialBody(Element element) {
         return FULL_BLOCK_MIN.equals(element.getFrom())
                 && FULL_BLOCK_MAX.equals(element.getTo())
-                && element.isShade()
-                && element.getLightEmission() == 0
+                && element.getLightEmission() >= 0
+                && element.getLightEmission() <= 15
                 && element.getRotation().getX() == 0F
                 && element.getRotation().getY() == 0F
                 && element.getRotation().getZ() == 0F
@@ -336,18 +352,34 @@ final class CamoMaterialResolver {
         return value == 0F || value == 16F;
     }
 
-    static boolean isCanonicalOpaque(Texture texture) {
-        return texture != null
-                && !texture.isHalfTransparent()
-                && texture.getColorStraight().a >= 1F;
+    static boolean isUsableTexture(Texture texture) {
+        return texture != null && texture.getColorStraight() != null;
     }
 
-    static boolean isSimpleStaticProperties(BlockProperties properties) {
+    static boolean isStableMaterialProperties(BlockProperties properties) {
         return properties != null
-                && properties.isOccluding()
-                && properties.isCulling()
                 && !properties.isAlwaysWaterlogged()
                 && !properties.isRandomOffset();
+    }
+
+    private static int effectiveLightEmission(
+            BlockState state,
+            Element element
+    ) {
+        int emission = element.getLightEmission();
+        String namespace = state.getId().getNamespace();
+        String value = state.getId().getValue();
+        if (emission == 0
+                && !element.isShade()
+                && value.endsWith("_luminax_block")
+                && ("luminax".equals(namespace)
+                        || "dyenamicsandfriends".equals(namespace))) {
+            // NeoForge's model metadata carries the exact value, but the pinned BlueMap
+            // resource parser intentionally ignores neoforge_data. Luminax's dedicated
+            // no-shade cube contract is otherwise preserved in the parsed model.
+            return 15;
+        }
+        return emission;
     }
 
     record Material(Key texture, int tintIndex, int lightEmission) {

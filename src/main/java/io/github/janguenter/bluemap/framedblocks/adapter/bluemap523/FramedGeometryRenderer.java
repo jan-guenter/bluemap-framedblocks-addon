@@ -750,6 +750,7 @@ final class FramedGeometryRenderer implements BlockRenderer {
         float thirdAo = 1F;
         float fourthAo = 1F;
         if (quad.ambientOcclusion()
+                && material.lightEmission() == 0
                 && quad.effectiveAmbientOcclusionUnderZeroEmission()) {
             Direction direction = Direction.fromString(quad.direction());
             firstAo = testAo(vertices.get(0), direction, block);

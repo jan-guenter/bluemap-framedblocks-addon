@@ -47,16 +47,18 @@ produce stock fallback. Multiple raw states may reference one representative
 template only within the same block ID, and every representative must retain a
 self-alias.
 
-Block camouflage is accepted when BlueMap resource metadata proves either a
-single canonical untransformed opaque full cube or at most 16 weighted
-full-cube alternatives whose faces all collapse to one identical opaque,
-non-animated texture, tint, and emission. The weighted lane covers Minecraft
-1.21.1 stone's normal, mirrored, and 180-degree alternatives, but normalizes
-their random UV orientation: FramedBlocks' selected client-cache alternative
-is not persisted in Anvil. This lane therefore claims correct material and
-geometry, not pixel-identical random texture orientation. Random-offset,
-always-waterlogged, multipart, materially directional, arbitrary-transform,
-fluid, and all other unproven camouflage falls back. BlueMap does not expose
+Block camouflage is accepted when BlueMap resource metadata proves a bounded
+single-element full-cube material model. Directional textures, tint, alpha,
+and emission are retained, so leaves, glass, non-occluding cubes, and no-shade
+emissive cubes can supply the material for projected frame geometry. At most 16
+weighted alternatives are accepted: identical alternatives use the normalized
+fast path, while differing alternatives use BlueMap's deterministic position
+hash. A transformed selected alternative must use one uniform material.
+Generated Fusion cell-zero textures are used when present to avoid mapping a
+whole connected-texture atlas onto each face; neighbor-aware camo connectivity
+is not claimed. Random-offset, always-waterlogged, multipart, multi-element,
+transformed-directional, fluid, custom-camouflage, and all other unresolved
+camouflage falls back. BlueMap does not expose
 the actual modded-client
 `BakedQuad` or render-layer result, so this proof cannot detect every possible
 client wrapper whose resource metadata itself looks canonical. That is a
@@ -79,9 +81,9 @@ and client-versus-BlueMap visual acceptance remain explicit requirements.
 The exact BlueMap feature-backport host activated the `0.1.0-alpha.3` profile
 in the All the Mons 1.2.0 combined integration server. A targeted
 FramedBlocks render completed with zero container restarts, and the owner
-accepted the gallery on 2026-09-01. The `0.1.0-alpha.4` candidate retains the
-same renderer and profile but changes shared-source ownership and packaging,
-so it still needs a combined rerender. Neither result is a pixel-by-pixel
+accepted the gallery on 2026-09-01. The `0.1.0-alpha.4` structure-audit
+candidate also changes camouflage material resolution, so it still needs a
+combined rerender. Neither result is a pixel-by-pixel
 proof or an enabled-to-stock-to-restored lifecycle.
 
 ## Historical expanded exact-profile fixtures
@@ -100,7 +102,7 @@ framed blocks:
   add-on geometry and materials;
 - twelve cases intentionally used the original-resource fallback for selected
   model-data, BER, overlay, waterlogged, dynamic-light/skylight, reinforced,
-  adjacent-framed, and non-opaque-material conditions.
+  adjacent-framed, and unresolved-material conditions.
 
 The final exact artifact completed an enabled-to-stock-absent-to-re-enabled
 full-restart lifecycle with zero container restarts in each accepted run. All
