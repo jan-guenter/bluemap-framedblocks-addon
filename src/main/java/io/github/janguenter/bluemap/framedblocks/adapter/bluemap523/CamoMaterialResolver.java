@@ -48,6 +48,11 @@ final class CamoMaterialResolver {
             Key.parse("crystalix:block/colored_crystalix_glass");
     private static final Key CRYSTALIX_TRANSPARENT_TEXTURE =
             Key.parse("crystalix:block/crystalix_glass");
+    private static final String MUSHROOM_STEM = "minecraft:mushroom_stem";
+    private static final Key MUSHROOM_STEM_TEXTURE =
+            Key.parse("minecraft:block/mushroom_stem");
+    private static final Key MUSHROOM_INSIDE_TEXTURE =
+            Key.parse("minecraft:block/mushroom_block_inside");
     private static final Material MISSING = new Material(ResourcePack.MISSING_TEXTURE, -1, 0);
 
     private final ResourcePack resourcePack;
@@ -79,6 +84,10 @@ final class CamoMaterialResolver {
             return resolveFixedTintBlock(normalized, camo.fixedTintRgb());
         }
         BlockState state = new BlockState(Key.parse(normalized.id()), normalized.properties());
+        MaterialPalette exactMultipart = resolveExactMultipartMaterial(state, normalized);
+        if (exactMultipart != null) {
+            return exactMultipart;
+        }
         de.bluecolored.bluemap.core.resources.pack.resourcepack.blockstate.BlockState resource =
                 resourcePack.getBlockStates().get(state.getId());
         if (resource == null) {
@@ -119,6 +128,39 @@ final class CamoMaterialResolver {
             return MaterialPalette.missing(state, "weighted-variant-selection-failed");
         }
         return resolveDirectionalVariant(state, positional);
+    }
+
+    private MaterialPalette resolveExactMultipartMaterial(
+            BlockState state,
+            NormalizedBlockState normalized
+    ) {
+        if (!MUSHROOM_STEM.equals(normalized.id())) {
+            return null;
+        }
+        Map<String, String> properties = normalized.properties();
+        if (!properties.keySet().equals(Set.of(
+                "down", "east", "north", "south", "up", "west"
+        ))) {
+            return null;
+        }
+        if (!isUsableTexture(resourcePack.getTextures().get(MUSHROOM_STEM_TEXTURE))
+                || !isUsableTexture(resourcePack.getTextures().get(MUSHROOM_INSIDE_TEXTURE))) {
+            return MaterialPalette.missing(state, "mushroom-stem-texture-missing");
+        }
+
+        EnumMap<Direction, Material> materials = new EnumMap<>(Direction.class);
+        for (Direction direction : Direction.values()) {
+            String property = direction.name().toLowerCase(java.util.Locale.ROOT);
+            String visible = properties.get(property);
+            if (!Set.of("false", "true").contains(visible)) {
+                return null;
+            }
+            Key texture = "true".equals(visible)
+                    ? MUSHROOM_STEM_TEXTURE
+                    : MUSHROOM_INSIDE_TEXTURE;
+            materials.put(direction, new Material(texture, -1, 0));
+        }
+        return MaterialPalette.directional(state, materials);
     }
 
     private MaterialPalette resolveFixedTintBlock(NormalizedBlockState normalized, int rgb) {

@@ -15,6 +15,7 @@ import de.bluecolored.bluemap.core.world.LightData;
 import de.bluecolored.bluemap.core.world.biome.Biome;
 import de.bluecolored.bluemap.core.world.block.BlockAccess;
 import de.bluecolored.bluemap.core.world.block.BlockNeighborhood;
+import de.bluecolored.bluemap.core.util.math.Color;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
@@ -77,6 +78,16 @@ class FramedGeometryRendererPolicyTest {
         assertEquals(0, FramedGeometryRenderer.boundaryOffset(0.5F));
         assertEquals(0, FramedGeometryRenderer.boundaryOffset(0.001F));
         assertEquals(0, FramedGeometryRenderer.boundaryOffset(0.999F));
+    }
+
+    @Test
+    void fixedTintPreservesPremultipliedAlphaForTranslucentTextures() {
+        Color tint = FramedGeometryRenderer.fixedTint(0x12_34ab, new Color());
+        Color translucent = new Color().set(0x80ff_ffff, true).multiply(tint);
+
+        assertTrue(tint.premultiplied);
+        assertTrue(translucent.premultiplied);
+        new Color().set(0F, 0F, 0F, 0F, true).add(translucent);
     }
 
     @Test

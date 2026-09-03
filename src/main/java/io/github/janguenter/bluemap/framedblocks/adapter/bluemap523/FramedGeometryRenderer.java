@@ -666,7 +666,7 @@ final class FramedGeometryRenderer implements BlockRenderer {
             return tint;
         }
         if (selected.fixedTintRgb() >= 0) {
-            return tint.set(0xff00_0000 | selected.fixedTintRgb());
+            return fixedTint(selected.fixedTintRgb(), tint);
         }
         if (selected.material().tintIndex() == 1_024 && blockEntity != null) {
             return dyeColor(blockEntity.getOverlayColor(), tint);
@@ -676,6 +676,10 @@ final class FramedGeometryRenderer implements BlockRenderer {
                 : selected.tintState();
         blockColorCalculator.getBlockColor(block, tintState, tint);
         return tint;
+    }
+
+    static Color fixedTint(int rgb, Color tint) {
+        return tint.set(0xff00_0000 | rgb, true);
     }
 
     private LightLevels calculateBaseLight(

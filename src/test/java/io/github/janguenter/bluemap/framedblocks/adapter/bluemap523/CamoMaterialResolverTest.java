@@ -440,6 +440,36 @@ class CamoMaterialResolverTest {
     }
 
     @Test
+    void resolvesMinecraft1211MushroomStemMultipartFacesExactly() throws IOException {
+        ResourcePack resourcePack = new ResourcePack(new PackVersion(34, 0));
+        Key stem = Key.parse("minecraft:block/mushroom_stem");
+        Key inside = Key.parse("minecraft:block/mushroom_block_inside");
+        putOpaqueTexture(resourcePack, stem);
+        putOpaqueTexture(resourcePack, inside);
+
+        CamoMaterialResolver.MaterialPalette palette = new CamoMaterialResolver(resourcePack)
+                .resolve(NormalizedCamo.block(new NormalizedBlockState(
+                        "minecraft:mushroom_stem",
+                        Map.of(
+                                "down", "true",
+                                "east", "false",
+                                "north", "true",
+                                "south", "false",
+                                "up", "true",
+                                "west", "false"
+                        )
+                )), null);
+
+        assertTrue(palette.resolved());
+        assertEquals(stem, palette.get(Direction.DOWN).texture());
+        assertEquals(inside, palette.get(Direction.EAST).texture());
+        assertEquals(stem, palette.get(Direction.NORTH).texture());
+        assertEquals(inside, palette.get(Direction.SOUTH).texture());
+        assertEquals(stem, palette.get(Direction.UP).texture());
+        assertEquals(inside, palette.get(Direction.WEST).texture());
+    }
+
+    @Test
     void rejectsWeightedCubeAlternativesWithDifferentMaterials() throws IOException {
         ResourcePack resourcePack = new ResourcePack(new PackVersion(34, 0));
         Key blockId = Key.parse("test:materially_different_variants");
