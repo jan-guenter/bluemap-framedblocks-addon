@@ -78,6 +78,24 @@ normalization establishes rendered geometry and material, not pixel-identical
 randomized texture orientation. The Minecraft JAR and its assets are evidence
 only and are not bundled or redistributed.
 
+The structure audit also established two exact optional-camouflage inputs:
+
+- Crystalix `3.0.0`, 817,004 bytes, SHA-256
+  `42f97cf776cff8261bf671e64a333bbec65a8bf28e519d39cd958e0af9848e6c`;
+  its custom `crystalix:crystalix_glass` camo stores the 24-bit colour beside
+  the exact glass blockstate in FramedBlocks block-entity data;
+- Dyenamics and Friends `1.21.1-2.2.2`, 8,361,784 bytes, SHA-256
+  `c9797951ec4773d885cad8e15944374d9e33a43102cfafdb883a71d142a3510f`.
+  Its NeoForge client hook exposes resources below `compat_packs/`, which
+  BlueMap's resource-root scan does not execute. The adapter therefore reads
+  only the exact 90-file, 58,086-byte Luminax full-block closure (canonical
+  SHA-256 `ed4180e18caa2f31d62453dee79e36197eb5dcf826788a5d3a4365aa8c86190c`)
+  and the exact 864-byte Productive Metalworks honey-fire-bricks PNG (SHA-256
+  `9880929dba2bae8430658e8cf968b312f5a9dc5a44aad340a1d43d39dc00312d`).
+
+Both artifacts are runtime evidence only. No Crystalix or Dyenamics and
+Friends class, binary, JSON, model, texture, or encoded derivative is bundled.
+
 ## Physical-capture evidence and production source form
 
 The neutral geometry evidence was captured twice from the exact modded client.

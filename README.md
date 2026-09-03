@@ -56,12 +56,17 @@ and emission while FramedBlocks supplies the host geometry. Cutout leaves,
 translucent glass, non-occluding cubes, and no-shade emissive cubes are therefore
 valid material sources. For at most 16 weighted alternatives, identical
 materials use the normalized fast path; materially different alternatives use
-BlueMap's stable position hash and only accept a transformed selection when its
-material is uniform. Generated cell-zero textures supplied by the installed
+BlueMap's stable position hash. Exact quarter-turn blockstate transforms remap
+directional face materials onto the framed geometry. Generated cell-zero textures supplied by the installed
 Fusion add-ons prevent connected-texture atlases from being stretched across a
 frame, but this does not reproduce camo-aware connectivity between frames.
-Fluid, multipart, multi-element, random-offset, always-waterlogged, transformed
-directional, or otherwise unresolved camouflage falls back. BlueMap does not
+The exact Crystalix `3.0.0` custom camo reads its persisted RGB value and glass
+flags directly. When the exact Dyenamics and Friends `2.2.2` JAR is installed,
+the add-on also reads a bounded 90-file Luminax full-block closure and one
+Productive Metalworks texture from that JAR's hidden client compatibility packs.
+Those third-party files remain runtime inputs and are not bundled.
+Fluid, multipart, multi-element, random-offset, always-waterlogged, or otherwise
+unresolved camouflage falls back. BlueMap does not
 expose the client `BakedQuad` or render-layer result, so metadata alone cannot
 identify every mod-supplied client wrapper; that residual case remains outside
 the accepted support claim.

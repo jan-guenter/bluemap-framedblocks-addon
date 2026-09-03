@@ -247,6 +247,50 @@ class CamoMaterialResolverTest {
     }
 
     @Test
+    void rotatesDirectionalMaterialsWithTheSelectedQuarterTurnVariant() throws IOException {
+        ResourcePack resourcePack = new ResourcePack(new PackVersion(34, 0));
+        Key blockId = Key.parse("test:directional_cube");
+        Key modelId = Key.parse("test:block/directional_cube");
+        for (Direction direction : Direction.values()) {
+            putOpaqueTexture(resourcePack, Key.parse(
+                    "minecraft:block/test_"
+                            + direction.name().toLowerCase(java.util.Locale.ROOT)
+            ));
+        }
+        putModel(resourcePack, modelId, model(
+                Vector3f.ZERO,
+                new Vector3f(16F, 16F, 16F),
+                0,
+                true
+        ));
+        putDefaultVariants(
+                resourcePack,
+                blockId,
+                new Variant(new ResourcePath<Model>(modelId), 0F, 90F, 0F)
+        );
+
+        CamoMaterialResolver.MaterialPalette palette = new CamoMaterialResolver(resourcePack)
+                .resolve(NormalizedCamo.block(new NormalizedBlockState(
+                        blockId.getFormatted(),
+                        Map.of()
+                )), null);
+
+        assertTrue(palette.resolved());
+        assertEquals(Key.parse("minecraft:block/test_north"),
+                palette.get(Direction.EAST).texture());
+        assertEquals(Key.parse("minecraft:block/test_east"),
+                palette.get(Direction.SOUTH).texture());
+        assertEquals(Key.parse("minecraft:block/test_south"),
+                palette.get(Direction.WEST).texture());
+        assertEquals(Key.parse("minecraft:block/test_west"),
+                palette.get(Direction.NORTH).texture());
+        assertEquals(Key.parse("minecraft:block/test_up"),
+                palette.get(Direction.UP).texture());
+        assertEquals(Key.parse("minecraft:block/test_down"),
+                palette.get(Direction.DOWN).texture());
+    }
+
+    @Test
     void readsTheCamoBlockstateBeforeOtherAddonsRouteItToSyntheticDispatch() throws IOException {
         Key blockId = Key.parse("chipped:polished_tuff");
         Key textureId = Key.parse("chipped:block/polished_tuff");
@@ -346,6 +390,52 @@ class CamoMaterialResolverTest {
         assertTrue(luminax.resolved());
         for (Direction direction : Direction.values()) {
             assertEquals(15, luminax.get(direction).lightEmission());
+        }
+
+        Key dimLuminaxBlock = Key.parse("luminax:dim_white_luminax_block");
+        putDefaultVariants(
+                resourcePack,
+                dimLuminaxBlock,
+                new Variant(new ResourcePath<Model>(luminaxModel))
+        );
+        CamoMaterialResolver.MaterialPalette dimLuminax = resolver.resolve(
+                NormalizedCamo.block(new NormalizedBlockState(
+                        dimLuminaxBlock.getFormatted(),
+                        Map.of()
+                )),
+                null
+        );
+        assertTrue(dimLuminax.resolved());
+        for (Direction direction : Direction.values()) {
+            assertEquals(0, dimLuminax.get(direction).lightEmission());
+        }
+    }
+
+    @Test
+    void resolvesCrystalixGlassFromItsExactPersistedColorAndLightState() throws IOException {
+        ResourcePack resourcePack = new ResourcePack(new PackVersion(34, 0));
+        Key texture = Key.parse("crystalix:block/colored_crystalix_glass");
+        putTexture(resourcePack, texture, 0x80FFFFFF);
+        NormalizedBlockState state = new NormalizedBlockState(
+                "crystalix:crystalix_glass",
+                Map.of(
+                        "ghost", "block_all",
+                        "invisible", "false",
+                        "light", "light",
+                        "shadeless", "false",
+                        "transparent", "false",
+                        "waterlogged", "false"
+                )
+        );
+
+        CamoMaterialResolver.MaterialPalette palette = new CamoMaterialResolver(resourcePack)
+                .resolve(NormalizedCamo.fixedTintBlock(state, 0x12_34ab), null);
+
+        assertTrue(palette.resolved());
+        assertEquals(0x12_34ab, palette.fixedTintRgb());
+        for (Direction direction : Direction.values()) {
+            assertEquals(texture, palette.get(direction).texture());
+            assertEquals(15, palette.get(direction).lightEmission());
         }
     }
 

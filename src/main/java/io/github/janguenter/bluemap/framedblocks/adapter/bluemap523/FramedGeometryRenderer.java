@@ -193,6 +193,11 @@ final class FramedGeometryRenderer implements BlockRenderer {
                 fallback(secondaryResolution.reason(), block, tileModel, blockColor, renderStart);
                 return;
             }
+            if (primaryResolution.palette().empty()
+                    && secondaryResolution.palette().empty()) {
+                fallback("all-camo-slots-empty", block, tileModel, blockColor, renderStart);
+                return;
+            }
 
             blockColor.set(0F, 0F, 0F, 0F, true);
             float colorOpacity = renderTemplate(
@@ -240,10 +245,12 @@ final class FramedGeometryRenderer implements BlockRenderer {
                     "secondary-camo",
                     block
             );
-            if (surrogate == null || !secondary.success()) {
+            if (surrogate == null || !secondary.success()
+                    || primary.empty() && secondary.palette().empty()) {
                 fallback(
                         surrogate == null ? "adjustable-surrogate-state-missing"
-                                : secondary.reason(),
+                                : !secondary.success() ? secondary.reason()
+                                        : "all-camo-slots-empty",
                         block,
                         tileModel,
                         blockColor,
@@ -265,6 +272,11 @@ final class FramedGeometryRenderer implements BlockRenderer {
         }
 
         if (MANUAL_BODY_IDS.contains(blockId)) {
+            if (primary.empty()) {
+                fallback("primary-camo-empty-camo-profile-unsupported",
+                        block, tileModel, blockColor, renderStart);
+                return;
+            }
             renderManualBody(
                     profile,
                     primary,
@@ -278,9 +290,11 @@ final class FramedGeometryRenderer implements BlockRenderer {
         }
 
         CamoMaterialResolver.Material uniform = uniformMaterial(primary);
-        if (uniform == null) {
+        if (primary.empty() || uniform == null) {
             fallback(
-                    support.reason() + "-directional-camo-unsupported",
+                    primary.empty()
+                            ? "primary-camo-empty-camo-profile-unsupported"
+                            : support.reason() + "-directional-camo-unsupported",
                     block,
                     tileModel,
                     blockColor,
@@ -290,7 +304,12 @@ final class FramedGeometryRenderer implements BlockRenderer {
         }
 
         Color tint = calculateTint(
-                new SelectedMaterial(uniform, primary.tintState(), uniform.tintIndex() >= 0),
+                new SelectedMaterial(
+                        uniform,
+                        primary.tintState(),
+                        primary.fixedTintRgb(),
+                        uniform.tintIndex() >= 0
+                ),
                 blockEntity,
                 block
         );
@@ -514,6 +533,10 @@ final class FramedGeometryRenderer implements BlockRenderer {
     ) {
         float colorOpacity = 0F;
         for (GeometryTemplateProfile.QuadTemplate quad : template.quads()) {
+            if ("primary".equals(quad.component()) && primary.empty()
+                    || "secondary".equals(quad.component()) && secondary.empty()) {
+                continue;
+            }
             Direction direction = Direction.fromString(quad.direction());
             float upwardNormal = upwardNormalComponent(quad, direction);
             if (!shouldRender(quad, upwardNormal, block)) {
@@ -593,12 +616,6 @@ final class FramedGeometryRenderer implements BlockRenderer {
         if (!palette.resolved()) {
             return PaletteResolution.failure(slot + "-" + palette.reason());
         }
-        if (!isAppliedCamoPalette(palette)) {
-            // The bundled profile is intentionally scoped to geometry baked with an
-            // applied camouflage. Reusing its diagnostic sentinel quads for an empty
-            // slot would leak exporter-only textures into the map.
-            return PaletteResolution.failure(slot + "-empty-camo-profile-unsupported");
-        }
         return PaletteResolution.success(palette);
     }
 
@@ -614,19 +631,29 @@ final class FramedGeometryRenderer implements BlockRenderer {
         if ("primary".equals(quad.component())) {
             Direction sourceDirection = Direction.fromString(quad.sourceFace());
             CamoMaterialResolver.Material material = primary.get(sourceDirection);
-            return new SelectedMaterial(material, primary.tintState(), material.tintIndex() >= 0);
+            return new SelectedMaterial(
+                    material,
+                    primary.tintState(),
+                    primary.fixedTintRgb(),
+                    material.tintIndex() >= 0
+            );
         }
         if ("secondary".equals(quad.component())) {
             Direction sourceDirection = Direction.fromString(quad.sourceFace());
             CamoMaterialResolver.Material material = secondary.get(sourceDirection);
-            return new SelectedMaterial(material, secondary.tintState(), material.tintIndex() >= 0);
+            return new SelectedMaterial(
+                    material,
+                    secondary.tintState(),
+                    secondary.fixedTintRgb(),
+                    material.tintIndex() >= 0
+            );
         }
         CamoMaterialResolver.Material material = new CamoMaterialResolver.Material(
                 Key.parse(quad.sprite()),
                 quad.tintIndex(),
                 0
         );
-        return new SelectedMaterial(material, null, quad.tintIndex() != -1);
+        return new SelectedMaterial(material, null, -1, quad.tintIndex() != -1);
     }
 
     private Color calculateTint(
@@ -637,6 +664,9 @@ final class FramedGeometryRenderer implements BlockRenderer {
         Color tint = new Color().set(1F, 1F, 1F, 1F, true);
         if (!selected.tinted()) {
             return tint;
+        }
+        if (selected.fixedTintRgb() >= 0) {
+            return tint.set(0xff00_0000 | selected.fixedTintRgb());
         }
         if (selected.material().tintIndex() == 1_024 && blockEntity != null) {
             return dyeColor(blockEntity.getOverlayColor(), tint);
@@ -1014,6 +1044,7 @@ final class FramedGeometryRenderer implements BlockRenderer {
     private record SelectedMaterial(
             CamoMaterialResolver.Material material,
             BlockState tintState,
+            int fixedTintRgb,
             boolean tinted
     ) {
     }

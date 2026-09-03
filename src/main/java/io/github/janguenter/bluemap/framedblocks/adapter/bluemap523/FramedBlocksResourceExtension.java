@@ -27,6 +27,9 @@ final class FramedBlocksResourceExtension implements ResourcePackExtension {
     private final AdapterActivation activation;
     private final ExactArtifactDetector artifactDetector =
             new ExactArtifactDetector(FramedBlocks1061Profile.JAR_SHA256);
+    private final DyenamicsAndFriendsCompatResources dyenamicsAndFriendsResources =
+            new DyenamicsAndFriendsCompatResources();
+    private Set<Key> optionalCompatTextureKeys = Set.of();
 
     FramedBlocksResourceExtension(ResourcePack resourcePack, AdapterActivation activation) {
         this.resourcePack = resourcePack;
@@ -42,7 +45,7 @@ final class FramedBlocksResourceExtension implements ResourcePackExtension {
         ExactArtifactDetector.Detection detection;
         try {
             detection = artifactDetector.detect(roots);
-        } catch (IOException exception) {
+        } catch (IOException | RuntimeException exception) {
             activation.disable("framedblocks-artifact-read-failed");
             BoundedDiagnostics.warning(
                     "framedblocks-artifact-read-failed",
@@ -123,6 +126,29 @@ final class FramedBlocksResourceExtension implements ResourcePackExtension {
             return;
         }
 
+        try {
+            DyenamicsAndFriendsCompatResources.LoadResult compat =
+                    dyenamicsAndFriendsResources.load(resourcePack, roots);
+            optionalCompatTextureKeys = compat.textureKeys();
+            if (compat.active()) {
+                BoundedDiagnostics.info(
+                        "dyenamicsandfriends-compat-resources-loaded",
+                        "BlueMap FramedBlocks loaded the exact hidden Dyenamics and Friends camouflage resources."
+                );
+            } else {
+                BoundedDiagnostics.warning(
+                        compat.reason(),
+                        "BlueMap FramedBlocks optional Dyenamics and Friends camouflage resources are unavailable."
+                );
+            }
+        } catch (IOException exception) {
+            optionalCompatTextureKeys = Set.of();
+            BoundedDiagnostics.warning(
+                    "dyenamicsandfriends-compat-resources-invalid",
+                    "BlueMap FramedBlocks ignored invalid optional Dyenamics and Friends camouflage resources."
+            );
+        }
+
         activation.activate(geometryProfile);
         BoundedDiagnostics.info(
                 "profile-activated",
@@ -138,6 +164,7 @@ final class FramedBlocksResourceExtension implements ResourcePackExtension {
             textures.add(Key.parse("minecraft:block/water_flow"));
             textures.add(Key.parse("minecraft:block/lava_still"));
             textures.add(Key.parse("minecraft:block/lava_flow"));
+            textures.addAll(optionalCompatTextureKeys);
             return Set.copyOf(textures);
         }).orElse(Set.of());
     }

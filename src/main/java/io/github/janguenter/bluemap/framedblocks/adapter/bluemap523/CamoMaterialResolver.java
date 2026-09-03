@@ -17,6 +17,7 @@ import de.bluecolored.bluemap.core.resources.pack.resourcepack.model.Model;
 import de.bluecolored.bluemap.core.resources.pack.resourcepack.texture.Texture;
 import de.bluecolored.bluemap.core.util.Direction;
 import de.bluecolored.bluemap.core.util.Key;
+import de.bluecolored.bluemap.core.util.math.VectorM3f;
 import de.bluecolored.bluemap.core.world.BlockProperties;
 import de.bluecolored.bluemap.core.world.BlockState;
 import de.bluecolored.bluemap.core.world.block.BlockNeighborhood;
@@ -25,6 +26,7 @@ import io.github.janguenter.bluemap.framedblocks.profile.framedblocks10_6.Normal
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.Set;
 
 /** Resolves only camouflage models that the exact-profile renderer can reproduce safely. */
 final class CamoMaterialResolver {
@@ -41,6 +43,11 @@ final class CamoMaterialResolver {
     };
     private static final Key CAMOL_OVERLAY_RENDERER_KEY =
             Key.parse("bluemap_camol:overlay");
+    private static final String CRYSTALIX_GLASS = "crystalix:crystalix_glass";
+    private static final Key CRYSTALIX_COLORED_TEXTURE =
+            Key.parse("crystalix:block/colored_crystalix_glass");
+    private static final Key CRYSTALIX_TRANSPARENT_TEXTURE =
+            Key.parse("crystalix:block/crystalix_glass");
     private static final Material MISSING = new Material(ResourcePack.MISSING_TEXTURE, -1, 0);
 
     private final ResourcePack resourcePack;
@@ -52,7 +59,7 @@ final class CamoMaterialResolver {
     MaterialPalette resolve(NormalizedCamo camo, BlockNeighborhood block) {
         return switch (camo.kind()) {
             case EMPTY -> MaterialPalette.emptyPalette();
-            case BLOCK -> resolveBlock(camo.blockState().orElseThrow(), block);
+            case BLOCK -> resolveBlock(camo, block);
             // Fluid appearance is supplied by NeoForge client extensions. Texture IDs alone
             // do not preserve the client tint, flow rotation, UVs, or render-layer behavior.
             case FLUID -> MaterialPalette.missing(
@@ -66,10 +73,11 @@ final class CamoMaterialResolver {
         return resourcePack.getTextures().get(material.texture());
     }
 
-    private MaterialPalette resolveBlock(
-            NormalizedBlockState normalized,
-            BlockNeighborhood block
-    ) {
+    private MaterialPalette resolveBlock(NormalizedCamo camo, BlockNeighborhood block) {
+        NormalizedBlockState normalized = camo.blockState().orElseThrow();
+        if (camo.fixedTintRgb() >= 0) {
+            return resolveFixedTintBlock(normalized, camo.fixedTintRgb());
+        }
         BlockState state = new BlockState(Key.parse(normalized.id()), normalized.properties());
         de.bluecolored.bluemap.core.resources.pack.resourcepack.blockstate.BlockState resource =
                 resourcePack.getBlockStates().get(state.getId());
@@ -113,6 +121,40 @@ final class CamoMaterialResolver {
         return resolveDirectionalVariant(state, positional);
     }
 
+    private MaterialPalette resolveFixedTintBlock(NormalizedBlockState normalized, int rgb) {
+        BlockState state = new BlockState(Key.parse(normalized.id()), normalized.properties());
+        if (!CRYSTALIX_GLASS.equals(normalized.id())) {
+            return MaterialPalette.missing(state, "fixed-tint-camo-state-unsupported");
+        }
+        Map<String, String> properties = normalized.properties();
+        if (!Set.of("false", "true").contains(properties.get("transparent"))
+                || !Set.of("false", "true").contains(properties.get("invisible"))
+                || !"false".equals(properties.get("shadeless"))
+                || !Set.of("none", "light", "fake_light").contains(properties.get("light"))
+                || !"block_all".equals(properties.get("ghost"))
+                || !"false".equals(properties.get("waterlogged"))) {
+            return MaterialPalette.missing(state, "fixed-tint-camo-properties-unsupported");
+        }
+        if ("true".equals(properties.get("invisible"))) {
+            return MaterialPalette.missing(state, "fixed-tint-invisible-camo-unsupported");
+        }
+        Key textureKey = "true".equals(properties.get("transparent"))
+                ? CRYSTALIX_TRANSPARENT_TEXTURE
+                : CRYSTALIX_COLORED_TEXTURE;
+        if (!isUsableTexture(resourcePack.getTextures().get(textureKey))) {
+            return MaterialPalette.missing(state, "fixed-tint-camo-texture-missing");
+        }
+        int emission = switch (properties.get("light")) {
+            case "light", "fake_light" -> 15;
+            default -> 0;
+        };
+        return MaterialPalette.uniform(
+                state,
+                new Material(textureKey, 0, emission),
+                rgb
+        );
+    }
+
     private MaterialPalette resolveDirectionalVariant(BlockState state, Variant variant) {
         Model model = variant == null
                 ? null
@@ -125,16 +167,53 @@ final class CamoMaterialResolver {
             return MaterialPalette.missing(state, "single-variant-material-unsupported");
         }
         if (variant.isTransformed()) {
-            Material uniform = uniformMaterial(materials);
-            if (uniform == null) {
+            EnumMap<Direction, Material> transformed = transformMaterials(materials, variant);
+            if (transformed == null) {
                 return MaterialPalette.missing(
                         state,
                         "transformed-directional-material-unsupported"
                 );
             }
-            return MaterialPalette.uniform(state, uniform);
+            return MaterialPalette.directional(state, transformed);
         }
         return MaterialPalette.directional(state, materials);
+    }
+
+    private static EnumMap<Direction, Material> transformMaterials(
+            EnumMap<Direction, Material> source,
+            Variant variant
+    ) {
+        EnumMap<Direction, Material> transformed = new EnumMap<>(Direction.class);
+        for (Direction sourceDirection : Direction.values()) {
+            VectorM3f vector = new VectorM3f(0F, 0F, 0F)
+                    .set(sourceDirection.toVector())
+                    .rotateAndScale(variant.getTransformMatrix());
+            Direction targetDirection = cardinalDirection(vector);
+            if (targetDirection == null
+                    || transformed.put(targetDirection, source.get(sourceDirection)) != null) {
+                return null;
+            }
+        }
+        return transformed.size() == Direction.values().length ? transformed : null;
+    }
+
+    private static Direction cardinalDirection(VectorM3f vector) {
+        int x = Math.round(vector.x);
+        int y = Math.round(vector.y);
+        int z = Math.round(vector.z);
+        if (Math.abs(vector.x - x) > 1.0E-5F
+                || Math.abs(vector.y - y) > 1.0E-5F
+                || Math.abs(vector.z - z) > 1.0E-5F) {
+            return null;
+        }
+        for (Direction direction : Direction.values()) {
+            if (direction.toVector().getX() == x
+                    && direction.toVector().getY() == y
+                    && direction.toVector().getZ() == z) {
+                return direction;
+            }
+        }
+        return null;
     }
 
     private MaterialPalette resolveUniformVariantSet(BlockState state, Variant[] variants) {
@@ -372,6 +451,8 @@ final class CamoMaterialResolver {
         if (emission == 0
                 && !element.isShade()
                 && value.endsWith("_luminax_block")
+                && !value.startsWith("dim_")
+                && !value.startsWith("luminax_dim_")
                 && ("luminax".equals(namespace)
                         || "dyenamicsandfriends".equals(namespace))) {
             // NeoForge's model metadata carries the exact value, but the pinned BlueMap
@@ -389,6 +470,7 @@ final class CamoMaterialResolver {
             BlockState tintState,
             Map<Direction, Material> materials,
             Material fallback,
+            int fixedTintRgb,
             boolean empty,
             boolean resolved,
             String reason
@@ -398,6 +480,7 @@ final class CamoMaterialResolver {
                     BlockState.MISSING,
                     Map.of(),
                     MISSING,
+                    -1,
                     true,
                     true,
                     "ok"
@@ -409,6 +492,14 @@ final class CamoMaterialResolver {
         }
 
         static MaterialPalette uniform(BlockState tintState, Material material) {
+            return uniform(tintState, material, -1);
+        }
+
+        static MaterialPalette uniform(
+                BlockState tintState,
+                Material material,
+                int fixedTintRgb
+        ) {
             EnumMap<Direction, Material> materials = new EnumMap<>(Direction.class);
             for (Direction direction : Direction.values()) {
                 materials.put(direction, material);
@@ -417,6 +508,7 @@ final class CamoMaterialResolver {
                     tintState,
                     Map.copyOf(materials),
                     material,
+                    fixedTintRgb,
                     false,
                     true,
                     "ok"
@@ -428,7 +520,15 @@ final class CamoMaterialResolver {
         }
 
         static MaterialPalette missing(BlockState tintState, String reason) {
-            return new MaterialPalette(tintState, Map.of(), MISSING, false, false, reason);
+            return new MaterialPalette(
+                    tintState,
+                    Map.of(),
+                    MISSING,
+                    -1,
+                    false,
+                    false,
+                    reason
+            );
         }
 
         static MaterialPalette directional(
@@ -439,6 +539,7 @@ final class CamoMaterialResolver {
                     tintState,
                     Map.copyOf(materials),
                     materials.get(Direction.UP),
+                    -1,
                     false,
                     true,
                     "ok"

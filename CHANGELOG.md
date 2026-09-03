@@ -10,6 +10,13 @@
   BlueMap add-ons apply synthetic dispatch mappings.
 - Keep waterlogged, glowing, and skylight-propagating states on projected
   geometry; retain BlueMap's water overlay and persisted full-bright lighting.
+- Remap directional materials for exact quarter-turn blockstate variants and
+  allow one empty component of a double frame without falling back both slots.
+- Decode the exact Crystalix custom glass camo, including its persisted RGB
+  colour and emission state.
+- Recover only the exact FramedBlocks-relevant Luminax and Productive
+  Metalworks resources from the installed Dyenamics and Friends compatibility
+  packs without bundling third-party assets.
 
 ## [0.1.0-alpha.4] - 2026-09-02
 

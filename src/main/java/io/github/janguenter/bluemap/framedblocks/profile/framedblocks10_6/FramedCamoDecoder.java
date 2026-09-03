@@ -34,7 +34,8 @@ public final class FramedCamoDecoder {
         if ("framedblocks:fluid".equals(type)) {
             return decodeFluid(camo);
         }
-        if (!"framedblocks:block".equals(type)) {
+        boolean crystalix = "crystalix:crystalix_glass".equals(type);
+        if (!"framedblocks:block".equals(type) && !crystalix) {
             return CamoDecodeResult.failure("unsupported-camo-type");
         }
 
@@ -53,32 +54,44 @@ public final class FramedCamoDecoder {
         Object rawProperties = state.containsKey("Properties")
                 ? state.get("Properties")
                 : state.get("properties");
-        if (rawProperties == null) {
-            return CamoDecodeResult.success(NormalizedCamo.block(
-                    new NormalizedBlockState(id, Map.of())
+        Map<String, String> properties = new TreeMap<>();
+        if (rawProperties != null) {
+            if (!(rawProperties instanceof Map<?, ?> propertyMap)) {
+                return CamoDecodeResult.failure("invalid-camo-properties");
+            }
+            if (propertyMap.size() > MAX_PROPERTIES) {
+                return CamoDecodeResult.failure("too-many-camo-properties");
+            }
+            for (Map.Entry<?, ?> entry : propertyMap.entrySet()) {
+                String key = stringValue(entry.getKey());
+                String value = stringValue(entry.getValue());
+                if (key == null || value == null
+                        || key.length() > MAX_TEXT_LENGTH
+                        || value.length() > MAX_TEXT_LENGTH) {
+                    return CamoDecodeResult.failure("invalid-camo-property");
+                }
+                properties.put(key, value);
+            }
+        }
+
+        NormalizedBlockState blockState = new NormalizedBlockState(id, properties);
+        if (crystalix) {
+            if (!"crystalix:crystalix_glass".equals(id)) {
+                return CamoDecodeResult.failure("invalid-crystalix-camo-state");
+            }
+            Object rawColor = camo.get("color");
+            if (!(rawColor instanceof Integer color)
+                    || color < 0
+                    || color > 0x00ff_ffff) {
+                return CamoDecodeResult.failure("invalid-crystalix-camo-color");
+            }
+            return CamoDecodeResult.success(NormalizedCamo.fixedTintBlock(
+                    blockState,
+                    color
             ));
         }
-        if (!(rawProperties instanceof Map<?, ?> propertyMap)) {
-            return CamoDecodeResult.failure("invalid-camo-properties");
-        }
-        if (propertyMap.size() > MAX_PROPERTIES) {
-            return CamoDecodeResult.failure("too-many-camo-properties");
-        }
-
-        Map<String, String> properties = new TreeMap<>();
-        for (Map.Entry<?, ?> entry : propertyMap.entrySet()) {
-            String key = stringValue(entry.getKey());
-            String value = stringValue(entry.getValue());
-            if (key == null || value == null
-                    || key.length() > MAX_TEXT_LENGTH
-                    || value.length() > MAX_TEXT_LENGTH) {
-                return CamoDecodeResult.failure("invalid-camo-property");
-            }
-            properties.put(key, value);
-        }
-
         return CamoDecodeResult.success(NormalizedCamo.block(
-                new NormalizedBlockState(id, properties)
+                blockState
         ));
     }
 
