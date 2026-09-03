@@ -92,13 +92,13 @@ historical rollback evidence, not validation of the current 1.2.0 candidate.
 
 The `0.1.0-alpha.3` renderer passed its local Java 21 tests, build, POM,
 production-JAR audit, exact-host activation, and targeted full-pack composite
-render. The owner accepted its FramedBlocks gallery on 2026-09-01. The current
-`0.1.0-alpha.4` structure-audit candidate also changes camouflage material
-resolution. It must pass the combined integration render before inheriting
-that visual result.
+render. The owner accepted its FramedBlocks gallery on 2026-09-01. The
+`0.1.0-alpha.5` structure-audit release candidate also changes camouflage
+material resolution. It passed the combined structure render and owner visual
+review on 2026-09-04.
 The older enabled-to-stock-to-restored lifecycle remains historical evidence.
 
-The unreleased structure-audit candidate replaces stock wooden fallback for
+The `0.1.0-alpha.5` release replaces stock wooden fallback for
 routed blocks beside other framed blocks, resolves camouflage from the original
 blockstate resource before another add-on's synthetic dispatch mapping, keeps
 waterlogged and light-bearing host states on projected geometry, and adds the
@@ -108,9 +108,9 @@ and eight expect bounded stock fallback; transparent, emissive, Fusion-tile,
 and weighted-position cases are covered by focused unit tests and the combined
 structure render.
 
-Two historical fixed-view modded-client captures and a BlueMap software-WebGL
-overview provide qualitative technical evidence. The `0.1.0-alpha.3`
-integration gallery has owner visual acceptance, but it is not a pixel-repeatable
+Two historical fixed-view modded-client captures and BlueMap software-WebGL
+captures provide qualitative technical evidence. The `0.1.0-alpha.5`
+structure audit has owner visual acceptance, but it is not a pixel-repeatable
 comparison. The gallery places one default state for each
 placeable/displayable ID, not all 74,196 projected states. Add-on-owned framed-
 neighbor hidden-face parity, comprehensive model-data/BER and non-default-state coverage,

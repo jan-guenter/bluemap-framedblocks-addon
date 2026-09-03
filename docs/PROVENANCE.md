@@ -46,9 +46,9 @@ rewrite that header or pretend a new physical capture occurred. The 1.2.0
 server-side resource stack still requires deployment control and visual
 acceptance, consistent with the existing no-live-resource-attestation
 limitation. The `0.1.0-alpha.3` combined integration gallery passed that visual
-review on 2026-09-01. The source-consolidated `0.1.0-alpha.4` candidate still
-needs its combined integration rerender; the fingerprint does not attest
-future resource stacks.
+review on 2026-09-01. The `0.1.0-alpha.5` structure-audit candidate passed its
+combined structure rerender and owner visual review on 2026-09-04. The
+fingerprint does not attest future resource stacks.
 
 The accepted `0.1.0-alpha.1` artifact (1,326,858 bytes, SHA-256
 `4a88fd3a78acf4bcc24ac173db5b9db9efc56e057eec31eeded6432b3bd695c5`)

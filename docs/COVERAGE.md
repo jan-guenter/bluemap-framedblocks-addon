@@ -84,15 +84,15 @@ and client-versus-BlueMap visual acceptance remain explicit requirements.
 The exact BlueMap feature-backport host activated the `0.1.0-alpha.3` profile
 in the All the Mons 1.2.0 combined integration server. A targeted
 FramedBlocks render completed with zero container restarts, and the owner
-accepted the gallery on 2026-09-01. The unreleased structure-audit candidate
-subsequently scanned 204 located overworld structures and found 11 whose own
-bounds contain persisted FramedBlocks camouflage. All 11 were rerendered and
-opened in BlueMap on 2026-09-04; a material-index audit found no direct stock
-frame association in 10 structures and three spatial associations in one Bee
-Gym tile, where runtime diagnostics and close-up inspection found no camouflage
-resolution failure or visible wood fallback. Owner acceptance is still
-pending. These results are neither a pixel-by-pixel proof nor an
-enabled-to-stock-to-restored lifecycle.
+accepted the gallery on 2026-09-01. The `0.1.0-alpha.5` structure-audit
+candidate subsequently scanned 204 located overworld structures and found 11
+whose own bounds contain persisted FramedBlocks camouflage. All 11 were
+rerendered and opened in BlueMap on 2026-09-04; a material-index audit found no
+direct stock frame association in 10 structures and three spatial associations
+in one Bee Gym tile, where runtime diagnostics and close-up inspection found no
+camouflage resolution failure or visible wood fallback. The owner accepted the
+complete 11-structure review set on 2026-09-04. These results are neither a
+pixel-by-pixel proof nor an enabled-to-stock-to-restored lifecycle.
 
 ## Historical expanded exact-profile fixtures
 
@@ -121,9 +121,9 @@ overview passed as qualitative technical references only.
 
 ## Current renderer regression gallery
 
-The unreleased structure-audit candidate's canonical gallery build includes 16
-logical renderer-path cases with 18 physical framed blocks. Eight cases expect
-projected add-on geometry:
+The `0.1.0-alpha.5` structure-audit release's canonical gallery build includes
+16 logical renderer-path cases with 18 physical framed blocks. Eight cases
+expect projected add-on geometry:
 the original single cube, double slab, and oriented slope, plus an adjacent
 cube pair, an adjacent dual-camouflage double panel, and waterlogged, glowing,
 and skylight-propagating states. Eight cases retain bounded stock fallback.

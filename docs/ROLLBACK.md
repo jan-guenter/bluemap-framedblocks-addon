@@ -26,9 +26,10 @@ enabled-to-stock-to-restored lifecycle below. Until it does, the observed row
 remains historical evidence rather than a current-host rollback claim. Its
 `0.1.0-alpha.3` targeted composite gallery passed owner visual review on
 2026-09-01, and `0.1.0-alpha.4` is the currently published baseline. The
-unreleased adjacency candidate changes runtime rendering and therefore needs
-a combined integration rerender and owner review. Its current renderer matrix
-contains 16 semantic signatures.
+`0.1.0-alpha.5` adjacency and material-resolution candidate passed its combined
+structure rerender and owner review on 2026-09-04. Its current renderer matrix
+contains 16 semantic signatures. The historical full removal-and-restoration
+lifecycle has not been repeated on the current host.
 
 ## Historical observed isolated lifecycle
 

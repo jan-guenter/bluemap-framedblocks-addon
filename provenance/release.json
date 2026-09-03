@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "status": "owner-accepted-release-candidate",
-  "version": "0.1.0-alpha.4",
-  "release_date": "2026-09-02",
+  "version": "0.1.0-alpha.5",
+  "release_date": "2026-09-04",
   "repository": "https://github.com/jan-guenter/bluemap-framedblocks-addon",
-  "tag": "v0.1.0-alpha.4",
-  "maven_coordinate": "io.github.jan-guenter:bluemap-framedblocks-addon:0.1.0-alpha.4",
+  "tag": "v0.1.0-alpha.5",
+  "maven_coordinate": "io.github.jan-guenter:bluemap-framedblocks-addon:0.1.0-alpha.5",
   "bluemap": {
     "version": "5.22-feature.backport-5.23-stateless-java-web-server-46",
     "commit": "7e07f4e74ec1e92a6ead9aa1e66054af3e133aac",
@@ -32,57 +32,64 @@
     "reason": "FramedBlocks does not use the shared face-lighting sampler; this records the native 5.23 portfolio identity without claiming it as an input."
   },
   "previous_owner_accepted_release": {
-    "version": "0.1.0-alpha.3",
-    "tag": "v0.1.0-alpha.3",
-    "commit": "b4a3f3641b47aaf9b56a89db6215df121575ca08",
-    "production_jar_size": 1337598,
-    "production_jar_sha256": "1b4befc9b475e11e99d4af776ee776c724605b78b4879ab8a93ebfb217ce618a",
+    "version": "0.1.0-alpha.4",
+    "tag": "v0.1.0-alpha.4",
+    "commit": "b324b513ecfb2d592b76c3f4280a63354e480728",
+    "production_jar_size": 1341258,
+    "production_jar_sha256": "de195ed764dea85099e238099f1fc98671b0bbfa951b939ec26ae4912a1971b2",
     "visual_acceptance": true
   },
   "owner_accepted_combined_staging": {
-    "accepted_at": "2026-09-02",
-    "candidate_source_commit": "9cb68b11a7160d67a169c9bdeee7635808b5f9e0",
-    "candidate_manifest_sha256": "37edfde8510131ba513e9c46092552ce524b733307490a2a562bd90f0db8a514",
-    "runtime_suite_sha256": "308a321a5ad33b070758e577c24ddef0b1dbeaaec824a000efe49fc195530e59",
-    "runtime_attestation_sha256": "4a81be41fb0d1d26a5e3c8eb7a4ecbaf48e87925716b4afa02841eb7add2158e",
-    "gallery_composition_id": "b1af93b9280073770cefba809a44065457e658845c1d8f2051f43432a09890b7",
-    "gallery_composition_manifest_sha256": "ffa07f7cdf4b8ef7abb882e5bfac40beab613cf7f489d142cdf891880fd3fcbd",
-    "integration_gallery_count": 51,
-    "integration_gallery_failures": 0,
-    "framedblocks_mirrored_checks": 1084,
-    "framedblocks_failures": 0,
+    "accepted_at": "2026-09-04",
+    "candidate_source_commit": "69cbb6f4b7a05e8c16b0a80c6743a1ffb8e75701",
+    "candidate_manifest_sha256": "62027467495ddb558d61bb80a5d9674f78a4a2e3a8e736c98943dfbe275d1c55",
+    "candidate_staging_jar": {
+      "size": 1368441,
+      "sha256": "3a95a8e10971684f7d786ab8fad2dd99860468513713c305152e8176936d1e58"
+    },
+    "runtime_attestation_sha256": "a00772cbd3ec5a38641c6254c1335eab0fad6c894a6e832e826fda0578330433",
+    "structure_inventory_sha256": "797a02139af1bd7f4c1fb423d686342c0fcff514dfadb6325295825e14b35b42",
+    "integration_addon_activation_markers": 51,
+    "overworld_region_files": 167,
+    "overworld_chunks": 110778,
+    "located_overworld_structures": 204,
+    "structures_with_framedblocks": 11,
+    "framed_block_entities_in_structure_bounds": 62367,
+    "eligible_persisted_camos": 62358,
+    "stock_frame_material_spatial_associations": 3,
+    "visually_observed_wooden_base_leakage": 0,
     "visual_acceptance": true,
-    "scope": "The owner accepted the exact native alpha.4 FramedBlocks candidate in the combined ATMons 1.2.0 gallery, including camouflage substitution and absence of wooden base leakage."
+    "scope": "The owner accepted the exact alpha.5 FramedBlocks candidate after all 204 located overworld structures were scanned and all 11 structures containing FramedBlocks were rerendered and visually reviewed."
   },
   "final_release_artifacts": {
     "production_jar": {
-      "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.4.jar",
-      "size": 1341258,
-      "sha256": "de195ed764dea85099e238099f1fc98671b0bbfa951b939ec26ae4912a1971b2"
+      "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.5.jar",
+      "size": 1368397,
+      "sha256": "63c6aa5ceb901e78c0e7a30d5c55ef2be2552a4c2e91d0562391bd74dbdcc43d"
     },
     "sources_jar": {
-      "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.4-sources.jar",
-      "size": 1263584,
-      "sha256": "af39cfa7175b5419bdc8e256c026f72e8a57ee08fbb18b6fce7609f6a03602b4"
+      "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.5-sources.jar",
+      "size": 1272416,
+      "sha256": "d1a8bb169d4c6354cdba3b1d7da3b31f758e145406e9b40ecde73f419ff052e8"
     },
     "pom": {
-      "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.4.pom",
+      "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.5.pom",
       "size": 1688,
-      "sha256": "e596866048bb60acef5cd9e81eefbedd5e0963f15a9e2b3b9fdefe3e67452380"
+      "sha256": "9091d74d8dc8bf9220f94749af5268e8c4542f282a4f21d66cb808abbf8e05a7"
     },
     "gradle_module": {
-      "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.4.module.json",
+      "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.5.module.json",
       "size": 2858,
-      "sha256": "f5d72388d3d494626a382273f11a16e59fe7e46fd83c1955bc271691ef3aa325"
+      "sha256": "a25d7a5abf235dd8afadba90f2683cf095f8945bf1b19d3f551be68e7549faf6"
     }
   },
   "preserved_contract": {
     "gallery_cases": 234,
     "synthetic_dispatch_ids": 234,
     "projected_geometry_ids": 206,
-    "renderer_matrix_logical_entries": 15,
-    "renderer_matrix_physical_entries": 16,
-    "camouflage_and_no_wooden_base_leakage_contract_changed": false
+    "renderer_matrix_logical_entries": 16,
+    "renderer_matrix_physical_entries": 18,
+    "camouflage_material_resolution_extended": true
   },
   "verification": {
     "production_jar_exact_byte_gate": true,
@@ -90,6 +97,7 @@
     "publication_metadata_exact_byte_gate": true,
     "exact_input_gate": true,
     "combined_runtime_review": true,
-    "owner_visual_acceptance_for_alpha_4": true
+    "exhaustive_overworld_structure_inventory": true,
+    "owner_visual_acceptance_for_alpha_5": true
   }
 }
