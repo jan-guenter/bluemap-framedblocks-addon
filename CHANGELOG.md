@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Keep routed FramedBlocks on projected camouflage geometry when another
+  framed block is adjacent instead of exposing the stock wooden frame.
+- Extend the renderer-path gallery with adjacent single- and dual-camouflage
+  cases.
+
 ## [0.1.0-alpha.4] - 2026-09-02
 
 - Compile the four BlueMap 5.23 integration primitives from the exact

@@ -16,15 +16,16 @@ The generator also pins the exact 153 `BlockType` entries which can occlude
 with a solid camouflage and places those states with `solid=true`. This is
 needed because the bounded fixture uses disk-NBT merging rather than the
 normal player interaction path that would otherwise reconcile that dynamic
-state. It also emits a separate 15-case renderer-path matrix and two guarded
-observation decks/poses. Each lane has its own bounded functions.
+state. The canonical build also invokes a disjoint 16-case renderer-path matrix,
+and the datapack provides two guarded observation decks/poses. Each lane keeps
+its own bounded functions for focused use.
 
 ## Audited layout
 
 - The 234 anchors form an 18-by-13 grid at `y=100`, with three-block spacing:
   `x=196..247`, `z=196..232`.
 - Only `x=195..248`, `y=98..102`, `z=195..233` is cleared or written.
-- The renderer-path matrix has 15 logical cases and 16 framed anchors in a
+- The renderer-path matrix has 16 logical cases and 18 framed blocks in a
   6-by-3 grid at `y=100`. Its anchors are `x=198..218`, `z=240..248`; only
   `x=196..220`, `y=98..102`, `z=238..250` is cleared or written by its
   functions.
@@ -45,20 +46,21 @@ door IDs receive an upper half with matching primary camouflage.
 
 ## Renderer-path matrix
 
-The compact matrix has three expected add-on geometry cases: a single cube, a
-double slab with primary and secondary camouflage, and an explicitly oriented
-slope. Its twelve expected stock-fallback cases cover adjustable model data,
-collapsible offsets, a potted flower, one-way-window direction, a sign BER,
-special camouflage overlay, `waterlogged=true`, `glowing=true`,
-`propagates_skylight=true`, reinforcement, adjacent framed neighbors, and
-permitted-but-non-opaque glass camouflage. The manifest records the exact
-expected reason for every path.
+The compact matrix, included by `framedblocks_gallery:build`, has five expected
+add-on geometry cases: a single cube, a
+double slab with primary and secondary camouflage, an explicitly oriented
+slope, an adjacent cube pair, and an adjacent double panel with primary and
+secondary camouflage. Its eleven expected stock-fallback cases cover adjustable
+model data, collapsible offsets, a potted flower, one-way-window direction, a
+sign BER, special camouflage overlay, `waterlogged=true`, `glowing=true`,
+`propagates_skylight=true`, reinforcement, and permitted-but-non-opaque glass
+camouflage. The manifest records the exact expected reason for every path.
 
 The six model-data/BER family cases remain on their original resource in the
 resource extension. Waterlogged, glowing, skylight-propagating, reinforced,
-adjacent-neighbor, and glass cases enter the add-on renderer and then take its
-runtime fallback. The manifest and TSV record this routing stage separately
-from the final expected path.
+and glass cases enter the add-on renderer and then take its runtime fallback.
+Both adjacent-neighbor cases remain on the add-on geometry path. The manifest
+and TSV record this routing stage separately from the final expected path.
 
 Missing and malformed camouflage are deliberately not built. FramedBlocks
 normalizes either form while loading the block entity and writes canonical

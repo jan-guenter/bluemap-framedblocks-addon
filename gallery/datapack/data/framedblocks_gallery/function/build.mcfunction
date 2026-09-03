@@ -1186,5 +1186,7 @@ setblock 247 99 232 minecraft:stone replace
 setblock 247 100 232 framedblocks:framed_waterloggable_stone_pressure_plate replace
 data merge block 247 100 232 {camo:{type:"framedblocks:block",state:{Name:"minecraft:stone"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}
 
-tellraw @a [{"text":"Built the isolated FramedBlocks 10.6.1 roster gallery (234 anchors).","color":"aqua"}]
+function framedblocks_gallery:build_renderer_paths
+
+tellraw @a [{"text":"Built the isolated FramedBlocks 10.6.1 roster gallery (234 anchors plus renderer regressions).","color":"aqua"}]
 function framedblocks_gallery:verify

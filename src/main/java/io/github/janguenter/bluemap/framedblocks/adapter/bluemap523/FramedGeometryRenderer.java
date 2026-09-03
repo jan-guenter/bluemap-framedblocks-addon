@@ -28,7 +28,6 @@ import io.github.janguenter.bluemap.framedblocks.profile.framedblocks10_6.Geomet
 import io.github.janguenter.bluemap.framedblocks.profile.framedblocks10_6.NormalizedCamo;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -119,12 +118,6 @@ final class FramedGeometryRenderer implements BlockRenderer {
                 fallback("unclassified-state", block, tileModel, blockColor, renderStart);
                 return;
             }
-            if (support.routed() && hasUnsupportedFramedNeighbor(block)) {
-                fallback("neighbor-hidden-face-model-data-required",
-                        block, tileModel, blockColor, renderStart);
-                return;
-            }
-
             GeometryTemplateProfile.StateTemplate template = profile.find(block.getBlockState())
                     .orElse(null);
             if (template == null) {
@@ -848,44 +841,6 @@ final class FramedGeometryRenderer implements BlockRenderer {
             return -1;
         }
         return 0;
-    }
-
-    static boolean hasUnsupportedFramedNeighbor(BlockNeighborhood block) {
-        for (Direction direction : Direction.values()) {
-            BlockState neighborState = neighbor(block, direction).getBlockState();
-            if ("framedblocks".equals(neighborState.getId().getNamespace())
-                    && !isDoorCompanion(block.getBlockState(), neighborState, direction)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static boolean isDoorCompanion(
-            BlockState state,
-            BlockState neighborState,
-            Direction direction
-    ) {
-        String blockId = state.getId().getFormatted();
-        if ((direction != Direction.UP && direction != Direction.DOWN)
-                || !blockId.equals(neighborState.getId().getFormatted())
-                || !Set.of(
-                        "framedblocks:framed_door",
-                        "framedblocks:framed_iron_door"
-                ).contains(blockId)) {
-            return false;
-        }
-        String half = state.getProperties().get("half");
-        String neighborHalf = neighborState.getProperties().get("half");
-        if (!("lower".equals(half) && "upper".equals(neighborHalf)
-                || "upper".equals(half) && "lower".equals(neighborHalf))) {
-            return false;
-        }
-        Map<String, String> properties = new HashMap<>(state.getProperties());
-        Map<String, String> neighborProperties = new HashMap<>(neighborState.getProperties());
-        properties.remove("half");
-        neighborProperties.remove("half");
-        return properties.equals(neighborProperties);
     }
 
     private static float upwardNormalComponent(

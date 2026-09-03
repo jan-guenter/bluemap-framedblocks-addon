@@ -25,8 +25,10 @@ commit `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac` has not yet completed the
 enabled-to-stock-to-restored lifecycle below. Until it does, the observed row
 remains historical evidence rather than a current-host rollback claim. Its
 `0.1.0-alpha.3` targeted composite gallery passed owner visual review on
-2026-09-01. The `0.1.0-alpha.4` source-consolidation candidate still needs a
-combined integration rerender.
+2026-09-01, and `0.1.0-alpha.4` is the currently published baseline. The
+unreleased adjacency candidate changes runtime rendering and therefore needs
+a combined integration rerender and owner review. Its current renderer matrix
+contains 16 semantic signatures.
 
 ## Historical observed isolated lifecycle
 

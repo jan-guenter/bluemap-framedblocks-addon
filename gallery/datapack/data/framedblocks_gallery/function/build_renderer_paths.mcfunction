@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-3.0-only
-# Exact 10.6.1 renderer-path matrix: 15 cases and 16 framed anchors.
+# Exact 10.6.1 renderer-path matrix: 16 cases and 18 framed anchors.
 # Rebuilding is idempotent because its disjoint AABB is cleared first.
 function framedblocks_gallery:clear_renderer_paths
 
@@ -53,7 +53,7 @@ setblock 210 99 244 minecraft:stone replace
 setblock 210 100 244 framedblocks:framed_slab[glowing=false,propagates_skylight=false,solid=true,top=false,waterlogged=true] replace
 data merge block 210 100 244 {camo:{type:"framedblocks:block",state:{Name:"minecraft:stone"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}
 
-# fb1061-rp-11 fallback_adjacent_framed_neighbor
+# fb1061-rp-11 proven_adjacent_framed_neighbor
 setblock 214 99 244 minecraft:stone replace
 setblock 214 100 244 framedblocks:framed_cube[alt=false,glowing=false,propagates_skylight=false,reinforced=false,solid=true,solid_bg=false] replace
 data merge block 214 100 244 {camo:{type:"framedblocks:block",state:{Name:"minecraft:stone"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}
@@ -81,5 +81,13 @@ setblock 206 99 248 minecraft:stone replace
 setblock 206 100 248 framedblocks:framed_cube[alt=false,glowing=false,propagates_skylight=false,reinforced=false,solid=true,solid_bg=false] replace
 data merge block 206 100 248 {camo:{type:"framedblocks:block",state:{Name:"minecraft:stone"}},glowing:0b,intangible:0b,reinforced:1b,updated:3b}
 
-tellraw @a [{"text":"Built the FramedBlocks renderer-path matrix (15 cases, 16 framed anchors).","color":"aqua"}]
+# fb1061-rp-16 proven_adjacent_framed_double_panel
+setblock 210 99 248 minecraft:stone replace
+setblock 210 100 248 framedblocks:framed_double_panel[solid=true] replace
+data merge block 210 100 248 {camo:{type:"framedblocks:block",state:{Name:"minecraft:stone"}},camo_two:{type:"framedblocks:block",state:{Name:"minecraft:gold_block"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}
+setblock 211 99 248 minecraft:stone replace
+setblock 211 100 248 framedblocks:framed_cube[alt=false,glowing=false,propagates_skylight=false,reinforced=false,solid=true,solid_bg=false] replace
+data merge block 211 100 248 {camo:{type:"framedblocks:block",state:{Name:"minecraft:stone"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}
+
+tellraw @a [{"text":"Built the FramedBlocks renderer-path matrix (16 cases, 18 framed anchors).","color":"aqua"}]
 function framedblocks_gallery:verify_renderer_paths

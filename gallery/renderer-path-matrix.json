@@ -316,7 +316,7 @@
       "block_id": "framedblocks:framed_cube",
       "block_state": "framedblocks:framed_cube[alt=false,glowing=false,propagates_skylight=false,reinforced=false,solid=true,solid_bg=false]",
       "case_id": "fb1061-rp-11",
-      "category": "fallback_adjacent_framed_neighbor",
+      "category": "proven_adjacent_framed_neighbor",
       "companion_blocks": [
         {
           "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
@@ -340,11 +340,11 @@
           ]
         }
       ],
-      "expected_path": "stock_fallback",
-      "expected_reason": "neighbor-hidden-face-model-data-required",
+      "expected_path": "addon_geometry",
+      "expected_reason": "state-only-baked-model",
       "index": 11,
       "primary_camo": "minecraft:stone",
-      "routing_stage": "addon_renderer_runtime_fallback",
+      "routing_stage": "addon_renderer_geometry",
       "secondary_camo": null,
       "supports": [
         {
@@ -477,17 +477,69 @@
           }
         }
       ]
+    },
+    {
+      "anchor": {
+        "x": 210,
+        "y": 100,
+        "z": 248
+      },
+      "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},camo_two:{type:\"framedblocks:block\",state:{Name:\"minecraft:gold_block\"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+      "block_id": "framedblocks:framed_double_panel",
+      "block_state": "framedblocks:framed_double_panel[solid=true]",
+      "case_id": "fb1061-rp-16",
+      "category": "proven_adjacent_framed_double_panel",
+      "companion_blocks": [
+        {
+          "block_entity_snbt": "{camo:{type:\"framedblocks:block\",state:{Name:\"minecraft:stone\"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b}",
+          "block_state": "framedblocks:framed_cube[alt=false,glowing=false,propagates_skylight=false,reinforced=false,solid=true,solid_bg=false]",
+          "kind": "east_framed_neighbor",
+          "position": {
+            "x": 211,
+            "y": 100,
+            "z": 248
+          },
+          "supports": [
+            {
+              "block_id": "minecraft:stone",
+              "kind": "base",
+              "position": {
+                "x": 211,
+                "y": 99,
+                "z": 248
+              }
+            }
+          ]
+        }
+      ],
+      "expected_path": "addon_geometry",
+      "expected_reason": "state-only-baked-model",
+      "index": 16,
+      "primary_camo": "minecraft:stone",
+      "routing_stage": "addon_renderer_geometry",
+      "secondary_camo": "minecraft:gold_block",
+      "supports": [
+        {
+          "block_id": "minecraft:stone",
+          "kind": "base",
+          "position": {
+            "x": 210,
+            "y": 99,
+            "z": 248
+          }
+        }
+      ]
     }
   ],
   "counts": {
-    "addon_geometry_cases": 3,
-    "addon_renderer_runtime_fallback_cases": 6,
+    "addon_geometry_cases": 5,
+    "addon_renderer_runtime_fallback_cases": 5,
     "observation_deck_blocks": 224,
     "observation_decks": 2,
-    "renderer_anchor_blocks": 16,
-    "renderer_path_cases": 15,
+    "renderer_anchor_blocks": 18,
+    "renderer_path_cases": 16,
     "resource_extension_unrouted_cases": 6,
-    "stock_fallback_cases": 12,
+    "stock_fallback_cases": 11,
     "unbuilt_camo_corruption_cases": 2
   },
   "functions": {

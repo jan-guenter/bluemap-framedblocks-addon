@@ -1270,5 +1270,8 @@ execute unless block 247 100 232 framedblocks:framed_waterloggable_stone_pressur
 execute unless data block 247 100 232 {camo:{type:"framedblocks:block",state:{Name:"minecraft:stone"}}} run scoreboard players add #failures fbgv1061 1
 execute unless block 247 99 232 minecraft:stone run scoreboard players add #failures fbgv1061 1
 
+function framedblocks_gallery:verify_renderer_paths
+execute unless score #failures fbgr1061 matches 0 run scoreboard players add #failures fbgv1061 1
+
 execute if score #failures fbgv1061 matches 0 run tellraw @a [{"text":"FramedBlocks gallery verification passed: 234/234 anchors plus camos and supports.","color":"green"}]
 execute unless score #failures fbgv1061 matches 0 run tellraw @a [{"text":"FramedBlocks gallery verification failed with ","color":"red"},{"score":{"name":"#failures","objective":"fbgv1061"}},{"text":" mismatches.","color":"red"}]

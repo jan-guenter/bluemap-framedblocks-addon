@@ -30,10 +30,11 @@ dynamic-family templates remain in the inventory so policy and exact-state
 validation cannot silently broaden coverage.
 
 Unknown IDs never become supported implicitly. Dispatched IDs also fall back
-for waterlogged, dynamic-light/skylight, reinforced, or unsupported framed-
-adjacent contexts. Matching vertical halves of the same door remain in the
-projected path. Other adjacent framed blocks fall back because FramedBlocks
-hidden-face model data depends on the neighboring shape.
+for waterlogged, dynamic-light/skylight, or reinforced contexts. Routed blocks
+beside other framed blocks remain on the projected geometry path, which avoids
+exposing the stock wooden frame instead of camouflage. The renderer applies
+BlueMap's general neighborhood culling metadata, not FramedBlocks' complete
+client-side, shape-aware hidden-face model data.
 The fallback renders the original resource without recursing through the
 add-on. It keeps routing failures contained, but it cannot reconstruct omitted
 client model data or block-entity-renderer output and is not classified as
@@ -107,6 +108,16 @@ re-enabling. Six `rstate` bookkeeping files changed, so whole-tree byte
 identity is not claimed. Two fixed-view client captures and a BlueMap WebGL
 overview passed as qualitative technical references only.
 
+## Current renderer regression gallery
+
+The unreleased adjacency candidate's canonical gallery build includes 16
+logical renderer-path cases with 18 physical framed blocks. Five cases expect
+projected add-on geometry:
+the original single cube, double slab, and oriented slope, plus an adjacent
+cube pair and an adjacent dual-camouflage double panel. Eleven cases retain
+the bounded stock fallback. This generated fixture checks routing and saved
+state, not client-exact hidden-face parity.
+
 ## Implemented M0 path
 
 This section records the earlier narrow checkpoint; it is not evidence for the
@@ -151,7 +162,7 @@ stone-control PRBM byte-for-byte.
 
 - non-default-state and comprehensive block-entity/model-data/BER matrices;
 - secondary-camouflage and modifier matrices beyond the focused cases;
-- add-on-owned framed-neighbor culling rather than intentional fallback;
+- client-exact, shape-aware framed-neighbor hidden-face behavior;
 - pixel-repeatable modded-client reference;
 - malformed/incompatible-profile, in-process resource-reload, and
   concurrent-render matrices;

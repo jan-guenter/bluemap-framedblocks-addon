@@ -146,6 +146,24 @@ class FramedGeometryRendererEmissionTest {
     }
 
     @Test
+    void emitsProjectedCamoBesideAnotherFramedBlock() throws Exception {
+        Fixture fixture = fixture(true);
+        RecordingTileModel model = new RecordingTileModel();
+
+        fixture.renderer().render(
+                fixture.neighborhood(),
+                null,
+                new TileModelView(model),
+                new Color()
+        );
+
+        assertEquals(6, model.size());
+        assertMaterial(model, 0, fixture.gallery().get(PRIMARY_NORTH));
+        assertMaterial(model, 2, fixture.gallery().get(SECONDARY_EAST));
+        assertMaterial(model, 4, fixture.gallery().get(FIXED));
+    }
+
+    @Test
     void rollsBackPartialProfileGeometryBeforeRenderingTheStockResource() throws Exception {
         Fixture fixture = fixture();
         RecordingTileModel model = new RecordingTileModel();
@@ -172,6 +190,10 @@ class FramedGeometryRendererEmissionTest {
     }
 
     private static Fixture fixture() throws Exception {
+        return fixture(false);
+    }
+
+    private static Fixture fixture(boolean adjacentFramedBlock) throws Exception {
         ResourcePack resourcePack = new ResourcePack(new PackVersion(34, 0));
         Key primary = Key.parse("test:block/primary");
         Key secondary = Key.parse("test:block/secondary");
@@ -225,10 +247,21 @@ class FramedGeometryRendererEmissionTest {
         gallery.put(resourcePack.getTextures());
 
         FramedBlockEntityData blockEntity = blockEntity();
-        Map<Position, BlockState> states = Map.of(
-                new Position(X, Y, Z), BlockState.fromString(FRAMED_CUBE.getFormatted()),
-                new Position(X - 1, Y + 1, Z), BlockState.fromString("test:occluder")
-        );
+        Map<Position, BlockState> states = adjacentFramedBlock
+                ? Map.of(
+                        new Position(X, Y, Z),
+                        BlockState.fromString(FRAMED_CUBE.getFormatted()),
+                        new Position(X + 1, Y, Z),
+                        BlockState.fromString("framedblocks:framed_double_slab"),
+                        new Position(X - 1, Y + 1, Z),
+                        BlockState.fromString("test:occluder")
+                )
+                : Map.of(
+                        new Position(X, Y, Z),
+                        BlockState.fromString(FRAMED_CUBE.getFormatted()),
+                        new Position(X - 1, Y + 1, Z),
+                        BlockState.fromString("test:occluder")
+                );
         Map<Position, BlockEntity> blockEntities = Map.of(
                 new Position(X, Y, Z), blockEntity
         );

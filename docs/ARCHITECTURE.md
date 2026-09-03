@@ -58,10 +58,10 @@ All 234 rendered IDs are redirected to the synthetic dispatch resource. Each
 render consults the machine-readable status/family/reason classification
 again. The 206 state-only families use projected geometry. The 28 client-
 dynamic families use bounded surrogates, manual bodies, or stock-model
-placeholder substitution. Waterlogged, dynamic-light/skylight, reinforced,
-and unsupported framed-adjacent contexts go directly to the original
-FramedBlocks resource. Matching upper and lower halves of the same closed or
-open door remain in the projected path.
+placeholder substitution. Waterlogged, dynamic-light/skylight, and reinforced
+contexts go directly to the original FramedBlocks resource. Routed blocks next
+to another framed block remain in the projected path instead of exposing the
+stock wooden frame.
 
 The geometry renderer performs only an exact raw-state-key lookup and consumes
 the referenced representative template. It does not recreate FramedBlocks'
@@ -71,7 +71,10 @@ intentional: accepting a plausible subset would silently bind geometry to the
 wrong client state. Exported face UVs, winding, cull direction, ambient
 occlusion, and block/sky light values remain explicit inputs. Primary
 camouflage and a template-conditional secondary camouflage may supply face
-materials.
+materials. Projected faces with a cull direction use BlueMap's general
+neighborhood culling properties. This removes faces against culling neighbors
+but does not recreate every FramedBlocks client-side, shape-aware hidden-face
+decision.
 
 The private physical capture uses schema v2 to separate the complete registry
 inventory from deduplicated geometry:

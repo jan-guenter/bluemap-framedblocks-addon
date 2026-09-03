@@ -41,11 +41,12 @@ collapsible, flower-pot, one-way-window, and special-overlay families use
 their bounded family renderers.
 
 Routing is additionally fail-closed per state and render context. Waterlogged,
-dynamic-light/skylight, reinforced, and unsupported framed-to-framed-adjacent
-blocks use the original FramedBlocks resource fallback. Matching upper and
-lower halves of the same door are handled as one shape. Fallback is a safety
-path, not a claim of client-equivalent rendering for model-data- or
-block-entity-renderer-driven blocks. Block camouflage is accepted when
+dynamic-light/skylight, and reinforced blocks use the original FramedBlocks
+resource fallback. Routed blocks beside other framed blocks keep their
+projected camouflage geometry and apply BlueMap's neighborhood culling rules.
+Those rules do not reproduce every client-side, shape-aware hidden-face
+decision. Fallback is a safety path, not a claim of client-equivalent rendering
+for model-data- or block-entity-renderer-driven blocks. Block camouflage is accepted when
 BlueMap's baked resource metadata proves either one canonical untransformed
 opaque full-cube variant or a bounded set of uniform-material opaque full-cube
 variants. The latter lane admits Minecraft 1.21.1's normal, mirrored, and
@@ -85,12 +86,18 @@ render. The owner accepted its FramedBlocks gallery on 2026-09-01. The current
 repeat the combined integration render before inheriting that visual result.
 The older enabled-to-stock-to-restored lifecycle remains historical evidence.
 
+The unreleased adjacency candidate replaces the stock wooden fallback for
+routed blocks beside other framed blocks. Its canonical gallery build includes
+a generated renderer-path matrix with 16 logical cases and 18 physical framed
+blocks. Five cases expect add-on geometry, including adjacent single- and
+dual-camouflage cases, and eleven expect bounded stock fallback.
+
 Two historical fixed-view modded-client captures and a BlueMap software-WebGL
 overview provide qualitative technical evidence. The `0.1.0-alpha.3`
 integration gallery has owner visual acceptance, but it is not a pixel-repeatable
 comparison. The gallery places one default state for each
 placeable/displayable ID, not all 74,196 projected states. Add-on-owned framed-
-neighbor culling, comprehensive model-data/BER and non-default-state coverage,
+neighbor hidden-face parity, comprehensive model-data/BER and non-default-state coverage,
 malformed/reload/concurrency matrices, performance budgets, and production
 deployment remain open. Intentional fallback preserves BlueMap operation but
 is not necessarily client-equivalent.

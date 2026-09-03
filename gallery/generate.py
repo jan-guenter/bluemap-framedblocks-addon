@@ -599,14 +599,14 @@ RENDERER_CASE_SPECS = (
     ),
     RendererCaseSpec(
         "fb1061-rp-11",
-        "fallback_adjacent_framed_neighbor",
+        "proven_adjacent_framed_neighbor",
         "framedblocks:framed_cube",
         (
             "framedblocks:framed_cube[alt=false,glowing=false,"
             "propagates_skylight=false,reinforced=false,solid=true,solid_bg=false]"
         ),
-        "stock_fallback",
-        "neighbor-hidden-face-model-data-required",
+        "addon_geometry",
+        "state-only-baked-model",
         "minecraft:stone",
         companion_block_state=(
             "framedblocks:framed_cube[alt=false,glowing=false,"
@@ -662,6 +662,20 @@ RENDERER_CASE_SPECS = (
         "reinforcement-model-data-required",
         "minecraft:stone",
         reinforced_modifier=True,
+    ),
+    RendererCaseSpec(
+        "fb1061-rp-16",
+        "proven_adjacent_framed_double_panel",
+        "framedblocks:framed_double_panel",
+        "framedblocks:framed_double_panel[solid=true]",
+        "addon_geometry",
+        "state-only-baked-model",
+        "minecraft:stone",
+        "minecraft:gold_block",
+        companion_block_state=(
+            "framedblocks:framed_cube[alt=false,glowing=false,"
+            "propagates_skylight=false,reinforced=false,solid=true,solid_bg=false]"
+        ),
     ),
 )
 
@@ -1000,8 +1014,8 @@ def validate_strict_map_bounds(name: str, aabb: Aabb) -> None:
 
 
 def validate_renderer_layout(cases: list[dict[str, object]]) -> None:
-    if len(cases) != 15:
-        raise ValueError("renderer-path matrix must contain exactly 15 cases")
+    if len(cases) != 16:
+        raise ValueError("renderer-path matrix must contain exactly 16 cases")
     if RENDERER_MATRIX_CLEAR_AABB.volume() > 32_768:
         raise ValueError("renderer-path clear AABB exceeds the fill volume limit")
     validate_strict_map_bounds("renderer-path clear AABB", RENDERER_MATRIX_CLEAR_AABB)
@@ -1020,10 +1034,10 @@ def validate_renderer_layout(cases: list[dict[str, object]]) -> None:
     actual_categories = {case["category"] for case in cases}
     if len(expected_categories) != len(cases) or actual_categories != expected_categories:
         raise ValueError("renderer-path categories must be unique and complete")
-    if sum(case["expected_path"] == "addon_geometry" for case in cases) != 3:
-        raise ValueError("renderer-path matrix must contain three add-on cases")
-    if sum(case["expected_path"] == "stock_fallback" for case in cases) != 12:
-        raise ValueError("renderer-path matrix must contain twelve stock fallbacks")
+    if sum(case["expected_path"] == "addon_geometry" for case in cases) != 5:
+        raise ValueError("renderer-path matrix must contain five add-on cases")
+    if sum(case["expected_path"] == "stock_fallback" for case in cases) != 11:
+        raise ValueError("renderer-path matrix must contain eleven stock fallbacks")
     if sum(
         case["routing_stage"] == "resource_extension_unrouted" for case in cases
     ) != 6:
@@ -1031,8 +1045,8 @@ def validate_renderer_layout(cases: list[dict[str, object]]) -> None:
     if sum(
         case["routing_stage"] == "addon_renderer_runtime_fallback"
         for case in cases
-    ) != 6:
-        raise ValueError("renderer-path matrix must contain six runtime fallbacks")
+    ) != 5:
+        raise ValueError("renderer-path matrix must contain five runtime fallbacks")
 
     occupied: set[Position] = set(anchors)
     companion_count = 0
@@ -1064,8 +1078,8 @@ def validate_renderer_layout(cases: list[dict[str, object]]) -> None:
                         f"renderer companion support collided: {case['case_id']}"
                     )
                 occupied.add(support)
-    if companion_count != 1:
-        raise ValueError("renderer-path matrix must have one adjacent framed companion")
+    if companion_count != 2:
+        raise ValueError("renderer-path matrix must have two adjacent framed companions")
 
 
 def validate_observation_decks() -> None:
@@ -1458,9 +1472,12 @@ def render_build_function(cases: list[dict[str, object]]) -> bytes:
     lines.extend(
         (
             "",
+            "function framedblocks_gallery:build_renderer_paths",
+            "",
             (
                 'tellraw @a [{"text":"Built the isolated FramedBlocks 10.6.1 '
-                'roster gallery (234 anchors).","color":"aqua"}]'
+                'roster gallery (234 anchors plus renderer regressions).",'
+                '"color":"aqua"}]'
             ),
             "function framedblocks_gallery:verify",
         )
@@ -1513,6 +1530,12 @@ def render_verify_function(cases: list[dict[str, object]]) -> bytes:
             )
     lines.extend(
         (
+            "",
+            "function framedblocks_gallery:verify_renderer_paths",
+            (
+                "execute unless score #failures fbgr1061 matches 0 run "
+                "scoreboard players add #failures fbgv1061 1"
+            ),
             "",
             (
                 "execute if score #failures fbgv1061 matches 0 run tellraw @a "

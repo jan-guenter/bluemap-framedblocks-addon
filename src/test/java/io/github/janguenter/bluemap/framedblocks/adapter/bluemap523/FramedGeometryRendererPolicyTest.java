@@ -31,46 +31,6 @@ class FramedGeometryRendererPolicyTest {
     private static final int Z = 1;
 
     @Test
-    void framedAdjacencyForcesTheHiddenFaceFallbackLane() {
-        BlockNeighborhood adjacentFramed = neighborhood(Map.of(
-                new Position(X, Y, Z), BlockState.fromString("framedblocks:framed_cube"),
-                new Position(X + 1, Y, Z), BlockState.fromString("framedblocks:framed_slope")
-        ));
-        BlockNeighborhood adjacentTerrain = neighborhood(Map.of(
-                new Position(X, Y, Z), BlockState.fromString("framedblocks:framed_cube"),
-                new Position(X + 1, Y, Z), BlockState.fromString("minecraft:stone")
-        ));
-
-        assertEquals("framedblocks", adjacentFramed.getNeighborBlock(1, 0, 0)
-                .getBlockState().getId().getNamespace());
-        assertTrue(FramedGeometryRenderer.hasUnsupportedFramedNeighbor(adjacentFramed));
-        assertFalse(FramedGeometryRenderer.hasUnsupportedFramedNeighbor(adjacentTerrain));
-    }
-
-    @Test
-    void matchingVerticalDoorCompanionDoesNotForceFallback() {
-        BlockNeighborhood matchingDoor = neighborhood(Map.of(
-                new Position(X, Y, Z), BlockState.fromString(
-                        "framedblocks:framed_door[facing=north,half=lower,open=false]"
-                ),
-                new Position(X, Y + 1, Z), BlockState.fromString(
-                        "framedblocks:framed_door[facing=north,half=upper,open=false]"
-                )
-        ));
-        BlockNeighborhood mismatchedDoor = neighborhood(Map.of(
-                new Position(X, Y, Z), BlockState.fromString(
-                        "framedblocks:framed_door[facing=north,half=lower,open=false]"
-                ),
-                new Position(X, Y + 1, Z), BlockState.fromString(
-                        "framedblocks:framed_door[facing=north,half=upper,open=true]"
-                )
-        ));
-
-        assertFalse(FramedGeometryRenderer.hasUnsupportedFramedNeighbor(matchingDoor));
-        assertTrue(FramedGeometryRenderer.hasUnsupportedFramedNeighbor(mismatchedDoor));
-    }
-
-    @Test
     void appliedCamoProfileRejectsEmptyAndUnresolvedPalettes() {
         CamoMaterialResolver.Material material = new CamoMaterialResolver.Material(
                 Key.parse("minecraft:block/stone"),

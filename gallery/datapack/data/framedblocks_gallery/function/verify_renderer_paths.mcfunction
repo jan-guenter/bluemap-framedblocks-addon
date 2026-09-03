@@ -53,7 +53,7 @@ execute unless block 210 100 244 framedblocks:framed_slab[glowing=false,propagat
 execute unless data block 210 100 244 {camo:{type:"framedblocks:block",state:{Name:"minecraft:stone"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b} run scoreboard players add #failures fbgr1061 1
 execute unless block 210 99 244 minecraft:stone run scoreboard players add #failures fbgr1061 1
 
-# fb1061-rp-11 fallback_adjacent_framed_neighbor
+# fb1061-rp-11 proven_adjacent_framed_neighbor
 execute unless block 214 100 244 framedblocks:framed_cube[alt=false,glowing=false,propagates_skylight=false,reinforced=false,solid=true,solid_bg=false] run scoreboard players add #failures fbgr1061 1
 execute unless data block 214 100 244 {camo:{type:"framedblocks:block",state:{Name:"minecraft:stone"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b} run scoreboard players add #failures fbgr1061 1
 execute unless block 214 99 244 minecraft:stone run scoreboard players add #failures fbgr1061 1
@@ -81,5 +81,13 @@ execute unless block 206 100 248 framedblocks:framed_cube[alt=false,glowing=fals
 execute unless data block 206 100 248 {camo:{type:"framedblocks:block",state:{Name:"minecraft:stone"}},glowing:0b,intangible:0b,reinforced:1b,updated:3b} run scoreboard players add #failures fbgr1061 1
 execute unless block 206 99 248 minecraft:stone run scoreboard players add #failures fbgr1061 1
 
-execute if score #failures fbgr1061 matches 0 run tellraw @a [{"text":"Renderer-path matrix verification passed: 15/15 cases and 16 framed anchors.","color":"green"}]
+# fb1061-rp-16 proven_adjacent_framed_double_panel
+execute unless block 210 100 248 framedblocks:framed_double_panel[solid=true] run scoreboard players add #failures fbgr1061 1
+execute unless data block 210 100 248 {camo:{type:"framedblocks:block",state:{Name:"minecraft:stone"}},camo_two:{type:"framedblocks:block",state:{Name:"minecraft:gold_block"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b} run scoreboard players add #failures fbgr1061 1
+execute unless block 210 99 248 minecraft:stone run scoreboard players add #failures fbgr1061 1
+execute unless block 211 100 248 framedblocks:framed_cube[alt=false,glowing=false,propagates_skylight=false,reinforced=false,solid=true,solid_bg=false] run scoreboard players add #failures fbgr1061 1
+execute unless data block 211 100 248 {camo:{type:"framedblocks:block",state:{Name:"minecraft:stone"}},glowing:0b,intangible:0b,reinforced:0b,updated:3b} run scoreboard players add #failures fbgr1061 1
+execute unless block 211 99 248 minecraft:stone run scoreboard players add #failures fbgr1061 1
+
+execute if score #failures fbgr1061 matches 0 run tellraw @a [{"text":"Renderer-path matrix verification passed: 16/16 cases and 18 framed anchors.","color":"green"}]
 execute unless score #failures fbgr1061 matches 0 run tellraw @a [{"text":"Renderer-path matrix verification failed with ","color":"red"},{"score":{"name":"#failures","objective":"fbgr1061"}},{"text":" mismatches.","color":"red"}]
