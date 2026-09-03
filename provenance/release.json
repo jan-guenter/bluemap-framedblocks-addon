@@ -64,13 +64,13 @@
   "final_release_artifacts": {
     "production_jar": {
       "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.5.jar",
-      "size": 1368397,
-      "sha256": "63c6aa5ceb901e78c0e7a30d5c55ef2be2552a4c2e91d0562391bd74dbdcc43d"
+      "size": 1368405,
+      "sha256": "2b1382b119377f72ff6a8daa2531380cd4a2dcd723a557105e7fb95c3706ec29"
     },
     "sources_jar": {
       "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.5-sources.jar",
-      "size": 1272416,
-      "sha256": "d1a8bb169d4c6354cdba3b1d7da3b31f758e145406e9b40ecde73f419ff052e8"
+      "size": 1272424,
+      "sha256": "18227dce51f61319baa03f4d71ba9994dc1ae4c98df8d162080744ccb7723bf7"
     },
     "pom": {
       "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.5.pom",
@@ -80,7 +80,7 @@
     "gradle_module": {
       "file_name": "bluemap-framedblocks-addon-0.1.0-alpha.5.module.json",
       "size": 2858,
-      "sha256": "a25d7a5abf235dd8afadba90f2683cf095f8945bf1b19d3f551be68e7549faf6"
+      "sha256": "4a53daf58db447d438ab9a32711e3c957be9bb4c2a215f91b7f091ac2dc58a19"
     }
   },
   "preserved_contract": {
